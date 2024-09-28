@@ -34,7 +34,7 @@ public class Player : NetworkBehaviour
 
     void SetPlayer()
     {
-        PlayerInput playerInput = GameObject.Find("PlayerInput").GetComponent<PlayerInput>();
+        PlayerInput playerInput = GameObject.Find("@PlayerInput").GetComponent<PlayerInput>();
 
         playerInput.actionEvents[0].AddListener(this.OnMovement); //En mi cabeza tiene sentido esto es como lo de entornos pero en vez d hacer un input controller lo asigno directamente desde el player que creo que tiene sentido y se puede hacer.
         //Si no he dejao un script de input controller para ponerlo ahí a ver qué pasa.
@@ -42,12 +42,12 @@ public class Player : NetworkBehaviour
 
     public void OnMovement(InputAction.CallbackContext context)
     {
-        //if(!IsOwner) return;
+        if(!IsOwner) return;
         Vector3 mousePosition = Mouse.current.position.ReadValue();
         targetPosition = _camera.ScreenToWorldPoint(mousePosition); //Esto luego se va cuando se hagan las movidas de serverrpc
         targetPosition.z = transform.position.z;
         _moving = true;
-        // OnMovementServerRpc(mousePosition);
+        OnMovementServerRpc(mousePosition);
 
     }
 
