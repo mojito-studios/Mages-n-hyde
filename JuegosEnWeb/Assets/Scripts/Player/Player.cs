@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -11,33 +12,44 @@ public class Player : NetworkBehaviour
     private Camera _camera;
     private float speed = 4f;
     private enum PlayerState {Idle, Moving, Hiding, Attacking}
-    private PlayerState currentState;
+    private NetworkVariable<PlayerState> networkPlayerState = new NetworkVariable<PlayerState>(PlayerState.Idle);
     private Vector3 targetPosition = Vector3.zero;
     private InputActionMap _actionMap;
-    public PropsBehaviour pBehaviour;
+    [HideInInspector] public PropsBehaviour pBehaviour;
     
     void Start()
     {
         _camera = Camera.main;
         Debug.Log(_camera);
-    
-            SetPlayer();
+        
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public override void OnNetworkSpawn()
     {
-        if(IsOwner)
-        switch (currentState)
+        base.OnNetworkSpawn();
+        if (IsOwner)
         {
+            SetPlayer();
+        }
+    }
+
+        // Update is called once per frame
+        void Update()
+    {
+        if (IsOwner)
+        switch (networkPlayerState.Value)
+        {
+          
             case PlayerState.Idle:
+                    Debug.Log("idle");
                 break;
             case PlayerState.Moving:
+                Debug.Log("Moving");
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
-                if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+                    Debug.Log("Moving to: " + targetPosition);
+                    if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
                 {
-                    currentState = PlayerState.Idle;
+                        OnMovementCompleteServerRpc();
                 }
                 break;
             case PlayerState.Attacking:
@@ -79,27 +91,36 @@ public class Player : NetworkBehaviour
     //Si veo que el código de Player se queda muy largo cambio todo esto al InputController
     public void OnMovement(InputAction.CallbackContext context)
     {
-        if(!IsOwner || currentState == PlayerState.Hiding) return;
-        currentState = PlayerState.Moving;
+        if(!IsOwner || networkPlayerState.Value == PlayerState.Hiding) return;
         Vector3 mousePosition = Mouse.current.position.ReadValue();
-        OnMovementServerRpc(mousePosition);
+        targetPosition = _camera.ScreenToWorldPoint(mousePosition);
+        targetPosition.z = transform.position.z;
+        OnMovementServerRpc();
 
     }
 
     [ServerRpc]
 
-    private void OnMovementServerRpc(Vector3 movement)
+    private void OnMovementServerRpc()
     {
-        targetPosition = _camera.ScreenToWorldPoint(movement);
-        targetPosition.z = transform.position.z;
+      
+        networkPlayerState.Value = PlayerState.Moving;
+
     }
+
+    [ServerRpc]
+    private void OnMovementCompleteServerRpc()
+    {
+        networkPlayerState.Value = PlayerState.Idle;
+    }
+
 
     public void OnHide(InputAction.CallbackContext context)
     {
-        if (!IsOwner || currentState == PlayerState.Hiding) return;
+        if (!IsOwner || networkPlayerState.Value == PlayerState.Hiding) return;
         if (Vector3.Distance(targetPosition, pBehaviour.transform.position) < 1.5f)
         {
-            currentState = PlayerState.Hiding;
+            
             OnHideServerRpc();
         }
     }
@@ -107,19 +128,27 @@ public class Player : NetworkBehaviour
     [ServerRpc]
     private void OnHideServerRpc()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
+        Debug.Log("hiding");
+        networkPlayerState.Value = PlayerState.Hiding;
+        HideClientRpc(false);
         StartCoroutine(HideCoroutine(10));
      
+    }
+
+    [ClientRpc]
+    private void HideClientRpc(bool isVisible)
+    {
+        GetComponent<SpriteRenderer>().enabled = isVisible;
     }
     private IEnumerator HideCoroutine(int time)
     {
         yield return new WaitForSeconds(time); 
-        GetComponent<SpriteRenderer>().enabled = true;
-        currentState = PlayerState.Idle;
+        HideClientRpc(true);
+        networkPlayerState.Value = PlayerState.Idle;
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (!IsOwner || currentState == PlayerState.Hiding) return;
+        if (!IsOwner || networkPlayerState.Value == PlayerState.Hiding) return;
         Debug.Log("attacking");
 
     }

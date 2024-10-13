@@ -22,6 +22,8 @@ public class PropsBehaviour : NetworkBehaviour
         _player.pBehaviour = this;
         if (_player != null)
         {
+            Debug.Log(_player + "activando esconderse");
+
             _player.SwapInputAction();
         }
     }
