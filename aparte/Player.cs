@@ -13,7 +13,6 @@ public class Player : NetworkBehaviour
     private float speed = 4f;
     private enum PlayerState {Idle, Moving, Hiding, Attacking}
     private PlayerState currentState;
-    [SerializeField] private Sprite[] allSprites;
     private Vector3 targetPosition = Vector3.zero;
     private InputActionMap _actionMap;
     [HideInInspector] public PropsBehaviour pBehaviour;
@@ -22,11 +21,10 @@ public class Player : NetworkBehaviour
     {
         _camera = Camera.main;
         Debug.Log(_camera);
-        SetState(PlayerState.Idle);
-        allSprites[0] = GetComponent<SpriteRenderer>().sprite;
+        currentState = PlayerState.Idle;
+        
     }
 
-    
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -39,29 +37,29 @@ public class Player : NetworkBehaviour
         // Update is called once per frame
         void Update()
         {
-            if (IsOwner)
+        if (IsOwner)
+        {
+            switch (currentState)
             {
-                switch (currentState)
-                {
-                    case PlayerState.Idle:
-                        Debug.Log("idle");
-                        break;
-                    case PlayerState.Moving:
-                        Debug.Log("Moving");
-                        if (IsServer) MovePlayer();
-                        else if (IsClient)
-                        {
-                            Debug.Log("entra");
-                            OnMovementServerRpc();
-                        }
-                        break;
-                    case PlayerState.Attacking:
-                        break;
-                    case PlayerState.Hiding: 
-                        break;
+                case PlayerState.Idle:
+                    Debug.Log("idle");
+                    break;
+                case PlayerState.Moving:
+                    Debug.Log("Moving");
+                    if (IsServer) MovePlayer();
+                    else if (IsClient)
+                    {
+                        Debug.Log("entra");
+                        OnMovementServerRpc();
+                    }
+                    break;
+                case PlayerState.Attacking:
+                    break;
+                case PlayerState.Hiding: //Mientras se está escondiendo no puede hacer nada (ni de fisicas ni de golpes ni nada) asi que le meto un return para que salga del switch en cada iteración que esté escondido
+                    return;
 
-                }
             }
+        }
     }
 
     void SetPlayer()
@@ -96,9 +94,10 @@ public class Player : NetworkBehaviour
         currentState = state;
     }
 
+    //Si veo que el código de Player se queda muy largo cambio todo esto al InputController
     public void OnMovement(InputAction.CallbackContext context)
     {
-        if(!IsOwner) return;
+        if(!IsOwner || currentState == PlayerState.Hiding) return;
         Vector3 mousePosition = Mouse.current.position.ReadValue();
         targetPosition = _camera.ScreenToWorldPoint(mousePosition);
         targetPosition.z = transform.position.z;
@@ -123,6 +122,9 @@ public class Player : NetworkBehaviour
     }
 
 
+    
+
+
     public void OnHide(InputAction.CallbackContext context)
     {
         if (!IsOwner || currentState == PlayerState.Hiding) return;
@@ -138,30 +140,26 @@ public class Player : NetworkBehaviour
     {
         Debug.Log("hiding");
         currentState = PlayerState.Hiding;
-        ChangeSpriteClientRpc(pBehaviour.spriteNumber);
+        HideClientRpc(false);
         StartCoroutine(HideCoroutine(10));
      
     }
 
     [ClientRpc]
-    private void ChangeSpriteClientRpc(int spriteNumber)
+    private void HideClientRpc(bool isVisible)
     {
-        GetComponent<SpriteRenderer>().sprite = allSprites[spriteNumber]; //Voy a ignorar el tema del color porque en principio solo da problemas ahora por ser placeholders
-        pBehaviour.gameObject.SetActive(!pBehaviour.gameObject.activeSelf);
-
+        GetComponent<SpriteRenderer>().enabled = isVisible;
     }
     private IEnumerator HideCoroutine(int time)
     {
-        yield return new WaitForSeconds(time);
-        ChangeSpriteClientRpc(0);
-        pBehaviour = null;
+        yield return new WaitForSeconds(time); 
+        HideClientRpc(true);
         currentState = PlayerState.Idle;
     }
     public void OnAttack(InputAction.CallbackContext context)
     {
-        if (!IsOwner) return;
+        if (!IsOwner || currentState == PlayerState.Hiding) return;
         Debug.Log("attacking");
-       // currentState = PlayerState.Attacking;
 
     }
 

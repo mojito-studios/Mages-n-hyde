@@ -231,7 +231,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 95303766}
-    PlayerPrefab: {fileID: 6983655548199110283, guid: a810564acae3cfc4b99daad15000359f, type: 3}
+    PlayerPrefab: {fileID: 6791978798240179834, guid: a810564acae3cfc4b99daad15000359f, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: 050c4c269458aae45ad520687a5a83b0, type: 2}
@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f28fd8b26c72ab4db40fbf4455df6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteNumber: 1
 --- !u!114 &359212877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +503,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359212871}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
