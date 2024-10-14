@@ -6,9 +6,6 @@ using Unity.Services.Core;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
-using Unity.Netcode.Transports.UTP;
-using Unity.Netcode;
-using Unity.Networking.Transport.Relay;
 
 public class RelayManager : MonoBehaviour
 {
@@ -23,10 +20,7 @@ public class RelayManager : MonoBehaviour
             () => print($"New player {AuthenticationService.Instance.PlayerId} connected");
 
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
-
-
     }
-
 
     private async void CreateRelay()
     {
@@ -37,7 +31,6 @@ public class RelayManager : MonoBehaviour
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
             print(joinCode);
-
         }
         catch (RelayServiceException e)
         {
@@ -49,8 +42,7 @@ public class RelayManager : MonoBehaviour
     {
         try
         {
-           await RelayService.Instance.JoinAllocationAsync(joinCode);
-
+            await RelayService.Instance.JoinAllocationAsync(joinCode);
         }
         catch (RelayServiceException e)
         {

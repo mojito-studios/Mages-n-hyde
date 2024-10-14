@@ -6,7 +6,6 @@ using UnityEngine;
 public class PropsBehaviour : NetworkBehaviour 
 {
    private Player _player;
-   public int spriteNumber = 1;
    protected void Start()
     {
         
@@ -20,21 +19,22 @@ public class PropsBehaviour : NetworkBehaviour
     protected void OnMouseEnter()
     {
         _player = GetLocalPlayer(); 
-        _player.pBehaviour = this;
+        //_player.pBehaviour = this;
         if (_player != null)
         {
-            Debug.Log(_player + "activando esconderse");
-
-            _player.SwapInputAction();
+            //_player.SwapInputAction();
         }
     }
 
     protected void OnMouseExit()
     {
         _player = GetLocalPlayer();
-        Debug.Log(_player + "activando atacar");
-        _player.SwapInputAction();
-        
+        if (_player != null)
+        {
+            Debug.Log(_player + "activando atacar");
+            //_player.SwapInputAction();
+            //_player.pBehaviour = null;
+        }
     }
 
     protected Player GetLocalPlayer()
