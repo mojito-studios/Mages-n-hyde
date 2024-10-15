@@ -572,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412862604b918b64bb7bfe8a5f9bd6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteNumber: 1
 --- !u!212 &1804055102
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -786,8 +787,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 261366706288454701, guid: a810564acae3cfc4b99daad15000359f, type: 3}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnMovement
         m_Mode: 0
         m_Arguments:
@@ -800,6 +801,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 50221dde-eae5-4539-97cf-62c81064f22f
     m_ActionName: PlayerInGame/Movement[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnHide
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 68f40fc7-2a21-4671-973b-fb9c9b505a36
+    m_ActionName: PlayerInGame/Hide[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ccf1c204-cb50-4391-93a0-3582f70b05eb
+    m_ActionName: PlayerInGame/Attack[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInGame
