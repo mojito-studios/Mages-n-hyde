@@ -11,16 +11,19 @@ public class Player : NetworkBehaviour
     private Camera _camera;
     private float speed = 4f;
     private bool _moving = false;
-    private bool _hiding = false;
+    private NetworkVariable<bool> _hiding = new NetworkVariable<bool>(false);
+    private Dictionary<ulong, GameObject> playerHidingObjects = new Dictionary<ulong, GameObject>();
     [SerializeField] private Sprite[] allSprites;
     private Vector3 targetPosition = Vector3.zero;
     private InputActionMap _actionMap;
+    private Rigidbody2D _rb;
     [HideInInspector] public PropsBehaviour pBehaviour;
     void Start()
     {
         _camera = Camera.main;
         Debug.Log(_camera);
         allSprites[0] = GetComponent<SpriteRenderer>().sprite;
+        _rb = GetComponent<Rigidbody2D>();
         //SetPlayer();
     }
 
@@ -28,24 +31,16 @@ public class Player : NetworkBehaviour
     {
         base.OnNetworkSpawn();
         SetPlayer();
+
     }
 
 
     // Update is called once per frame
     void Update()
     {
-       
-      MovePlayer(); //De esta manera funciona solo el movimiento en el cliente
-
-
-      /*  if (!IsOwner) return; De esta manera no funciona pero detecta todas las funciones y todo los cambios 
-         if (IsServer) MovePlayer();
-         else if (IsClient)
-         {
-                Debug.Log("entra");
-                MovePlayerServerRpc();
-         
-        */
+        if (!IsOwner) return;
+        if (_moving)
+            MovePlayer(); //Ahora se mueve por tener una transform autoritativa de parte del cliente para mejor responsividad a los jugadores
     }
 
     void SetPlayer()
@@ -78,7 +73,7 @@ public class Player : NetworkBehaviour
 
     void MovePlayer()
     {
-        if (_moving)
+       
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); //Todavía no lo probé con el rigidbody 2D
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
@@ -86,11 +81,7 @@ public class Player : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
-    void MovePlayerServerRpc()
-    {
-        MovePlayer();
-    }
+    
 
     //En el host funcionan todas las cosas sin problema y se ven los cambios reflejados en el otro cliente
     public void OnMovement(InputAction.CallbackContext context) //Se activa al hacer click izquierdo
@@ -102,23 +93,15 @@ public class Player : NetworkBehaviour
         targetPosition = _camera.ScreenToWorldPoint(mousePosition); 
         targetPosition.z = transform.position.z;
         _moving = true;
-        OnMovementServerRpc(mousePosition);
 
     }
 
-    [ServerRpc]
-
-    public void OnMovementServerRpc(Vector3 movement)
-    {
-        targetPosition = _camera.ScreenToWorldPoint(movement);
-        targetPosition.z = transform.position.z;
-        _moving = true;
-    }
 
     
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estás encima de un prop
     {
-        if (!IsOwner || _hiding) return;
+        Debug.Log("HIDING VALUE "+ _hiding.Value);
+        if (!IsOwner || _hiding.Value) return;
         Debug.Log("Distanciaa " + Vector3.Distance(transform.position, pBehaviour.transform.position));
         if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 3f)
         {
@@ -130,25 +113,28 @@ public class Player : NetworkBehaviour
     [ServerRpc]
     private void OnHideServerRpc()
     {
-        Debug.Log("hiding");
-        _hiding = true;
-        ChangeSpriteClientRpc(pBehaviour.spriteNumber);
+        
+        _hiding.Value = true;
+        SwapInputAction();
+        ChangeSpriteClientRpc(pBehaviour.spriteNumber, pBehaviour.NetworkObjectId);
         StartCoroutine(HideCoroutine(10)); //Cambiar el hardcode por el tiempo que vaya a durar el objeto según su SO
 
     }
 
     [ClientRpc]
-    private void ChangeSpriteClientRpc(int spriteNumber)
+    private void ChangeSpriteClientRpc(int spriteNumber, ulong NID)
     {
+        Debug.Log("Cambio de sprite");
         GetComponent<SpriteRenderer>().sprite = allSprites[spriteNumber]; //Voy a ignorar el tema del color porque en principio solo se cambia ahora por ser placeholders 
-        pBehaviour.gameObject.SetActive(!pBehaviour.gameObject.activeSelf);
+        var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[NID].gameObject;
+        hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
 
     }
     private IEnumerator HideCoroutine(int time)
     {
         yield return new WaitForSeconds(time);
-        _hiding = false;
-        ChangeSpriteClientRpc(0);
+        _hiding.Value = false;
+        ChangeSpriteClientRpc(0, pBehaviour.NetworkObjectId);
         pBehaviour = null;
        
     }
@@ -156,7 +142,7 @@ public class Player : NetworkBehaviour
     {
         if (!IsOwner) return;
         Debug.Log("attacking");
-        // currentState = PlayerState.Attacking;
+        
 
     }
 
