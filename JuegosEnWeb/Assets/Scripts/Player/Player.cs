@@ -11,7 +11,6 @@ public class Player : NetworkBehaviour
     private Camera _camera;
     private float speed = 4f;
     private bool _moving = false;
-    private NetworkVariable<bool> _hiding = new NetworkVariable<bool>(false);
     private Dictionary<ulong, GameObject> playerHidingObjects = new Dictionary<ulong, GameObject>();
     [SerializeField] private Sprite[] allSprites;
     private Vector3 targetPosition = Vector3.zero;
@@ -52,25 +51,10 @@ public class Player : NetworkBehaviour
 
         playerInput.actionEvents[0].AddListener(this.OnMovement);
         playerInput.actionEvents[1].AddListener(this.OnHide);
-        playerInput.actionEvents[2].AddListener(this.OnAttack);
 
-        _actionMap.FindAction("Hide").Disable(); //Como atacar y esconderse tienen el mismo botón, quito esconderse hasta que seleccione un objeto
     }
 
-    public void SwapInputAction()
-    {
-        if (_actionMap.FindAction("Attack").enabled)
-        {
-            _actionMap.FindAction("Attack").Disable();
-            _actionMap.FindAction("Hide").Enable();
-        }
-        else if (!_actionMap.FindAction("Attack").enabled)
-        {
-            _actionMap.FindAction("Hide").Disable();
-            _actionMap.FindAction("Attack").Enable();
-        }
-    }
-
+  
     void MovePlayer()
     {
        
@@ -100,29 +84,29 @@ public class Player : NetworkBehaviour
     
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estás encima de un prop
     {
-        Debug.Log("HIDING VALUE "+ _hiding.Value);
-        if (!IsOwner || _hiding.Value) return;
+      
+        if (!IsOwner) return;
+        Debug.Log(GetComponent<SpriteRenderer>().sprite);
         Debug.Log("Distanciaa " + Vector3.Distance(transform.position, pBehaviour.transform.position));
         if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 3f)
         {
             
-            OnHideServerRpc();
+            OnHideRpc(pBehaviour.spriteNumber, pBehaviour.NetworkObjectId);
+            pBehaviour = null;
         }
     }
 
-    [ServerRpc]
-    private void OnHideServerRpc()
+    [Rpc(SendTo.Server)]
+    private void OnHideRpc(int spriteN, ulong NID)
     {
         
-        _hiding.Value = true;
-        SwapInputAction();
-        ChangeSpriteClientRpc(pBehaviour.spriteNumber, pBehaviour.NetworkObjectId);
-        StartCoroutine(HideCoroutine(10)); //Cambiar el hardcode por el tiempo que vaya a durar el objeto según su SO
+        ChangeSpriteRpc(spriteN, NID);
+        StartCoroutine(HideCoroutine(10, NID)); //Cambiar el hardcode por el tiempo que vaya a durar el objeto según su SO
 
     }
 
-    [ClientRpc]
-    private void ChangeSpriteClientRpc(int spriteNumber, ulong NID)
+    [Rpc(SendTo.Everyone)]
+    private void ChangeSpriteRpc(int spriteNumber, ulong NID)
     {
         Debug.Log("Cambio de sprite");
         GetComponent<SpriteRenderer>().sprite = allSprites[spriteNumber]; //Voy a ignorar el tema del color porque en principio solo se cambia ahora por ser placeholders 
@@ -130,12 +114,10 @@ public class Player : NetworkBehaviour
         hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
 
     }
-    private IEnumerator HideCoroutine(int time)
+    private IEnumerator HideCoroutine(int time, ulong NID)
     {
         yield return new WaitForSeconds(time);
-        _hiding.Value = false;
-        ChangeSpriteClientRpc(0, pBehaviour.NetworkObjectId);
-        pBehaviour = null;
+        ChangeSpriteRpc(0, NID);
        
     }
     public void OnAttack(InputAction.CallbackContext context) //Se activa al hacer click izquierdo si no estás encima de un prop
