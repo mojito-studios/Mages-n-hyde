@@ -5,6 +5,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class Player : NetworkBehaviour
 {
@@ -17,14 +18,20 @@ public class Player : NetworkBehaviour
     private InputActionMap _actionMap;
     private Rigidbody2D _rb;
     [HideInInspector] public PropsBehaviour pBehaviour;
+    private Button _spell;
 
 
     void Start()
     {
-        _camera = Camera.main;
+        _camera = GetComponentInChildren<Camera>();
         Debug.Log(_camera);
         allSprites[0] = GetComponent<SpriteRenderer>().sprite;
         _rb = GetComponent<Rigidbody2D>();
+        Button[] buttonList = GetComponentsInChildren<Button>();
+        foreach (var button in buttonList)
+        {
+            if (button.CompareTag("AttackButton")) { _spell = GetComponentInChildren<Button>(); }
+        }
         //SetPlayer();
     }
 

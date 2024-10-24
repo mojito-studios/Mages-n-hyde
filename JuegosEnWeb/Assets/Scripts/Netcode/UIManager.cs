@@ -13,7 +13,7 @@ namespace UIManagerSpace
     public class UIManager : MonoBehaviour
     {
         private string joinCode = "Enter code...";
-        private const int maxConnections = 3;
+        private const int maxConnections = 4;
 
         async void Start()
         {

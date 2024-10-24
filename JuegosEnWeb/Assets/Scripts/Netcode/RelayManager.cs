@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class RelayManager : MonoBehaviour
 {
-    private const int N_PLAYERS = 3; // no cuenta al host
+    private const int N_PLAYERS = 4; // no cuenta al host
     public UIManager UIManager;
 
     async void Start()
