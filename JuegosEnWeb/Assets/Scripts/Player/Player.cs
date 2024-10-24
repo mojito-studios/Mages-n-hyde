@@ -67,7 +67,7 @@ public class Player : NetworkBehaviour
     void MovePlayer()
     {
        
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); //Todavía no lo probé con el rigidbody 2D
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); //Todavía no lo probé con el rigidbody 2D
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             _moving = false;
