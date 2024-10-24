@@ -72,7 +72,7 @@ public class MenuControlller : MonoBehaviour
 
     private void HostClientState() //Mi idea esq aqui los jugadores eligieran si son host o clients y luego pasasen directamente a la escena de  lobby de personalización, pero como me da cosa liarla para Pablo cuando haga el lobby mejor que lo mire él
     {
-         /*menus[0].SetActive(false);
+        /* menus[0].SetActive(false);
          menus[2].SetActive(false);
          menus[1].SetActive(true);*/
        SceneManager.LoadScene(1); //Carga el juego actual. En principio va bien
