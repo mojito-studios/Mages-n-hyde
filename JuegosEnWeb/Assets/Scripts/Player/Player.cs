@@ -17,6 +17,8 @@ public class Player : NetworkBehaviour
     private InputActionMap _actionMap;
     private Rigidbody2D _rb;
     [HideInInspector] public PropsBehaviour pBehaviour;
+
+
     void Start()
     {
         _camera = Camera.main;

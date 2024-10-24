@@ -6,6 +6,7 @@ using Unity.Services.Core;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UIManagerSpace
 {
@@ -75,6 +76,7 @@ namespace UIManagerSpace
                 joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
                 NetworkManager.Singleton.StartHost();
+               // NetworkManager.Singleton.SceneManager.LoadScene("GameScene",LoadSceneMode.Single);
             }
             catch (RelayServiceException e)
             {
