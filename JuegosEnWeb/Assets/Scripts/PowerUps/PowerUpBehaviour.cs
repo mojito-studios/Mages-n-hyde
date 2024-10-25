@@ -14,6 +14,7 @@ public class PowerUpBehaviour : NetworkBehaviour
         if (!collision.CompareTag("Player") || !NetworkManager.Singleton.IsServer) return; //Si interacciona con cualquier otro objeto con colliders nos da igual, y si no es el server entonces no tiene validez para evitar las trampas
         _player = collision.GetComponent<Player>();
         ExecutePowerUp();
+        _player = null;
         NetworkObject.Despawn();
         GameManager.Instance.puInScene--;
 
@@ -58,19 +59,19 @@ public class PowerUpBehaviour : NetworkBehaviour
 
     public void CreateTurrets()
     {
-        Debug.Log("CreateTurrets");
-
+       _player.teamTower.ActivateTurrets();
     }
 
     public void RiseTowerDefenses()
     {
-        Debug.Log("RiseTowerDefenses");
+        Debug.Log("Levantando escudo");
+        _player.teamTower.SetDefending(true);
 
     }
 
     public void HealTower()
     {
-        Debug.Log("HealTower");
+        _player.teamTower.HealTower();
 
     }
 

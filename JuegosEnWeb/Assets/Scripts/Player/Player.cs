@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,13 +17,13 @@ public class Player : NetworkBehaviour
     private float speed = 4f;
     private bool _moving = false;
     private bool _hiding = false;
+    public FixedString128Bytes teamAssign = new FixedString128Bytes();
     private Dictionary<ulong, GameObject> playerHidingObjects = new Dictionary<ulong, GameObject>();
     [SerializeField] private Sprite[] allSprites;
     private Vector3 targetPosition = Vector3.zero;
-    private InputActionMap _actionMap;
-    private Rigidbody2D _rb;
     [HideInInspector] public PropsBehaviour pBehaviour;
     private Button _spell;
+    public Tower teamTower;
 
 
     void Start()
@@ -30,20 +31,19 @@ public class Player : NetworkBehaviour
         _camera = GetComponentInChildren<Camera>();
         Debug.Log(_camera);
         allSprites[0] = GetComponent<SpriteRenderer>().sprite;
-        _rb = GetComponent<Rigidbody2D>();
         Button[] buttonList = GetComponentsInChildren<Button>();
         foreach (var button in buttonList)
         {
             if (button.CompareTag("AttackButton")) { _spell = GetComponentInChildren<Button>(); }
         }
-        //SetPlayer();
     }
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         SetPlayer();
-
+        teamAssign = "Team1";
+        AssignTower();
     }
 
 
@@ -59,19 +59,25 @@ public class Player : NetworkBehaviour
     {
         PlayerInput playerInput = GameObject.Find("@PlayerInput").GetComponent<PlayerInput>();
 
-        _actionMap = playerInput.actions.FindActionMap("PlayerInGame");
-
-
         playerInput.actionEvents[0].AddListener(this.OnMovement);
         playerInput.actionEvents[1].AddListener(this.OnHide);
 
     }
 
-  
+    private void AssignTower()
+    {
+        if (!IsOwner) return;
+        if (teamAssign == "Team1") teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
+    }
     void MovePlayer()
     {
        
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); //Todavía no lo probé con el rigidbody 2D
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); 
+        if(targetPosition!= transform.position)
+        {
+            Vector3 targetDirection = targetPosition - transform.position; 
+            transform.up = targetDirection;
+        }
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             _moving = false;

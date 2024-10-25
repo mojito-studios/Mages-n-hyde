@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class GameManager : NetworkBehaviour 
 {
-    private int numPlayers = 4;
+   // private int numPlayers = 4;
     [SerializeField] private GameObject puPrefab;
     [HideInInspector] public int puInScene = 0;
     [SerializeField] private NetworkObjectPool _ObjectPool;
@@ -16,8 +16,6 @@ public class GameManager : NetworkBehaviour
     private const int MaxTimeActive = 20;
     public static GameManager Instance { get; private set; }
     private List<NetworkObject> activeObjects = new List<NetworkObject>();
-
-
 
 
     private void Awake()
@@ -59,7 +57,7 @@ public class GameManager : NetworkBehaviour
 
     private Vector3 GetRandomPosition()
     {
-        return new Vector3(Random.Range(-8f, 8f), Random.Range(-3f, 3f), 0); //Ajustarlo luego bien al mapa esto es solo como prueba
+        return new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0); //Ajustarlo luego bien al mapa esto es solo como prueba
     }
 
     private IEnumerator SpawnOverTime()
@@ -88,7 +86,6 @@ public class GameManager : NetworkBehaviour
         {
             if (activeObjects.Count > 0)
             {
-                Debug.Log("devuelvo");
                 foreach (var networkObj in activeObjects)
                 {
                     var prefab = networkObj.GetComponent<PropsBehaviour>().propSO.prefab;
@@ -115,5 +112,10 @@ public class GameManager : NetworkBehaviour
             yield return new WaitForSeconds(MaxTimeActive);
 
         }
+    }
+
+    private void EndGame() //Cambiar a victoria o a derrota
+    {
+
     }
 }
