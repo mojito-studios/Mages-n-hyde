@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using TouchPhase = UnityEngine.TouchPhase;
 
 public class Player : NetworkBehaviour
 {
@@ -82,11 +83,18 @@ public class Player : NetworkBehaviour
         if (!IsOwner) return;
         Debug.Log("Moving");
 
-        Vector3 mousePosition = Mouse.current.position.ReadValue();
-        targetPosition = _camera.ScreenToWorldPoint(mousePosition); 
+        Vector3 position = Vector3.zero;
+        if(SystemInfo.deviceType == DeviceType.Desktop) position = Mouse.current.position.ReadValue();
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                if (Input.GetTouch(i).phase == TouchPhase.Began) position = Input.GetTouch(0).position;
+            }
+        }
+        targetPosition = _camera.ScreenToWorldPoint(position);
         targetPosition.z = transform.position.z;
         _moving = true;
-
     }
 
 
