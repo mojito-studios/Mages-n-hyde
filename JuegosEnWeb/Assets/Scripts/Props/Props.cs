@@ -21,9 +21,6 @@ public class PropsBehaviour : NetworkBehaviour
     {
         _player = GetLocalPlayer(); 
         _player.pBehaviour = this;
-        if (_player != null)
-        {
-        }
     }
 
     protected void OnMouseExit()

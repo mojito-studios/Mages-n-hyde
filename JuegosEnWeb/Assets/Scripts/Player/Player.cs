@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
 using TouchPhase = UnityEngine.TouchPhase;
 
 public class Player : NetworkBehaviour
@@ -89,7 +91,7 @@ public class Player : NetworkBehaviour
         {
             for (int i = 0; i < Input.touchCount; i++)
             {
-                if (Input.GetTouch(i).phase == TouchPhase.Began) position = Input.GetTouch(0).position;
+                if (Input.GetTouch(i).phase == TouchPhase.Began) position = Touchscreen.current.position.ReadValue();
             }
         }
         targetPosition = _camera.ScreenToWorldPoint(position);
@@ -101,8 +103,25 @@ public class Player : NetworkBehaviour
     
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estás encima de un prop
     {
-      
         if (!IsOwner) return;
+        if (SystemInfo.deviceType == DeviceType.Handheld)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                if (Input.GetTouch(i).phase == TouchPhase.Began)
+                {
+                    Ray raycast = _camera.ScreenPointToRay(Input.GetTouch(i).position);
+                    RaycastHit raycastHit;
+                    if (Physics.Raycast(raycast, out raycastHit))
+                    {
+                        if (raycastHit.collider.CompareTag("Props"))
+                        {
+                            pBehaviour = raycastHit.transform.gameObject.GetComponent<PropsBehaviour>();
+                        }
+                    }
+                }
+            }
+        }
         Debug.Log(GetComponent<SpriteRenderer>().sprite);
         Debug.Log("Distanciaa " + Vector3.Distance(transform.position, pBehaviour.transform.position));
         if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 3f)
