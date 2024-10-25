@@ -51,13 +51,23 @@ using UnityEngine.Pool;
             m_Prefabs.Clear();
         }
 
-        public int GetCurrentPrefabCount(GameObject prefab)
+    public NetworkObject GetRandomNetworkObject(Vector3 position, Quaternion rotation)
+    {
+        var prefabConfig = PooledPrefabsList[UnityEngine.Random.Range(0, PooledPrefabsList.Count)];
+
+        if (m_PooledObjects.TryGetValue(prefabConfig.Prefab, out var objectPool))
         {
-            return nonPooledObjects[prefab];
+                var networkObject = objectPool.Get();
+                networkObject.transform.position = position;
+                networkObject.transform.rotation = rotation;
+                networkObject.gameObject.SetActive(true);
+                return networkObject;
+            
+        } else return null;
+       
+    }
 
-        }
-
-        public void OnValidate()
+    public void OnValidate()
         {
             for (var i = 0; i < PooledPrefabsList.Count; i++)
             {
@@ -98,9 +108,10 @@ using UnityEngine.Pool;
             NetworkObject CreateFunc()
             {
                 return Instantiate(prefab).GetComponent<NetworkObject>();
-            }
 
-            void ActionOnGet(NetworkObject networkObject)
+        }
+
+        void ActionOnGet(NetworkObject networkObject)
             {
                 networkObject.gameObject.SetActive(true);
             }

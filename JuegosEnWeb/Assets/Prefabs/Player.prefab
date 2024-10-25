@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3258446250
+  GlobalObjectIdHash: 18630542
   InScenePlacedSourceGlobalObjectIdHash: 0
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
@@ -402,7 +402,8 @@ MonoBehaviour:
   allSprites:
   - {fileID: 0}
   - {fileID: 7482667652216324306, guid: b984d8f38a90fa84b95baff86e987f28, type: 3}
-  - {fileID: 0}
+  - {fileID: -5177388603050735206, guid: f9c4d7ac125eee146a4b78983801f1eb, type: 3}
+  - {fileID: -9095717837082945937, guid: ff7d4fd385c5aa3448d55b067169fda1, type: 3}
   pBehaviour: {fileID: 0}
 --- !u!61 &892682667512931341
 BoxCollider2D:
@@ -461,7 +462,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -475,7 +476,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3034324890455247440
 MonoBehaviour:
   m_ObjectHideFlags: 0

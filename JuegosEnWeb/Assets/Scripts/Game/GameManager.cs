@@ -9,8 +9,15 @@ public class GameManager : NetworkBehaviour
     private int numPlayers = 4;
     [SerializeField] private GameObject puPrefab;
     [HideInInspector] public int puInScene = 0;
+    [SerializeField] private NetworkObjectPool _ObjectPool;
     private const int MaxPU = 5;
+    private const int MinObj = 5;
+    private const int MaxObj = 15;
+    private const int MaxTimeActive = 20;
     public static GameManager Instance { get; private set; }
+    private List<NetworkObject> activeObjects = new List<NetworkObject>();
+
+
 
 
     private void Awake()
@@ -24,6 +31,7 @@ public class GameManager : NetworkBehaviour
     {
 
         NetworkManager.Singleton.OnServerStarted += SpawnPUStart;
+        NetworkManager.Singleton.OnServerStarted += ActiveObjects;
     }
 
 
@@ -61,6 +69,51 @@ public class GameManager : NetworkBehaviour
             yield return new WaitForSeconds(10f);
             if (puInScene < MaxPU)
                 SpawnPU();
+        }
+    }
+
+    
+    private void ActiveObjects()
+    {
+        if (!IsServer) return;
+        NetworkManager.Singleton.OnServerStarted -= ActiveObjects;
+        StartCoroutine(ObjectManager());
+        
+
+    }
+
+    private IEnumerator ObjectManager()
+    {
+        while (NetworkManager.Singleton.ConnectedClients.Count > 0)
+        {
+            if (activeObjects.Count > 0)
+            {
+                Debug.Log("devuelvo");
+                foreach (var networkObj in activeObjects)
+                {
+                    var prefab = networkObj.GetComponent<PropsBehaviour>().propSO.prefab;
+                    _ObjectPool.ReturnNetworkObject(networkObj,prefab);
+                    networkObj.Despawn(false);
+
+                }
+                activeObjects.Clear();
+            }
+
+            int numObjectsToActivate = Random.Range(MinObj, MaxObj);
+
+            for (int i = 0; i < numObjectsToActivate; i++)
+            {
+
+                var networkObj = _ObjectPool.GetRandomNetworkObject(GetRandomPosition(), Quaternion.identity);
+                if (networkObj != null)
+                {
+                    networkObj.Spawn();
+
+                    activeObjects.Add(networkObj);
+                }
+            }
+            yield return new WaitForSeconds(MaxTimeActive);
+
         }
     }
 }

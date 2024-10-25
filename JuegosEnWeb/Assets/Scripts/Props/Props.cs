@@ -6,10 +6,13 @@ using UnityEngine;
 public class PropsBehaviour : NetworkBehaviour 
 {
    private Player _player;
-    public int spriteNumber = 1;
+   public PropSO propSO;
+   public int spriteNumber;
+   public float timeHiding;
    protected void Start()
     {
-        
+        spriteNumber = propSO.spriteNumber;
+        timeHiding = propSO.timeHiding;
         
     }
 

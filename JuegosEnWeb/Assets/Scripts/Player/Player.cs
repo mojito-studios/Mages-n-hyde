@@ -15,6 +15,7 @@ public class Player : NetworkBehaviour
     private Camera _camera;
     private float speed = 4f;
     private bool _moving = false;
+    private bool _hiding = false;
     private Dictionary<ulong, GameObject> playerHidingObjects = new Dictionary<ulong, GameObject>();
     [SerializeField] private Sprite[] allSprites;
     private Vector3 targetPosition = Vector3.zero;
@@ -103,7 +104,7 @@ public class Player : NetworkBehaviour
     
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estás encima de un prop
     {
-        if (!IsOwner) return;
+        if (!IsOwner || _hiding) return;
         if (SystemInfo.deviceType == DeviceType.Handheld)
         {
             for (int i = 0; i < Input.touchCount; i++)
@@ -127,17 +128,17 @@ public class Player : NetworkBehaviour
         if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 3f)
         {
             
-            OnHideRpc(pBehaviour.spriteNumber, pBehaviour.NetworkObjectId);
+            OnHideRpc(pBehaviour.spriteNumber, pBehaviour.NetworkObjectId, pBehaviour.timeHiding);
             pBehaviour = null;
         }
     }
 
     [Rpc(SendTo.Server)]
-    private void OnHideRpc(int spriteN, ulong NID)
+    private void OnHideRpc(int spriteN, ulong NID, float time)
     {
-        
+        _hiding = true;
         ChangeSpriteRpc(spriteN, NID);
-        StartCoroutine(HideCoroutine(10, NID)); //Cambiar el hardcode por el tiempo que vaya a durar el objeto según su SO
+        StartCoroutine(HideCoroutine(time, NID)); //Cambiar el hardcode por el tiempo que vaya a durar el objeto según su SO
 
     }
 
@@ -150,9 +151,10 @@ public class Player : NetworkBehaviour
         hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
 
     }
-    private IEnumerator HideCoroutine(int time, ulong NID)
+    private IEnumerator HideCoroutine(float time, ulong NID)
     {
         yield return new WaitForSeconds(time);
+        _hiding = false;
         ChangeSpriteRpc(0, NID);
        
     }
