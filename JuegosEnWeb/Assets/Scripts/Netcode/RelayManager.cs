@@ -6,11 +6,20 @@ using Unity.Services.Core;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class RelayManager : MonoBehaviour
 {
     private const int N_PLAYERS = 4; // no cuenta al host
     public UIManager UIManager;
+
+
+    public static RelayManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     async void Start()
     {
@@ -22,7 +31,7 @@ public class RelayManager : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    private async void CreateRelay()
+    public async Task<string> CreateRelay()
     {
         try
         {
@@ -31,14 +40,17 @@ public class RelayManager : MonoBehaviour
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
             print(joinCode);
+
+            return joinCode;
         }
         catch (RelayServiceException e)
         {
             print(e);
+            return null;
         }
     }
 
-    private async void JoinRelay(string joinCode)
+    public async void JoinRelay(string joinCode)
     {
         try
         {
