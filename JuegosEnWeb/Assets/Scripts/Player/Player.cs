@@ -13,19 +13,29 @@ using TouchPhase = UnityEngine.TouchPhase;
 
 public class Player : NetworkBehaviour
 {
+    //player
     private Camera _camera;
+    public FixedString128Bytes teamAssign = new FixedString128Bytes();
+    private Tower teamTower;
+    private int health = 100;
+    [SerializeField] private TextMeshProUGUI _health;
+
+    //move
     private float speed = 4f;
     private bool _moving = false;
-    private bool _hiding = false;
     public bool button = false;
-    public FixedString128Bytes teamAssign = new FixedString128Bytes();
+    private Vector3 targetPosition = Vector3.zero;
+
+    //hide
+    private bool _hiding = false;
+    [HideInInspector] public PropsBehaviour pBehaviour;
     private Dictionary<ulong, GameObject> playerHidingObjects = new Dictionary<ulong, GameObject>();
     [SerializeField] private Sprite[] allSprites;
-    private Vector3 targetPosition = Vector3.zero;
-    [HideInInspector] public PropsBehaviour pBehaviour;
-    private Button _spell;
-    private Tower teamTower;
 
+    //attack
+    private Button _spell;
+    [SerializeField] private GameObject spellPrefab;
+    [SerializeField] private Transform spellTransform;
 
     void Start()
     {
@@ -82,7 +92,21 @@ public class Player : NetworkBehaviour
         else teamTower = GameObject.FindGameObjectWithTag("Team2Tower").GetComponent<Tower>();
        // Debug.Log("Soy cliente? " + IsClient + " mi torre es " + teamTower.tag);
     }
-    void MovePlayer()
+
+    public void getHit()
+    {
+        getHitServerRpc();
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void getHitServerRpc()
+    {
+        health -= 10;
+        _health.text = "Health: " + health;
+        Debug.Log(health);
+    }
+
+        void MovePlayer()
     {
        
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); 
@@ -151,18 +175,23 @@ public class Player : NetworkBehaviour
         ChangeSpriteRpc(0, NID);
        
     }
-    public void OnAttack(InputAction.CallbackContext context) //Se activa al hacer click izquierdo si no estás encima de un prop
+
+    public void OnAttack()
     {
         if (!IsOwner) return;
-        Debug.Log("attacking");
-        
+        spellServerRpc();
+    }
 
+    [ServerRpc(RequireOwnership = false)]
+    private void spellServerRpc()
+    {
+        GameObject spell = Instantiate(spellPrefab, spellTransform.position, spellTransform.rotation);
+        spell.GetComponent<NetworkObject>().Spawn();
+        spell.GetComponent<MoveSpell>().caster = this;
     }
 
     public ulong GetTeamTower()
     {
         return teamTower.NetworkObjectId;
     }
-
-
 }
