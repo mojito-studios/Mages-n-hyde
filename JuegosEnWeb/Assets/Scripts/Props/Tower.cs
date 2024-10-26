@@ -9,11 +9,14 @@ public class Tower : NetworkBehaviour
     private const float maxShield = 5; //Escudo total
     private const float maxLife = 10; //Vida total 
     private const int shootingTime = 7;
-    private const int minionsAttack = 5;
+    private const float minionsTime = 1.5f;
+    private const float minionsDamage = 0.5f;
     public NetworkVariable<float> actualLife = new NetworkVariable<float>();
     public NetworkVariable<float> shield = new NetworkVariable<float>(); //PowerUp de escudo
     private NetworkVariable<bool> _isDefending = new NetworkVariable<bool>(false);
     [SerializeField] private GameObject turrets; //Objeto torretas que disparan
+    [SerializeField] private GameObject minions;
+
 
     void Start()
     {
@@ -131,14 +134,56 @@ public class Tower : NetworkBehaviour
 
     }
 
-    public void MinionsAttack()
+    public void SpawnMinions()
     {
-        StartCoroutine(MinionsAttackCoroutine());
+        Tower targetTower = FindOtherTower();
+        ulong targetId = targetTower.NetworkObjectId;
+        SpawnMinionsRpc(targetTower.transform.position, minions.transform.position, targetId);
+       
     }
 
-    private IEnumerator MinionsAttackCoroutine()
+   
+    private Tower FindOtherTower()
     {
-        yield return new WaitForSeconds(minionsAttack);
+        Tower[] allTowers =GameObject.FindObjectsOfType<Tower>();
+
+        foreach(var tower in allTowers)
+        {
+            if(tower.tag != gameObject.tag) return tower;
+        }
+        return null;
+    }
+    [Rpc(SendTo.Everyone)]
+    private void SpawnMinionsRpc(Vector3 enemytower, Vector3 originalPosition, ulong t)
+    {
+        StartCoroutine(MinionsAct(enemytower, minions.transform.position, t));
+    }
+    private IEnumerator MinionsAct(Vector3 enemyTower, Vector3 originalPosition, ulong t)
+    {
+        while(Vector3.Distance(originalPosition, enemyTower) > 7f)
+        {
+            minions.transform.position = Vector3.MoveTowards(minions.transform.position, enemyTower, Time.deltaTime);
+            yield return null;
+        }
+       
+        var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[t].GetComponent<Tower>();
+
+        var i = 0;
+        while(i < minionsTime)
+        {
+            tower.DamageTower();
+            i++;
+            yield return new WaitForSeconds(1f);
+
+        }
+        
+
+        minions.transform.position = originalPosition;
+    }
+
+    private void AttackingMinions()
+    {
+
     }
 
 
