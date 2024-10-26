@@ -17,6 +17,7 @@ public class Player : NetworkBehaviour
     private float speed = 4f;
     private bool _moving = false;
     private bool _hiding = false;
+    public bool button = false;
     public FixedString128Bytes teamAssign = new FixedString128Bytes();
     private Dictionary<ulong, GameObject> playerHidingObjects = new Dictionary<ulong, GameObject>();
     [SerializeField] private Sprite[] allSprites;
@@ -44,7 +45,6 @@ public class Player : NetworkBehaviour
     {
         base.OnNetworkSpawn();
         SetPlayer();
-        
     }
 
 
@@ -52,13 +52,16 @@ public class Player : NetworkBehaviour
     void Update()
     {
         if (!IsOwner) return;
-        for (int i = 0; i < Input.touchCount; i++)
+        if (!button)
         {
-            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            for (int i = 0; i < Input.touchCount; i++)
             {
-                targetPosition = _camera.ScreenToWorldPoint(Input.GetTouch(i).position);
-                targetPosition.z = transform.position.z;
-                _moving = true;
+                if (Input.GetTouch(i).phase == TouchPhase.Began)
+                {
+                    targetPosition = _camera.ScreenToWorldPoint(Input.GetTouch(i).position);
+                    targetPosition.z = transform.position.z;
+                    _moving = true;
+                }
             }
         }
         if (_moving)
