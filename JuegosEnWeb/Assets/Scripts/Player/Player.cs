@@ -75,9 +75,9 @@ public class Player : NetworkBehaviour
 
     private void AssignTower()
     {
-        if (!IsOwner) return;
         if (teamAssign == "Team1") teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
         else teamTower = GameObject.FindGameObjectWithTag("Team2Tower").GetComponent<Tower>();
+       // Debug.Log("Soy cliente? " + IsClient + " mi torre es " + teamTower.tag);
     }
     void MovePlayer()
     {
@@ -156,9 +156,9 @@ public class Player : NetworkBehaviour
 
     }
 
-    public Tower GetTeamTower()
+    public ulong GetTeamTower()
     {
-        return teamTower;
+        return teamTower.NetworkObjectId;
     }
 
 

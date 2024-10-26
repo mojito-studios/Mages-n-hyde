@@ -12,7 +12,7 @@ public class Tower : NetworkBehaviour
     private const int minionsAttack = 5;
     public NetworkVariable<float> actualLife = new NetworkVariable<float>();
     public NetworkVariable<float> shield = new NetworkVariable<float>(); //PowerUp de escudo
-    private bool _isDefending = false;
+    private NetworkVariable<bool> _isDefending = new NetworkVariable<bool>(false);
     [SerializeField] private GameObject turrets; //Objeto torretas que disparan
 
     void Start()
@@ -40,8 +40,7 @@ public class Tower : NetworkBehaviour
     {
         if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Minions")) return; //De momento le pongo player para que vaya yendo
         //if (collision.gameObject.GetComponent<Player>().GetTeamTower().tag == this.tag) return; //No puede atacar su propia torre. Lo desactivo para probar los powerups bien pero con esta línea de código va
-        //Debug.Log("Colision aceptada");
-        if (_isDefending) DamageShields();
+        if (_isDefending.Value) DamageShields();
         else DamageTower();
     }
     public void DamageTower()
@@ -75,7 +74,7 @@ public class Tower : NetworkBehaviour
         shield.Value -= damage;
         if (shield.Value <= 0)
         {
-            _isDefending = false;
+            _isDefending.Value = false;
             shield.Value = maxShield;
         }
     }
@@ -99,14 +98,29 @@ public class Tower : NetworkBehaviour
 
     public void SetDefending(bool defending)
     {
-        _isDefending = defending;
+        SetDefendingRpc(defending);
+    }
+
+    [Rpc(SendTo.Server)]
+    private void SetDefendingRpc(bool defending)
+    {
+        _isDefending.Value = defending;
+
     }
 
     public void ActivateTurrets()
     {
         Debug.Log("Activando torretas");
+        ActivateTurretsRpc();
+
+    }
+    [Rpc(SendTo.Everyone)]
+
+    private void ActivateTurretsRpc()
+    {
         StartCoroutine(ShootTurrets());
     }
+
 
     private IEnumerator ShootTurrets()
     {
