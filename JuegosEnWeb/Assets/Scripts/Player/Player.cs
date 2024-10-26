@@ -52,6 +52,15 @@ public class Player : NetworkBehaviour
     void Update()
     {
         if (!IsOwner) return;
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
+            {
+                targetPosition = _camera.ScreenToWorldPoint(Input.GetTouch(i).position);
+                targetPosition.z = transform.position.z;
+                _moving = true;
+            }
+        }
         if (_moving)
             MovePlayer(); //Ahora se mueve por tener una transform autoritativa de parte del cliente para mejor responsividad a los jugadores
     }
@@ -62,7 +71,6 @@ public class Player : NetworkBehaviour
 
         playerInput.actionEvents[0].AddListener(this.OnMovement);
         playerInput.actionEvents[1].AddListener(this.OnHide);
-
     }
 
     private void AssignTower()
@@ -94,15 +102,7 @@ public class Player : NetworkBehaviour
         if (!IsOwner) return;
         Debug.Log("Moving");
 
-        Vector3 position = Vector3.zero;
-        if(SystemInfo.deviceType == DeviceType.Desktop) position = Mouse.current.position.ReadValue();
-        if (SystemInfo.deviceType == DeviceType.Handheld)
-        {
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                if (Input.GetTouch(i).phase == TouchPhase.Began) position = Touchscreen.current.position.ReadValue();
-            }
-        }
+        Vector3 position = Mouse.current.position.ReadValue();
         targetPosition = _camera.ScreenToWorldPoint(position);
         targetPosition.z = transform.position.z;
         _moving = true;
@@ -113,26 +113,8 @@ public class Player : NetworkBehaviour
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estás encima de un prop
     {
         if (!IsOwner || _hiding) return;
-        if (SystemInfo.deviceType == DeviceType.Handheld)
-        {
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                if (Input.GetTouch(i).phase == TouchPhase.Began)
-                {
-                    Ray raycast = _camera.ScreenPointToRay(Input.GetTouch(i).position);
-                    RaycastHit raycastHit;
-                    if (Physics.Raycast(raycast, out raycastHit))
-                    {
-                        if (raycastHit.collider.CompareTag("Props"))
-                        {
-                            pBehaviour = raycastHit.transform.gameObject.GetComponent<PropsBehaviour>();
-                        }
-                    }
-                }
-            }
-        }
         Debug.Log(GetComponent<SpriteRenderer>().sprite);
-        Debug.Log("Distanciaa " + Vector3.Distance(transform.position, pBehaviour.transform.position));
+        Debug.Log("Distancia " + Vector3.Distance(transform.position, pBehaviour.transform.position));
         if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 3f)
         {
             
