@@ -15,10 +15,14 @@ public class Buttons : MonoBehaviour
     public void OnHover()
     {
         GameObject.Find("@PlayerInput").GetComponent<PlayerInput>().actionEvents[0].RemoveListener(player.OnMovement);
+        GameObject.Find("@PlayerInput").GetComponent<PlayerInput>().actionEvents[1].RemoveListener(player.OnHide);
+        player.button = true;
     }
 
     public void OnExit()
     {
         GameObject.Find("@PlayerInput").GetComponent<PlayerInput>().actionEvents[0].AddListener(player.OnMovement);
+        GameObject.Find("@PlayerInput").GetComponent<PlayerInput>().actionEvents[1].AddListener(player.OnHide);
+        player.button = false;
     }
 }
