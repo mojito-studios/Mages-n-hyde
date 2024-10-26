@@ -59,19 +59,19 @@ public class PowerUpBehaviour : NetworkBehaviour
 
     public void CreateTurrets()
     {
-       _player.teamTower.ActivateTurrets();
+       _player.GetTeamTower().ActivateTurrets();
     }
 
     public void RiseTowerDefenses()
     {
         Debug.Log("Levantando escudo");
-        _player.teamTower.SetDefending(true);
+        _player.GetTeamTower().SetDefending(true);
 
     }
 
     public void HealTower()
     {
-        _player.teamTower.HealTower();
+        _player.GetTeamTower().HealTower();
 
     }
 

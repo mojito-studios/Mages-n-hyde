@@ -52,7 +52,8 @@ public class GameManager : NetworkBehaviour
         NetworkObject instanceNetworkObject = instance.GetComponent<NetworkObject>();
         instanceNetworkObject.Spawn();
         puInScene++;
-
+        //if(NetworkManager.Singleton.IsServer)StartCoroutine(DespawnPU(instanceNetworkObject)); //Para que despawnee después de un tiempo. No va bien en el cliente, mirar si hacer un clientrpc
+        
     }
 
     private Vector3 GetRandomPosition()
@@ -64,10 +65,17 @@ public class GameManager : NetworkBehaviour
     {
         while (NetworkManager.Singleton.ConnectedClients.Count > 0) //Aparecen antes de que se conecten los clientes como tal pero da igual pq eso se arregla cuando aparezcan desde el lobby
         {
-            yield return new WaitForSeconds(10f);
-            if (puInScene < MaxPU)
+            yield return new WaitForSeconds(15f);
+            if (puInScene < MaxPU) //quitar esto si no se quiere que haya más powerups en escena pq no hace falta
                 SpawnPU();
         }
+    }
+
+    private IEnumerator DespawnPU(NetworkObject objectDesp)
+    {
+        yield return new WaitForSeconds(7f); //Ajustar tiempos si se quiere que haya más de un powerup en escena
+        objectDesp.Despawn();
+        puInScene--;
     }
 
     
@@ -104,9 +112,10 @@ public class GameManager : NetworkBehaviour
                 var networkObj = _ObjectPool.GetRandomNetworkObject(GetRandomPosition(), Quaternion.identity);
                 if (networkObj != null)
                 {
+                    activeObjects.Add(networkObj);
                     networkObj.Spawn();
 
-                    activeObjects.Add(networkObj);
+                    
                 }
             }
             yield return new WaitForSeconds(MaxTimeActive);
@@ -114,8 +123,8 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-    private void EndGame() //Cambiar a victoria o a derrota
+    public void EndGame(string tag) //Cambiar a victoria o a derrota
     {
-
+        Debug.Log("TorreEliminada: " + tag);
     }
 }

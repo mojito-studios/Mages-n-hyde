@@ -23,7 +23,7 @@ public class Player : NetworkBehaviour
     private Vector3 targetPosition = Vector3.zero;
     [HideInInspector] public PropsBehaviour pBehaviour;
     private Button _spell;
-    public Tower teamTower;
+    private Tower teamTower;
 
 
     void Start()
@@ -36,14 +36,15 @@ public class Player : NetworkBehaviour
         {
             if (button.CompareTag("AttackButton")) { _spell = GetComponentInChildren<Button>(); }
         }
+        teamAssign = "Team1";
+        AssignTower();
     }
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         SetPlayer();
-        teamAssign = "Team1";
-        AssignTower();
+        
     }
 
 
@@ -68,6 +69,7 @@ public class Player : NetworkBehaviour
     {
         if (!IsOwner) return;
         if (teamAssign == "Team1") teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
+        else teamTower = GameObject.FindGameObjectWithTag("Team2Tower").GetComponent<Tower>();
     }
     void MovePlayer()
     {
@@ -170,6 +172,11 @@ public class Player : NetworkBehaviour
         Debug.Log("attacking");
         
 
+    }
+
+    public Tower GetTeamTower()
+    {
+        return teamTower;
     }
 
 
