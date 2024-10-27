@@ -81,7 +81,7 @@ _Mage n' Hyde_ es un juego competitivo diseñado para dos contra dos jugadores q
 
 El concepto principal de _Mage n' Hyde_ es crear una experiencia divertida, competitiva y accesible, donde el ingenio y la estrategia juegan un rol crucial en cada enfrentamiento. Diseñado para ser rejugable y mantener el interés de los jugadores a lo largo del tiempo. _Mage n' Hyde_ busca posicionarse en la escena de los juegos multijugador como una alternativa fresca y emocionante en el mundo de los videojuegos indies competitivos.
 
-- 1. **Background.**
+2. **Background.**
 
 El concepto de _Mage n' Hyde_ surge de la fusión de dos géneros populares: Prop Hunt y MOBA. La idea nace de la necesidad de crear una experiencia competitiva para dos jugadores en cada equipo que integre la estrategia de esconderse y la táctica de combate en tiempo real. Este proyecto está inspirado en la creciente popularidad de los juegos indie multijugador y en la comunidad competitiva que busca experiencias frescas y emocionantes.
 
@@ -91,7 +91,7 @@ Se busca la innovación, algo único y que pueda destacar, para ello se le ha pr
 
 El juego está diseñado para ser accesible a una amplia audiencia, desde jugadores casuales hasta competitivos, con un modelo de negocio freemium. Se facilita su disponibilidad en dispositivos móviles y otras plataformas. Además, se asegura de mantener la longevidad mediante la introducción de actualizaciones y contenidos estéticos.
 
-- 1. **Description.**
+3. **Description.**
 
 Cada jugador antes de la partida comienza en el lobby eligiendo un personaje con habilidades únicas. El objetivo principal es destruir la torre del oponente. Al inicio del juego, ambos jugadores tienen un tiempo limitado para transformarse en objetos del entorno y ocultarse. Cada equipo es transparente uno al otro, una vez que el temporizador termina, se abren las bases y los jugadores pueden verse.
 
@@ -99,7 +99,7 @@ Durante la partida, los jugadores deben recolectar power-ups, que les permitirá
 
 El juego se desarrolla con un ritmo acelerado donde esconderse y atacar estratégicamente es crucial para la victoria.
 
-- 1. **Key features.**
+4. **Key features.**
 - _Unique Blend of Prop Hunt and MOBA Gameplay:_ Mage n' Hyde ofrece una fusión innovadora entre la jugabilidad estratégica de los juegos MOBA y la diversión impredecible del clásico Prop Hunt. Los jugadores pueden transformarse en objetos del entorno para esconderse y atacar a su oponente con inteligencia, creando una experiencia que combina tensión y estrategia. Esta mezcla da lugar a partidas dinámicas donde el sigilo y el engaño son tan importantes como las habilidades de combate.
 - _Character Abilities and Power-Ups:_ Cada jugador en Mage n' Hyde controla un mago con habilidades especiales que pueden ser mejoradas a lo largo de la partida mediante power-ups. Estos potenciadores incluyen mejoras para sus hechizos, invocación de minions para atacar la torre del oponente, y escudos defensivos para proteger su propia base. Los jugadores deben gestionar cuidadosamente sus recursos y habilidades para dominar la partida.
 - _Dynamic Environment with Prop Transformations:_ El juego permite a los jugadores transformarse en cualquier objeto del entorno, introduciendo una capa de engaño y estrategia. Esta mecánica única ofrece infinitas posibilidades para emboscar al oponente o esquivar sus ataques, mientras los jugadores exploran el mapa para esconderse, recolectar recursos o preparar una ofensiva. La naturaleza impredecible de las transformaciones mantiene cada partida fresca y emocionante.
@@ -107,17 +107,18 @@ El juego se desarrolla con un ritmo acelerado donde esconderse y atacar estraté
 - _Multiplayer Mode:_ Con un enfoque en el modo de cuatro jugadores, Mage n' Hyde es ideal para competiciones dos contra dos, donde cada jugador debe usar su ingenio y habilidades para ganar. El juego está diseñado para integrar un sistema multijugador online, permitiendo a los jugadores desafiar a amigos o competir en torneos globales. Este enfoque multijugador agrega una gran rejugabilidad, con enfrentamientos diferentes en cada partida.
 - _Stylized Visuals and Immersive Sound Design:_ Mage n' Hyde presenta gráficos estilizados y una atmósfera visual que combina fantasía y terror, destacando los hechizos y transformaciones de los jugadores con efectos visuales impactantes. El diseño de sonido juega un papel crucial para sumergir a los jugadores, ya que cada acción, transformación o ataque se acompaña de efectos sonoros envolventes, ayudando a aumentar la tensión y la inmersión en cada PARTIDA.
 - _Cross-Platform Play:_ El juego está diseñado para ser accesible en múltiples plataformas, incluyendo PC y dispositivos móviles, lo que permite a los jugadores disfrutar de Mage n' Hyde en cualquier momento y lugar. Con servidores dedicados, el juego ofrecerá una experiencia fluida y competitiva, independientemente del dispositivo que se utilice.
-    1. **Genre.**
+  
+  5. **Genre.**
 
 Mage n' Hyde combina dos géneros de videojuegos muy diferentes, Prop Hunt y MOBA, para ofrecer una experiencia única y fresca. Al igual que los clásicos juegos de Prop Hunt, los jugadores pueden transformarse en objetos del entorno para ocultarse, añadiendo una capa de engaño y sigilo. Sin embargo, Mage n' Hyde también incorpora elementos estratégicos y competitivos de los juegos MOBA, como el uso de habilidades especiales y la defensa de torres.
 
 A diferencia de los MOBA tradicionales, Mage n' Hyde introduce un enfoque más rápido y dinámico, con partidas uno contra uno que requieren tanto estrategia táctica como habilidad para esconderse y atacar. Esta fusión crea una experiencia de juego única, donde el sigilo y el combate estratégico coexisten, brindando una propuesta novedosa y desafiante.
 
-- 1. **Platform.**
+6. **Platform.**
 
 El juego está diseñado para ser multiplataforma, adaptable a PC y dispositivos móviles. El ordenador será nuestra plataforma principal.
 
-- 1. **Concept Art.**
+7. **Concept Art.**
 
 Se realizarán en la versión beta cuando se solidifiquen las mecánicas implementadas, para así saber cómo de grande o costoso pueden ser los dibujos aunque en un principio todos con 72 pp
 
@@ -151,11 +152,11 @@ La tensión aumenta ya que los jugadores nunca están seguros de dónde se escon
 
 Puzzles Estratégicos –A lo largo de la partida, los jugadores deberán tomar decisiones estratégicas para conseguir power ups y activar las habilidades. Estos "puzzles" no son del estilo tradicional, sino más bien desafíos tácticos donde los jugadores deben gestionar sus habilidades para superar a su oponente. A diferencia de otros juegos donde los power-ups están disponibles de manera aleatoria, en Mage n' Hyde están colocados estratégicamente en el mapa, incentivando el riesgo y la exploración. Este enfoque fomenta un juego de alto riesgo y alta recompensa, donde moverse de forma descuidada podría revelar tu ubicación, pero también podría garantizarte la ventaja necesaria para destruir la torre enemiga.
 
-1. **Game Flow.**
+2. **Game Flow.**
 
 El flujo típico de juego en Mage n' Hyde sigue una estructura competitiva de partidas rápidas y estratégicas, diseñadas para mantener el ritmo acelerado y la tensión. Cada partida es un dos contra dos, donde los jugadores alternan entre esconderse y atacar. El ciclo de juego involucra varios elementos clave:
 
-1. Preparación Inicial:
+- Preparación Inicial:
     1. Al comienzo de cada partida, ambos jugadores son asignados a un mapa donde tienen unos segundos para explorar el entorno y prepararse.
     2. Durante este tiempo, los jugadores pueden transformarse en objetos del entorno para ocultarse y empezar a planificar su estrategia. También pueden decidir si recolectar power-ups o tomar una posición defensiva cerca de su base.
 
@@ -186,7 +187,7 @@ Entre estas fases principales, Mage n' Hyde incluye momentos clave que añaden v
 
 Este ciclo de juego dinámico y competitivo asegura que cada partida de Mage n' Hyde sea única, ofreciendo una combinación constante de tensión, estrategia y acción rápida.
 
-1. **Characters/Mages.**
+3. **Characters/Mages.**
 
 ![](ImagenesGDD/2.png)
 
@@ -226,7 +227,7 @@ Aunque es más lento que otros personajes, su gran durabilidad y capacidad de ca
 | Hechizo 2 | 16  |
 | --- | --- |
 
-1. **Tower.**
+4. **Tower.**
 
 En Mage n' Hyde, la torre y los power-ups enfocados a la defensa juegan un papel crucial en la progresión de la partida. La torre es el objetivo principal que cada jugador debe defender mientras intenta destruir la del oponente.
 
@@ -250,7 +251,7 @@ Las torres están ubicadas en la base de cada jugador y son la pieza central de 
 | **Power-Up Nivel 2** | 15% del total de vida |
 | --- | --- |
 
-1. **Game Play Elements.**
+5. **Game Play Elements.**
 
 Transformation and Hiding
 
@@ -405,7 +406,7 @@ Los power-ups son elementos clave en Mage n' Hide, ya que proporcionan mejoras t
 | **Curación** | Regenerar vida a la torre | Hacer que la partida sea más larga y poder hacer remontadas | +30% por segundo de vida en la Torre del equipo |
 | --- | --- | --- | --- |
 
-1. **Game Physics and statistics.**
+6. **Game Physics and statistics.**
 
 Movimiento
 
@@ -423,7 +424,7 @@ Los personajes en Mage n' Hyde tienen tres velocidades principales que dependen 
 - _Ataque:_ El ataque base del personaje.
 - _Defensa:_ La defensa del personaje
 
-1. **Artificial Intelligence.**
+8. **Artificial Intelligence.**
 
 En Mage n' Hyde, la inteligencia artificial de los minions y torretas está basada en dos sentidos principales: detección visual y detección de proximidad. Estos parámetros permiten que los NPCs actúen de forma reactiva, alineándose con el enfoque de combate estratégico y defensa del juego.
 
@@ -447,7 +448,7 @@ Las torretas cuentan con un radio de detección visual. Cuando un jugador o mini
 
 Las torretas disparan automáticamente a cualquier jugador/miniom dentro de su alcance. Los disparos son continuos y precisos mientras el jugador/miniom esté en el área de ataque, generando una presión constante y forzando al jugador a moverse o buscar cobertura.
 
-1. **Player Controls.**
+9. **Player Controls.**
 
 Los controles en Mage n' Hyde están diseñados para ser intuitivos, permitiendo al jugador moverse, esconderse, atacar y activar funciones del juego de forma sencilla en dispositivos de PC y tablet.
 
@@ -499,7 +500,7 @@ A continuación se observan las flowcharts de las distintas pantallas del juego 
 
 **![]()**
 
-1. **Functional requirements**
+2. **Functional requirements**
 
 Pantalla de inicio:
 
@@ -574,7 +575,7 @@ De apariencia etérea y ligeramente distorsionada, los minions avanzan como somb
 
 Estas estructuras tienen una estética antigua y arcaica, como si fueran reliquias animadas por la magia antigua de este mundo. Sus diseños imitan a antiguos tótems o estatuas que emiten energía, creando una barrera visualmente impactante cuando los jugadores intentan acercarse.
 
-1. **2D Art**
+2. **2D Art**
 
 Interfaz y Menús.
 
@@ -588,7 +589,7 @@ Arte Promocional
 
 Los diseños para anuncios y materiales de marketing estarán dominados por imágenes de los personajes en poses evocadoras, que capturen la esencia mágica y oscura del juego. El arte promocional incluirá detalles como niebla y efectos de iluminación suave.
 
-1. **2D Animation**
+3. **2D Animation**
 
 Las animaciones en Mage n' Hyde están diseñadas para complementar el estilo de fantasía oscura del juego, con movimientos fluidos y detalles visuales que refuerzan la atmósfera enigmática del mundo.
 
@@ -632,9 +633,7 @@ El diseño sonoro de Mage n' Hyde busca crear una experiencia inmersiva de fanta
 
 La música principal será minimalista y ambiental, basada en melodías melancólicas y misteriosas, utilizando sonidos no convencionales y armonías menores. La intención es transmitir la atmósfera encantadora pero sombría del juego, sin utilizar sonidos estridentes ni melodías que rompan la inmersión. El diseño sonoro se centrará en el uso de pausas y silencio estratégico, creando espacios de tensión que se combinan con los sonidos ambientales para lograr una experiencia cautivadora.
 
-1. **Sound Effects & Music**
-
-Sound Effects
+2. **Sound Effects & Music**
 
 Los efectos de sonido en Mage n' Hyde están diseñados para evitar la repetición y reforzar la atmósfera de incertidumbre. Los sonidos cotidianos, como pasos, roces y ecos, son sutilmente distorsionados para que parezcan familiares, pero extrañamente fuera de lugar. Además, ciertos sonidos tendrán variaciones sutiles para evitar la monotonía:
 
@@ -693,7 +692,8 @@ Las frases que podrán escuchar son:
 3. "¡Destruyan su torre y obtendremos la magia que nos falta! ¡Esta es nuestra única misión!"
 4. "Si desean mi favor eterno, ¡marchen hacia la torre enemiga y traigan su caída!"
 5. "Hoy probaremos que solo hay un verdadero Mago Supremo en este mundo. ¡Llévenme la victoria!"
-6. **Ending.**
+
+2. **Ending.**
 
 La partida finaliza cuando uno de los dos equipos destruye la torre enemiga proporcionando a su maestro el poder que le falta, lo que le lleva a convertirse en el único Mago Supremo.
 
@@ -729,7 +729,7 @@ Estrategia del Nivel
 
 Como ya se ha explicado la dinámica que se quiere buscar es que haya dos zonas de conflicto centrales cerca de las torres donde se da el enfrentamiento directo entre jugadores y a la vez otra dinámica de evasión, reagrupación obtención de power ups y preparación del siguiente ataque en las zonas centrales.
 
-1. **Power-Ups.**
+2. **Power-Ups.**
 
 Los power-ups se generan en un radio cuyo punto central es el del mapa.
 
@@ -823,7 +823,7 @@ En cuanto al bloque de PostProduction Supliers, son aquellos stakeholders enfoca
 Por último, en el bloque de Product Buyers se encuentran los interesados en obtener el videojuego proporcionando dinero a los PostProduction Supliers a cambio del producto y con ello de la experiencia del juego.
 
 
-**_Tipo de modelo de monetización_**
+1. **_Tipo de modelo de monetización_**
 
 Mage n’Hyde es un videojuego Freemium de forma que los usuarios y jugadores pueden disfrutar de su experiencia completa de manera gratuita, sin embargo, como forma de extender y ampliar esa experiencia se añaden microtransacciones para diferentes productos.
 
@@ -833,7 +833,7 @@ Por otro lado, se podrán obtener elementos personalizables para el perfil del u
 
 Por último, habrá pases de batalla de temporada, tanto gratuitos como de pago. De esta forma se permite que el usuario que no quiera comparar nada pueda obtener elementos personalizables al completar diferentes misiones y objetivos, sin embargo, con el pase de batalla de pago se obtendrán mejores recompensas así como elementos personalizables de edición limitada.
 
-**_Tablas de productos y precios._**
+2. **_Tablas de productos y precios._**
 
 Dentro de la tienda existe una equivalencia entre la moneda propia del juego y el dinero real. De esta forma cada vez que el jugador realiza una compra con dinero real dentro del juego obtiene una cantidad fija de monedas. Cada 50 céntimos que pague el jugador obtendrá 100 monedas del juego.
 
