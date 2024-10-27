@@ -69,7 +69,9 @@ Nuestro equipo está compuesto por un grupo diverso de personas con gran talento
     1. El equipo humano
     2. Estimación temporal del desarrollo
 11. **Bibliography.**
-12. **Game Concept.**
+
+
+1. **Game Concept.**
 
 - 1. **Introduction.**
 
