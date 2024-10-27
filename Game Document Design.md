@@ -133,7 +133,7 @@ Concept de Mago
 
 Concept de MInions
 
-### ** Game Mechanics.**
+### **Game Mechanics.**
 
 1. **Core Gameplay.**
 
@@ -914,6 +914,6 @@ Dado que esto es la beta y la implementación no debe estar pulida y depurada pe
 
 Versión Goldmaster: esta versión consiste en una versión pulida probada finalizada y arreglada de la beta, para ello se debe pasar por un proceso de beta testing y luego de corrección, estimar el tiempo con exactitud es muy difícil ya que en función del estado de la beta puede tardar días o semanas.
 
-### ""Bibliography**
+### **Bibliography**
 - https://unity.com/es/blog/games/building-a-multiplayer-game-first-time-netcode-for-gameobjects
 - https://docs.unity3d.com/560/Documentation/Manual/UNetSetup.html
