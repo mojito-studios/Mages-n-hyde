@@ -128,7 +128,7 @@ Concept de Mago
 
 Concept de MInions
 
-**2\. Game Mechanics.**
+### ** Game Mechanics.**
 
 1. **Core Gameplay.**
 
@@ -480,7 +480,7 @@ El botón de ataque se encuentra fijo en la interfaz y permite al jugador lanzar
 
 El botón de ataque se encuentra fijo en la interfaz y permite al jugador lanzar ataques o hechizos contra los enemigos y la torre. Este botón debe tocarse para realizar el ataque elemental. Si no se ha recogido el power up este botón está con un hover gris.
 
-**3.Interface.**
+### **Interface.**
 
 1. **FlowCharts.**
 
@@ -523,7 +523,7 @@ Pantalla de Lobby; Esta pantalla muestra a los miembros de la partida y permite 
 
 Pantalla de juego: En la pantalla de juego a nivel de interfaz tenemos un indicador con los ataques disponibles y el tiempo de recargo que les queda, en el extremo superior izquierdo iconos indicando los power ups que el jugador ha obtenido y sobre el sprite del jugador los puntos de vida que le quedan, además en partida se pueden mostrar otros indicadores como los de dirección o área de efecto de un hechizo, también se indican elementos como la vida de la torre de los minions.
 
-**4\. Art And Video.**
+### **Art And Video.**
 
 1. **OverAll Goals**
 
@@ -613,7 +613,7 @@ Aunque en 2D, se utilizan efectos de luces y sombras animadas para crear profund
 
 Elementos del entorno, como árboles o ruinas, tienen leves animaciones de movimiento o brillo en sus bordes, creando un efecto de fantasía que añade dinamismo y atrae al jugador sin distraer de la acción principal.
 
-**5\. Sound And Music.**
+### **Sound And Music.**
 
 1. **Overall Goals**
 
@@ -655,7 +655,7 @@ La música de suspense utiliza ritmos lentos y repetitivos, combinados con pausa
 
 Una vez finalizada la partida, suenan unas trompetas como acto final que indican el fin de la partida. Tras eso suena música aún tétrica pero con elementos marchosos donde se enseñaran los ganadores y puntuaciones.
 
-**6\. Story.**
+### **Story.**
 
 1. **Story overview.**
 
@@ -686,7 +686,7 @@ Las frases que podrán escuchar son:
 
 La partida finaliza cuando uno de los dos equipos destruye la torre enemiga proporcionando a su maestro el poder que le falta, lo que le lleva a convertirse en el único Mago Supremo.
 
-**7\. Level Overview.**
+### **Level Overview.**
 
 El mapa en Mage n' Hyde se basa en un diseño estratégico similar a un bosque, un mapa estrecho y alargado con elementos para esconderse a los lados y en los extremos y un área central algo más despejada, con power ups que se van generando esporádicamente a lo largo de la partida orbitando alrededor del centro, esto tiene el propósito de generar las siguientes dinámicas; por un lado dividir la partida en dos núcleos de acción, cada equipo se compone de dos jugadores, idealmente uno llevará a cabo el rol de defensor y protegerá la torre mientras que el otro asumirá el rol de infiltrarse en el área enemiga y atacar la torre, la idea es que los jugadores tengan la capacidad de esconderse para posicionarse estratégicamente alrededor de la torre enemiga y evitar combates en medio del campo que pueden ralentizar la partida, lo que también fuerza al jugador defensor a estar atento a enemigos escondidos, este diseño está realizado de esta forma tan directa para facilitar el enfrentamiento entre jugadores y no alargar la partida excesivamente dado que solo habrá cuatro jugadores al mismo tiempo en el mapa. En cuanto a la distribución de los power ups tiene el objetivo de no centrar exclusivamente la partida en los extremos, forzar a los jugadores defensivos a alejarse de la torre y a favorecer cambios de ritmo y retiradas estratégicas.
 
@@ -722,7 +722,7 @@ Como ya se ha explicado la dinámica que se quiere buscar es que haya dos zonas 
 
 Los power-ups se generan en un radio cuyo punto central es el del mapa.
 
-**8\. Market Analysis.**
+### **Market Analysis.**
 
 Existen varios modelos de monetización en la industria de los videojuegos, cada uno con sus ventajas y desventajas. El modelo tradicional de pago por adelantado, Premium, donde los jugadores pagan una cantidad fija para adquirir el juego, ha sido eficaz en títulos para consolas y PC, pero limita el crecimiento potencial, ya que solo se obtiene un pago inicial por cada jugador. Además, este modelo restringe la accesibilidad, especialmente en mercados emergentes, donde los costos iniciales pueden ser prohibitivos. Otro enfoque es el modelo de suscripción, utilizado por servicios como Xbox Game Pass o PlayStation Plus, que ofrece acceso a una biblioteca de juegos a cambio de un pago mensual. Este sistema ha demostrado ser exitoso para jugadores hardcore que buscan una variedad constante de juegos. Sin embargo, este modelo tiende a ser más adecuado para plataformas consolidadas y juegos de alto presupuesto, ya que requiere una base de usuarios estable que esté dispuesta a comprometerse a largo plazo. Por otro lado, el modelo free-to-play (F2P), especialmente combinado con microtransacciones, ha demostrado ser el más lucrativo en los últimos años.
 
@@ -780,7 +780,7 @@ En términos de comportamiento de consumo, se espera que estos jugadores inviert
 
 El mercado objetivo también incluye a aquellos que disfrutan de juegos de estrategia y habilidad, donde el aprendizaje y la mejora continua son recompensados mediante un sistema clasificatorio, lo cual es crucial para mantener el interés a largo plazo en el juego. Las redes sociales como X, Instagram, y TikTok serán clave para captar a este público, fomentando una comunidad activa alrededor del juego, lo que aumentará el compromiso y la retención a largo plazo. Además para que en la fecha de lanzamiento haya suficientes jugadores el primer mes que sería el mes de máximos beneficios.
 
-**9\. Monetización y modelo de negocio.**
+### **Monetización y modelo de negocio.**
 
 La red de asociados clave, es decir, las alianzas forjadas está compuesta por: Blink y Gecko, para el renderizado web; Itch.io y Steam, para la distribución del producto final a los usuarios; Unity, para el desarrollo del videojuego y el mantenimiento de los servidores; CrystalCore, para los efectos de sonido y la música, es un freelance que participa como técnico de sonido; y streamers para la publicidad y visibilidad del videojuego.
 
@@ -847,7 +847,7 @@ Dentro de la tienda existe una equivalencia entre la moneda propia del juego y e
 | Personajes | Personajes jugables para el jugador. | Se puede obtener dentro de la tienda del juego. | 400 monedas | 2 euros |
 | --- | --- | --- | --- | --- |
 
-**10\. Planificación.**
+### **Planificación.**
 
 1. **El equipo humano**
 
@@ -902,3 +902,7 @@ En lo que respecta a la siguiente fase del desarrollo, la beta, recoge hacer una
 Dado que esto es la beta y la implementación no debe estar pulida y depurada pero si completa y jugable por tanto se estima que con todo el trabajo ya realizado para el prototipo puede durar otros 50 o 55 días.
 
 Versión Goldmaster: esta versión consiste en una versión pulida probada finalizada y arreglada de la beta, para ello se debe pasar por un proceso de beta testing y luego de corrección, estimar el tiempo con exactitud es muy difícil ya que en función del estado de la beta puede tardar días o semanas.
+
+### ""Bibliography**
+- https://unity.com/es/blog/games/building-a-multiplayer-game-first-time-netcode-for-gameobjects
+- https://docs.unity3d.com/560/Documentation/Manual/UNetSetup.html
