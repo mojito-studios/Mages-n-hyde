@@ -108,7 +108,7 @@ El juego se desarrolla con un ritmo acelerado donde esconderse y atacar estraté
 - _Stylized Visuals and Immersive Sound Design:_ Mage n' Hyde presenta gráficos estilizados y una atmósfera visual que combina fantasía y terror, destacando los hechizos y transformaciones de los jugadores con efectos visuales impactantes. El diseño de sonido juega un papel crucial para sumergir a los jugadores, ya que cada acción, transformación o ataque se acompaña de efectos sonoros envolventes, ayudando a aumentar la tensión y la inmersión en cada PARTIDA.
 - _Cross-Platform Play:_ El juego está diseñado para ser accesible en múltiples plataformas, incluyendo PC y dispositivos móviles, lo que permite a los jugadores disfrutar de Mage n' Hyde en cualquier momento y lugar. Con servidores dedicados, el juego ofrecerá una experiencia fluida y competitiva, independientemente del dispositivo que se utilice.
   
-  5. **Genre.**
+5. **Genre.**
 
 Mage n' Hyde combina dos géneros de videojuegos muy diferentes, Prop Hunt y MOBA, para ofrecer una experiencia única y fresca. Al igual que los clásicos juegos de Prop Hunt, los jugadores pueden transformarse en objetos del entorno para ocultarse, añadiendo una capa de engaño y sigilo. Sin embargo, Mage n' Hyde también incorpora elementos estratégicos y competitivos de los juegos MOBA, como el uso de habilidades especiales y la defensa de torres.
 
