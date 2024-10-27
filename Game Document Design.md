@@ -125,11 +125,11 @@ Se realizarán en la versión beta cuando se solidifiquen las mecánicas impleme
 
 Referencias de los Magos
 
-![](ImagenesGDD/ConceptMago.png)
+![](ImagenesGDD/ConceptMago.jfif)
 
 Concept de Mago
 
-![](ImagenesGDD/ConceptMinion.png)
+![](ImagenesGDD/ConceptMinion.jpg)
 
 Concept de MInions
 
