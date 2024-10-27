@@ -69,6 +69,7 @@ Nuestro equipo está compuesto por un grupo diverso de personas con gran talento
     1. El equipo humano
     2. Estimación temporal del desarrollo
 11. **Bibliography.**
+12. **Lecciones aprendidas (Post Mortem)**
 
 
 ### **Game Concept.**
@@ -917,3 +918,68 @@ Versión Goldmaster: esta versión consiste en una versión pulida probada final
 ### **Bibliography**
 - https://unity.com/es/blog/games/building-a-multiplayer-game-first-time-netcode-for-gameobjects
 - https://docs.unity3d.com/560/Documentation/Manual/UNetSetup.html
+
+- # 12. Lecciones aprendidas.
+## Trabajo individual realizado.
+
+### Irene Rodríguez García
+Me he encargado del diseño del mapa, definiendo áreas estratégicas como el bosque y puntos de ocultación para optimizar la jugabilidad de los personajes. También diseñé el logo de Mojito Studios en Illustrator, coordiné la dirección de arte para asegurar una estética coherente de fantasía oscura en el juego y creé banners para stories en Instagram para la promoción visual. Finalmente, documenté el desarrollo y detalles técnicos en el Game Design Document (GDD), cubriendo cada aspecto del juego y organizando el avance del equipo.
+
+**Pros & Contras**
+
+El desarrollo del logo y la dirección de arte han sido efectivos para establecer una identidad visual sólida para Mojito Studios, y los banners promocionales en redes sociales han aportado visibilidad temprana y unificación del estilo del juego. La planificación estratégica del mapa ha facilitado una jugabilidad balanceada y atractiva para los distintos personajes, mientras que el GDD ha permitido organizar el proyecto de manera clara y detallada. Sin embargo, el tiempo dedicado al GDD fue mayor de lo previsto, ya que, debido a limitaciones de rendimiento en dispositivos móviles, surgieron problemas de programación. Para solucionar esto sin perder la esencia del juego, se requirió crear y ajustar nuevas mecánicas.
+
+---
+
+### Miriam Sanz Tardón
+Me he encargado principalmente del desarrollo del documento Game Design Document junto con otros compañeros, además del desarrollo de la narrativa que rodea al juego y del guión que va a ir implementado en este. Del GDD me he encargado de apartados como el de la monetización, Story, y game Mechanics. Por otro lado, me he encargado de realizar algún concept para el diseño de los Minions. Por último, me he encargado del desarrollo de la página web, trabajando a partir de la plantilla escogida por todo el equipo. Cambié e implementé diferentes funcionalidades para hacer que la página web fuera más práctica y entretenida.
+
+**Pros & Contras**
+
+He trabajado acorde con lo que se me ha asignado. He elaborado una narrativa atractiva y coherente para el tipo de juego que se ha desarrollado, para fomentar el interés del jugador. He logrado desarrollar y tener una página web que muestre nuestro trabajo de forma clara, sin embargo, debido a que el tiempo de desarrollo del GDD ha sido mayor de lo previsto no ha sido posible realizar imágenes o concepts más propios del videojuego para mostrar en la página, al igual que he tenido dificultades para lograr un diseño visual uniforme en la página, principalmente en los colores debido a la falta de tiempo provocado por el tiempo que ha tomado implementar los cambios en algunas funcionalidades y en no lograr encontrar ciertos apartados en el documento CSS de la página para cambiar los colores respecto a los que traía de base. Por otro lado, la falta de tiempo ha impedido a los miembros encargados de la parte artística elaborar diseños y concepts sólidos para su utilización dentro del juego. A pesar de las limitaciones de tiempo, se ha logrado tener un GDD bastante desarrollado y coherente.
+
+---
+
+### Rosa Ghaudy Bellido Euribe
+Me he encargado de gestionar los servicios de relay durante un primer momento para crear los servidores para las pruebas antes de que se montara el lobby. Aunque principalmente me he encargado de gestionar los controles y la mecánica de ataque mediante hechizos, con todo lo que esto implica: adaptar los controles de las mecánicas para el jugador de mis compañeros a dispositivos móviles, asegurarme de que los clics en pantalla no se superpusieran (interpretaran para varios controles a la vez) en ningún dispositivo, los disparos en sí y su efecto sobre personajes y torres dependiendo del equipo de cada jugador para gestionar el final de partida.
+
+**Pros & Contras**
+
+Las tareas que me fueron asignadas se completaron de manera funcional para el prototipo gracias al tiempo invertido en probar todas las funcionalidades y controles en distintos dispositivos tanto como host como cliente según estas se iban programando e incluyendo con el fin de detectar y tratar errores importantes lo antes posible sin que se acumulen o afecten al resto del proyecto para asegurar un correcto desarrollo del videojuego sin sorpresas de último momento. No obstante, la labor de compatibilidad y pruebas en itch.io debería haber comenzado bastante antes, idealmente de forma paralela a la que se iban desarrollando las primeras mecánicas de movimiento y de esconderse; sin embargo, debido a la carga de trabajo en otras asignaturas ya que finalmente estamos realizando todos los proyectos para el resto de ellas de forma independiente a este, subestimé lo mucho que me costaría organizarme y tardé en centrarme con todas mis capacidades en tratar de arreglar los problemas que estos dieron. Ya que los resultados finales son, a pesar de todo, los esperados, se espera que con mejor organización y realizando las comprobaciones antes, el desarrollo sea menos apresurado para la próxima entrega.
+
+---
+
+### Sandra Martín-Consuegra Molina-Prados
+Me he encargado de la programación de ciertas funcionalidades del juego, como las mecánicas de movimiento y de esconderse, la pantalla de inicio, el ObjectPool de los objetos repartidos a lo largo del escenario y del funcionamiento de las torres y los powerUps. Además, me he ocupado de personalizar las diferentes redes sociales como Twitter e Instagram, y de Itch.io y subir algún post para ir dando a conocer el estudio.
+
+**Pros & Contras**
+
+Las mecánicas que se me asignaron han sido implementadas en su mayoría para el prototipo. Las redes sociales han ganado los seguidores esperados para esta primera entrega. Sin embargo, hubo un pequeño error por mi parte en la mecánica de esconderse que paralizó poder avanzar en el desarrollo del resto de mecánicas, ya que era necesario probar bien que funcionase. Este error tardó en solucionarse por tener además otras prácticas de más asignaturas y estar demasiado estresada como para poder salir de la visión de túnel, lo que ha hecho que para esta entrega dos de los powerUps planteados no se hayan implementado 100% funcionales, pero serán trabajados en la versión siguiente. Se espera que para siguientes entregas no afecte tanto el estrés como lo ha afectado esta, ya que era la primera toma de contacto real con el proyecto.
+
+---
+
+### Hugo Camacho Rodríguez
+Me he encargado de redactar partes del GDD como la estimación temporal y la presentación del equipo (apartado 10 del GDD), algunos aspectos de la jugabilidad y el diseño de algunas dinámicas de juego (apartado 7 del GDD) y me he encargado de las interfaces, diseñarlas, desarrollarlas y crear mockups (apartado 3 del GDD). También participé en la parte de concept art de personajes y diseñé el banner de la empresa para redes sociales, además de participar junto al resto del equipo en el diseño general del juego.
+
+**Pros & Contras**
+
+Considero que mi parte del GDD y mi trabajo de diseño han sido adecuados sin embargo tuve que repetir algunas partes de mi trabajo en el GDD incluso algunos fragmentos que no eran míos por problemas de comunicación que yo he tenido con el equipo y que me gustaría evitar de cara al futuro, en parte una consecuencia de este problema es que mi parte del trabajo ha tardado demasiado en estar lista, también he tenido problemas para incorporar algunas de las mejoras que me habían propuesto para el banner, entonces aunque los resultados los veo adecuados me gustaría que mi desempeño durante todo el proceso fuese un poco más elegante y mi rol en el proyecto un poco más activo para la siguiente entrega.
+
+---
+
+### Pablo Melgar Álvarez
+Me he encargado del sistema de Lobby, de manera que se puedan crear y gestionar los Lobbys, ajustar la configuración y unirse a ellos. También he creado los menús para poder entrar a los Lobbys, introduciendo nombre de usuario y eligiendo los equipos para la partida. También he añadido algunas funciones del Relay para poder hacerlo funcional con el Lobby al que se conecten los jugadores.
+
+**Pros & Contras**
+
+El funcionamiento del Lobby y el menú del Lobby ha tenido un buen resultado pero han habido complicaciones a la hora de hacerlo funcional con el relay de manera que no ha sido posible integrarlo en esta versión del juego, por lo que para la siguiente versión debería añadir estas funciones con el resto del juego y asegurarse de que los nuevos añadidos estén integrados desde el primer momento.
+
+---
+
+## Trabajo colectivo realizado.
+**Pros & Contras**
+
+En esta fase, el equipo logró consolidar una identidad sólida para el juego y el estudio mediante el diseño del logo, la dirección de arte y la coordinación de contenidos en redes sociales, logrando una buena visibilidad y presentación de Mage n' Hyde desde su etapa inicial. El GDD ha sido desarrollado en gran detalle, documentando cada aspecto del juego, lo que facilitó una estructura clara y unificada para el proyecto. Además, la narrativa y la jugabilidad del juego se definieron de forma coherente con la temática y la ambientación, contribuyendo a una experiencia atractiva y consistente. Los esfuerzos en la programación de mecánicas, como el movimiento, la ocultación, el sistema de lobby, los controles y los menús, sentaron una base funcional sólida para el prototipo, permitiendo pruebas y ajustes en dispositivos móviles, lo que fue crucial para asegurar una experiencia fluida. Las redes sociales también lograron la visibilidad esperada, atrayendo seguidores y generando interés por el proyecto.
+
+Sin embargo, el equipo enfrentó ciertos desafíos, principalmente en cuanto a la gestión del tiempo y la organización. La carga de trabajo y la dedicación al GDD requirieron más tiempo de lo previsto, lo cual afectó la capacidad de algunos miembros para desarrollar conceptos visuales y contenidos gráficos más específicos para la web y el juego. Además, problemas de comunicación generaron confusión en algunas partes del GDD, resultando en duplicación de trabajo y retrasos en algunas áreas.
+
