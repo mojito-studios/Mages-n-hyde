@@ -75,7 +75,7 @@ Nuestro equipo está compuesto por un grupo diverso de personas con gran talento
 
 ![](ImagenesGDD/1.png)
 
-- 1. **Introduction.**
+1. **Introduction.**
 
 _Mage n' Hyde_ es un juego competitivo diseñado para dos contra dos jugadores que combina estratégicamente elementos de los géneros Prop Hunt y MOBA. Este juego único permite a los jugadores transformar su entorno, esconderse y planear sus ataques mientras buscan destruir la torre enemiga. Cada jugador puede seleccionar entre personajes con habilidades mágicas únicas, según el rol que desea tener, lo que añade una capa de profundidad táctica tanto en ataque como en defensa. A lo largo de la partida, los jugadores podrán utilizar power-ups para invocar criaturas y mejorar sus hechizos, todo mientras intentan superar a su oponente en un campo de batalla dinámico y en constante evolución.
 
