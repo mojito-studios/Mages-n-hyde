@@ -71,7 +71,7 @@ Nuestro equipo está compuesto por un grupo diverso de personas con gran talento
 11. **Bibliography.**
 
 
-1. **Game Concept.**
+### **Game Concept.**
 
 - 1. **Introduction.**
 
