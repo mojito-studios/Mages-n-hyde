@@ -14,7 +14,7 @@ public class LobbyManager : MonoBehaviour
 {
 
     public static LobbyManager Instance { get; private set; }
-
+    
     public const string KEY_START_GAME = "Start";
     public event EventHandler<EventArgs> OnGameStarted;
     public const string KEY_PLAYER_NAME = "PlayerName";
@@ -55,12 +55,18 @@ public class LobbyManager : MonoBehaviour
     }
 
 
-
+    public string usedName = "ABC";
     private float heartbeatTimer;
     private float lobbyPollTimer;
     private float refreshLobbyListTimer = 5f;
     private Lobby joinedLobby;
     private string playerName;
+
+
+    public void UpdateUsedName(string newName)
+    {
+        this.usedName = newName;
+    }
 
 
     private void Awake()
@@ -77,6 +83,7 @@ public class LobbyManager : MonoBehaviour
 
     public async void Authenticate(string playerName)
     {
+        playerName = this.usedName;
         this.playerName = playerName;
         InitializationOptions initializationOptions = new InitializationOptions();
         initializationOptions.SetProfile(playerName);
@@ -216,6 +223,11 @@ public class LobbyManager : MonoBehaviour
 
             UpdateLobbyGameMode(gameMode);
         }
+    }
+
+    public void CreateLobbyTest()
+    {
+        CreateLobby("TestLobby",4,true,GameMode.Conquest);
     }
 
     public async void CreateLobby(string lobbyName, int maxPlayers, bool isPrivate, GameMode gameMode)

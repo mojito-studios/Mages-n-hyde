@@ -5,6 +5,9 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
+using Unity.Networking.Transport.Relay;
+using Unity.Netcode.Transports.UTP;
+using Unity.Netcode;
 using UnityEngine;
 using System.Threading.Tasks;
 
@@ -35,12 +38,17 @@ public class RelayManager : MonoBehaviour
     {
         try
         {
+            
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(N_PLAYERS);
-
+            
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
             print(joinCode);
-
+            //
+            RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+            NetworkManager.Singleton.StartHost();
+            //
             return joinCode;
         }
         catch (RelayServiceException e)
@@ -54,7 +62,15 @@ public class RelayManager : MonoBehaviour
     {
         try
         {
-            await RelayService.Instance.JoinAllocationAsync(joinCode);
+            //
+            JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+            RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
+
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+
+            NetworkManager.Singleton.StartClient();
+            //
+            //await RelayService.Instance.JoinAllocationAsync(joinCode);
         }
         catch (RelayServiceException e)
         {
