@@ -22,14 +22,15 @@ public class MoveSpell : NetworkBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player") //&& caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign
+        if (collision.gameObject.tag == "Player" && caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign) //&& caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign
         {
             Debug.Log("Player");
             collision.gameObject.GetComponent<Player>().getHit();
         }
         if((collision.gameObject.tag == "Team2Tower" & caster.teamAssign == "Team1") | (collision.gameObject.tag == "Team1Tower" & caster.teamAssign == "Team2"))
+        //if(collision.gameObject.tag == "Team2Tower" || collision.gameObject.tag == "Team1Tower")
         {
-            collision.gameObject.GetComponent<Tower>().actualLife.Value -= 10;
+            collision.gameObject.GetComponent<Tower>().DamageTower();
         }
         DestroyServerRpc();
     }

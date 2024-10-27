@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameManager : NetworkBehaviour 
 {
@@ -16,7 +17,7 @@ public class GameManager : NetworkBehaviour
     private const int MaxTimeActive = 20;
     public static GameManager Instance { get; private set; }
     private List<NetworkObject> activeObjects = new List<NetworkObject>();
-
+    [SerializeField] private Judge judge;
 
     private void Awake()
     {
@@ -27,7 +28,7 @@ public class GameManager : NetworkBehaviour
     }
     void Start()
     {
-
+        judge = GameObject.FindGameObjectWithTag("Judge").GetComponent<Judge>();
         NetworkManager.Singleton.OnServerStarted += SpawnPUStart;
         NetworkManager.Singleton.OnServerStarted += ActiveObjects;
     }
@@ -125,6 +126,8 @@ public class GameManager : NetworkBehaviour
 
     public void EndGame(string tag) //Cambiar a victoria o a derrota
     {
+        SceneManager.LoadScene(2);
+        judge.winningTeam = tag;
         Debug.Log("TorreEliminada: " + tag);
     }
 }

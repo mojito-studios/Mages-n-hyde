@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Playables;
 using UnityEngine.UI;
@@ -19,6 +21,7 @@ public class Player : NetworkBehaviour
     private Tower teamTower;
     private int health = 100;
     [SerializeField] private TextMeshProUGUI _health;
+    [SerializeField] private TextMeshProUGUI _towerHealth;
 
     //move
     private float speed = 4f;
@@ -47,7 +50,8 @@ public class Player : NetworkBehaviour
         {
             if (button.CompareTag("AttackButton")) { _spell = GetComponentInChildren<Button>(); }
         }
-        teamAssign = "Team1";
+        if(IsHost) teamAssign = "Team1";
+        else teamAssign = "Team2";
         AssignTower();
     }
 
@@ -76,6 +80,7 @@ public class Player : NetworkBehaviour
         }
         if (_moving)
             MovePlayer(); //Ahora se mueve por tener una transform autoritativa de parte del cliente para mejor responsividad a los jugadores
+        updateTowerHealthRpc();
     }
 
     void SetPlayer()
@@ -106,7 +111,13 @@ public class Player : NetworkBehaviour
         Debug.Log(health);
     }
 
-        void MovePlayer()
+    [Rpc(SendTo.Everyone)]
+    private void updateTowerHealthRpc()
+    {
+        _towerHealth.text = "TowerHealth: " + teamTower.actualLife.Value;
+    }
+
+    void MovePlayer()
     {
        
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); 
