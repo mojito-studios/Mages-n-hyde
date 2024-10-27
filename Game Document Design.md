@@ -69,17 +69,20 @@ Nuestro equipo está compuesto por un grupo diverso de personas con gran talento
     1. El equipo humano
     2. Estimación temporal del desarrollo
 11. **Bibliography.**
+12. **Lecciones aprendidas (Post Mortem)**
 
 
 ### **Game Concept.**
 
-- 1. **Introduction.**
+![](ImagenesGDD/1.png)
+
+1. **Introduction.**
 
 _Mage n' Hyde_ es un juego competitivo diseñado para dos contra dos jugadores que combina estratégicamente elementos de los géneros Prop Hunt y MOBA. Este juego único permite a los jugadores transformar su entorno, esconderse y planear sus ataques mientras buscan destruir la torre enemiga. Cada jugador puede seleccionar entre personajes con habilidades mágicas únicas, según el rol que desea tener, lo que añade una capa de profundidad táctica tanto en ataque como en defensa. A lo largo de la partida, los jugadores podrán utilizar power-ups para invocar criaturas y mejorar sus hechizos, todo mientras intentan superar a su oponente en un campo de batalla dinámico y en constante evolución.
 
 El concepto principal de _Mage n' Hyde_ es crear una experiencia divertida, competitiva y accesible, donde el ingenio y la estrategia juegan un rol crucial en cada enfrentamiento. Diseñado para ser rejugable y mantener el interés de los jugadores a lo largo del tiempo. _Mage n' Hyde_ busca posicionarse en la escena de los juegos multijugador como una alternativa fresca y emocionante en el mundo de los videojuegos indies competitivos.
 
-- 1. **Background.**
+2. **Background.**
 
 El concepto de _Mage n' Hyde_ surge de la fusión de dos géneros populares: Prop Hunt y MOBA. La idea nace de la necesidad de crear una experiencia competitiva para dos jugadores en cada equipo que integre la estrategia de esconderse y la táctica de combate en tiempo real. Este proyecto está inspirado en la creciente popularidad de los juegos indie multijugador y en la comunidad competitiva que busca experiencias frescas y emocionantes.
 
@@ -89,7 +92,7 @@ Se busca la innovación, algo único y que pueda destacar, para ello se le ha pr
 
 El juego está diseñado para ser accesible a una amplia audiencia, desde jugadores casuales hasta competitivos, con un modelo de negocio freemium. Se facilita su disponibilidad en dispositivos móviles y otras plataformas. Además, se asegura de mantener la longevidad mediante la introducción de actualizaciones y contenidos estéticos.
 
-- 1. **Description.**
+3. **Description.**
 
 Cada jugador antes de la partida comienza en el lobby eligiendo un personaje con habilidades únicas. El objetivo principal es destruir la torre del oponente. Al inicio del juego, ambos jugadores tienen un tiempo limitado para transformarse en objetos del entorno y ocultarse. Cada equipo es transparente uno al otro, una vez que el temporizador termina, se abren las bases y los jugadores pueden verse.
 
@@ -97,7 +100,7 @@ Durante la partida, los jugadores deben recolectar power-ups, que les permitirá
 
 El juego se desarrolla con un ritmo acelerado donde esconderse y atacar estratégicamente es crucial para la victoria.
 
-- 1. **Key features.**
+4. **Key features.**
 - _Unique Blend of Prop Hunt and MOBA Gameplay:_ Mage n' Hyde ofrece una fusión innovadora entre la jugabilidad estratégica de los juegos MOBA y la diversión impredecible del clásico Prop Hunt. Los jugadores pueden transformarse en objetos del entorno para esconderse y atacar a su oponente con inteligencia, creando una experiencia que combina tensión y estrategia. Esta mezcla da lugar a partidas dinámicas donde el sigilo y el engaño son tan importantes como las habilidades de combate.
 - _Character Abilities and Power-Ups:_ Cada jugador en Mage n' Hyde controla un mago con habilidades especiales que pueden ser mejoradas a lo largo de la partida mediante power-ups. Estos potenciadores incluyen mejoras para sus hechizos, invocación de minions para atacar la torre del oponente, y escudos defensivos para proteger su propia base. Los jugadores deben gestionar cuidadosamente sus recursos y habilidades para dominar la partida.
 - _Dynamic Environment with Prop Transformations:_ El juego permite a los jugadores transformarse en cualquier objeto del entorno, introduciendo una capa de engaño y estrategia. Esta mecánica única ofrece infinitas posibilidades para emboscar al oponente o esquivar sus ataques, mientras los jugadores exploran el mapa para esconderse, recolectar recursos o preparar una ofensiva. La naturaleza impredecible de las transformaciones mantiene cada partida fresca y emocionante.
@@ -105,30 +108,34 @@ El juego se desarrolla con un ritmo acelerado donde esconderse y atacar estraté
 - _Multiplayer Mode:_ Con un enfoque en el modo de cuatro jugadores, Mage n' Hyde es ideal para competiciones dos contra dos, donde cada jugador debe usar su ingenio y habilidades para ganar. El juego está diseñado para integrar un sistema multijugador online, permitiendo a los jugadores desafiar a amigos o competir en torneos globales. Este enfoque multijugador agrega una gran rejugabilidad, con enfrentamientos diferentes en cada partida.
 - _Stylized Visuals and Immersive Sound Design:_ Mage n' Hyde presenta gráficos estilizados y una atmósfera visual que combina fantasía y terror, destacando los hechizos y transformaciones de los jugadores con efectos visuales impactantes. El diseño de sonido juega un papel crucial para sumergir a los jugadores, ya que cada acción, transformación o ataque se acompaña de efectos sonoros envolventes, ayudando a aumentar la tensión y la inmersión en cada PARTIDA.
 - _Cross-Platform Play:_ El juego está diseñado para ser accesible en múltiples plataformas, incluyendo PC y dispositivos móviles, lo que permite a los jugadores disfrutar de Mage n' Hyde en cualquier momento y lugar. Con servidores dedicados, el juego ofrecerá una experiencia fluida y competitiva, independientemente del dispositivo que se utilice.
-    1. **Genre.**
+  
+5. **Genre.**
 
 Mage n' Hyde combina dos géneros de videojuegos muy diferentes, Prop Hunt y MOBA, para ofrecer una experiencia única y fresca. Al igual que los clásicos juegos de Prop Hunt, los jugadores pueden transformarse en objetos del entorno para ocultarse, añadiendo una capa de engaño y sigilo. Sin embargo, Mage n' Hyde también incorpora elementos estratégicos y competitivos de los juegos MOBA, como el uso de habilidades especiales y la defensa de torres.
 
 A diferencia de los MOBA tradicionales, Mage n' Hyde introduce un enfoque más rápido y dinámico, con partidas uno contra uno que requieren tanto estrategia táctica como habilidad para esconderse y atacar. Esta fusión crea una experiencia de juego única, donde el sigilo y el combate estratégico coexisten, brindando una propuesta novedosa y desafiante.
 
-- 1. **Platform.**
+6. **Platform.**
 
 El juego está diseñado para ser multiplataforma, adaptable a PC y dispositivos móviles. El ordenador será nuestra plataforma principal.
 
-- 1. **Concept Art.**
+7. **Concept Art.**
 
 Se realizarán en la versión beta cuando se solidifiquen las mecánicas implementadas, para así saber cómo de grande o costoso pueden ser los dibujos aunque en un principio todos con 72 pp
 
+![](ImagenesGDD/3.png)
 
 Referencias de los Magos
 
+![](ImagenesGDD/ConceptMago.jfif)
 
 Concept de Mago
 
+![](ImagenesGDD/ConceptMinion.jpg)
 
 Concept de MInions
 
-### ** Game Mechanics.**
+### **Game Mechanics.**
 
 1. **Core Gameplay.**
 
@@ -146,21 +153,24 @@ La tensión aumenta ya que los jugadores nunca están seguros de dónde se escon
 
 Puzzles Estratégicos –A lo largo de la partida, los jugadores deberán tomar decisiones estratégicas para conseguir power ups y activar las habilidades. Estos "puzzles" no son del estilo tradicional, sino más bien desafíos tácticos donde los jugadores deben gestionar sus habilidades para superar a su oponente. A diferencia de otros juegos donde los power-ups están disponibles de manera aleatoria, en Mage n' Hyde están colocados estratégicamente en el mapa, incentivando el riesgo y la exploración. Este enfoque fomenta un juego de alto riesgo y alta recompensa, donde moverse de forma descuidada podría revelar tu ubicación, pero también podría garantizarte la ventaja necesaria para destruir la torre enemiga.
 
-1. **Game Flow.**
+2. **Game Flow.**
 
 El flujo típico de juego en Mage n' Hyde sigue una estructura competitiva de partidas rápidas y estratégicas, diseñadas para mantener el ritmo acelerado y la tensión. Cada partida es un dos contra dos, donde los jugadores alternan entre esconderse y atacar. El ciclo de juego involucra varios elementos clave:
 
-1. Preparación Inicial:
+- Preparación Inicial:
     1. Al comienzo de cada partida, ambos jugadores son asignados a un mapa donde tienen unos segundos para explorar el entorno y prepararse.
     2. Durante este tiempo, los jugadores pueden transformarse en objetos del entorno para ocultarse y empezar a planificar su estrategia. También pueden decidir si recolectar power-ups o tomar una posición defensiva cerca de su base.
 
+![](ImagenesGDD/6.png)
 
 1. Exploración y Recolección:
     1. Durante la partida, los jugadores deben explorar el mapa para recolectar power-ups que mejoren sus habilidades o invoquen minions. Están dispersos por el escenario y aparecen cada determinado tiempo, van apareciendo de uno en uno, esto obliga a los jugadores a arriesgarse a moverse o a esperar el momento adecuado para atacar.
 
+![](ImagenesGDD/4.png)
 
 - 1. Durante el periodo de tiempo donde hay un power-up disponible, el sigilo y la observación son cruciales. Por ejemplo, un jugador puede estar observando el entorno mientras se esconde, buscando cualquier señal de movimiento que revele la posición de su oponente.
 
+![](ImagenesGDD/5.png)
 
 1. Enfrentamientos y Estrategia:
     1. Una vez que los jugadores han recolectado recursos o han identificado la ubicación de su oponente, comienzan los enfrentamientos directos. Utilizando sus habilidades mágicas y el poder proporcionado por los power-ups, los jugadores pueden atacar la base enemiga o defender la suya.
@@ -178,8 +188,9 @@ Entre estas fases principales, Mage n' Hyde incluye momentos clave que añaden v
 
 Este ciclo de juego dinámico y competitivo asegura que cada partida de Mage n' Hyde sea única, ofreciendo una combinación constante de tensión, estrategia y acción rápida.
 
-1. **Characters/Mages.**
+3. **Characters/Mages.**
 
+![](ImagenesGDD/2.png)
 
 Mago de sigilo/velocidad.
 
@@ -217,7 +228,7 @@ Aunque es más lento que otros personajes, su gran durabilidad y capacidad de ca
 | Hechizo 2 | 16  |
 | --- | --- |
 
-1. **Tower.**
+4. **Tower.**
 
 En Mage n' Hyde, la torre y los power-ups enfocados a la defensa juegan un papel crucial en la progresión de la partida. La torre es el objetivo principal que cada jugador debe defender mientras intenta destruir la del oponente.
 
@@ -241,7 +252,7 @@ Las torres están ubicadas en la base de cada jugador y son la pieza central de 
 | **Power-Up Nivel 2** | 15% del total de vida |
 | --- | --- |
 
-1. **Game Play Elements.**
+5. **Game Play Elements.**
 
 Transformation and Hiding
 
@@ -396,7 +407,7 @@ Los power-ups son elementos clave en Mage n' Hide, ya que proporcionan mejoras t
 | **Curación** | Regenerar vida a la torre | Hacer que la partida sea más larga y poder hacer remontadas | +30% por segundo de vida en la Torre del equipo |
 | --- | --- | --- | --- |
 
-1. **Game Physics and statistics.**
+6. **Game Physics and statistics.**
 
 Movimiento
 
@@ -414,7 +425,7 @@ Los personajes en Mage n' Hyde tienen tres velocidades principales que dependen 
 - _Ataque:_ El ataque base del personaje.
 - _Defensa:_ La defensa del personaje
 
-1. **Artificial Intelligence.**
+8. **Artificial Intelligence.**
 
 En Mage n' Hyde, la inteligencia artificial de los minions y torretas está basada en dos sentidos principales: detección visual y detección de proximidad. Estos parámetros permiten que los NPCs actúen de forma reactiva, alineándose con el enfoque de combate estratégico y defensa del juego.
 
@@ -438,12 +449,13 @@ Las torretas cuentan con un radio de detección visual. Cuando un jugador o mini
 
 Las torretas disparan automáticamente a cualquier jugador/miniom dentro de su alcance. Los disparos son continuos y precisos mientras el jugador/miniom esté en el área de ataque, generando una presión constante y forzando al jugador a moverse o buscar cobertura.
 
-1. **Player Controls.**
+9. **Player Controls.**
 
 Los controles en Mage n' Hyde están diseñados para ser intuitivos, permitiendo al jugador moverse, esconderse, atacar y activar funciones del juego de forma sencilla en dispositivos de PC y tablet.
 
 Controles Principales (PC)
 
+![](ImagenesGDD/7.png)
 
 - _Click Izquierdo: Movimiento_
 
@@ -463,6 +475,7 @@ El botón de ataque elemental permite al jugador lanzar hechizos elementales que
 
 Controles de Pantalla Táctil (Tablet)
 
+![](ImagenesGDD/8.png)
 
 - _Tocar en la Pantalla: Movimiento_
 
@@ -488,7 +501,7 @@ A continuación se observan las flowcharts de las distintas pantallas del juego 
 
 **![]()**
 
-1. **Functional requirements**
+2. **Functional requirements**
 
 Pantalla de inicio:
 
@@ -563,7 +576,7 @@ De apariencia etérea y ligeramente distorsionada, los minions avanzan como somb
 
 Estas estructuras tienen una estética antigua y arcaica, como si fueran reliquias animadas por la magia antigua de este mundo. Sus diseños imitan a antiguos tótems o estatuas que emiten energía, creando una barrera visualmente impactante cuando los jugadores intentan acercarse.
 
-1. **2D Art**
+2. **2D Art**
 
 Interfaz y Menús.
 
@@ -577,7 +590,7 @@ Arte Promocional
 
 Los diseños para anuncios y materiales de marketing estarán dominados por imágenes de los personajes en poses evocadoras, que capturen la esencia mágica y oscura del juego. El arte promocional incluirá detalles como niebla y efectos de iluminación suave.
 
-1. **2D Animation**
+3. **2D Animation**
 
 Las animaciones en Mage n' Hyde están diseñadas para complementar el estilo de fantasía oscura del juego, con movimientos fluidos y detalles visuales que refuerzan la atmósfera enigmática del mundo.
 
@@ -621,9 +634,7 @@ El diseño sonoro de Mage n' Hyde busca crear una experiencia inmersiva de fanta
 
 La música principal será minimalista y ambiental, basada en melodías melancólicas y misteriosas, utilizando sonidos no convencionales y armonías menores. La intención es transmitir la atmósfera encantadora pero sombría del juego, sin utilizar sonidos estridentes ni melodías que rompan la inmersión. El diseño sonoro se centrará en el uso de pausas y silencio estratégico, creando espacios de tensión que se combinan con los sonidos ambientales para lograr una experiencia cautivadora.
 
-1. **Sound Effects & Music**
-
-Sound Effects
+2. **Sound Effects & Music**
 
 Los efectos de sonido en Mage n' Hyde están diseñados para evitar la repetición y reforzar la atmósfera de incertidumbre. Los sonidos cotidianos, como pasos, roces y ecos, son sutilmente distorsionados para que parezcan familiares, pero extrañamente fuera de lugar. Además, ciertos sonidos tendrán variaciones sutiles para evitar la monotonía:
 
@@ -682,7 +693,8 @@ Las frases que podrán escuchar son:
 3. "¡Destruyan su torre y obtendremos la magia que nos falta! ¡Esta es nuestra única misión!"
 4. "Si desean mi favor eterno, ¡marchen hacia la torre enemiga y traigan su caída!"
 5. "Hoy probaremos que solo hay un verdadero Mago Supremo en este mundo. ¡Llévenme la victoria!"
-6. **Ending.**
+
+2. **Ending.**
 
 La partida finaliza cuando uno de los dos equipos destruye la torre enemiga proporcionando a su maestro el poder que le falta, lo que le lleva a convertirse en el único Mago Supremo.
 
@@ -718,7 +730,7 @@ Estrategia del Nivel
 
 Como ya se ha explicado la dinámica que se quiere buscar es que haya dos zonas de conflicto centrales cerca de las torres donde se da el enfrentamiento directo entre jugadores y a la vez otra dinámica de evasión, reagrupación obtención de power ups y preparación del siguiente ataque en las zonas centrales.
 
-1. **Power-Ups.**
+2. **Power-Ups.**
 
 Los power-ups se generan en un radio cuyo punto central es el del mapa.
 
@@ -812,7 +824,7 @@ En cuanto al bloque de PostProduction Supliers, son aquellos stakeholders enfoca
 Por último, en el bloque de Product Buyers se encuentran los interesados en obtener el videojuego proporcionando dinero a los PostProduction Supliers a cambio del producto y con ello de la experiencia del juego.
 
 
-**_Tipo de modelo de monetización_**
+1. **_Tipo de modelo de monetización_**
 
 Mage n’Hyde es un videojuego Freemium de forma que los usuarios y jugadores pueden disfrutar de su experiencia completa de manera gratuita, sin embargo, como forma de extender y ampliar esa experiencia se añaden microtransacciones para diferentes productos.
 
@@ -822,7 +834,7 @@ Por otro lado, se podrán obtener elementos personalizables para el perfil del u
 
 Por último, habrá pases de batalla de temporada, tanto gratuitos como de pago. De esta forma se permite que el usuario que no quiera comparar nada pueda obtener elementos personalizables al completar diferentes misiones y objetivos, sin embargo, con el pase de batalla de pago se obtendrán mejores recompensas así como elementos personalizables de edición limitada.
 
-**_Tablas de productos y precios._**
+2. **_Tablas de productos y precios._**
 
 Dentro de la tienda existe una equivalencia entre la moneda propia del juego y el dinero real. De esta forma cada vez que el jugador realiza una compra con dinero real dentro del juego obtiene una cantidad fija de monedas. Cada 50 céntimos que pague el jugador obtendrá 100 monedas del juego.
 
@@ -903,6 +915,71 @@ Dado que esto es la beta y la implementación no debe estar pulida y depurada pe
 
 Versión Goldmaster: esta versión consiste en una versión pulida probada finalizada y arreglada de la beta, para ello se debe pasar por un proceso de beta testing y luego de corrección, estimar el tiempo con exactitud es muy difícil ya que en función del estado de la beta puede tardar días o semanas.
 
-### ""Bibliography**
+### **Bibliography**
 - https://unity.com/es/blog/games/building-a-multiplayer-game-first-time-netcode-for-gameobjects
 - https://docs.unity3d.com/560/Documentation/Manual/UNetSetup.html
+
+#  Lecciones aprendidas (Post Mortem).
+## Trabajo individual realizado.
+
+### Irene Rodríguez García
+Me he encargado del diseño del mapa, definiendo áreas estratégicas como el bosque y puntos de ocultación para optimizar la jugabilidad de los personajes. También diseñé el logo de Mojito Studios en Illustrator, coordiné la dirección de arte para asegurar una estética coherente de fantasía oscura en el juego y creé banners para stories en Instagram para la promoción visual. Finalmente, documenté el desarrollo y detalles técnicos en el Game Design Document (GDD), cubriendo cada aspecto del juego y organizando el avance del equipo.
+
+**Pros & Contras**
+
+El desarrollo del logo y la dirección de arte han sido efectivos para establecer una identidad visual sólida para Mojito Studios, y los banners promocionales en redes sociales han aportado visibilidad temprana y unificación del estilo del juego. La planificación estratégica del mapa ha facilitado una jugabilidad balanceada y atractiva para los distintos personajes, mientras que el GDD ha permitido organizar el proyecto de manera clara y detallada. Sin embargo, el tiempo dedicado al GDD fue mayor de lo previsto, ya que, debido a limitaciones de rendimiento en dispositivos móviles, surgieron problemas de programación. Para solucionar esto sin perder la esencia del juego, se requirió crear y ajustar nuevas mecánicas.
+
+---
+
+### Miriam Sanz Tardón
+Me he encargado principalmente del desarrollo del documento Game Design Document junto con otros compañeros, además del desarrollo de la narrativa que rodea al juego y del guión que va a ir implementado en este. Del GDD me he encargado de apartados como el de la monetización, Story, y game Mechanics. Por otro lado, me he encargado de realizar algún concept para el diseño de los Minions. Por último, me he encargado del desarrollo de la página web, trabajando a partir de la plantilla escogida por todo el equipo. Cambié e implementé diferentes funcionalidades para hacer que la página web fuera más práctica y entretenida.
+
+**Pros & Contras**
+
+He trabajado acorde con lo que se me ha asignado. He elaborado una narrativa atractiva y coherente para el tipo de juego que se ha desarrollado, para fomentar el interés del jugador. He logrado desarrollar y tener una página web que muestre nuestro trabajo de forma clara, sin embargo, debido a que el tiempo de desarrollo del GDD ha sido mayor de lo previsto no ha sido posible realizar imágenes o concepts más propios del videojuego para mostrar en la página, al igual que he tenido dificultades para lograr un diseño visual uniforme en la página, principalmente en los colores debido a la falta de tiempo provocado por el tiempo que ha tomado implementar los cambios en algunas funcionalidades y en no lograr encontrar ciertos apartados en el documento CSS de la página para cambiar los colores respecto a los que traía de base. Por otro lado, la falta de tiempo ha impedido a los miembros encargados de la parte artística elaborar diseños y concepts sólidos para su utilización dentro del juego. A pesar de las limitaciones de tiempo, se ha logrado tener un GDD bastante desarrollado y coherente.
+
+---
+
+### Rosa Ghaudy Bellido Euribe
+Me he encargado de gestionar los servicios de relay durante un primer momento para crear los servidores para las pruebas antes de que se montara el lobby. Aunque principalmente me he encargado de gestionar los controles y la mecánica de ataque mediante hechizos, con todo lo que esto implica: adaptar los controles de las mecánicas para el jugador de mis compañeros a dispositivos móviles, asegurarme de que los clics en pantalla no se superpusieran (interpretaran para varios controles a la vez) en ningún dispositivo, los disparos en sí y su efecto sobre personajes y torres dependiendo del equipo de cada jugador para gestionar el final de partida.
+
+**Pros & Contras**
+
+Las tareas que me fueron asignadas se completaron de manera funcional para el prototipo gracias al tiempo invertido en probar todas las funcionalidades y controles en distintos dispositivos tanto como host como cliente según estas se iban programando e incluyendo con el fin de detectar y tratar errores importantes lo antes posible sin que se acumulen o afecten al resto del proyecto para asegurar un correcto desarrollo del videojuego sin sorpresas de último momento. No obstante, la labor de compatibilidad y pruebas en itch.io debería haber comenzado bastante antes, idealmente de forma paralela a la que se iban desarrollando las primeras mecánicas de movimiento y de esconderse; sin embargo, debido a la carga de trabajo en otras asignaturas ya que finalmente estamos realizando todos los proyectos para el resto de ellas de forma independiente a este, subestimé lo mucho que me costaría organizarme y tardé en centrarme con todas mis capacidades en tratar de arreglar los problemas que estos dieron. Ya que los resultados finales son, a pesar de todo, los esperados, se espera que con mejor organización y realizando las comprobaciones antes, el desarrollo sea menos apresurado para la próxima entrega.
+
+---
+
+### Sandra Martín-Consuegra Molina-Prados
+Me he encargado de la programación de ciertas funcionalidades del juego, como las mecánicas de movimiento y de esconderse, la pantalla de inicio, el ObjectPool de los objetos repartidos a lo largo del escenario y del funcionamiento de las torres y los powerUps. Además, me he ocupado de personalizar las diferentes redes sociales como Twitter e Instagram, y de Itch.io y subir algún post para ir dando a conocer el estudio.
+
+**Pros & Contras**
+
+Las mecánicas que se me asignaron han sido implementadas en su mayoría para el prototipo. Las redes sociales han ganado los seguidores esperados para esta primera entrega. Sin embargo, hubo un pequeño error por mi parte en la mecánica de esconderse que paralizó poder avanzar en el desarrollo del resto de mecánicas, ya que era necesario probar bien que funcionase. Este error tardó en solucionarse por tener además otras prácticas de más asignaturas y estar demasiado estresada como para poder salir de la visión de túnel, lo que ha hecho que para esta entrega dos de los powerUps planteados no se hayan implementado 100% funcionales, pero serán trabajados en la versión siguiente. Se espera que para siguientes entregas no afecte tanto el estrés como lo ha afectado esta, ya que era la primera toma de contacto real con el proyecto.
+
+---
+
+### Hugo Camacho Rodríguez
+Me he encargado de redactar partes del GDD como la estimación temporal y la presentación del equipo (apartado 10 del GDD), algunos aspectos de la jugabilidad y el diseño de algunas dinámicas de juego (apartado 7 del GDD) y me he encargado de las interfaces, diseñarlas, desarrollarlas y crear mockups (apartado 3 del GDD). También participé en la parte de concept art de personajes y diseñé el banner de la empresa para redes sociales, además de participar junto al resto del equipo en el diseño general del juego.
+
+**Pros & Contras**
+
+Considero que mi parte del GDD y mi trabajo de diseño han sido adecuados sin embargo tuve que repetir algunas partes de mi trabajo en el GDD incluso algunos fragmentos que no eran míos por problemas de comunicación que yo he tenido con el equipo y que me gustaría evitar de cara al futuro, en parte una consecuencia de este problema es que mi parte del trabajo ha tardado demasiado en estar lista, también he tenido problemas para incorporar algunas de las mejoras que me habían propuesto para el banner, entonces aunque los resultados los veo adecuados me gustaría que mi desempeño durante todo el proceso fuese un poco más elegante y mi rol en el proyecto un poco más activo para la siguiente entrega.
+
+---
+
+### Pablo Melgar Álvarez
+Me he encargado del sistema de Lobby, de manera que se puedan crear y gestionar los Lobbys, ajustar la configuración y unirse a ellos. También he creado los menús para poder entrar a los Lobbys, introduciendo nombre de usuario y eligiendo los equipos para la partida. También he añadido algunas funciones del Relay para poder hacerlo funcional con el Lobby al que se conecten los jugadores.
+
+**Pros & Contras**
+
+El funcionamiento del Lobby y el menú del Lobby ha tenido un buen resultado pero han habido complicaciones a la hora de hacerlo funcional con el relay de manera que no ha sido posible integrarlo en esta versión del juego, por lo que para la siguiente versión debería añadir estas funciones con el resto del juego y asegurarse de que los nuevos añadidos estén integrados desde el primer momento.
+
+---
+
+## Trabajo colectivo realizado.
+**Pros & Contras**
+
+En esta fase, el equipo logró consolidar una identidad sólida para el juego y el estudio mediante el diseño del logo, la dirección de arte y la coordinación de contenidos en redes sociales, logrando una buena visibilidad y presentación de Mage n' Hyde desde su etapa inicial. El GDD ha sido desarrollado en gran detalle, documentando cada aspecto del juego, lo que facilitó una estructura clara y unificada para el proyecto. Además, la narrativa y la jugabilidad del juego se definieron de forma coherente con la temática y la ambientación, contribuyendo a una experiencia atractiva y consistente. Los esfuerzos en la programación de mecánicas, como el movimiento, la ocultación, el sistema de lobby, los controles y los menús, sentaron una base funcional sólida para el prototipo, permitiendo pruebas y ajustes en dispositivos móviles, lo que fue crucial para asegurar una experiencia fluida. Las redes sociales también lograron la visibilidad esperada, atrayendo seguidores y generando interés por el proyecto.
+
+Sin embargo, el equipo enfrentó ciertos desafíos, principalmente en cuanto a la gestión del tiempo y la organización. La carga de trabajo y la dedicación al GDD requirieron más tiempo de lo previsto, lo cual afectó la capacidad de algunos miembros para desarrollar conceptos visuales y contenidos gráficos más específicos para la web y el juego. Además, problemas de comunicación generaron confusión en algunas partes del GDD, resultando en duplicación de trabajo y retrasos en algunas áreas.
+
