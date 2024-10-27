@@ -73,6 +73,8 @@ Nuestro equipo está compuesto por un grupo diverso de personas con gran talento
 
 ### **Game Concept.**
 
+![](ImagenesGDD/1.png)
+
 - 1. **Introduction.**
 
 _Mage n' Hyde_ es un juego competitivo diseñado para dos contra dos jugadores que combina estratégicamente elementos de los géneros Prop Hunt y MOBA. Este juego único permite a los jugadores transformar su entorno, esconderse y planear sus ataques mientras buscan destruir la torre enemiga. Cada jugador puede seleccionar entre personajes con habilidades mágicas únicas, según el rol que desea tener, lo que añade una capa de profundidad táctica tanto en ataque como en defensa. A lo largo de la partida, los jugadores podrán utilizar power-ups para invocar criaturas y mejorar sus hechizos, todo mientras intentan superar a su oponente en un campo de batalla dinámico y en constante evolución.
@@ -119,12 +121,15 @@ El juego está diseñado para ser multiplataforma, adaptable a PC y dispositivos
 
 Se realizarán en la versión beta cuando se solidifiquen las mecánicas implementadas, para así saber cómo de grande o costoso pueden ser los dibujos aunque en un principio todos con 72 pp
 
+![](ImagenesGDD/3.png)
 
 Referencias de los Magos
 
+![](ImagenesGDD/ConceptMago.png)
 
 Concept de Mago
 
+![](ImagenesGDD/ConceptMinion.png)
 
 Concept de MInions
 
@@ -154,13 +159,16 @@ El flujo típico de juego en Mage n' Hyde sigue una estructura competitiva de pa
     1. Al comienzo de cada partida, ambos jugadores son asignados a un mapa donde tienen unos segundos para explorar el entorno y prepararse.
     2. Durante este tiempo, los jugadores pueden transformarse en objetos del entorno para ocultarse y empezar a planificar su estrategia. También pueden decidir si recolectar power-ups o tomar una posición defensiva cerca de su base.
 
+![](ImagenesGDD/6.png)
 
 1. Exploración y Recolección:
     1. Durante la partida, los jugadores deben explorar el mapa para recolectar power-ups que mejoren sus habilidades o invoquen minions. Están dispersos por el escenario y aparecen cada determinado tiempo, van apareciendo de uno en uno, esto obliga a los jugadores a arriesgarse a moverse o a esperar el momento adecuado para atacar.
 
+![](ImagenesGDD/4.png)
 
 - 1. Durante el periodo de tiempo donde hay un power-up disponible, el sigilo y la observación son cruciales. Por ejemplo, un jugador puede estar observando el entorno mientras se esconde, buscando cualquier señal de movimiento que revele la posición de su oponente.
 
+![](ImagenesGDD/5.png)
 
 1. Enfrentamientos y Estrategia:
     1. Una vez que los jugadores han recolectado recursos o han identificado la ubicación de su oponente, comienzan los enfrentamientos directos. Utilizando sus habilidades mágicas y el poder proporcionado por los power-ups, los jugadores pueden atacar la base enemiga o defender la suya.
@@ -180,6 +188,7 @@ Este ciclo de juego dinámico y competitivo asegura que cada partida de Mage n' 
 
 1. **Characters/Mages.**
 
+![](ImagenesGDD/2.png)
 
 Mago de sigilo/velocidad.
 
@@ -444,6 +453,7 @@ Los controles en Mage n' Hyde están diseñados para ser intuitivos, permitiendo
 
 Controles Principales (PC)
 
+![](ImagenesGDD/7.png)
 
 - _Click Izquierdo: Movimiento_
 
@@ -463,6 +473,7 @@ El botón de ataque elemental permite al jugador lanzar hechizos elementales que
 
 Controles de Pantalla Táctil (Tablet)
 
+![](ImagenesGDD/8.png)
 
 - _Tocar en la Pantalla: Movimiento_
 
