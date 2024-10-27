@@ -919,7 +919,7 @@ Versión Goldmaster: esta versión consiste en una versión pulida probada final
 - https://unity.com/es/blog/games/building-a-multiplayer-game-first-time-netcode-for-gameobjects
 - https://docs.unity3d.com/560/Documentation/Manual/UNetSetup.html
 
-- # 12. Lecciones aprendidas.
+#  Lecciones aprendidas (Post Mortem).
 ## Trabajo individual realizado.
 
 ### Irene Rodríguez García
