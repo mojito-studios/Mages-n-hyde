@@ -1,7 +1,6 @@
-**Mage n’Hyde**
+# Mage n'Hyde
 
-**Game Document Design**
-
+## Game Document Design
 
 **Made by:**
 
@@ -9,17 +8,12 @@
 
 **Integrantes Grupo C**
 
-Irene Rodríguez García
-
-Miriam Sanz Tardón
-
-Rosa Ghaudy Bellido Euribe
-
-Sandra Martín-Consuegra Molina-Prados
-
-Hugo Camacho Rodríguez
-
-Pablo Melgar Álvarez
+- Irene Rodríguez García
+- Miriam Sanz Tardón
+- Rosa Ghaudy Bellido Euribe
+- Sandra Martín-Consuegra Molina-Prados
+- Hugo Camacho Rodríguez
+- Pablo Melgar Álvarez
 
 **Preface.**
 
