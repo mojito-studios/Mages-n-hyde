@@ -41,7 +41,7 @@ public class Tower : NetworkBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.gameObject.CompareTag("Player") && !collision.gameObject.CompareTag("Minions")) return; //De momento le pongo player para que vaya yendo
+        if (!collision.gameObject.CompareTag("Minions")) return; //De momento le pongo player para que vaya yendo
         //if (collision.gameObject.GetComponent<Player>().GetTeamTower().tag == this.tag) return; //No puede atacar su propia torre. Lo desactivo para probar los powerups bien pero con esta línea de código va
         if (_isDefending.Value) DamageShields();
         else DamageTower();

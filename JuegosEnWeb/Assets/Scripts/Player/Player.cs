@@ -50,8 +50,9 @@ public class Player : NetworkBehaviour
         {
             if (button.CompareTag("AttackButton")) { _spell = GetComponentInChildren<Button>(); }
         }
-        if(IsHost) teamAssign = "Team1";
-        else teamAssign = "Team2";
+        //if(IsHost)
+        teamAssign = "Team1";
+        //else teamAssign = "Team2";
         AssignTower();
     }
 
