@@ -26,6 +26,7 @@ public class PowerUpBehaviour : NetworkBehaviour
         if (IsServer)
         {
             _puType.Value = Random.Range(1, 5);
+           // _puType.Value = 1; //Para probar los minions
         }
 
       
@@ -45,9 +46,6 @@ public class PowerUpBehaviour : NetworkBehaviour
     {
         Player player = NetworkManager.Singleton.SpawnManager.SpawnedObjects[_playerId.Value].GetComponent<Player>();
         var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
-        Debug.Log("Torre " + tower);
-
-        Debug.Log("Jugador detectado: " + player + " con id de " + _playerId.Value) ; //Me pilla al jugador pero no me pilla la torre
 
         switch (_puType.Value)
         {
@@ -55,7 +53,7 @@ public class PowerUpBehaviour : NetworkBehaviour
                 break;
             case 1:
                 
-                SpawnMinions();
+                tower.SpawnMinions();
                 break;
             case 2:
                
@@ -71,11 +69,6 @@ public class PowerUpBehaviour : NetworkBehaviour
                 break;
 
         }
-    }
-
-    public void SpawnMinions()
-    {
-        Debug.Log("Minions");
     }
 
 
