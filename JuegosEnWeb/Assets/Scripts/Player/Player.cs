@@ -20,6 +20,7 @@ public class Player : NetworkBehaviour
     public FixedString128Bytes teamAssign = new FixedString128Bytes();
     private Tower teamTower;
     private int health = 100;
+    public int ultiAttack = 0;
     [SerializeField] private TextMeshProUGUI _health;
     [SerializeField] private TextMeshProUGUI _towerHealth;
 
@@ -37,6 +38,7 @@ public class Player : NetworkBehaviour
 
     //attack
     private Button _spell;
+    private Button _ultimateAttack;
     [SerializeField] private GameObject spellPrefab;
     [SerializeField] private Transform spellTransform;
 
@@ -48,8 +50,10 @@ public class Player : NetworkBehaviour
         Button[] buttonList = GetComponentsInChildren<Button>();
         foreach (var button in buttonList)
         {
-            if (button.CompareTag("AttackButton")) { _spell = GetComponentInChildren<Button>(); }
+            if (button.CompareTag("AttackButton")) { _spell = button; }
+            else if(button.CompareTag("UltiButton")) { _ultimateAttack = button; }
         }
+        _ultimateAttack.interactable = false;
         //if(IsHost)
         teamAssign = "Team1";
         //else teamAssign = "Team2";
@@ -82,6 +86,7 @@ public class Player : NetworkBehaviour
         if (_moving)
             MovePlayer(); //Ahora se mueve por tener una transform autoritativa de parte del cliente para mejor responsividad a los jugadores
         updateTowerHealthRpc();
+        if (ultiAttack == 15) _ultimateAttack.interactable = true;
     }
 
     void SetPlayer()
@@ -205,5 +210,12 @@ public class Player : NetworkBehaviour
     public ulong GetTeamTower()
     {
         return teamTower.NetworkObjectId;
+    }
+
+    public void OnClickButtonTest()
+    {
+        ultiAttack = 0;
+        _ultimateAttack.interactable = false;
+
     }
 }

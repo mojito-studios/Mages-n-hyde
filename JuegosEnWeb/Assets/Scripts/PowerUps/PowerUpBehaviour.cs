@@ -8,7 +8,7 @@ public class PowerUpBehaviour : NetworkBehaviour
     private const int MAX_TIME_PLAYER = 5;
     private bool _isTriggered = false;
     private float _currentTime = 0f;
-    private float _ultimateValue = 15f; //Luego ajustar
+    private int _ultimateValue = 15; //Luego ajustar
     //1 Minions 2 Torretas 3 Escudo de torre 4 curar torre
     private NetworkVariable<int> _puType = new NetworkVariable<int>();
     private NetworkVariable<ulong> _playerId = new NetworkVariable<ulong>();
@@ -79,6 +79,7 @@ public class PowerUpBehaviour : NetworkBehaviour
     {
         Player player = NetworkManager.Singleton.SpawnManager.SpawnedObjects[_playerId.Value].GetComponent<Player>();
         var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
+        player.ultiAttack += _ultimateValue;
 
         switch (_puType.Value)
         {
