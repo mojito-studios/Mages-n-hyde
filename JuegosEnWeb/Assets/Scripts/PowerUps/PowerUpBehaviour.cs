@@ -5,20 +5,29 @@ using UnityEngine;
 
 public class PowerUpBehaviour : NetworkBehaviour
 {
+    private const int MAX_TIME_PLAYER = 5;
+    private bool _isTriggered = false;
+    private float _currentTime = 0f;
+    private float _ultimateValue = 15f; //Luego ajustar
     //1 Minions 2 Torretas 3 Escudo de torre 4 curar torre
     private NetworkVariable<int> _puType = new NetworkVariable<int>();
     private NetworkVariable<ulong> _playerId = new NetworkVariable<ulong>();
-    private NetworkVariable<ulong> _towerId = new NetworkVariable<ulong>();
-    private Player _player;
+
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Player") || !NetworkManager.Singleton.IsServer) return; //Si interacciona con cualquier otro objeto con colliders nos da igual, y si no es el server entonces no tiene validez para evitar las trampas
         _playerId.Value = collision.GetComponent<NetworkObject>().NetworkObjectId;
-        ExecutePowerUp();
-        NetworkObject.Despawn();
-        GameManager.Instance.puInScene--;
+        _isTriggered = true;
+      
 
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) //Tanto si se sale como si el jugador se desactiva (por el tema del respawn)
+    {
+        Debug.Log("DESACTIVADO");
+        _isTriggered = false;
+        _playerId.Value = 0;
     }
 
     public override void OnNetworkSpawn()
@@ -31,6 +40,13 @@ public class PowerUpBehaviour : NetworkBehaviour
 
       
     }
+
+    public void PULogic()
+    {
+        ExecutePowerUp();
+        NetworkObject.Despawn();
+        GameManager.Instance.puInScene--;
+    }
     void Start()
     {
     }
@@ -41,6 +57,23 @@ public class PowerUpBehaviour : NetworkBehaviour
 
     }
 
+     void FixedUpdate()
+    {
+        if (_isTriggered)
+        {
+            _currentTime += Time.fixedDeltaTime; 
+
+            if (_currentTime >= MAX_TIME_PLAYER)
+            {
+                PULogic();
+                _currentTime = 0f; 
+            }
+        }
+        else
+        {
+            _currentTime = 0f; 
+        }
+    }
 
     public void ExecutePowerUp() //Función que según el powerUp hace una cosa u otra;
     {
@@ -56,12 +89,10 @@ public class PowerUpBehaviour : NetworkBehaviour
                 tower.SpawnMinions();
                 break;
             case 2:
-               
                 tower.ActivateTurrets();
                 break;
             case 3:
                 Debug.Log("Levantando escudo");
-
                 tower.SetDefending(true);
                 break;
             case 4:
