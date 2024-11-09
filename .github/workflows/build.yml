@@ -1,7 +1,7 @@
 name: Build and Publish Project
  
 on:
-  workflow_dispatch:
+  [push, pull_request]
  
 jobs:
   buildForAllSupportedPlatforms:
