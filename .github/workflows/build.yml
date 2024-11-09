@@ -35,3 +35,29 @@ jobs:
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
+ 
+  publishToItchIo:
+    name: Publish to itch.io
+    needs: buildForAllSupportedPlatforms
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: Build-WebGL
+          path: build
+ 
+      - name: Install butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip -d butler
+          sudo mv butler/butler /usr/local/bin/butler
+          butler -V
+ 
+      - name: Push build to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_CREDENTIALS }}
+          ITCHIO_USERNAME: ${{ secrets.ITCHIO_USERNAME }}
+          ITCHIO_GAMEID: ${{ secrets.ITCHIO_GAMEID }}
+        run: |
+          butler push build/WebGL "$ITCHIO_USERNAME/$ITCHIO_GAMEID:web"
