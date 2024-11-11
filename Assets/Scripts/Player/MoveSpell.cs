@@ -30,7 +30,10 @@ public class MoveSpell : NetworkBehaviour
         //if((collision.gameObject.tag == "Team2Tower" & caster.teamAssign == "Team1") | (collision.gameObject.tag == "Team1Tower" & caster.teamAssign == "Team2"))
         if(collision.gameObject.tag == "Team2Tower" || collision.gameObject.tag == "Team1Tower")
         {
-            collision.gameObject.GetComponent<Tower>().DamageTower();
+
+            Tower torre = collision.gameObject.GetComponent<Tower>();
+            if(torre.GetIsDefending()) torre.DamageShields();
+            else torre.DamageTower();
         }
         DestroyServerRpc();
     }

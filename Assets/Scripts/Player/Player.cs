@@ -17,7 +17,7 @@ public class Player : NetworkBehaviour
 {
     //player
     private Camera _camera;
-    public FixedString128Bytes teamAssign = new FixedString128Bytes();
+    public NetworkVariable<int> teamAssign = new NetworkVariable<int>();
     private Tower teamTower;
     private int health = 100;
     public int ultiAttack = 0;
@@ -54,16 +54,15 @@ public class Player : NetworkBehaviour
             else if(button.CompareTag("UltiButton")) { _ultimateAttack = button; }
         }
         _ultimateAttack.interactable = false;
-        //if(IsHost)
-        teamAssign = "Team1";
-        //else teamAssign = "Team2";
-        AssignTower();
+        
     }
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         SetPlayer();
+        teamAssign.Value = 0;
+        AssignTower();
     }
 
 
@@ -84,7 +83,7 @@ public class Player : NetworkBehaviour
             }
         }
         if (_moving)
-            MovePlayer(); //Ahora se mueve por tener una transform autoritativa de parte del cliente para mejor responsividad a los jugadores
+            MovePlayer(); 
         updateTowerHealthRpc();
         if (ultiAttack == 15) _ultimateAttack.interactable = true;
     }
@@ -99,7 +98,7 @@ public class Player : NetworkBehaviour
 
     private void AssignTower()
     {
-        if (teamAssign == "Team1") teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
+        if (teamAssign.Value == 0) teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
         else teamTower = GameObject.FindGameObjectWithTag("Team2Tower").GetComponent<Tower>();
        // Debug.Log("Soy cliente? " + IsClient + " mi torre es " + teamTower.tag);
     }

@@ -39,13 +39,7 @@ public class Tower : NetworkBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!collision.gameObject.CompareTag("Minions")) return; //De momento le pongo player para que vaya yendo
-        //if (collision.gameObject.GetComponent<Player>().GetTeamTower().tag == this.tag) return; //No puede atacar su propia torre. Lo desactivo para probar los powerups bien pero con esta línea de código va
-        if (_isDefending.Value) DamageShields();
-        else DamageTower();
-    }
+  
     public void DamageTower()
     {
         int damageTower = 1; //daño que haga la colisión, se saca desde fuera
@@ -54,6 +48,10 @@ public class Tower : NetworkBehaviour
         Debug.Log("Mi vida es de " + actualLife.Value);
     }
 
+    public bool GetIsDefending()
+    {
+        return _isDefending.Value;
+    }
     [Rpc(SendTo.Server)]
     private void DamageTowerRpc(int damage)
     {
@@ -160,30 +158,33 @@ public class Tower : NetworkBehaviour
     }
     private IEnumerator MinionsAct(Vector3 enemyTower, Vector3 originalPosition, ulong t)
     {
-        while(Vector3.Distance(originalPosition, enemyTower) > 7f)
+        while(Vector3.Distance(minions.transform.position, enemyTower) > 1f)
         {
             minions.transform.position = Vector3.MoveTowards(minions.transform.position, enemyTower, Time.deltaTime);
             yield return null;
         }
-       
+
+       StartCoroutine(AttackingMinions(t, originalPosition));
+
+    }
+
+    private IEnumerator AttackingMinions(ulong t, Vector3 originalPosition)
+    {
         var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[t].GetComponent<Tower>();
 
         var i = 0;
-        while(i < minionsTime)
+        while (i < minionsTime)
         {
-            tower.DamageTower();
+            Debug.Log("ATACO");
+            if (tower._isDefending.Value) DamageShields();
+            else DamageTower();
             i++;
             yield return new WaitForSeconds(1f);
 
         }
-        
+
 
         minions.transform.position = originalPosition;
-    }
-
-    private void AttackingMinions()
-    {
-
     }
 
 

@@ -9,14 +9,14 @@ public class PowerUpBehaviour : NetworkBehaviour
     private bool _isTriggered = false;
     private float _currentTime = 0f;
     private int _ultimateValue = 15; //Luego ajustar
-    //1 Minions 2 Torretas 3 Escudo de torre 4 curar torre
+    //1 Minions 2 Flechas 3 Escudo de torre 4 curar torre
     private NetworkVariable<int> _puType = new NetworkVariable<int>();
     private NetworkVariable<ulong> _playerId = new NetworkVariable<ulong>();
 
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player") || !NetworkManager.Singleton.IsServer) return; //Si interacciona con cualquier otro objeto con colliders nos da igual, y si no es el server entonces no tiene validez para evitar las trampas
+        if (!collision.CompareTag("Player") || !NetworkManager.Singleton.IsServer || _playerId.Value != 0) return; //Si interacciona con cualquier otro objeto con colliders nos da igual, y si no es el server entonces no tiene validez para evitar las trampas
         _playerId.Value = collision.GetComponent<NetworkObject>().NetworkObjectId;
         _isTriggered = true;
       
@@ -35,7 +35,7 @@ public class PowerUpBehaviour : NetworkBehaviour
         if (IsServer)
         {
             _puType.Value = Random.Range(1, 5);
-           // _puType.Value = 1; //Para probar los minions
+            //_puType.Value = 1; //Para probar los minions
         }
 
       
@@ -85,8 +85,7 @@ public class PowerUpBehaviour : NetworkBehaviour
         {
             default:
                 break;
-            case 1:
-                
+            case 1:  
                 tower.SpawnMinions();
                 break;
             case 2:
