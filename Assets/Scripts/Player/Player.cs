@@ -20,7 +20,7 @@ public class Player : NetworkBehaviour
     public int teamAssign;
     private Tower teamTower;
     private int health = 100;
-    public int ultiAttack = 0;
+    private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     [SerializeField] private TextMeshProUGUI _health;
     [SerializeField] private TextMeshProUGUI _towerHealth;
 
@@ -65,6 +65,7 @@ public class Player : NetworkBehaviour
         SetPlayer();
         teamAssign = 0;
         AssignTower();
+        ultiAttack.OnValueChanged += interactableButton;
 
     }
 
@@ -88,7 +89,8 @@ public class Player : NetworkBehaviour
         if (_moving)
             MovePlayer(); 
         updateTowerHealthRpc();
-        if (ultiAttack == 15) _ultimateAttack.interactable = true;
+        Debug.Log(ultiAttack);
+       // if (ultiAttack.Value == 15) _ultimateAttack.interactable = true;
     }
 
     void SetPlayer()
@@ -214,10 +216,30 @@ public class Player : NetworkBehaviour
         return teamTower.NetworkObjectId;
     }
 
+    public void SetUltiValue(int value)
+    {
+        SetUltiValueRpc(value);
+    }
+
+    [Rpc(SendTo.Server)]
+
+    private void SetUltiValueRpc(int value)
+    {
+        if(value == 0)
+        ultiAttack.Value = value;
+        else
+        ultiAttack.Value += value;
+    }
+
+    private void interactableButton(int oldValue, int newValue)
+    {
+        if(newValue == 0) _ultimateAttack.interactable = false;
+        if(newValue == 15) _ultimateAttack.interactable = true;
+    }
     public void OnClickButtonTest()
     {
-        ultiAttack = 0;
-        _ultimateAttack.interactable = false;
+         SetUltiValue(0);
+        
 
     }
 }

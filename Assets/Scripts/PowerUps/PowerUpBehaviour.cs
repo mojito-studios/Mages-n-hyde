@@ -79,7 +79,7 @@ public class PowerUpBehaviour : NetworkBehaviour
     {
         Player player = NetworkManager.Singleton.SpawnManager.SpawnedObjects[_playerId.Value].GetComponent<Player>();
         var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
-        player.ultiAttack += _ultimateValue;
+        player.SetUltiValue(_ultimateValue); 
 
         switch (_puType.Value)
         {
