@@ -17,7 +17,7 @@ public class Player : NetworkBehaviour
 {
     //player
     private Camera _camera;
-    public NetworkVariable<int> teamAssign = new NetworkVariable<int>();
+    public int teamAssign;
     private Tower teamTower;
     private int health = 100;
     public int ultiAttack = 0;
@@ -44,6 +44,7 @@ public class Player : NetworkBehaviour
 
     void Start()
     {
+        if (!IsOwner) return;
         _camera = GetComponentInChildren<Camera>();
         Debug.Log(_camera);
         allSprites[0] = GetComponent<SpriteRenderer>().sprite;
@@ -55,14 +56,16 @@ public class Player : NetworkBehaviour
         }
         _ultimateAttack.interactable = false;
         
+
     }
 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
         SetPlayer();
-        teamAssign.Value = 0;
+        teamAssign = 0;
         AssignTower();
+
     }
 
 
@@ -98,7 +101,7 @@ public class Player : NetworkBehaviour
 
     private void AssignTower()
     {
-        if (teamAssign.Value == 0) teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
+        if (teamAssign == 0) teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
         else teamTower = GameObject.FindGameObjectWithTag("Team2Tower").GetComponent<Tower>();
        // Debug.Log("Soy cliente? " + IsClient + " mi torre es " + teamTower.tag);
     }
