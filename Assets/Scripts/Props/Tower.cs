@@ -8,14 +8,14 @@ public class Tower : NetworkBehaviour
 {
     private const float maxShield = 5; //Escudo total
     private const float maxLife = 10; //Vida total 
-    private const int shootingTime = 7;
-    private const float minionsTime = 1.5f;
+    private const int shootingTime = 2;
     private const float minionsDamage = 0.5f;
+    private const float minionsTime = 1.5f;
     public NetworkVariable<float> actualLife = new NetworkVariable<float>();
     public NetworkVariable<float> shield = new NetworkVariable<float>(); //PowerUp de escudo
     private NetworkVariable<bool> _isDefending = new NetworkVariable<bool>(false);
-    [SerializeField] private GameObject turrets; //Objeto torretas que disparan
     [SerializeField] private GameObject minions;
+    [SerializeField] private GameObject arrows;
 
 
     void Start()
@@ -32,7 +32,6 @@ public class Tower : NetworkBehaviour
             actualLife.Value = maxLife;
             shield.Value = maxShield;
         }
-        turrets.SetActive(false);
     }
     void Update()
     {
@@ -109,26 +108,31 @@ public class Tower : NetworkBehaviour
 
     }
 
-    public void ActivateTurrets()
+    public void ArrowRain()
     {
-        Debug.Log("Activando torretas");
-        ActivateTurretsRpc();
+        Debug.Log("Activando flechas");
+        int arrowNumber = Random.Range(4, 6);
+        ArrowRainRpc(arrowNumber, shootingTime);
 
     }
-    [Rpc(SendTo.Everyone)]
+    [Rpc(SendTo.Server)]
 
-    private void ActivateTurretsRpc()
+    private void ArrowRainRpc(int number, int puta)
     {
-        StartCoroutine(ShootTurrets());
+        StartCoroutine(FallingObjects(number,  shootingTime));
     }
 
 
-    private IEnumerator ShootTurrets()
+    private IEnumerator FallingObjects(int number, int shootingTime)
     {
-        turrets.SetActive(true);
-        //Lógica de disparo de las torretas
-        yield return new WaitForSeconds(shootingTime);
-        turrets.SetActive(false);
+        for(int i = 0; i < number; i++)
+        {
+            GameObject arrow = Instantiate(arrows, new Vector3(0,0), new Quaternion(0,0,180, 0));
+            arrow.GetComponent<NetworkObject>().Spawn();
+            arrow.GetComponent<Arrow>().casterTower = this;
+            yield return new WaitForSeconds(shootingTime);
+        }
+        
 
     }
 

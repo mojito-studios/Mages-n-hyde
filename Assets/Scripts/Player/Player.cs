@@ -89,8 +89,6 @@ public class Player : NetworkBehaviour
         if (_moving)
             MovePlayer(); 
         updateTowerHealthRpc();
-        Debug.Log(ultiAttack);
-       // if (ultiAttack.Value == 15) _ultimateAttack.interactable = true;
     }
 
     void SetPlayer()
@@ -148,8 +146,6 @@ public class Player : NetworkBehaviour
     public void OnMovement(InputAction.CallbackContext context) //Se activa al hacer click izquierdo
     {
         if (!IsOwner) return;
-        Debug.Log("Moving");
-
         Vector3 position = Mouse.current.position.ReadValue();
         targetPosition = _camera.ScreenToWorldPoint(position);
         targetPosition.z = transform.position.z;
@@ -161,8 +157,6 @@ public class Player : NetworkBehaviour
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estás encima de un prop
     {
         if (!IsOwner || _hiding) return;
-        Debug.Log(GetComponent<SpriteRenderer>().sprite);
-        Debug.Log("Distancia " + Vector3.Distance(transform.position, pBehaviour.transform.position));
         if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 3f)
         {
             
@@ -183,7 +177,6 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     private void ChangeSpriteRpc(int spriteNumber, ulong NID)
     {
-        Debug.Log("Cambio de sprite");
         GetComponent<SpriteRenderer>().sprite = allSprites[spriteNumber]; //Voy a ignorar el tema del color porque en principio solo se cambia ahora por ser placeholders 
         var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[NID].gameObject;
         hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
@@ -225,10 +218,10 @@ public class Player : NetworkBehaviour
 
     private void SetUltiValueRpc(int value)
     {
-        if(value == 0)
-        ultiAttack.Value = value;
-        else
-        ultiAttack.Value += value;
+        if (value == 0)
+            ultiAttack.Value = value;
+        else if (ultiAttack.Value == 15) ultiAttack.Value = 15; //Cambiar luego 15 por maxValue 
+        else ultiAttack.Value += value;
     }
 
     private void interactableButton(int oldValue, int newValue)

@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\JuegosEnWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|c:\\juegosenweb\\assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|c:\\juegosenweb\\assets\\scripts\\player\\movespell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\movespell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|C:\\JuegosEnWeb\\assets\\scripts\\props\\tower.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,12 +15,16 @@
       "RelativeMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\powerups\\powerupbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\JuegosEnWeb\\Library\\PackageCache\\com.unity.netcode.gameobjects@1.11.0\\Runtime\\Messaging\\Messages\\RpcMessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.netcode.gameobjects@1.11.0\\Runtime\\Messaging\\Messages\\RpcMessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|C:\\JuegosEnWeb\\assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|C:\\JuegosEnWeb\\assets\\scripts\\player\\movespell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\movespell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|c:\\juegosenweb\\assets\\scripts\\props\\arrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\props\\arrow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\JuegosEnWeb\\Library\\PackageCache\\com.unity.netcode.gameobjects@1.11.0\\Runtime\\Messaging\\Messages\\RpcMessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.netcode.gameobjects@1.11.0\\Runtime\\Messaging\\Messages\\RpcMessages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{37588C16-F4B1-0FDC-A1A0-9F6F79BD3581}|Assembly-CSharp.csproj|C:\\JuegosEnWeb\\assets\\scripts\\game\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -61,12 +65,21 @@
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Arrow.cs",
+              "DocumentMoniker": "C:\\JuegosEnWeb\\Assets\\Scripts\\Props\\Arrow.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Props\\Arrow.cs",
+              "ToolTip": "C:\\JuegosEnWeb\\Assets\\Scripts\\Props\\Arrow.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Props\\Arrow.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-13T17:25:59.956Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "RpcMessages.cs",
               "DocumentMoniker": "C:\\JuegosEnWeb\\Library\\PackageCache\\com.unity.netcode.gameobjects@1.11.0\\Runtime\\Messaging\\Messages\\RpcMessages.cs",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.netcode.gameobjects@1.11.0\\Runtime\\Messaging\\Messages\\RpcMessages.cs",
@@ -79,26 +92,30 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "MoveSpell.cs",
               "DocumentMoniker": "C:\\JuegosEnWeb\\Assets\\Scripts\\Player\\MoveSpell.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\MoveSpell.cs",
               "ToolTip": "C:\\JuegosEnWeb\\Assets\\Scripts\\Player\\MoveSpell.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\MoveSpell.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAAwCMAAAAlAAAA",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-11T18:56:46.73Z",
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\JuegosEnWeb\\Assets\\Scripts\\Player\\Player.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Player.cs",
               "ToolTip": "C:\\JuegosEnWeb\\Assets\\Scripts\\Player\\Player.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player\\Player.cs",
-              "ViewState": "AQIAAFwAAAAAAAAAAAAgwEMAAAA4AAAA",
+              "ViewState": "AQIAAMMAAAAAAAAAAAAhwN4AAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-26T15:35:17.297Z",
               "EditorCaption": ""
@@ -111,14 +128,14 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Props\\Tower.cs",
               "ToolTip": "C:\\JuegosEnWeb\\Assets\\Scripts\\Props\\Tower.cs",
               "RelativeToolTip": "Assets\\Scripts\\Props\\Tower.cs",
-              "ViewState": "AQIAAJ0AAAAAAAAAAAAQwJUAAAAmAAAA",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAwwIUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-26T15:21:27.786Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "UIManager.cs",
               "DocumentMoniker": "C:\\JuegosEnWeb\\Assets\\Scripts\\Netcode\\UIManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Netcode\\UIManager.cs",
@@ -126,18 +143,17 @@
               "RelativeToolTip": "Assets\\Scripts\\Netcode\\UIManager.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB4AAABZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-26T00:18:02.09Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-26T00:18:02.09Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\JuegosEnWeb\\Assets\\Scripts\\Game\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Game\\GameManager.cs",
               "ToolTip": "C:\\JuegosEnWeb\\Assets\\Scripts\\Game\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Game\\GameManager.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAA1wDIAAAAFAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwDIAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-25T23:16:50.791Z",
               "EditorCaption": ""
@@ -150,7 +166,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\PowerUps\\PowerUpBehaviour.cs",
               "ToolTip": "C:\\JuegosEnWeb\\Assets\\Scripts\\PowerUps\\PowerUpBehaviour.cs",
               "RelativeToolTip": "Assets\\Scripts\\PowerUps\\PowerUpBehaviour.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFEAAAAsAAAA",
+              "ViewState": "AQIAADMAAAAAAAAAAAA7wCYAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-25T18:13:36.085Z",
               "EditorCaption": ""

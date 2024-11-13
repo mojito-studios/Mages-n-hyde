@@ -35,10 +35,12 @@ public class PowerUpBehaviour : NetworkBehaviour
         if (IsServer)
         {
             //_puType.Value = Random.Range(1, 5);
-            _puType.Value = 1; //Para probar los minions
+            //_puType.Value = 1; //Para probar los minions
+            _puType.Value = 2; //Para probar las flechas
+
         }
 
-      
+
     }
 
     public void PULogic()
@@ -89,7 +91,7 @@ public class PowerUpBehaviour : NetworkBehaviour
                 tower.SpawnMinions();
                 break;
             case 2:
-                tower.ActivateTurrets();
+                tower.ArrowRain();
                 break;
             case 3:
                 Debug.Log("Levantando escudo");
