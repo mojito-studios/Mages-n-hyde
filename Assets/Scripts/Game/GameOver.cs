@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class GameOver : MonoBehaviour
     public void OnRestart()
     {
         SceneManager.LoadScene(0);
+        //NetworkManager.Destroy(NetworkManager.Singleton);
     }
     private void Awake()
     {

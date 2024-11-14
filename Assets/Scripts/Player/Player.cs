@@ -42,6 +42,8 @@ public class Player : NetworkBehaviour
     //attack
     private Button _spell;
     private Button _ultimateAttack;
+    private Vector3 _respawnPosition;
+    private int _respawnTime = 5;
     [SerializeField] private GameObject spellPrefab;
     [SerializeField] private Transform spellTransform;
 
@@ -103,9 +105,17 @@ public class Player : NetworkBehaviour
 
     private void AssignTower()
     {
-        if (teamAssign == 0) teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
-        else teamTower = GameObject.FindGameObjectWithTag("Team2Tower").GetComponent<Tower>();
-       // Debug.Log("Soy cliente? " + IsClient + " mi torre es " + teamTower.tag);
+        if (teamAssign == 0)
+        {
+            teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
+            _respawnPosition = GameObject.Find("T1RespawnPosition").GetComponent<Transform>().position;
+        }
+        else
+        {
+            teamTower = GameObject.FindGameObjectWithTag("Team2Tower").GetComponent<Tower>();
+            _respawnPosition = GameObject.Find("T2RespawnPosition").GetComponent<Transform>().position;
+        }
+
     }
 
     public void getHit()
@@ -124,6 +134,7 @@ public class Player : NetworkBehaviour
             //Respawn
         }
         Debug.Log(health);
+        if(health.Value <= 0) RespawnPlayerRpc(_respawnPosition);
     }
 
     [Rpc(SendTo.Everyone)]
@@ -133,9 +144,34 @@ public class Player : NetworkBehaviour
         towerHealth.value = teamTower.currentLife.Value;
     }
 
-    void MovePlayer()
+    [Rpc(SendTo.Server)]
+    private void RespawnPlayerRpc(Vector3 position)
     {
-       
+        RespawnPlayer(position);
+    }
+
+    public void RespawnPlayer(Vector3 position)
+    {
+        SetActiveStateRpc(false);
+        _respawnPosition = position;
+        Invoke("SpawnObject", 5);
+    }
+   
+    private void SpawnObject()
+    {
+        _moving = false;
+        transform.position = _respawnPosition; 
+        SetActiveStateRpc(true);
+
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void SetActiveStateRpc(bool isActive) 
+    {
+        gameObject.SetActive(isActive);
+    }
+    void MovePlayer()
+    { 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); 
         if(targetPosition!= transform.position)
         {
@@ -148,10 +184,7 @@ public class Player : NetworkBehaviour
         }
     }
 
-    
-
-    //En el host funcionan todas las cosas sin problema y se ven los cambios reflejados en el otro cliente
-    public void OnMovement(InputAction.CallbackContext context) //Se activa al hacer click izquierdo
+    public void OnMovement(InputAction.CallbackContext context) 
     {
         if (!IsOwner) return;
         Vector3 position = Mouse.current.position.ReadValue();
