@@ -27,7 +27,9 @@ namespace UIManagerSpace
 
         void OnGUI()
         {
-            GUILayout.BeginArea(new Rect(10, 10, 300, 300));
+            GUILayout.BeginArea(new Rect(20, 20, Screen.width-20, Screen.height-20));
+            GUI.skin.button.fontSize = 120;
+            GUI.skin.textField.fontSize = 120;
             if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
             {
                 StartButtons();
@@ -42,10 +44,13 @@ namespace UIManagerSpace
 
         void StartButtons()
         {
-            if (GUILayout.Button("Host")) StartHost();
-            if (GUILayout.Button("Server")) StartServer();
-            if (GUILayout.Button("Client")) StartClient(joinCode);
-            joinCode = GUILayout.TextField(joinCode);
+            if (GUILayout.Button("Host", GUILayout.Width(Screen.width-50), GUILayout.Height(150))) StartHost();
+            GUILayout.Space(50);
+            if (GUILayout.Button("Server", GUILayout.Width(Screen.width - 50), GUILayout.Height(150))) StartServer();
+            GUILayout.Space(50);
+            if (GUILayout.Button("Client", GUILayout.Width(Screen.width - 50), GUILayout.Height(150))) StartClient(joinCode);
+            GUILayout.Space(50);
+            joinCode = GUILayout.TextField(joinCode, GUILayout.Width(Screen.width - 50), GUILayout.Height(150));
         }
 
         void StatusLabels()

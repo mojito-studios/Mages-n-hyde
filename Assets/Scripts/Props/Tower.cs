@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tower : NetworkBehaviour
 {
@@ -11,7 +12,8 @@ public class Tower : NetworkBehaviour
     private const int shootingTime = 2;
     private const float minionsDamage = 0.5f;
     private const float minionsTime = 1.5f;
-    public NetworkVariable<float> actualLife = new NetworkVariable<float>();
+    [SerializeField] private Slider healthBar;
+    public NetworkVariable<float> currentLife = new NetworkVariable<float>();
     public NetworkVariable<float> shield = new NetworkVariable<float>(); //PowerUp de escudo
     private NetworkVariable<bool> _isDefending = new NetworkVariable<bool>(false);
     [SerializeField] private GameObject minions;
@@ -29,7 +31,7 @@ public class Tower : NetworkBehaviour
         base.OnNetworkSpawn();
         if (IsServer)
         {
-            actualLife.Value = maxLife;
+            currentLife.Value = maxLife;
             shield.Value = maxShield;
         }
     }
@@ -44,7 +46,7 @@ public class Tower : NetworkBehaviour
         int damageTower = 1; //daño que haga la colisión, se saca desde fuera
         Debug.Log("HiriendoTorrre");
         DamageTowerRpc(damageTower);
-        Debug.Log("Mi vida es de " + actualLife.Value);
+        Debug.Log("Mi vida es de " + currentLife.Value);
     }
 
     public bool GetIsDefending()
@@ -54,8 +56,9 @@ public class Tower : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void DamageTowerRpc(int damage)
     {
-        actualLife.Value -= damage;
-        if (actualLife.Value <= 0)
+        currentLife.Value -= damage;
+        healthBar.value = currentLife.Value;
+        if (currentLife.Value <= 0)
         {
          GameManager.Instance.EndGame(this.tag);
         }
@@ -83,16 +86,16 @@ public class Tower : NetworkBehaviour
     {
         Debug.Log("Curando Torre");
         HealTowerRpc(maxLife);
-        Debug.Log("Mi vida es de " + actualLife.Value);
+        Debug.Log("Mi vida es de " + currentLife.Value);
 
     }
 
     [Rpc(SendTo.Server)]
     private void HealTowerRpc(float maxLife)
     {
-        if (actualLife.Value == maxLife) return; //Si está curada no hace nada
-        actualLife.Value += Random.Range(2, 6); //Se le suma un número random entre 2 y 5
-        if (actualLife.Value > maxLife) actualLife.Value = maxLife; //Si se pasa de la vida máxima queda con la vida máxima
+        if (currentLife.Value == maxLife) return; //Si está curada no hace nada
+        currentLife.Value += Random.Range(2, 6); //Se le suma un número random entre 2 y 5
+        if (currentLife.Value > maxLife) currentLife.Value = maxLife; //Si se pasa de la vida máxima queda con la vida máxima
 
     }
 

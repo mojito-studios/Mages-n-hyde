@@ -11,6 +11,7 @@ using UnityEngine.Playables;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
+using Slider = UnityEngine.UI.Slider;
 using TouchPhase = UnityEngine.TouchPhase;
 
 public class Player : NetworkBehaviour
@@ -19,7 +20,9 @@ public class Player : NetworkBehaviour
     private Camera _camera;
     public int teamAssign;
     private Tower teamTower;
-    private int health = 100;
+    private NetworkVariable<int> health = new NetworkVariable<int> (100);
+    [SerializeField] private Slider healthBar;
+    [SerializeField] private Slider towerHealth;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     [SerializeField] private TextMeshProUGUI _health;
     [SerializeField] private TextMeshProUGUI _towerHealth;
@@ -55,7 +58,6 @@ public class Player : NetworkBehaviour
             else if(button.CompareTag("UltiButton")) { _ultimateAttack = button; }
         }
         _ultimateAttack.interactable = false;
-        
 
     }
 
@@ -114,15 +116,21 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     private void getHitServerRpc()
     {
-        health -= 10;
-        _health.text = "Health: " + health;
+        health.Value -= 10;
+        _health.text = "Health: " + health.Value;
+        healthBar.value = health.Value;
+        if (health.Value <= 0)
+        {
+            //Respawn
+        }
         Debug.Log(health);
     }
 
     [Rpc(SendTo.Everyone)]
     private void updateTowerHealthRpc()
     {
-        _towerHealth.text = "TowerHealth: " + teamTower.actualLife.Value;
+        _towerHealth.text = "TowerHealth: " + teamTower.currentLife.Value;
+        towerHealth.value = teamTower.currentLife.Value;
     }
 
     void MovePlayer()
