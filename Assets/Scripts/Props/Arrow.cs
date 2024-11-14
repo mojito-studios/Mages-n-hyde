@@ -6,13 +6,14 @@ using Unity.Netcode;
 public class Arrow : NetworkBehaviour
 {
     private int _damage;
+    private int _arrowForce = 2;
     public Tower casterTower;
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-       // GetComponent<Rigidbody2D>().velocity = this.transform.up * spellForce;
+       GetComponent<Rigidbody2D>().velocity = this.transform.up * _arrowForce;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player") 
         {
@@ -22,10 +23,8 @@ public class Arrow : NetworkBehaviour
             {
                 collision.gameObject.GetComponent<Player>().getHit();
             }
-            else 
-            {
-                DestroyServerRpc();
-            }
+           
+           
           
         }
        
@@ -38,7 +37,6 @@ public class Arrow : NetworkBehaviour
                 if (colisionToweer.GetIsDefending()) colisionToweer.DamageShields();
                 else colisionToweer.DamageTower();
             }
-            else DestroyServerRpc();
             
 
         }
