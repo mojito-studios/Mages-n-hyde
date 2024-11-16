@@ -66,13 +66,16 @@
     <Compile Include="Assets\ScriptableObjects\Props\PropSO.cs" />
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\InputController.cs" />
+    <Compile Include="Assets\Scripts\Lobby\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Lobby\LobbySystemManager.cs" />
     <Compile Include="Assets\Scripts\Player\MoveSpell.cs" />
     <Compile Include="Assets\Scripts\Props\Tower.cs" />
     <Compile Include="Assets\Scripts\Netcode\UIManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MenuController.cs" />
     <Compile Include="Assets\Scripts\Player\Buttons.cs" />
     <Compile Include="Assets\Scripts\Game\GameOver.cs" />
+    <Compile Include="Assets\Scripts\Lobby\OptionsChosen.cs" />
     <Compile Include="Assets\Scripts\Netcode\NetworkObjectPool.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Props\Props.cs" />

@@ -42,7 +42,7 @@ public class Player : NetworkBehaviour
     //attack
     private Button _spell;
     private Button _ultimateAttack;
-    private Vector3 _respawnPosition;
+    private Vector3 _spawnPosition;
     private int _respawnTime = 5;
     [SerializeField] private GameObject spellPrefab;
     [SerializeField] private Transform spellTransform;
@@ -67,7 +67,6 @@ public class Player : NetworkBehaviour
     {
         base.OnNetworkSpawn();
         SetPlayer();
-        teamAssign = 0;
         AssignTower();
         ultiAttack.OnValueChanged += interactableButton;
 
@@ -108,12 +107,12 @@ public class Player : NetworkBehaviour
         if (teamAssign == 0)
         {
             teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
-            _respawnPosition = GameObject.Find("T1RespawnPosition").GetComponent<Transform>().position;
+            
         }
         else
         {
             teamTower = GameObject.FindGameObjectWithTag("Team2Tower").GetComponent<Tower>();
-            _respawnPosition = GameObject.Find("T2RespawnPosition").GetComponent<Transform>().position;
+            
         }
 
     }
@@ -134,7 +133,7 @@ public class Player : NetworkBehaviour
             //Respawn
         }
         Debug.Log(health);
-        if(health.Value <= 0) RespawnPlayerRpc(_respawnPosition);
+        if(health.Value <= 0) RespawnPlayerRpc(_spawnPosition);
     }
 
     [Rpc(SendTo.Everyone)]
@@ -153,14 +152,14 @@ public class Player : NetworkBehaviour
     public void RespawnPlayer(Vector3 position)
     {
         SetActiveStateRpc(false);
-        _respawnPosition = position;
+        _spawnPosition = position;
         Invoke("SpawnObject", 5);
     }
    
     private void SpawnObject()
     {
         _moving = false;
-        transform.position = _respawnPosition; 
+        transform.position = _spawnPosition; 
         SetActiveStateRpc(true);
 
     }
@@ -197,8 +196,10 @@ public class Player : NetworkBehaviour
     
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estás encima de un prop
     {
+
         if (!IsOwner || _hiding) return;
-        if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 3f)
+        Debug.Log(Vector3.Distance(transform.position, pBehaviour.transform.position));
+        if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 11f) //¿Por qué ahora la distancia es tanta?
         {
             
             OnHideRpc(pBehaviour.spriteNumber, pBehaviour.NetworkObjectId, pBehaviour.timeHiding);
@@ -211,14 +212,14 @@ public class Player : NetworkBehaviour
     {
         _hiding = true;
         ChangeSpriteRpc(spriteN, NID);
-        StartCoroutine(HideCoroutine(time, NID)); //Cambiar el hardcode por el tiempo que vaya a durar el objeto según su SO
+        StartCoroutine(HideCoroutine(time, NID)); 
 
     }
 
     [Rpc(SendTo.Everyone)]
     private void ChangeSpriteRpc(int spriteNumber, ulong NID)
     {
-        GetComponent<SpriteRenderer>().sprite = allSprites[spriteNumber]; //Voy a ignorar el tema del color porque en principio solo se cambia ahora por ser placeholders 
+        GetComponent<SpriteRenderer>().sprite = allSprites[spriteNumber]; 
         var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[NID].gameObject;
         hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
 
@@ -250,6 +251,29 @@ public class Player : NetworkBehaviour
         return teamTower.NetworkObjectId;
     }
 
+    public void SetSpawnPositionValue(Vector3 position)
+    {
+        SetSpawnPositionValueRpc(position);
+    }
+
+    [Rpc(SendTo.Server)]
+
+    private void SetSpawnPositionValueRpc(Vector3 position)
+    {
+        _spawnPosition = position;
+    }
+
+    public void SetTeamAssing(int team)
+    {
+        SetTeamAssingRpc(team);
+    }
+
+    [Rpc(SendTo.Server)]
+
+    private void SetTeamAssingRpc (int team)
+    {
+        teamAssign = team;
+    }
     public void SetUltiValue(int value)
     {
         SetUltiValueRpc(value);

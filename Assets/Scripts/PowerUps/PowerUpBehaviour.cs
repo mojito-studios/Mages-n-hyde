@@ -16,8 +16,8 @@ public class PowerUpBehaviour : NetworkBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player") || !NetworkManager.Singleton.IsServer || _playerId.Value != 0) return; //Si interacciona con cualquier otro objeto con colliders nos da igual, y si no es el server entonces no tiene validez para evitar las trampas
-        _playerId.Value = collision.GetComponent<NetworkObject>().NetworkObjectId;
+        if (!collision.CompareTag("Player") || _playerId.Value != 0) return; 
+        SetPlayerIdRpc(GetComponent<NetworkObject>().NetworkObjectId);
         _isTriggered = true;
       
 
@@ -27,9 +27,14 @@ public class PowerUpBehaviour : NetworkBehaviour
     {
         Debug.Log("DESACTIVADO");
         _isTriggered = false;
-        _playerId.Value = 0;
+        SetPlayerIdRpc(0);
     }
 
+    [Rpc(SendTo.Server)]
+    public void SetPlayerIdRpc(ulong playerId)
+    {
+        _playerId.Value = playerId;
+    }
     public override void OnNetworkSpawn()
     {
         if (IsServer)

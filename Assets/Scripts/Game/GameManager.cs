@@ -18,6 +18,9 @@ public class GameManager : NetworkBehaviour
     public static GameManager Instance { get; private set; }
     private List<NetworkObject> activeObjects = new List<NetworkObject>();
     [SerializeField] private Judge judge;
+    [SerializeField] private Transform startPos1;
+    [SerializeField] private Transform startPos2;
+    [SerializeField] private List<GameObject> prefabs = new List<GameObject>();
 
     private void Awake()
     {
@@ -25,12 +28,27 @@ public class GameManager : NetworkBehaviour
         {
             Instance = this;
         }
+     
+    }
+
+    private void HandleSceneLoadComplete(string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
+    {
+        if (NetworkManager.Singleton.IsServer)
+        {
+            InstantiatePlayers();
+            SpawnPUStart();
+            ActiveObjects();
+        }
+    }
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+        NetworkManager.Singleton.SceneManager.OnLoadEventCompleted += HandleSceneLoadComplete;
     }
     void Start()
     {
         judge = GameObject.FindGameObjectWithTag("Judge").GetComponent<Judge>();
-        NetworkManager.Singleton.OnServerStarted += SpawnPUStart;
-        NetworkManager.Singleton.OnServerStarted += ActiveObjects;
+       
     }
 
 
@@ -40,10 +58,36 @@ public class GameManager : NetworkBehaviour
     {
 
     }
+    private void InstantiatePlayers()
+    {
+        int i = 0;
+        int j = 0;
+        foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        {
+            PlayerData playerData = OptionsChosen.Instance.GetPlayerDataFromClientId(clientId);
+            Vector3 positionSpawn;
+
+            if (playerData.team == 0) 
+            {
+                positionSpawn = startPos1.GetChild(i).position;
+                i++;
+            }
+            else
+            {
+                positionSpawn = startPos2.GetChild(j).position;
+                j++;
+
+            }
+            GameObject player = Instantiate(prefabs[playerData.prefabId], positionSpawn, Quaternion.identity);
+            player.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId);
+            player.GetComponent<Player>().SetSpawnPositionValue(positionSpawn);
+            player.GetComponent<Player>().SetTeamAssing(playerData.team);
+           
+        }
+    }
 
     private void SpawnPUStart()
     {
-        NetworkManager.Singleton.OnServerStarted -= SpawnPUStart;
         StartCoroutine(SpawnOverTime());
     }
 
@@ -59,7 +103,7 @@ public class GameManager : NetworkBehaviour
 
     private Vector3 GetRandomPosition()
     {
-        return new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), 0); //Ajustarlo luego bien al mapa esto es solo como prueba
+        return new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0); //Ajustarlo luego bien al mapa esto es solo como prueba
     }
 
     private IEnumerator SpawnOverTime()
@@ -82,11 +126,7 @@ public class GameManager : NetworkBehaviour
     
     private void ActiveObjects()
     {
-        if (!IsServer) return;
-        NetworkManager.Singleton.OnServerStarted -= ActiveObjects;
         StartCoroutine(ObjectManager());
-        
-
     }
 
     private IEnumerator ObjectManager()
@@ -130,4 +170,5 @@ public class GameManager : NetworkBehaviour
         judge.winningTeam = tag;
         Debug.Log("TorreEliminada: " + tag);
     }
+
 }

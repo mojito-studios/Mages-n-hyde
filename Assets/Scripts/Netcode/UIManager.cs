@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Networking.Transport.Relay;
@@ -7,22 +8,40 @@ using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+
 
 namespace UIManagerSpace
 {
     public class UIManager : MonoBehaviour
     {
         private string joinCode = "Enter code...";
-        private const int maxConnections = 4;
+        private int maxConnections = 4;
+        [SerializeField] UnityEngine.UI.Button hostButton;
+        [SerializeField] UnityEngine.UI.Button clientButton;
+        [SerializeField] TMP_InputField joinCodeText;
+        [SerializeField] GameObject lobbyManager;
+        [SerializeField] GameObject lobbySystemManager;
 
+         void Awake()
+        {
+            lobbySystemManager.SetActive(false);
+            lobbyManager.SetActive(true);
+        }
         async void Start()
         {
             await UnityServices.InitializeAsync();
 
+            joinCodeText.text = joinCode;
             AuthenticationService.Instance.SignedIn +=
                 () => print($"New player {AuthenticationService.Instance.PlayerId} connected");
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
+           
+            
+            
+            
         }
 
         void OnGUI()
@@ -30,28 +49,36 @@ namespace UIManagerSpace
             GUILayout.BeginArea(new Rect(20, 20, Screen.width-20, Screen.height-20));
             GUI.skin.button.fontSize = 120;
             GUI.skin.textField.fontSize = 120;
-            if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
+            /*if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
             {
                 StartButtons();
             }
             else
-            {
+            {*/
+            if(NetworkManager.Singleton.IsClient || NetworkManager.Singleton.IsServer) //Para que se muestre en el cliente tmb el código
                 StatusLabels();
-            }
+            //}
+            
 
             GUILayout.EndArea();
         }
 
         void StartButtons()
         {
+            if (hostButton) StartHost();
+            if (clientButton) StartClient(joinCode);
+            joinCode = joinCodeText.text;
+        }
+
+       /* void StartButtons()
+        {
             if (GUILayout.Button("Host", GUILayout.Width(Screen.width-50), GUILayout.Height(150))) StartHost();
             GUILayout.Space(50);
-            if (GUILayout.Button("Server", GUILayout.Width(Screen.width - 50), GUILayout.Height(150))) StartServer();
-            GUILayout.Space(50);
+          
             if (GUILayout.Button("Client", GUILayout.Width(Screen.width - 50), GUILayout.Height(150))) StartClient(joinCode);
             GUILayout.Space(50);
             joinCode = GUILayout.TextField(joinCode, GUILayout.Width(Screen.width - 50), GUILayout.Height(150));
-        }
+        }*/
 
         void StatusLabels()
         {
@@ -65,6 +92,34 @@ namespace UIManagerSpace
             GUILayout.Label("Room: " + joinCode);
         }
 
+        public void OnStartHostClick()
+        {
+            if(!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
+            {
+                OptionsChosen.Instance.KeepTrack();
+                lobbyManager.SetActive(false);
+                StartHost();
+                
+            }
+           
+           
+            
+        }
+
+        public void SetJoinCode(string newJoinCode)
+        {
+            joinCode = newJoinCode;
+        }
+
+        public void OnStartClientClick()
+        {
+            if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
+            {
+                lobbyManager.SetActive(false);
+                StartClient(joinCode);
+            }
+                
+        }
         private async void StartHost()
         {
             try
@@ -81,7 +136,8 @@ namespace UIManagerSpace
                 joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
                 NetworkManager.Singleton.StartHost();
-               // NetworkManager.Singleton.SceneManager.LoadScene("GameScene",LoadSceneMode.Single);
+                lobbySystemManager.SetActive(true);
+                // NetworkManager.Singleton.SceneManager.LoadScene("GameScene",LoadSceneMode.Single);
             }
             catch (RelayServiceException e)
             {
@@ -111,6 +167,7 @@ namespace UIManagerSpace
             }
         }
 
+
         private async void StartClient(string joinCode)
         {
             try
@@ -125,10 +182,12 @@ namespace UIManagerSpace
                 NetworkManager.Singleton.GetComponent<UnityTransport>()
                     .SetRelayServerData(new RelayServerData(joinAllocation, "wss"));
                 NetworkManager.Singleton.StartClient();
+                lobbySystemManager.SetActive(true);
             }
             catch (RelayServiceException e)
             {
                 print(e);
+                lobbyManager.SetActive(true);
             }
         }
     }
