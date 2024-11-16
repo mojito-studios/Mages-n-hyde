@@ -20,7 +20,9 @@ public class Player : NetworkBehaviour
     private Camera _camera;
     public int teamAssign;
     private Tower teamTower;
-    private NetworkVariable<int> health = new NetworkVariable<int> (100);
+    private const int maxLife = 100;
+    public int attack { get; private set; }
+    private NetworkVariable<int> health = new NetworkVariable<int> ();
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider towerHealth;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
@@ -66,6 +68,7 @@ public class Player : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
+        health.Value = maxLife;
         SetPlayer();
         AssignTower();
         ultiAttack.OnValueChanged += interactableButton;
@@ -91,7 +94,7 @@ public class Player : NetworkBehaviour
         }
         if (_moving)
             MovePlayer(); 
-        updateTowerHealthRpc();
+        updateHealthRpc();
     }
 
     void SetPlayer()
@@ -119,26 +122,25 @@ public class Player : NetworkBehaviour
 
     public void getHit()
     {
-        getHitServerRpc();
+        getHitRpc();
     }
 
     [Rpc(SendTo.Everyone)]
-    private void getHitServerRpc()
+    private void getHitRpc()
     {
         health.Value -= 10;
-        _health.text = "Health: " + health.Value;
-        healthBar.value = health.Value;
         if (health.Value <= 0)
         {
-            //Respawn
+            health.Value = maxLife;
+            RespawnPlayerRpc(_spawnPosition);
         }
-        Debug.Log(health);
-        if(health.Value <= 0) RespawnPlayerRpc(_spawnPosition);
     }
 
     [Rpc(SendTo.Everyone)]
-    private void updateTowerHealthRpc()
+    private void updateHealthRpc()
     {
+        _health.text = "Health: " + health.Value;
+        healthBar.value = health.Value;
         _towerHealth.text = "TowerHealth: " + teamTower.currentLife.Value;
         towerHealth.value = teamTower.currentLife.Value;
     }

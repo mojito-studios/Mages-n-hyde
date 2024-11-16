@@ -37,10 +37,16 @@ public class Tower : NetworkBehaviour
     }
     void Update()
     {
-        
+        updateStatsRpc();
     }
 
-  
+    [Rpc(SendTo.Everyone)]
+    private void updateStatsRpc()
+    {
+        healthBar.value = currentLife.Value;
+        //Aquí se le añaden las actualizaciones del resto de cosas de la ui so tiene para el escudo etc si no pues no
+    }
+
     public void DamageTower()
     {
         int damageTower = 1; //daño que haga la colisión, se saca desde fuera
@@ -53,11 +59,10 @@ public class Tower : NetworkBehaviour
     {
         return _isDefending.Value;
     }
-    [Rpc(SendTo.Server)]
+    [Rpc(SendTo.Everyone)]
     private void DamageTowerRpc(int damage)
     {
         currentLife.Value -= damage;
-        healthBar.value = currentLife.Value;
         if (currentLife.Value <= 0)
         {
          GameManager.Instance.EndGame(this.tag);
