@@ -24,7 +24,7 @@ public class LobbySystemManager : MonoBehaviour
         spriteToShow = playerPrefab.GetComponent<SpriteRenderer>();
         prefabIndex = 0;
        // spriteToShow.sprite = charactersPrefabs[0].GetComponent<SpriteRenderer>().sprite;
-        spriteToShow.color = charactersPrefabs[0].GetComponent<SpriteRenderer>().color; //Como de momento solo cambia el color lo dejo así
+         spriteToShow.color = charactersPrefabs[0].GetComponent<SpriteRenderer>().color; //Como de momento solo cambia el color lo dejo así
     }
 
     // Update is called once per frame

@@ -95,7 +95,7 @@ public class OptionsChosen : NetworkBehaviour
         return -1;
     }
 
-    public void ChangePlayerPrefab(int prefabId) //Cambia el color para cada objeto que lo solicite (en la lista, no de forma visual).
+    public void ChangePlayerPrefab(int prefabId) 
     {
 
         ChangePrefabRpc(prefabId);

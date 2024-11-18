@@ -36,10 +36,10 @@ public class Player : NetworkBehaviour
     private Vector3 targetPosition = Vector3.zero;
 
     //hide
-    private bool _hiding = false;
-    [HideInInspector] public PropsBehaviour pBehaviour;
-    private Dictionary<ulong, GameObject> playerHidingObjects = new Dictionary<ulong, GameObject>();
-    [SerializeField] private Sprite[] allSprites;
+    private NetworkVariable<bool> _hiding = new NetworkVariable<bool>();
+    Sprite _sprite;
+    private NetworkVariable<int> spriteIndex = new NetworkVariable<int>();
+    [HideInInspector] NetworkVariable<ulong> _pBehaviour = new NetworkVariable<ulong>();
 
     //attack
     private Button _spell;
@@ -49,12 +49,15 @@ public class Player : NetworkBehaviour
     [SerializeField] private GameObject spellPrefab;
     [SerializeField] private Transform spellTransform;
 
+    private void Awake()
+    {
+        _sprite = GetComponent<SpriteRenderer>().sprite;
+
+    }
     void Start()
     {
         if (!IsOwner) return;
         _camera = GetComponentInChildren<Camera>();
-        Debug.Log(_camera);
-        allSprites[0] = GetComponent<SpriteRenderer>().sprite;
         Button[] buttonList = GetComponentsInChildren<Button>();
         foreach (var button in buttonList)
         {
@@ -68,14 +71,34 @@ public class Player : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-        health.Value = maxLife;
+        if (IsServer)
+        {
+            health.Value = maxLife;
+            _hiding.Value = false;
+            spriteIndex.Value = GameManager.Instance.GetPrefabIndex(_sprite);
+
+        }
+
         SetPlayer();
         AssignTower();
         ultiAttack.OnValueChanged += interactableButton;
+        _hiding.OnValueChanged = ChangeSprite;
 
     }
 
+   
 
+    public void SetPBehaviour(ulong pBehaviourID)
+    {
+        SetPBehaviourRpc(pBehaviourID);
+    }
+
+    [Rpc(SendTo.Server)]
+
+    public void SetPBehaviourRpc(ulong pBehaviourID)
+    {
+        _pBehaviour.Value = pBehaviourID;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -95,6 +118,16 @@ public class Player : NetworkBehaviour
         if (_moving)
             MovePlayer(); 
         updateHealthRpc();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        SetMovingRpc(false);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        SetMovingRpc(false);
     }
 
     void SetPlayer()
@@ -171,6 +204,18 @@ public class Player : NetworkBehaviour
     {
         gameObject.SetActive(isActive);
     }
+
+    [Rpc(SendTo.Server)]
+    private void SetMovingRpc(bool isMoving)
+    {
+        _moving = isMoving;
+    }
+
+    [Rpc(SendTo.Server)]
+    private void OnHideRpc(bool hide)
+    {
+        _hiding.Value = hide;
+    }
     void MovePlayer()
     { 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); 
@@ -199,38 +244,44 @@ public class Player : NetworkBehaviour
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estás encima de un prop
     {
 
-        if (!IsOwner || _hiding) return;
-        Debug.Log(Vector3.Distance(transform.position, pBehaviour.transform.position));
+        if (!IsOwner || _hiding.Value) return;
+
+        Debug.Log(_pBehaviour.Value);
+        PropsBehaviour pBehaviour = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].GetComponent<PropsBehaviour>();
         if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 11f) //¿Por qué ahora la distancia es tanta?
         {
+
+            OnHideRpc(true);
             
-            OnHideRpc(pBehaviour.spriteNumber, pBehaviour.NetworkObjectId, pBehaviour.timeHiding);
-            pBehaviour = null;
         }
     }
 
-    [Rpc(SendTo.Server)]
-    private void OnHideRpc(int spriteN, ulong NID, float time)
+    void ChangeSprite(bool oldValue, bool newValue)
     {
-        _hiding = true;
-        ChangeSpriteRpc(spriteN, NID);
-        StartCoroutine(HideCoroutine(time, NID)); 
+        if(newValue)
+        {
+            PropsBehaviour pBehaviourHide = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].GetComponent<PropsBehaviour>();
+            Sprite spriteToChange = GameManager.Instance.props[pBehaviourHide.spriteNumber].GetComponent<SpriteRenderer>().sprite;
+            GetComponent<SpriteRenderer>().sprite = spriteToChange;
+            var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].gameObject;
+            hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
+            StartCoroutine(HideCoroutine(pBehaviourHide.timeHiding));
 
+        }
+        else
+        {
+            Sprite oldSprite = GameManager.Instance.prefabs[spriteIndex.Value].GetComponent<SpriteRenderer>().sprite;
+            GetComponent<SpriteRenderer>().sprite = oldSprite;
+            var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[_pBehaviour.Value].gameObject;
+            hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
+            SetPBehaviour(0);
+        }
     }
-
-    [Rpc(SendTo.Everyone)]
-    private void ChangeSpriteRpc(int spriteNumber, ulong NID)
-    {
-        GetComponent<SpriteRenderer>().sprite = allSprites[spriteNumber]; 
-        var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[NID].gameObject;
-        hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
-
-    }
-    private IEnumerator HideCoroutine(float time, ulong NID)
+    private IEnumerator HideCoroutine(float time)
     {
         yield return new WaitForSeconds(time);
-        _hiding = false;
-        ChangeSpriteRpc(0, NID);
+        OnHideRpc(false);
+       
        
     }
 
@@ -264,18 +315,7 @@ public class Player : NetworkBehaviour
     {
         _spawnPosition = position;
     }
-
-    public void SetTeamAssing(int team)
-    {
-        SetTeamAssingRpc(team);
-    }
-
-    [Rpc(SendTo.Server)]
-
-    private void SetTeamAssingRpc (int team)
-    {
-        teamAssign = team;
-    }
+   
     public void SetUltiValue(int value)
     {
         SetUltiValueRpc(value);

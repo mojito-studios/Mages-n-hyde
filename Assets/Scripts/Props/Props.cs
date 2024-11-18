@@ -23,7 +23,7 @@ public class PropsBehaviour : NetworkBehaviour
     protected void OnMouseEnter()
     {
         _player = GetLocalPlayer(); 
-        _player.pBehaviour = this;
+        _player.SetPBehaviour(this.NetworkObjectId);
     }
 
     protected void OnMouseExit()

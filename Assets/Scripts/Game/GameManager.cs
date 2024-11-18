@@ -20,7 +20,8 @@ public class GameManager : NetworkBehaviour
     [SerializeField] private Judge judge;
     [SerializeField] private Transform startPos1;
     [SerializeField] private Transform startPos2;
-    [SerializeField] private List<GameObject> prefabs = new List<GameObject>();
+     public List<GameObject> prefabs = new List<GameObject>();
+    public List<GameObject> props = new List<GameObject>();
 
     private void Awake()
     {
@@ -51,13 +52,28 @@ public class GameManager : NetworkBehaviour
        
     }
 
-
-
     // Update is called once per frame
     void Update()
     {
 
     }
+
+    public int GetPrefabIndex(Sprite sprite)
+    {
+        for(int i = 0;  i < prefabs.Count; i++) 
+        {
+            Debug.Log(prefabs[i].GetComponent<SpriteRenderer>().sprite);
+            if(prefabs[i].GetComponent<SpriteRenderer>().sprite == sprite)
+            {
+
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
+
     private void InstantiatePlayers()
     {
         int i = 0;
@@ -81,7 +97,7 @@ public class GameManager : NetworkBehaviour
             GameObject player = Instantiate(prefabs[playerData.prefabId], positionSpawn, Quaternion.identity);
             player.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId);
             player.GetComponent<Player>().SetSpawnPositionValue(positionSpawn);
-            player.GetComponent<Player>().SetTeamAssing(playerData.team);
+            player.GetComponent<Player>().teamAssign = playerData.team;
            
         }
     }
