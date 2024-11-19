@@ -20,9 +20,10 @@ public class Player : NetworkBehaviour
     private Camera _camera;
     public int teamAssign;
     private Tower teamTower;
-    private const int maxLife = 100;
-    public int attack { get; private set; }
-    private NetworkVariable<int> health = new NetworkVariable<int> ();
+    private const float maxLife = 100;
+    public float attack = 1;
+    public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float> ();
+    private NetworkVariable<int> killCount = new NetworkVariable<int>();
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider towerHealth;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
@@ -153,15 +154,15 @@ public class Player : NetworkBehaviour
 
     }
 
-    public void getHit()
+    public void getHit(float damage)
     {
-        getHitRpc();
+        getHitRpc(damage);
     }
 
     [Rpc(SendTo.Everyone)]
-    private void getHitRpc()
+    private void getHitRpc(float damage)
     {
-        health.Value -= 10;
+        health.Value -= damage*10;
         if (health.Value <= 0)
         {
             health.Value = maxLife;
@@ -189,6 +190,11 @@ public class Player : NetworkBehaviour
         SetActiveStateRpc(false);
         _spawnPosition = position;
         Invoke("SpawnObject", 5);
+    }
+
+    public void kill()
+    {
+        killCount.Value++;
     }
    
     private void SpawnObject()

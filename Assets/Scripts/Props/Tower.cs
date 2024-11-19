@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class Tower : NetworkBehaviour
 {
     private const float maxShield = 5; //Escudo total
-    private const float maxLife = 10; //Vida total 
+    private const float maxLife = 100; //Vida total 
     private const int shootingTime = 2;
     private const float minionsDamage = 0.5f;
     private const float minionsTime = 1.5f;
@@ -47,9 +47,9 @@ public class Tower : NetworkBehaviour
         //Aquí se le añaden las actualizaciones del resto de cosas de la ui so tiene para el escudo etc si no pues no
     }
 
-    public void DamageTower()
+    public void DamageTower(float damageTower)
     {
-        int damageTower = 1; //daño que haga la colisión, se saca desde fuera
+        //int damageTower = 1; //daño que haga la colisión, se saca desde fuera
         Debug.Log("HiriendoTorrre");
         DamageTowerRpc(damageTower);
         Debug.Log("Mi vida es de " + currentLife.Value);
@@ -59,10 +59,10 @@ public class Tower : NetworkBehaviour
     {
         return _isDefending.Value;
     }
-    [Rpc(SendTo.Everyone)]
-    private void DamageTowerRpc(int damage)
+    [Rpc(SendTo.Server)]
+    private void DamageTowerRpc(float damage)
     {
-        currentLife.Value -= damage;
+        currentLife.Value -= damage*5;
         if (currentLife.Value <= 0)
         {
          GameManager.Instance.EndGame(this.tag);
@@ -189,7 +189,7 @@ public class Tower : NetworkBehaviour
         {
             Debug.Log("ATACO");
             if (tower._isDefending.Value) DamageShields();
-            else DamageTower();
+            else DamageTower(minionsDamage);
             i++;
             yield return new WaitForSeconds(1f);
 

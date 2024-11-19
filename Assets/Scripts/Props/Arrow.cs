@@ -21,7 +21,7 @@ public class Arrow : NetworkBehaviour
             Tower playerTower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[tId].GetComponent<Tower>();
             if (casterTower.tag != playerTower.tag)
             {
-                collision.gameObject.GetComponent<Player>().getHit();
+                collision.gameObject.GetComponent<Player>().getHit(_damage);
             }
            
            
@@ -35,7 +35,7 @@ public class Arrow : NetworkBehaviour
             if (casterTower.tag != colisionToweer.tag)
             {
                 if (colisionToweer.GetIsDefending()) colisionToweer.DamageShields();
-                else colisionToweer.DamageTower();
+                else colisionToweer.DamageTower(_damage);
             }
             
 
