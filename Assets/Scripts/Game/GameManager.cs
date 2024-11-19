@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -38,7 +39,7 @@ public class GameManager : NetworkBehaviour
         {
             InstantiatePlayers();
             SpawnPUStart();
-            ActiveObjects();
+            //ActiveObjects();
         }
     }
     public override void OnNetworkSpawn()
@@ -98,7 +99,10 @@ public class GameManager : NetworkBehaviour
             player.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId);
             player.GetComponent<Player>().SetSpawnPositionValue(positionSpawn);
             player.GetComponent<Player>().teamAssign = playerData.team;
-           
+            string tag = playerData.team == 0 ? "Team1Tower" : "Team2Tower";
+            player.GetComponent<Player>().teamTower = GameObject.FindGameObjectWithTag(tag).GetComponent<Tower>() ;
+
+
         }
     }
 

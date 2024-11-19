@@ -11,13 +11,13 @@ public class PowerUpBehaviour : NetworkBehaviour
     private int _ultimateValue = 15; //Luego ajustar
     //1 Minions 2 Flechas 3 Escudo de torre 4 curar torre
     private NetworkVariable<int> _puType = new NetworkVariable<int>();
-    private NetworkVariable<ulong> _playerId = new NetworkVariable<ulong>();
+    Player player;
 
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player") || _playerId.Value != 0) return; 
-        SetPlayerIdRpc(GetComponent<NetworkObject>().NetworkObjectId);
+        if (!collision.CompareTag("Player")) return; 
+        player = collision.GetComponent<Player>();
         _isTriggered = true;
       
 
@@ -27,18 +27,15 @@ public class PowerUpBehaviour : NetworkBehaviour
     {
         Debug.Log("DESACTIVADO");
         _isTriggered = false;
-        SetPlayerIdRpc(0);
+
     }
 
-    [Rpc(SendTo.Server)]
-    public void SetPlayerIdRpc(ulong playerId)
-    {
-        _playerId.Value = playerId;
-    }
+ 
     public override void OnNetworkSpawn()
     {
         if (IsServer)
         {
+          
             //_puType.Value = Random.Range(1, 5);
             //_puType.Value = 1; //Para probar los minions
             _puType.Value = 2; //Para probar las flechas
@@ -84,7 +81,6 @@ public class PowerUpBehaviour : NetworkBehaviour
 
     public void ExecutePowerUp() //Función que según el powerUp hace una cosa u otra;
     {
-        Player player = NetworkManager.Singleton.SpawnManager.SpawnedObjects[_playerId.Value].GetComponent<Player>();
         var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
         player.SetUltiValue(_ultimateValue); 
 

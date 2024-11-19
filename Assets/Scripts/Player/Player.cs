@@ -24,6 +24,10 @@ public class Player : NetworkBehaviour
     public float attack = 1;
     public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float> ();
     private NetworkVariable<int> killCount = new NetworkVariable<int>();
+    public Tower teamTower;
+    private const int maxLife = 100;
+    public int attack { get; private set; }
+    private NetworkVariable<int> health = new NetworkVariable<int> ();
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider towerHealth;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
@@ -58,6 +62,7 @@ public class Player : NetworkBehaviour
     void Start()
     {
         if (!IsOwner) return;
+       
         _camera = GetComponentInChildren<Camera>();
         Button[] buttonList = GetComponentsInChildren<Button>();
         foreach (var button in buttonList)
@@ -66,6 +71,8 @@ public class Player : NetworkBehaviour
             else if(button.CompareTag("UltiButton")) { _ultimateAttack = button; }
         }
         _ultimateAttack.interactable = false;
+        // AssignTower();
+        Debug.Log(teamTower);
 
     }
 
@@ -81,7 +88,6 @@ public class Player : NetworkBehaviour
         }
 
         SetPlayer();
-        AssignTower();
         ultiAttack.OnValueChanged += interactableButton;
         _hiding.OnValueChanged = ChangeSprite;
 
@@ -141,17 +147,16 @@ public class Player : NetworkBehaviour
 
     private void AssignTower()
     {
-        if (teamAssign == 0)
-        {
-            teamTower = GameObject.FindGameObjectWithTag("Team1Tower").GetComponent<Tower>();
-            
-        }
-        else
-        {
-            teamTower = GameObject.FindGameObjectWithTag("Team2Tower").GetComponent<Tower>();
-            
-        }
+        GameObject towerObject = GameObject.FindGameObjectWithTag(tag);
+        ulong tId = towerObject.GetComponent<NetworkObject>().NetworkObjectId;
+        AssingTowerRpc(tId);
+    }
 
+    private void AssingTowerRpc(ulong tId)
+    {
+        var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[tId].gameObject;
+        teamTower = tower.GetComponent<Tower>();
+        Debug.Log(teamTower);
     }
 
     public void getHit(float damage)
@@ -247,14 +252,14 @@ public class Player : NetworkBehaviour
 
 
     
-    public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estás encima de un prop
+    public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando estï¿½s encima de un prop
     {
 
         if (!IsOwner || _hiding.Value) return;
 
-        Debug.Log(_pBehaviour.Value);
+        
         PropsBehaviour pBehaviour = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].GetComponent<PropsBehaviour>();
-        if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 11f) //¿Por qué ahora la distancia es tanta?
+        if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 11f) //ï¿½Por quï¿½ ahora la distancia es tanta?
         {
 
             OnHideRpc(true);
@@ -307,7 +312,7 @@ public class Player : NetworkBehaviour
 
     public ulong GetTeamTower()
     {
-        return teamTower.NetworkObjectId;
+        return teamTower.GetComponent<NetworkObject>().NetworkObjectId;
     }
 
     public void SetSpawnPositionValue(Vector3 position)

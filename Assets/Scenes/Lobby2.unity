@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 26595676}
   - component: {fileID: 26595675}
   - component: {fileID: 26595674}
+  - component: {fileID: 26595677}
   m_Layer: 0
   m_Name: T2
   m_TagString: Untagged
@@ -255,6 +256,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26595672}
   m_CullTransparentMesh: 1
+--- !u!114 &26595677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26595672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2532343794
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &352569878
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 352569879}
+  - component: {fileID: 352569881}
   - component: {fileID: 352569880}
   m_Layer: 0
   m_Name: LobbySystemManager
@@ -311,6 +334,31 @@ MonoBehaviour:
   - {fileID: 1801500307173324165, guid: 765835a28f2e40b42808d85c3ff9a082, type: 3}
   t1: {fileID: 888572548}
   t2: {fileID: 26595674}
+  playersT1:
+    m_InternalValue: 0
+  playersT2:
+    m_InternalValue: 0
+--- !u!114 &352569881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 352569878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2176107755
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &352808348
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,6 +1371,7 @@ GameObject:
   - component: {fileID: 888572550}
   - component: {fileID: 888572549}
   - component: {fileID: 888572548}
+  - component: {fileID: 888572551}
   m_Layer: 0
   m_Name: T1
   m_TagString: Untagged
@@ -1444,6 +1493,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888572546}
   m_CullTransparentMesh: 1
+--- !u!114 &888572551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 888572546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3231728907
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!1 &1037868533
 GameObject:
   m_ObjectHideFlags: 0
