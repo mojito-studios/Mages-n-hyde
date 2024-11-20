@@ -26,12 +26,16 @@ public class Player : NetworkBehaviour
     public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float> (maxLife);
     public NetworkVariable<int> killCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<int> deathCount { get; private set; } = new NetworkVariable<int>(0);
+    public NetworkVariable<int> assistCount { get; private set; } = new NetworkVariable<int>(0);
+    private List<Player> assistant = new List<Player>(0);
+
+    //gameover
     public NetworkVariable<FixedString128Bytes> winningTeam = new NetworkVariable<FixedString128Bytes>();
     public NetworkVariable<bool> win = new NetworkVariable<bool>();
   
+    //UI
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider towerHealth;
-    private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     [SerializeField] private TextMeshProUGUI _towerHealth;
     [SerializeField] private Canvas GameOver;
 
@@ -50,6 +54,7 @@ public class Player : NetworkBehaviour
     //attack
     private Button _spell;
     private Button _ultimateAttack;
+    private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     private Vector3 _spawnPosition;
     private int _respawnTime = 5;
     [SerializeField] private GameObject spellPrefab;
@@ -187,9 +192,25 @@ public class Player : NetworkBehaviour
         killCount.Value++;
     }
 
-    public void die()
+    public void assist()
+    {
+        assistCount.Value++;
+    }
+
+    public void assistantAssign(Player caster)
+    {
+        if(!assistant.Contains(caster)) assistant.Add(caster);
+    }
+
+    public void die(Player caster)
     {
         deathCount.Value++;
+        if (assistant.Count > 1)
+        {
+            assistant.Remove(caster);
+            assistant[0].assist();
+            assistant.Clear();
+        }
     }
 
     private void SpawnObject()
