@@ -18,7 +18,7 @@ public class GameManager : NetworkBehaviour
     private const int MaxTimeActive = 20;
     public static GameManager Instance { get; private set; }
     private List<NetworkObject> activeObjects = new List<NetworkObject>();
-    [SerializeField] private Judge judge;
+    //[SerializeField] private Judge judge;
     [SerializeField] private Transform startPos1;
     [SerializeField] private Transform startPos2;
      public List<GameObject> prefabs = new List<GameObject>();
@@ -39,7 +39,7 @@ public class GameManager : NetworkBehaviour
         {
             InstantiatePlayers();
             SpawnPUStart();
-            //ActiveObjects();
+            ActiveObjects();
         }
     }
     public override void OnNetworkSpawn()
@@ -49,7 +49,7 @@ public class GameManager : NetworkBehaviour
     }
     void Start()
     {
-        judge = GameObject.FindGameObjectWithTag("Judge").GetComponent<Judge>();
+        //judge = GameObject.FindGameObjectWithTag("Judge").GetComponent<Judge>();
        
     }
 
@@ -184,11 +184,17 @@ public class GameManager : NetworkBehaviour
         }
     }
 
-    public void EndGame(string tag) //Cambiar a victoria o a derrota
+    [Rpc(SendTo.Server)]
+    public void EndGameRpc(string tag) //Cambiar a victoria o a derrota
     {
-        SceneManager.LoadScene(2);
-        judge.winningTeam = tag;
         Debug.Log("TorreEliminada: " + tag);
+        GameObject[] players= GameObject.FindGameObjectsWithTag("Player");
+        Debug.Log(players);
+        foreach (GameObject player in players)
+        {
+            player.GetComponent<Player>().winningTeam.Value = tag;
+            player.GetComponent<Player>().EndGame();
+        }
     }
 
 }

@@ -59,13 +59,19 @@ public class Tower : NetworkBehaviour
     {
         return _isDefending.Value;
     }
-    [Rpc(SendTo.Server)]
+    [Rpc(SendTo.Everyone)]
     private void DamageTowerRpc(float damage)
     {
         currentLife.Value -= damage*5;
         if (currentLife.Value <= 0)
         {
-         GameManager.Instance.EndGame(this.tag);
+            /*GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject player in players)
+            {
+                player.GetComponent<Player>().winningTeam.Value = gameObject.tag;
+                player.GetComponent<Player>().gameover.Value = true;
+            }*/
+            GameManager.Instance.EndGameRpc(this.tag);
         }
     }
     public void DamageShields()

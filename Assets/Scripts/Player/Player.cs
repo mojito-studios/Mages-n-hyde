@@ -19,20 +19,21 @@ public class Player : NetworkBehaviour
     //player
     private Camera _camera;
     public int teamAssign;
-    private Tower teamTower;
+    public Tower teamTower;
     private const float maxLife = 100;
     public float attack = 1;
-    public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float> ();
-    private NetworkVariable<int> killCount = new NetworkVariable<int>();
-    public Tower teamTower;
-    private const int maxLife = 100;
-    public int attack { get; private set; }
-    private NetworkVariable<int> health = new NetworkVariable<int> ();
+    public float range = 1;
+    public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float> (maxLife);
+    public NetworkVariable<int> killCount { get; private set; } = new NetworkVariable<int>(0);
+    public NetworkVariable<int> deathCount { get; private set; } = new NetworkVariable<int>(0);
+    public NetworkVariable<FixedString128Bytes> winningTeam = new NetworkVariable<FixedString128Bytes>();
+    public NetworkVariable<bool> win = new NetworkVariable<bool>();
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider towerHealth;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     [SerializeField] private TextMeshProUGUI _health;
     [SerializeField] private TextMeshProUGUI _towerHealth;
+    [SerializeField] private Canvas GameOver;
 
     //move
     private float speed = 4f;
@@ -71,7 +72,7 @@ public class Player : NetworkBehaviour
             else if(button.CompareTag("UltiButton")) { _ultimateAttack = button; }
         }
         _ultimateAttack.interactable = false;
-        // AssignTower();
+        //AssignTower();
         Debug.Log(teamTower);
 
     }
@@ -81,7 +82,7 @@ public class Player : NetworkBehaviour
         base.OnNetworkSpawn();
         if (IsServer)
         {
-            health.Value = maxLife;
+            //health.Value = maxLife;
             _hiding.Value = false;
             spriteIndex.Value = GameManager.Instance.GetPrefabIndex(_sprite);
 
@@ -201,7 +202,12 @@ public class Player : NetworkBehaviour
     {
         killCount.Value++;
     }
-   
+
+    public void die()
+    {
+        deathCount.Value++;
+    }
+
     private void SpawnObject()
     {
         _moving = false;
@@ -292,8 +298,6 @@ public class Player : NetworkBehaviour
     {
         yield return new WaitForSeconds(time);
         OnHideRpc(false);
-       
-       
     }
 
     public void OnAttack()
@@ -350,7 +354,18 @@ public class Player : NetworkBehaviour
     public void OnClickButtonTest()
     {
          SetUltiValue(0);
-        
+    }
 
+    public void EndGame()
+    {
+        bool win = teamTower.tag == winningTeam.Value.ToString();
+        Debug.Log(teamTower.tag);
+        EndGameRpc(win);
+    }
+    [Rpc(SendTo.Everyone)]
+    public void EndGameRpc(bool win)
+    {
+            GameOver.GetComponent<GameOver>().win = !win;
+            GameOver.gameObject.SetActive(true);
     }
 }
