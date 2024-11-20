@@ -19,11 +19,12 @@ public class Tower : NetworkBehaviour
     [SerializeField] private GameObject minions;
     [SerializeField] private GameObject arrows;
     public Player caster;
+    private Vector3 minionsOgPos;
 
-
+    
     void Start()
     {
-        
+        minionsOgPos = minions.transform.position;
         
     }
 
@@ -156,7 +157,7 @@ public class Tower : NetworkBehaviour
     {
         Tower targetTower = FindOtherTower();
         ulong targetId = targetTower.NetworkObjectId;
-        SpawnMinionsRpc(targetTower.transform.position, minions.transform.position, targetId);
+        SpawnMinionsRpc(targetTower.transform.position, minionsOgPos, targetId);
        
     }
 
@@ -174,7 +175,7 @@ public class Tower : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     private void SpawnMinionsRpc(Vector3 enemytower, Vector3 originalPosition, ulong t)
     {
-        StartCoroutine(MinionsAct(enemytower, minions.transform.position, t));
+        StartCoroutine(MinionsAct(enemytower, originalPosition, t));
     }
     private IEnumerator MinionsAct(Vector3 enemyTower, Vector3 originalPosition, ulong t)
     {

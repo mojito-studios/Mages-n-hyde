@@ -17,6 +17,7 @@ public class Arrow : NetworkBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.tag == "PowerUp") return;
         if (collision.gameObject.tag == "Player") 
         {
             ulong tId = collision.gameObject.GetComponent<Player>().GetTeamTower();

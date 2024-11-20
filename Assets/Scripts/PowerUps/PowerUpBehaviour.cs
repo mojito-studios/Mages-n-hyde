@@ -82,7 +82,7 @@ public class PowerUpBehaviour : NetworkBehaviour
     public void ExecutePowerUp() //Función que según el powerUp hace una cosa u otra;
     {
         var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
-        player.SetUltiValue(_ultimateValue); 
+        
 
         switch (_puType.Value)
         {
@@ -90,17 +90,21 @@ public class PowerUpBehaviour : NetworkBehaviour
                 break;
             case 1:  
                 tower.SpawnMinions();
+                player.SetUltiValue(_ultimateValue);
                 break;
             case 2:
                 tower.caster = player;
                 tower.ArrowRain();
+                player.SetUltiValue(_ultimateValue);
                 break;
             case 3:
                 Debug.Log("Levantando escudo");
                 tower.SetDefending(true);
+                player.SetUltiValue(_ultimateValue);
                 break;
             case 4:
                 tower.HealTower();
+                player.SetUltiValue(_ultimateValue);
                 break;
 
         }
