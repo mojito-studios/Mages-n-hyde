@@ -32,7 +32,6 @@ public class Player : NetworkBehaviour
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider towerHealth;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
-    [SerializeField] private TextMeshProUGUI _health;
     [SerializeField] private TextMeshProUGUI _towerHealth;
     [SerializeField] private Canvas GameOver;
 
@@ -165,7 +164,6 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     private void updateHealthRpc()
     {
-        _health.text = "Health: " + health.Value;
         healthBar.value = health.Value;
         _towerHealth.text = "TowerHealth: " + teamTower.currentLife.Value;
         towerHealth.value = teamTower.currentLife.Value;

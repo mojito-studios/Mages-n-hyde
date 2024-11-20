@@ -12,10 +12,10 @@ public class GameOver : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mvpStats;
     public bool win;
     private Player player;
+    private Player mvp;
 
     private void Start()
     {
-        
     }
     public void OnRestart()
     {
@@ -25,13 +25,14 @@ public class GameOver : MonoBehaviour
     }
     private void OnEnable()
     {
-        Player mvp = player;
+        player = this.GetComponentInParent<Player>();
+        mvp = player;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in players)
+        foreach (GameObject p in players)
         {
-            if (player.GetComponent<Player>().killCount.Value > mvp.killCount.Value) mvp = player.GetComponent<Player>();
+            if (p.GetComponent<Player>().killCount.Value > mvp.killCount.Value) mvp = p.GetComponent<Player>();
         }
-  
+
         if (win) { winners.text = "You win"; }
         else { winners.text = "You lose"; }
 
