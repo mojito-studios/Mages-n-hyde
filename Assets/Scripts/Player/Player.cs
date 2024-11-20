@@ -28,6 +28,7 @@ public class Player : NetworkBehaviour
     public NetworkVariable<int> deathCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<FixedString128Bytes> winningTeam = new NetworkVariable<FixedString128Bytes>();
     public NetworkVariable<bool> win = new NetworkVariable<bool>();
+  
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider towerHealth;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
@@ -72,7 +73,6 @@ public class Player : NetworkBehaviour
             else if(button.CompareTag("UltiButton")) { _ultimateAttack = button; }
         }
         _ultimateAttack.interactable = false;
-        //AssignTower();
         Debug.Log(teamTower);
 
     }
@@ -144,20 +144,6 @@ public class Player : NetworkBehaviour
 
         playerInput.actionEvents[0].AddListener(this.OnMovement);
         playerInput.actionEvents[1].AddListener(this.OnHide);
-    }
-
-    private void AssignTower()
-    {
-        GameObject towerObject = GameObject.FindGameObjectWithTag(tag);
-        ulong tId = towerObject.GetComponent<NetworkObject>().NetworkObjectId;
-        AssingTowerRpc(tId);
-    }
-
-    private void AssingTowerRpc(ulong tId)
-    {
-        var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[tId].gameObject;
-        teamTower = tower.GetComponent<Tower>();
-        Debug.Log(teamTower);
     }
 
     public void getHit(float damage)

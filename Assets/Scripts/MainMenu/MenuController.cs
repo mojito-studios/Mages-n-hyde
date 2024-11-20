@@ -10,7 +10,7 @@ public class MenuControlller : MonoBehaviour
         MainMenu,
         HostClient,
         CreditsMenu,
-        Quit
+        Tutorial
     }
     public States _states;
     public List<GameObject> menus = new List<GameObject> ();
@@ -37,9 +37,9 @@ public class MenuControlller : MonoBehaviour
                 CreditsState();
                 Debug.Log("Credits");
                 break;
-            case States.Quit:
-                Debug.Log("Quitting");
-                Quit();
+            case States.Tutorial:
+                Debug.Log("Tutorial");
+                Tutorial();
                 break;
         }
     }
@@ -58,7 +58,7 @@ public class MenuControlller : MonoBehaviour
                 _states = States.CreditsMenu;
                 break;
             case 3:
-                _states = States.Quit;
+                _states = States.Tutorial;
                 break;
         }
     }
@@ -66,6 +66,7 @@ public class MenuControlller : MonoBehaviour
     private void MainMenuState()
     {
         menus[1].SetActive(false);
+        menus[2].SetActive(false);
        if(!menus[0].activeSelf) menus[0].SetActive(true);
     }
 
@@ -76,11 +77,15 @@ public class MenuControlller : MonoBehaviour
 
     private void CreditsState()
     {
+        
         menus[0].SetActive(false);
+        menus[2].SetActive(false) ;
         menus[1].SetActive(true);
     }
-    private void Quit()
+    private void Tutorial()
     {
-        Application.Quit(0);
+        menus[0].SetActive(false);
+        menus[1].SetActive(false);
+        menus[2].SetActive(true);
     }
 }

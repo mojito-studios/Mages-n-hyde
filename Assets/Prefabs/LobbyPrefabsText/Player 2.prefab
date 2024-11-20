@@ -651,8 +651,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 310fbfde7504e504b8e2fec101a53b93, type: 3}
-  m_Color: {r: 0.054094147, g: 0, b: 0.9607843, a: 1}
+  m_Sprite: {fileID: -81454822, guid: 40708d1a62f90804382c82ce103f3b58, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -696,17 +696,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teamAssign: 0
+  teamTower: {fileID: 0}
+  attack: 1
   healthBar: {fileID: 378296243560842626}
   towerHealth: {fileID: 4108667761208386945}
   _health: {fileID: 32224489589524661}
   _towerHealth: {fileID: 6841846807200159076}
   button: 0
-  pBehaviour: {fileID: 0}
-  allSprites:
-  - {fileID: 0}
-  - {fileID: 7482667652216324306, guid: b984d8f38a90fa84b95baff86e987f28, type: 3}
-  - {fileID: -5177388603050735206, guid: f9c4d7ac125eee146a4b78983801f1eb, type: 3}
-  - {fileID: -9095717837082945937, guid: ff7d4fd385c5aa3448d55b067169fda1, type: 3}
   spellPrefab: {fileID: 439431567459547477, guid: 41708d2002e157a479908df29fd0be0d, type: 3}
   spellTransform: {fileID: 5250368242998643869}
 --- !u!61 &892682667512931341
@@ -745,7 +741,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.6, y: 4.93}
+    oldSize: {x: 2.5825217, y: 2.58}
     newSize: {x: 3.6, y: 4.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

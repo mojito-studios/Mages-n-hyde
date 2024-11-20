@@ -36,9 +36,9 @@ public class PowerUpBehaviour : NetworkBehaviour
         if (IsServer)
         {
           
-            //_puType.Value = Random.Range(1, 5);
+            _puType.Value = Random.Range(1, 5);
             //_puType.Value = 1; //Para probar los minions
-            _puType.Value = 2; //Para probar las flechas
+            //_puType.Value = 2; //Para probar las flechas
 
         }
 
