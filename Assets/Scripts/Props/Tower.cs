@@ -45,12 +45,12 @@ public class Tower : NetworkBehaviour
     private void updateStatsRpc()
     {
         healthBar.value = currentLife.Value;
-        //Aquí se le añaden las actualizaciones del resto de cosas de la ui so tiene para el escudo etc si no pues no
+        //Aquï¿½ se le aï¿½aden las actualizaciones del resto de cosas de la ui so tiene para el escudo etc si no pues no
     }
 
     public void DamageTower(float damageTower)
     {
-        //int damageTower = 1; //daño que haga la colisión, se saca desde fuera
+        //int damageTower = 1; //daï¿½o que haga la colisiï¿½n, se saca desde fuera
         Debug.Log("HiriendoTorrre");
         DamageTowerRpc(damageTower);
         Debug.Log("Mi vida es de " + currentLife.Value);
@@ -78,7 +78,7 @@ public class Tower : NetworkBehaviour
     public void DamageShields()
     {
         Debug.Log("HiriendoEscudo");
-        float damage = 0.5f; // Daño que haga la colisión, se le pasa desde fuera
+        float damage = 0.5f; // Daï¿½o que haga la colisiï¿½n, se le pasa desde fuera
         DamageShieldRpc(damage, maxShield);
         
     }
@@ -105,9 +105,9 @@ public class Tower : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void HealTowerRpc(float maxLife)
     {
-        if (currentLife.Value == maxLife) return; //Si está curada no hace nada
-        currentLife.Value += Random.Range(2, 6); //Se le suma un número random entre 2 y 5
-        if (currentLife.Value > maxLife) currentLife.Value = maxLife; //Si se pasa de la vida máxima queda con la vida máxima
+        if (currentLife.Value == maxLife) return; //Si estï¿½ curada no hace nada
+        currentLife.Value += Random.Range(2, 6); //Se le suma un nï¿½mero random entre 2 y 5
+        if (currentLife.Value > maxLife) currentLife.Value = maxLife; //Si se pasa de la vida mï¿½xima queda con la vida mï¿½xima
 
     }
 
@@ -196,8 +196,8 @@ public class Tower : NetworkBehaviour
         while (i < minionsTime)
         {
             Debug.Log("ATACO");
-            if (tower._isDefending.Value) DamageShields();
-            else DamageTower(minionsDamage);
+            if (tower._isDefending.Value) tower.DamageShields();
+            else tower.DamageTower(minionsDamage);
             i++;
             yield return new WaitForSeconds(1f);
 
