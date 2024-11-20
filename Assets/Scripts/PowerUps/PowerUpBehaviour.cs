@@ -92,6 +92,7 @@ public class PowerUpBehaviour : NetworkBehaviour
                 tower.SpawnMinions();
                 break;
             case 2:
+                tower.caster = player;
                 tower.ArrowRain();
                 break;
             case 3:

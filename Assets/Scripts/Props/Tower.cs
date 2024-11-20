@@ -18,6 +18,7 @@ public class Tower : NetworkBehaviour
     private NetworkVariable<bool> _isDefending = new NetworkVariable<bool>(false);
     [SerializeField] private GameObject minions;
     [SerializeField] private GameObject arrows;
+    public Player caster;
 
 
     void Start()
@@ -144,6 +145,7 @@ public class Tower : NetworkBehaviour
             GameObject arrow = Instantiate(arrows, new Vector3(0,0), new Quaternion(0,0,180, 0));
             arrow.GetComponent<NetworkObject>().Spawn();
             arrow.GetComponent<Arrow>().casterTower = this;
+            arrow.GetComponent<Arrow>().caster = caster;
             yield return new WaitForSeconds(shootingTime);
         }
         

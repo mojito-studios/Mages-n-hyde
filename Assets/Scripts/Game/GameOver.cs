@@ -35,7 +35,11 @@ public class GameOver : MonoBehaviour
             if (p.GetComponent<Player>().killCount.Value > mvp.GetComponent<Player>().killCount.Value) mvp = p;
             else if (p.GetComponent<Player>().killCount.Value == mvp.GetComponent<Player>().killCount.Value)
             {
-                if (p.GetComponent<Player>().assistCount.Value == mvp.GetComponent<Player>().assistCount.Value) mvp = p;
+                if (p.GetComponent<Player>().assistCount.Value > mvp.GetComponent<Player>().assistCount.Value) mvp = p;
+                else if (p.GetComponent<Player>().assistCount.Value == mvp.GetComponent<Player>().assistCount.Value)
+                {
+                    if (p.GetComponent<Player>().deathCount.Value < mvp.GetComponent<Player>().deathCount.Value) mvp = p;
+                }
             }
         }
 

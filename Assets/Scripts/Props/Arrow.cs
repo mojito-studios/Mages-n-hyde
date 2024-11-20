@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Unity.Services.Lobbies.Models;
 
 public class Arrow : NetworkBehaviour
 {
     private int _damage;
     private int _arrowForce = 2;
     public Tower casterTower;
+    public Player caster;
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -21,6 +23,9 @@ public class Arrow : NetworkBehaviour
             Tower playerTower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[tId].GetComponent<Tower>();
             if (casterTower.tag != playerTower.tag)
             {
+                Player hitPlayer = collision.gameObject.GetComponent<Player>();
+                if (!(hitPlayer.health.Value - _damage * 10 > 0)) { caster.kill(); hitPlayer.die(caster); }
+                hitPlayer.assistantAssign(caster);
                 collision.gameObject.GetComponent<Player>().getHit(_damage);
             }
            
@@ -31,11 +36,11 @@ public class Arrow : NetworkBehaviour
         if (collision.gameObject.tag == "Team2Tower" || collision.gameObject.tag == "Team1Tower")
         {
 
-            Tower colisionToweer = collision.gameObject.GetComponent<Tower>();
-            if (casterTower.tag != colisionToweer.tag)
+            Tower colisionTower = collision.gameObject.GetComponent<Tower>();
+            if (casterTower.tag != colisionTower.tag)
             {
-                if (colisionToweer.GetIsDefending()) colisionToweer.DamageShields();
-                else colisionToweer.DamageTower(_damage);
+                if (colisionTower.GetIsDefending()) colisionTower.DamageShields();
+                else colisionTower.DamageTower(_damage);
             }
             
 
