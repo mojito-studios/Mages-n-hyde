@@ -5,18 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MenuControlller : MonoBehaviour
 {
-    public enum States
+    private enum States
     {
         MainMenu,
         HostClient,
         CreditsMenu,
         Tutorial
     }
-    public States _states;
-    public List<GameObject> menus = new List<GameObject> ();
+    private States _states;
+   [SerializeField] private List<GameObject> menus = new List<GameObject> ();
+   [SerializeField] private List<GameObject> tutorialTexts = new List<GameObject> ();
+    int actualText;
     void Start()
     {
-        
+        actualText = 0;
     }
 
     // Update is called once per frame
@@ -63,6 +65,14 @@ public class MenuControlller : MonoBehaviour
         }
     }
 
+    public void ChangeText()
+    {
+        tutorialTexts[actualText].SetActive(false);
+        actualText++;
+        if(actualText >= tutorialTexts.Count) actualText = 0;
+        tutorialTexts[actualText].SetActive(true);
+
+    }
     private void MainMenuState()
     {
         menus[1].SetActive(false);
