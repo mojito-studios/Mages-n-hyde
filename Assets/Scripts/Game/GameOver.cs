@@ -21,9 +21,13 @@ public class GameOver : MonoBehaviour
     }
     public void OnRestart()
     {
-        SceneManager.LoadScene(0);
+        Destroy(OptionsChosen.Instance.gameObject);
+        Destroy(NetworkManager.Singleton.gameObject);
         NetworkManager.Singleton.Shutdown();
-        //NetworkManager.Destroy(NetworkManager.Singleton);
+        SceneManager.LoadScene(0);
+        
+        
+
     }
     private void OnEnable()
     {

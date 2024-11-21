@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -30,20 +31,28 @@ public class OptionsChosen : NetworkBehaviour
 
     private void NetworkManager_OnClientConnectedCallback(ulong clientId)
     {
-        if (IsServer)
-        {
-            actualPlayersT1.Value = 0;
-            actualPlayersT2.Value = 0;
-        }
+        
         playerDataList.Add(new PlayerData
         {
             ClientId = clientId,
             prefabId = 0,
             team = -1
         });
+        playerReadyDictionary[clientId] = false;
+       
+       
+    }
+   
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkDespawn();
+        if (IsServer)
+        {
+            actualPlayersT1.Value = 0;
+            actualPlayersT2.Value = 0;
+        }
         actualPlayersT1.OnValueChanged += DebugValueT1;
         actualPlayersT2.OnValueChanged += DebugValueT2;
-
     }
     void Start()
     {
@@ -60,6 +69,7 @@ public class OptionsChosen : NetworkBehaviour
     {
         SetPlayerReadyServerRpc();
     }
+
 
 
     [Rpc(SendTo.Server)]

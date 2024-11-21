@@ -1,16 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LobbySystemManager : MonoBehaviour
 {
+    public static LobbySystemManager Instance { get; private set; }
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject characterStats;
     [SerializeField] private List<GameObject> charactersPrefabs;
     [SerializeField] Button t1;
     [SerializeField] Button t2;
+    [SerializeField] Button ready;
+    [SerializeField] Button next;
     private SpriteRenderer spriteToShow;
     private int prefabIndex;
     private int provisionalTeam;
@@ -20,13 +24,17 @@ public class LobbySystemManager : MonoBehaviour
     private void Awake()
     {
         provisionalTeam = -1;
+        Instance = this;
     }
     void Start()
     {
+        
         spriteToShow = playerPrefab.GetComponent<SpriteRenderer>();
         prefabIndex = 0;
         // spriteToShow.sprite = charactersPrefabs[0].GetComponent<SpriteRenderer>().sprite;
          spriteToShow.color = charactersPrefabs[0].GetComponent<SpriteRenderer>().color; //Como de momento solo cambia el color lo dejo así
+      
+
     }
 
     // Update is called once per frame
@@ -35,6 +43,13 @@ public class LobbySystemManager : MonoBehaviour
         
     }
 
+  public  void EnableButtons()
+    {
+        t1.interactable = true;
+        t2.interactable = true;
+        ready.interactable = true;  
+        next.interactable = true;
+    }
     void ChangeSprite()
     {
         prefabIndex++;
