@@ -28,6 +28,7 @@ public class Player : NetworkBehaviour
     public NetworkVariable<int> deathCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<int> assistCount { get; private set; } = new NetworkVariable<int>(0);
     private List<Player> assistant = new List<Player>(0);
+    private AnimationController anim;
 
     //gameover
     public NetworkVariable<FixedString128Bytes> winningTeam = new NetworkVariable<FixedString128Bytes>();
@@ -56,7 +57,7 @@ public class Player : NetworkBehaviour
     private Button _ultimateAttack;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     private Vector3 _spawnPosition;
-    private int _respawnTime = 5;
+   // private int _respawnTime = 5;
     [SerializeField] private GameObject spellPrefab;
     [SerializeField] private Transform spellTransform;
 
@@ -77,7 +78,7 @@ public class Player : NetworkBehaviour
             else if(button.CompareTag("UltiButton")) { _ultimateAttack = button; }
         }
         _ultimateAttack.interactable = false;
-        Debug.Log(teamTower);
+       
 
     }
 
@@ -94,7 +95,7 @@ public class Player : NetworkBehaviour
 
         SetPlayer();
         ultiAttack.OnValueChanged += interactableButton;
-        _hiding.OnValueChanged = ChangeSprite;
+        _hiding.OnValueChanged += ChangeSprite;
 
     }
 
@@ -264,11 +265,9 @@ public class Player : NetworkBehaviour
         Vector3 position = Mouse.current.position.ReadValue();
         targetPosition = _camera.ScreenToWorldPoint(position);
         targetPosition.z = transform.position.z;
-        _moving = true;
+        _moving = true;        
     }
 
-
-    
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando est�s encima de un prop
     {
 
