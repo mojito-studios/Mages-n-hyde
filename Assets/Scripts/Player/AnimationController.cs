@@ -6,10 +6,12 @@ public class AnimationController : MonoBehaviour
 {
     private Animator playerAnim;
     public bool canFlip;
-    bool facingLeft;
+    bool facingRight = true;
+    SpriteRenderer sp;
     void Start()
     {
         playerAnim = GetComponent<Animator>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -23,31 +25,37 @@ public class AnimationController : MonoBehaviour
 
     }
 
-    public void AnimateMovement()
+    public void AnimateMovement(Vector3 input)
     {
+        input.Normalize(); //No va bien del todo pero es lo mejor que pude hacer a a las 5 am
+        playerAnim.SetFloat("MoveX", input.x);
+        playerAnim.SetFloat("MoveY", input.y);
+        playerAnim.SetFloat("MoveMagnitude", input.magnitude);
+
 
     }
 
     public void AnimateAttack()
     {
+        //anim.SetAttack a verdadero cuando pulse el botón de ataque. Mirar si afecta de la misma manera que cuando está hacindo cualquier acción y ataca
 
     }
 
     public void AnimateUlti()
     {
-
+        //anim.SetUlti a verdadero cuando pulse el botón de Ulti.
     }
     public void Flip()
     {
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
-        facingLeft = !facingLeft;
+        sp.GetComponent<SpriteRenderer>(); 
+        sp.flipX = facingRight;
+
+        facingRight = !facingRight;
     }
 
-    public void checkFlip(float x)
+    public void CheckFlip(float x)
     {
-        if(x < 0 && !facingLeft || x> 0 && facingLeft)
+        if(x < 0 && facingRight|| x> 0 && !facingRight )
             Flip();
     }
 }

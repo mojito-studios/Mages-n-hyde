@@ -78,6 +78,7 @@ public class Player : NetworkBehaviour
             else if(button.CompareTag("UltiButton")) { _ultimateAttack = button; }
         }
         _ultimateAttack.interactable = false;
+        anim = GetComponent<AnimationController>();
        
 
     }
@@ -248,11 +249,7 @@ public class Player : NetworkBehaviour
     void MovePlayer()
     { 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); 
-        if(targetPosition!= transform.position)
-        {
-            Vector3 targetDirection = targetPosition - transform.position; 
-            transform.up = targetDirection;
-        }
+       
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             _moving = false;
@@ -265,8 +262,13 @@ public class Player : NetworkBehaviour
         Vector3 position = Mouse.current.position.ReadValue();
         targetPosition = _camera.ScreenToWorldPoint(position);
         targetPosition.z = transform.position.z;
-        _moving = true;        
+        _moving = true;
+        anim.AnimateMovement(targetPosition);
+        if(anim.canFlip) anim.CheckFlip(targetPosition.x);
+        
     }
+
+ 
 
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando est�s encima de un prop
     {
