@@ -1331,7 +1331,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78, y: 288}
+  m_AnchoredPosition: {x: 63, y: 288}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &327838223
@@ -2714,8 +2714,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 960, y: 700}
+  m_AnchoredPosition: {x: 0, y: -15}
+  m_SizeDelta: {x: 960, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1253935559
 MonoBehaviour:
@@ -2925,7 +2925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78, y: 288}
+  m_AnchoredPosition: {x: 63, y: 288}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1393115254
@@ -2948,13 +2948,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Power Ups\nDuring your hard battle, you will have the oportunity to recolect
-    power ups. They are little boost that may defend your tower, or attack the opposite
-    ones. \n\nWe highly recommend you to try and gather them, because not only they
-    can make your life easier, but they also charge your ulti attack if you get enough.
-    \n\nHowever you should be ware, because it's not that easy to get them. They
-    only activate if you are on top of them for some seconds. Don't let the other
-    team catch you off guard!\n\n\n\n"
+  m_text: "Power Ups\nDuring your hard battle, you will have the opportunity to collect
+    power ups. These are little boost that may defend your tower, or attack the opposite
+    one. \n\nWe highly recommend you to try and gather them, because not only can
+    they make your life easier, but they also charge your ulti attack if you get
+    enough. \n\nHowever you should beware, because it's not that easy to get them.
+    They only activate if you are on top of them for a few seconds. Don't let the
+    other team catch you off guard!\n\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2988,7 +2988,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -4073,7 +4073,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67, y: 288}
+  m_AnchoredPosition: {x: 67, y: 320}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1998805804
@@ -4096,14 +4096,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Your GOAL is destroying the opposite team tower.\nFor doing so, you have
-    to cross the map and repeatedly hit it, till there are only crumbs left.\n\nCONTROLS:\n-
-    Move: Press left click on your mouse in the screen where you want to go or use
-    your finger if you are on mobile/tablets devices\n\n- Hide: You can hide, turning
-    yourself into a prop from the scene if you right click it or press your finger
-    on the prop (if you are close enough). It will last only for seconds, so think
-    well your strategy.\n\n- Attack: Left-Click or press the buttons on the screen
-    for attacking. \n\n"
+  m_text: "Your GOAL is to destroy the opposite team's tower.\nIn order to do so,
+    you have to cross the map and attack it using spells and numerous power ups,
+    till there are only crumbs left.\n\nCONTROLS:\n- To Move: Press left click on
+    your mouse (or tap with your finger on mobile) on the screen and the character
+    will walk to that pressed spot on the map.\n\n- To Hide: You can turn yourself
+    into a prop from the scene if you right click it or press your finger on the
+    prop as long as you're close enough. It'll last only for seconds, so think carefully
+    about your strategy.\n\n- To Attack: Left-Click (or tap on mobile) the buttons
+    on the screen for attacking. \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4137,7 +4138,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0

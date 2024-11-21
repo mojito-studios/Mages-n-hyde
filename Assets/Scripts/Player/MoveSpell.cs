@@ -22,13 +22,12 @@ public class MoveSpell : NetworkBehaviour
         {
             Player player = collision.gameObject.GetComponent<Player>();
             if (!(player.health.Value - caster.attack * 10 > 0)) { caster.kill(); player.die(caster); }
-            player.assistantAssign(caster);
+            else { player.assistantAssign(caster); }
             player.getHit(caster.attack);
         }
         if((collision.gameObject.tag == "Team2Tower" & caster.teamTower.tag == "Team1Tower") | (collision.gameObject.tag == "Team1Tower" & caster.teamTower.tag == "Team2Tower"))
         //if(collision.gameObject.tag == "Team2Tower" || collision.gameObject.tag == "Team1Tower")
         {
-
             Tower torre = collision.gameObject.GetComponent<Tower>();
             if(torre.GetIsDefending()) torre.DamageShields();
             else torre.DamageTower(caster.attack);

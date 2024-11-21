@@ -6,7 +6,7 @@ using Unity.Services.Lobbies.Models;
 
 public class Arrow : NetworkBehaviour
 {
-    private int _damage;
+    [SerializeField]private int _damage = 1;
     private int _arrowForce = 2;
     public Tower casterTower;
     public Player caster;
@@ -26,7 +26,7 @@ public class Arrow : NetworkBehaviour
             {
                 Player hitPlayer = collision.gameObject.GetComponent<Player>();
                 if (!(hitPlayer.health.Value - _damage * 10 > 0)) { caster.kill(); hitPlayer.die(caster); }
-                hitPlayer.assistantAssign(caster);
+                else { hitPlayer.assistantAssign(caster); }
                 collision.gameObject.GetComponent<Player>().getHit(_damage);
             }
            

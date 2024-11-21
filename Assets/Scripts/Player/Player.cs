@@ -166,12 +166,18 @@ public class Player : NetworkBehaviour
         }
     }
 
-    [Rpc(SendTo.Everyone)]
+    [Rpc(SendTo.Server)]
     private void updateHealthRpc()
     {
+        updateHealthBarsRpc(teamTower.currentLife.Value);
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void updateHealthBarsRpc(float tower)
+    {
         healthBar.value = health.Value;
-        _towerHealth.text = "TowerHealth: " + teamTower.currentLife.Value;
-        towerHealth.value = teamTower.currentLife.Value;
+        _towerHealth.text = "TowerHealth: " + tower;
+        towerHealth.value = tower;
     }
 
     [Rpc(SendTo.Server)]
@@ -315,8 +321,8 @@ public class Player : NetworkBehaviour
     private void spellServerRpc()
     {
         GameObject spell = Instantiate(spellPrefab, spellTransform.position, spellTransform.rotation);
-        spell.GetComponent<NetworkObject>().Spawn();
         spell.GetComponent<MoveSpell>().caster = this;
+        spell.GetComponent<NetworkObject>().Spawn();
     }
 
     public ulong GetTeamTower()
