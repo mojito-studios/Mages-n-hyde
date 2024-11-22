@@ -1,0 +1,831 @@
+fileFormatVersion: 2
+guid: c014d74889ef46248a58dd7a9fbe50a0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 600
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_0
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 10692
+        width: 480
+        height: 1128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ed5a4b2e7bf7434e9a03d0123e3f603
+      internalID: 1634873618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_1
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 10692
+        width: 504
+        height: 1140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ffb83cb95985bb44b6952b39d2b8042
+      internalID: 332726485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_2
+      rect:
+        serializedVersion: 2
+        x: 4860
+        y: 10692
+        width: 504
+        height: 1148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02a67d554b222d642a3fe43b1b589609
+      internalID: -511204897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_3
+      rect:
+        serializedVersion: 2
+        x: 6876
+        y: 10692
+        width: 575
+        height: 1149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82a1c2fea53f6be4daf6f08a58131207
+      internalID: 1003722718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_4
+      rect:
+        serializedVersion: 2
+        x: 8916
+        y: 10692
+        width: 576
+        height: 1146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3702c044f75e96841a8bd40e0a85e41b
+      internalID: -269755467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_5
+      rect:
+        serializedVersion: 2
+        x: 10956
+        y: 10716
+        width: 600
+        height: 1116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47d2fc3247f3ecc49a2bc8256762d7c8
+      internalID: 709181523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_6
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 8652
+        width: 600
+        height: 1128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee4d0adb565a20489c7e34cf48bff90
+      internalID: -1870699022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_7
+      rect:
+        serializedVersion: 2
+        x: 2748
+        y: 8652
+        width: 600
+        height: 1128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da82b509f105735489e43d0bb7f4240a
+      internalID: 2145890677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_8
+      rect:
+        serializedVersion: 2
+        x: 4788
+        y: 8652
+        width: 600
+        height: 1128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 888ccf8753bbd6f4d8a3d439ab4a9dff
+      internalID: -1547521762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_9
+      rect:
+        serializedVersion: 2
+        x: 6852
+        y: 8652
+        width: 576
+        height: 1128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99d513d05a21344c801cb8ea284cbf2
+      internalID: 8487919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_10
+      rect:
+        serializedVersion: 2
+        x: 8892
+        y: 8652
+        width: 576
+        height: 1128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0342e57a7282b4e41a4a43ac6462e85e
+      internalID: 1473705092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_11
+      rect:
+        serializedVersion: 2
+        x: 10956
+        y: 8652
+        width: 576
+        height: 1128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06033916faf892644bc7d3d5077c7715
+      internalID: 1896874299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_12
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 6612
+        width: 552
+        height: 1127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f878acd0f4ca3034598a1dac8997badb
+      internalID: -1491616531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_13
+      rect:
+        serializedVersion: 2
+        x: 2796
+        y: 6612
+        width: 528
+        height: 1127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685ff4096cb19df4ba57bdb53429fa95
+      internalID: 1183114788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_14
+      rect:
+        serializedVersion: 2
+        x: 4860
+        y: 6612
+        width: 504
+        height: 1127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9ff94f096ec40a4cabed794a5cd3116
+      internalID: -431012199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_15
+      rect:
+        serializedVersion: 2
+        x: 6924
+        y: 6612
+        width: 480
+        height: 1126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbcfa0192d149c94f99b589e19bde0a5
+      internalID: -1178490751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_16
+      rect:
+        serializedVersion: 2
+        x: 8988
+        y: 6612
+        width: 456
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69e08762caf8374f9130c91f02db8ba
+      internalID: 537078844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_17
+      rect:
+        serializedVersion: 2
+        x: 11052
+        y: 6612
+        width: 432
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 610b8bf54e539404fa02036368b691ef
+      internalID: 1459100031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_18
+      rect:
+        serializedVersion: 2
+        x: 828
+        y: 4548
+        width: 408
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67e0cd6fbda75a34cb70de348d99b70d
+      internalID: -770244767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_19
+      rect:
+        serializedVersion: 2
+        x: 2892
+        y: 4549
+        width: 402
+        height: 1103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 453634e45e61ff24d95ca9bb235bbd55
+      internalID: -860140990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_20
+      rect:
+        serializedVersion: 2
+        x: 4932
+        y: 4548
+        width: 384
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a7b9301c86de01499e2375d4e45a954
+      internalID: 1741818548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_21
+      rect:
+        serializedVersion: 2
+        x: 6974
+        y: 4548
+        width: 405
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ee71c97e140b174bbb066e0a2af7450
+      internalID: 1761093327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_22
+      rect:
+        serializedVersion: 2
+        x: 9036
+        y: 4549
+        width: 384
+        height: 1103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 467997bcb431fba4fbc6f6340f296c1e
+      internalID: 199477004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_23
+      rect:
+        serializedVersion: 2
+        x: 11100
+        y: 4548
+        width: 360
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9186dfed12a1534094f8e94e948a7fc
+      internalID: -1294265769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_24
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 2508
+        width: 360
+        height: 1102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cd97098d8ca1e84eab8566a9dc92d1e
+      internalID: 728900357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_25
+      rect:
+        serializedVersion: 2
+        x: 2892
+        y: 2508
+        width: 384
+        height: 1102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bcae960fe0154e44b2e6b1612232172
+      internalID: 1718114795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_26
+      rect:
+        serializedVersion: 2
+        x: 4932
+        y: 2508
+        width: 384
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39e9f798ee84a4c49b7c074eacbf248e
+      internalID: 105136006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_27
+      rect:
+        serializedVersion: 2
+        x: 6972
+        y: 2508
+        width: 408
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b9852daf0076c4bb29434670e797f7
+      internalID: 1253569983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_28
+      rect:
+        serializedVersion: 2
+        x: 8990
+        y: 2508
+        width: 454
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b48e97c820db8c4a8a4b6d91973a0f2
+      internalID: 586604379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_29
+      rect:
+        serializedVersion: 2
+        x: 11028
+        y: 2508
+        width: 456
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eae26731d4b6534d86db9a2dfd1dac6
+      internalID: 1124837019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_30
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 468
+        width: 480
+        height: 1104
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6eaabefa6abbf7945bbcbeb5810066e5
+      internalID: -1316524895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_IDLE_ATRASIZQ_31
+      rect:
+        serializedVersion: 2
+        x: 2820
+        y: 468
+        width: 480
+        height: 1126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6f7880f8febcd41bbe48558b22c295
+      internalID: -1843796428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      KITTYKAT_IDLE_ATRASIZQ_0: 1634873618
+      KITTYKAT_IDLE_ATRASIZQ_1: 332726485
+      KITTYKAT_IDLE_ATRASIZQ_10: 1473705092
+      KITTYKAT_IDLE_ATRASIZQ_11: 1896874299
+      KITTYKAT_IDLE_ATRASIZQ_12: -1491616531
+      KITTYKAT_IDLE_ATRASIZQ_13: 1183114788
+      KITTYKAT_IDLE_ATRASIZQ_14: -431012199
+      KITTYKAT_IDLE_ATRASIZQ_15: -1178490751
+      KITTYKAT_IDLE_ATRASIZQ_16: 537078844
+      KITTYKAT_IDLE_ATRASIZQ_17: 1459100031
+      KITTYKAT_IDLE_ATRASIZQ_18: -770244767
+      KITTYKAT_IDLE_ATRASIZQ_19: -860140990
+      KITTYKAT_IDLE_ATRASIZQ_2: -511204897
+      KITTYKAT_IDLE_ATRASIZQ_20: 1741818548
+      KITTYKAT_IDLE_ATRASIZQ_21: 1761093327
+      KITTYKAT_IDLE_ATRASIZQ_22: 199477004
+      KITTYKAT_IDLE_ATRASIZQ_23: -1294265769
+      KITTYKAT_IDLE_ATRASIZQ_24: 728900357
+      KITTYKAT_IDLE_ATRASIZQ_25: 1718114795
+      KITTYKAT_IDLE_ATRASIZQ_26: 105136006
+      KITTYKAT_IDLE_ATRASIZQ_27: 1253569983
+      KITTYKAT_IDLE_ATRASIZQ_28: 586604379
+      KITTYKAT_IDLE_ATRASIZQ_29: 1124837019
+      KITTYKAT_IDLE_ATRASIZQ_3: 1003722718
+      KITTYKAT_IDLE_ATRASIZQ_30: -1316524895
+      KITTYKAT_IDLE_ATRASIZQ_31: -1843796428
+      KITTYKAT_IDLE_ATRASIZQ_4: -269755467
+      KITTYKAT_IDLE_ATRASIZQ_5: 709181523
+      KITTYKAT_IDLE_ATRASIZQ_6: -1870699022
+      KITTYKAT_IDLE_ATRASIZQ_7: 2145890677
+      KITTYKAT_IDLE_ATRASIZQ_8: -1547521762
+      KITTYKAT_IDLE_ATRASIZQ_9: 8487919
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

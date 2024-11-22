@@ -52,8 +52,8 @@ public class GameOver : MonoBehaviour
 
         stats.text = "You got " + player.killCount.Value + " kills, " + player.assistCount.Value + " assists and died " + player.deathCount.Value + " times";
 
-        mvpSprite.sprite = mvp.GetComponent<SpriteRenderer>().sprite;
-        mvpSprite.color = mvp.GetComponent<SpriteRenderer>().color;
+        mvpSprite.sprite = mvp.GetComponentInChildren<SpriteRenderer>().sprite;
+        mvpSprite.color = mvp.GetComponentInChildren<SpriteRenderer>().color;
         mvpStats.text = mvp.GetComponent<Player>().killCount.Value + " kills, " + mvp.GetComponent<Player>().assistCount.Value + " assists and " + mvp.GetComponent<Player>().deathCount.Value + " deaths";
     }
 }

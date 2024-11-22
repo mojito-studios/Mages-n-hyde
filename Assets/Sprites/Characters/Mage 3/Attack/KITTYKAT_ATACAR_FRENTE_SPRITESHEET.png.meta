@@ -1,0 +1,567 @@
+fileFormatVersion: 2
+guid: a3ca2ff2bee6a3343a15bb82128d703f
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 600
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_0
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 6605
+        width: 820
+        height: 1137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e93498ea0de0c149aa8112ad322eb5b
+      internalID: 1644386290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_1
+      rect:
+        serializedVersion: 2
+        x: 2650
+        y: 6605
+        width: 839
+        height: 1017
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22135aa0fc66ce940a6e7377cd387627
+      internalID: 2064863681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_2
+      rect:
+        serializedVersion: 2
+        x: 4692
+        y: 6605
+        width: 838
+        height: 897
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50090a4aa09351748a7db339e9572160
+      internalID: 1767575333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_3
+      rect:
+        serializedVersion: 2
+        x: 6750
+        y: 6624
+        width: 840
+        height: 918
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e83e8e292ede0b4685753feffcc6884
+      internalID: -794127997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_4
+      rect:
+        serializedVersion: 2
+        x: 8790
+        y: 6653
+        width: 860
+        height: 979
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eefb5f8525cbe1a4796a081b7b35d1a2
+      internalID: 311191728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_5
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 4646
+        width: 860
+        height: 1018
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a0e78ed99e8d540a180e33da32b358
+      internalID: -1734843259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_6
+      rect:
+        serializedVersion: 2
+        x: 2651
+        y: 4687
+        width: 879
+        height: 1037
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dc97bf38269c8e4c8cee415a3c029c7
+      internalID: -816550621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_7
+      rect:
+        serializedVersion: 2
+        x: 4691
+        y: 4726
+        width: 879
+        height: 997
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de87b6b8ee8bd5046871bca456f59b3b
+      internalID: -1067450116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_8
+      rect:
+        serializedVersion: 2
+        x: 6730
+        y: 4726
+        width: 898
+        height: 997
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79c90bbc04f69ea40a2c24d3f1954206
+      internalID: 2093513628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_9
+      rect:
+        serializedVersion: 2
+        x: 8751
+        y: 4725
+        width: 899
+        height: 979
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 960eba4a1125452439e7700e727c4e52
+      internalID: 1354017692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_10
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 2667
+        width: 897
+        height: 979
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3467f6e6b6d32d42909477896604694
+      internalID: 1611554322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_11
+      rect:
+        serializedVersion: 2
+        x: 2610
+        y: 2648
+        width: 850
+        height: 997
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d83f5f9e9f358a4c8d513580054372d
+      internalID: -710585127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_12
+      rect:
+        serializedVersion: 2
+        x: 4650
+        y: 2612
+        width: 835
+        height: 1014
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70bba1cdba8fdf041b0b4277233192d3
+      internalID: -1568931649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_13
+      rect:
+        serializedVersion: 2
+        x: 6690
+        y: 2588
+        width: 839
+        height: 1038
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87fc3af8a61003b479ed039599f32051
+      internalID: 683226528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_14
+      rect:
+        serializedVersion: 2
+        x: 8770
+        y: 2568
+        width: 800
+        height: 1018
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c0a3a49d2dcb9840bf04c92a5b68863
+      internalID: 28779920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_15
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 490
+        width: 820
+        height: 977
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a96dffe3cba185449d6597fb56297e3
+      internalID: 1268279334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_16
+      rect:
+        serializedVersion: 2
+        x: 2650
+        y: 471
+        width: 820
+        height: 917
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d8a3000ffc27794ab5304a25123b39b
+      internalID: -745872131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_17
+      rect:
+        serializedVersion: 2
+        x: 4691
+        y: 470
+        width: 839
+        height: 878
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1554b2b9fb0d8094db5d3efba607b204
+      internalID: -1894535759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_18
+      rect:
+        serializedVersion: 2
+        x: 6750
+        y: 470
+        width: 837
+        height: 1014
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73eebe7289ae52f4fb36aa34f60b0793
+      internalID: -926503545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATACAR_FRENTE_SPRITESHEET_19
+      rect:
+        serializedVersion: 2
+        x: 8790
+        y: 470
+        width: 840
+        height: 1137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33aaa63e79a390c408b7060a5751018b
+      internalID: -1507851403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_0: 1644386290
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_1: 2064863681
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_10: 1611554322
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_11: -710585127
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_12: -1568931649
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_13: 683226528
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_14: 28779920
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_15: 1268279334
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_16: -745872131
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_17: -1894535759
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_18: -926503545
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_19: -1507851403
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_2: 1767575333
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_3: -794127997
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_4: 311191728
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_5: -1734843259
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_6: -816550621
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_7: -1067450116
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_8: 2093513628
+      KITTYKAT_ATACAR_FRENTE_SPRITESHEET_9: 1354017692
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

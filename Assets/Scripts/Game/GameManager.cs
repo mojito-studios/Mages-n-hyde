@@ -80,19 +80,22 @@ public class GameManager : NetworkBehaviour
         {
             PlayerData playerData = OptionsChosen.Instance.GetPlayerDataFromClientId(clientId);
             Vector3 positionSpawn;
+            Quaternion orientationSpawn;
 
             if (playerData.team == 0) 
             {
                 positionSpawn = startPos1.GetChild(i).position;
+                orientationSpawn = startPos1.GetChild(i).rotation;
                 i++;
             }
             else
             {
                 positionSpawn = startPos2.GetChild(j).position;
+                orientationSpawn = startPos1.GetChild(i).rotation;
                 j++;
 
             }
-            GameObject player = Instantiate(prefabs[playerData.prefabId], positionSpawn, Quaternion.identity);
+            GameObject player = Instantiate(prefabs[playerData.prefabId], positionSpawn, orientationSpawn);
             player.GetComponent<NetworkObject>().SpawnAsPlayerObject(clientId);
             player.GetComponent<Player>().SetSpawnPositionValue(positionSpawn);
             player.GetComponent<Player>().teamAssign = playerData.team;

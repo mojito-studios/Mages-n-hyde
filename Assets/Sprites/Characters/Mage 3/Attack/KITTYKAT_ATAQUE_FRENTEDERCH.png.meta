@@ -1,0 +1,567 @@
+fileFormatVersion: 2
+guid: e4b1ce98d822274439dce8cfd2b26763
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 600
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_0
+      rect:
+        serializedVersion: 2
+        x: 720
+        y: 6604
+        width: 610
+        height: 1133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ae89858e27e23b4c9e82e2c8fe9a3a2
+      internalID: 1262241101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_1
+      rect:
+        serializedVersion: 2
+        x: 2770
+        y: 6604
+        width: 620
+        height: 1008
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bafa45fd4f2e065468514c963e26690b
+      internalID: -1469747162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_2
+      rect:
+        serializedVersion: 2
+        x: 4791
+        y: 6584
+        width: 659
+        height: 898
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 345e609ce1ff36c45996df677be733a6
+      internalID: -1227728313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_3
+      rect:
+        serializedVersion: 2
+        x: 6830
+        y: 6584
+        width: 680
+        height: 938
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b8ba2eb1b007c459a3a8281f520cc1
+      internalID: -504713974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_4
+      rect:
+        serializedVersion: 2
+        x: 8850
+        y: 6584
+        width: 740
+        height: 1037
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d217662a40ca2548ae5df39275e4809
+      internalID: -447763889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_5
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 4548
+        width: 775
+        height: 1116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 605a639e83710f5448b668f065d018f7
+      internalID: 218029156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_6
+      rect:
+        serializedVersion: 2
+        x: 2690
+        y: 4586
+        width: 797
+        height: 1138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a9f425d8a2cfdc41a58b71af7c83bc2
+      internalID: 487881313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_7
+      rect:
+        serializedVersion: 2
+        x: 4730
+        y: 4586
+        width: 800
+        height: 1138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09cfe291f79ec304cbc1dff4981444dd
+      internalID: 1589213402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_8
+      rect:
+        serializedVersion: 2
+        x: 6750
+        y: 4567
+        width: 839
+        height: 1155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5ec572c2674c504bba2a47a7ff505a7
+      internalID: -281311714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_9
+      rect:
+        serializedVersion: 2
+        x: 8791
+        y: 4566
+        width: 838
+        height: 1138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f047e061f9e357b4ab22d4cb4817306d
+      internalID: -642695910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_10
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 2508
+        width: 800
+        height: 1138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7809ce2b7c8d17c43b997a1c12924853
+      internalID: 1665761138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_11
+      rect:
+        serializedVersion: 2
+        x: 2650
+        y: 2488
+        width: 800
+        height: 1138
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c93d6d00781304594e9034d5d5b617
+      internalID: 632833918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_12
+      rect:
+        serializedVersion: 2
+        x: 4670
+        y: 2448
+        width: 820
+        height: 1178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b3474d30cb2e1e49bc84594a66e52ea
+      internalID: 776672146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_13
+      rect:
+        serializedVersion: 2
+        x: 6690
+        y: 2428
+        width: 840
+        height: 1193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca4411175b8937448b2081d779892d8
+      internalID: 971943337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_14
+      rect:
+        serializedVersion: 2
+        x: 8770
+        y: 2388
+        width: 835
+        height: 1178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5b80d98fca4c740841bef6e8d3ea64
+      internalID: -1146057493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_15
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 310
+        width: 840
+        height: 1119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2fb2af6b1950a4d8abbe83c030687c
+      internalID: 1479121727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_16
+      rect:
+        serializedVersion: 2
+        x: 2650
+        y: 290
+        width: 859
+        height: 1059
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f1a9c47b64c7248b69b27cf3b77ef6
+      internalID: 1049098260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_17
+      rect:
+        serializedVersion: 2
+        x: 4710
+        y: 290
+        width: 840
+        height: 1034
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff0a1aad66d41cb498f84b3dc7b53633
+      internalID: 535865668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_18
+      rect:
+        serializedVersion: 2
+        x: 6790
+        y: 290
+        width: 775
+        height: 1176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba2e0426dff6f214d97b5d9f2a932bc9
+      internalID: -1613894935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: KITTYKAT_ATAQUE_FRENTEDERCH_19
+      rect:
+        serializedVersion: 2
+        x: 8870
+        y: 290
+        width: 700
+        height: 1317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddf8606cc45ee004894455bd26cbc929
+      internalID: 1078719927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      KITTYKAT_ATAQUE_FRENTEDERCH_0: 1262241101
+      KITTYKAT_ATAQUE_FRENTEDERCH_1: -1469747162
+      KITTYKAT_ATAQUE_FRENTEDERCH_10: 1665761138
+      KITTYKAT_ATAQUE_FRENTEDERCH_11: 632833918
+      KITTYKAT_ATAQUE_FRENTEDERCH_12: 776672146
+      KITTYKAT_ATAQUE_FRENTEDERCH_13: 971943337
+      KITTYKAT_ATAQUE_FRENTEDERCH_14: -1146057493
+      KITTYKAT_ATAQUE_FRENTEDERCH_15: 1479121727
+      KITTYKAT_ATAQUE_FRENTEDERCH_16: 1049098260
+      KITTYKAT_ATAQUE_FRENTEDERCH_17: 535865668
+      KITTYKAT_ATAQUE_FRENTEDERCH_18: -1613894935
+      KITTYKAT_ATAQUE_FRENTEDERCH_19: 1078719927
+      KITTYKAT_ATAQUE_FRENTEDERCH_2: -1227728313
+      KITTYKAT_ATAQUE_FRENTEDERCH_3: -504713974
+      KITTYKAT_ATAQUE_FRENTEDERCH_4: -447763889
+      KITTYKAT_ATAQUE_FRENTEDERCH_5: 218029156
+      KITTYKAT_ATAQUE_FRENTEDERCH_6: 487881313
+      KITTYKAT_ATAQUE_FRENTEDERCH_7: 1589213402
+      KITTYKAT_ATAQUE_FRENTEDERCH_8: -281311714
+      KITTYKAT_ATAQUE_FRENTEDERCH_9: -642695910
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

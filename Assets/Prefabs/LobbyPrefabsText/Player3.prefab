@@ -26,11 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1801500307173324165, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
       propertyPath: m_Name
-      value: Player Variant
+      value: Player3
       objectReference: {fileID: 0}
     - target: {fileID: 1866458643401631770, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 250459173
+      value: 4109786287
       objectReference: {fileID: 0}
     - target: {fileID: 1866458643401631770, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.9490196
       objectReference: {fileID: 0}
+    - target: {fileID: 4638265672510957068, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1134551954d32714eba92a2a8733e499, type: 2}
     - target: {fileID: 4908637584049000513, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -84,6 +88,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5472010036592656020, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2065352890, guid: 110c35f5380002e478dbc9ce0284f3fc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
