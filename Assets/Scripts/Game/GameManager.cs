@@ -18,7 +18,6 @@ public class GameManager : NetworkBehaviour
     private const int MaxTimeActive = 20;
     public static GameManager Instance { get; private set; }
     private List<NetworkObject> activeObjects = new List<NetworkObject>();
-    //[SerializeField] private Judge judge;
     [SerializeField] private Transform startPos1;
     [SerializeField] private Transform startPos2;
      public List<GameObject> prefabs = new List<GameObject>();
@@ -39,7 +38,7 @@ public class GameManager : NetworkBehaviour
         {
             InstantiatePlayers();
             SpawnPUStart();
-            //ActiveObjects();
+            ActiveObjects();
         }
     }
     public override void OnNetworkSpawn()
@@ -49,8 +48,7 @@ public class GameManager : NetworkBehaviour
     }
     void Start()
     {
-        //judge = GameObject.FindGameObjectWithTag("Judge").GetComponent<Judge>();
-       
+
     }
 
     // Update is called once per frame
@@ -63,8 +61,7 @@ public class GameManager : NetworkBehaviour
     {
         for(int i = 0;  i < prefabs.Count; i++) 
         {
-            Debug.Log(prefabs[i].GetComponent<SpriteRenderer>().sprite);
-            if(prefabs[i].GetComponent<SpriteRenderer>().sprite == sprite)
+            if(prefabs[i].GetComponentInChildren<SpriteRenderer>().sprite == sprite)
             {
 
                 return i;

@@ -20,16 +20,18 @@ public class Arrow : NetworkBehaviour
         if (collision.gameObject.tag == "PowerUp") return;
         if (collision.gameObject.tag == "Player") 
         {
-            ulong tId = collision.gameObject.GetComponent<Player>().GetTeamTower();
-            Tower playerTower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[tId].GetComponent<Tower>();
-            if (casterTower.tag != playerTower.tag)
+            if (!collision.gameObject.GetComponent<Player>().inmune.Value)
             {
-                Player hitPlayer = collision.gameObject.GetComponent<Player>();
-                if (!(hitPlayer.health.Value - _damage * 10 > 0)) { caster.kill(); hitPlayer.die(caster); }
-                else { hitPlayer.assistantAssign(caster); }
-                collision.gameObject.GetComponent<Player>().getHit(_damage);
+                ulong tId = collision.gameObject.GetComponent<Player>().GetTeamTower();
+                Tower playerTower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[tId].GetComponent<Tower>();
+                if (casterTower.tag != playerTower.tag)
+                {
+                    Player hitPlayer = collision.gameObject.GetComponent<Player>();
+                    if (!(hitPlayer.health.Value - _damage * 10 > 0)) { caster.kill(); hitPlayer.die(caster); }
+                    else { hitPlayer.assistantAssign(caster); }
+                    collision.gameObject.GetComponent<Player>().getHit(_damage);
+                }
             }
-           
            
           
         }

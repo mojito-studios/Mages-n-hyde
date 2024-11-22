@@ -23,17 +23,19 @@ public class Player : NetworkBehaviour
     private const float maxLife = 100;
     public float attack = 1;
     public float range = 1;
-    public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float> (maxLife);
+    public float ultiValue;
+    public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float>(maxLife);
     public NetworkVariable<int> killCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<int> deathCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<int> assistCount { get; private set; } = new NetworkVariable<int>(0);
+    public NetworkVariable<bool> inmune { get; private set; } = new NetworkVariable<bool>(false);
     private List<Player> assistant = new List<Player>(0);
-    private AnimationController anim;
+    [SerializeField] private AnimationController anim;
 
     //gameover
     public NetworkVariable<FixedString128Bytes> winningTeam = new NetworkVariable<FixedString128Bytes>();
     public NetworkVariable<bool> win = new NetworkVariable<bool>();
-  
+
     //UI
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider towerHealth;
@@ -57,29 +59,29 @@ public class Player : NetworkBehaviour
     private Button _ultimateAttack;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     private Vector3 _spawnPosition;
-   // private int _respawnTime = 5;
+    // private int _respawnTime = 5;
     [SerializeField] private GameObject spellPrefab;
     [SerializeField] private Transform spellTransform;
 
     private void Awake()
     {
-        _sprite = GetComponent<SpriteRenderer>().sprite;
+        _sprite = GetComponentInChildren<SpriteRenderer>().sprite;
 
     }
     void Start()
     {
         if (!IsOwner) return;
-       
+
         _camera = GetComponentInChildren<Camera>();
         Button[] buttonList = GetComponentsInChildren<Button>();
         foreach (var button in buttonList)
         {
             if (button.CompareTag("AttackButton")) { _spell = button; }
-            else if(button.CompareTag("UltiButton")) { _ultimateAttack = button; }
+            else if (button.CompareTag("UltiButton")) { _ultimateAttack = button; }
         }
         _ultimateAttack.interactable = false;
-        anim = GetComponent<AnimationController>();
-       
+        anim = GetComponentInChildren<AnimationController>();
+
 
     }
 
@@ -100,7 +102,7 @@ public class Player : NetworkBehaviour
 
     }
 
-   
+
 
     public void SetPBehaviour(ulong pBehaviourID)
     {
@@ -126,14 +128,21 @@ public class Player : NetworkBehaviour
                     targetPosition = _camera.ScreenToWorldPoint(Input.GetTouch(i).position);
                     targetPosition.z = transform.position.z;
                     _moving = true;
+                    anim.isWalkingRpc(_moving);
+                    //anim.AnimateMovementRpc(targetPosition);
                 }
             }
         }
         if (_moving)
-            MovePlayer(); 
+            MovePlayer();
+        //anim.AnimateMovementRpc(targetPosition);
         updateHealthRpc();
     }
 
+    private void FixedUpdate()
+    {
+        //if (_moving) anim.AnimateMovementRpc(targetPosition);
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         SetMovingRpc(false);
@@ -160,7 +169,7 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     private void getHitRpc(float damage)
     {
-        health.Value -= damage*10;
+        health.Value -= damage * 10;
         if (health.Value <= 0)
         {
             health.Value = maxLife;
@@ -207,7 +216,7 @@ public class Player : NetworkBehaviour
 
     public void assistantAssign(Player caster)
     {
-        if(!assistant.Contains(caster)) assistant.Add(caster);
+        if (!assistant.Contains(caster)) assistant.Add(caster);
     }
 
     public void die(Player caster)
@@ -224,13 +233,14 @@ public class Player : NetworkBehaviour
     private void SpawnObject()
     {
         _moving = false;
-        transform.position = _spawnPosition; 
+        anim.isWalkingRpc(_moving);
+        transform.position = _spawnPosition;
         SetActiveStateRpc(true);
 
     }
 
     [Rpc(SendTo.Everyone)]
-    private void SetActiveStateRpc(bool isActive) 
+    private void SetActiveStateRpc(bool isActive)
     {
         gameObject.SetActive(isActive);
     }
@@ -247,51 +257,58 @@ public class Player : NetworkBehaviour
         _hiding.Value = hide;
     }
     void MovePlayer()
-    { 
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed); 
-       
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+    {
+        if (targetPosition != transform.position)
+        {
+            Vector3 targetDirection = targetPosition - transform.position;
+            transform.up = targetDirection;
+            anim.AnimateMovementRpc(targetPosition);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
+        }
+
+        if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
         {
             _moving = false;
+            anim.isWalkingRpc(_moving);
         }
     }
 
-    public void OnMovement(InputAction.CallbackContext context) 
+    public void OnMovement(InputAction.CallbackContext context)
     {
         if (!IsOwner) return;
         Vector3 position = Mouse.current.position.ReadValue();
         targetPosition = _camera.ScreenToWorldPoint(position);
         targetPosition.z = transform.position.z;
         _moving = true;
-        anim.AnimateMovement(targetPosition);
-        if(anim.canFlip) anim.CheckFlip(targetPosition.x);
-        
+        anim.isWalkingRpc(_moving);
+        //anim.AnimateMovementRpc(targetPosition);
     }
 
- 
+
 
     public void OnHide(InputAction.CallbackContext context) //Se activa al hacer click derecho cuando est�s encima de un prop
     {
 
         if (!IsOwner || _hiding.Value) return;
 
-        
+
         PropsBehaviour pBehaviour = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].GetComponent<PropsBehaviour>();
         if (Vector3.Distance(transform.position, pBehaviour.transform.position) < 11f) //�Por qu� ahora la distancia es tanta?
         {
 
             OnHideRpc(true);
-            
+
         }
     }
 
     void ChangeSprite(bool oldValue, bool newValue)
     {
-        if(newValue)
+        if (newValue)
         {
+            GetComponentInChildren<Animator>().enabled = false;
             PropsBehaviour pBehaviourHide = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].GetComponent<PropsBehaviour>();
             Sprite spriteToChange = GameManager.Instance.props[pBehaviourHide.spriteNumber].GetComponent<SpriteRenderer>().sprite;
-            GetComponent<SpriteRenderer>().sprite = spriteToChange;
+            GetComponentInChildren<SpriteRenderer>().sprite = spriteToChange;
             var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].gameObject;
             hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
             StartCoroutine(HideCoroutine(pBehaviourHide.timeHiding));
@@ -299,8 +316,9 @@ public class Player : NetworkBehaviour
         }
         else
         {
-            Sprite oldSprite = GameManager.Instance.prefabs[spriteIndex.Value].GetComponent<SpriteRenderer>().sprite;
-            GetComponent<SpriteRenderer>().sprite = oldSprite;
+            GetComponentInChildren<Animator>().enabled = true;
+            Sprite oldSprite = GameManager.Instance.prefabs[spriteIndex.Value].GetComponentInChildren<SpriteRenderer>().sprite;
+            GetComponentInChildren<SpriteRenderer>().sprite = oldSprite;
             var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[_pBehaviour.Value].gameObject;
             hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
             SetPBehaviour(0);
@@ -342,7 +360,7 @@ public class Player : NetworkBehaviour
     {
         _spawnPosition = position;
     }
-   
+
     public void SetUltiValue(int value)
     {
         SetUltiValueRpc(value);
@@ -360,12 +378,39 @@ public class Player : NetworkBehaviour
 
     private void interactableButton(int oldValue, int newValue)
     {
-        if(newValue == 0) _ultimateAttack.interactable = false;
-        if(newValue == 15) _ultimateAttack.interactable = true;
+        if (newValue == 0) _ultimateAttack.interactable = false;
+        if (newValue == 15) _ultimateAttack.interactable = true;
     }
     public void OnClickButtonTest()
     {
-         SetUltiValue(0);
+        SetUltiValue(0);
+    }
+
+    [Rpc(SendTo.Server)]
+    public void Ulti1ARpc()
+    {
+        inmune.Value = true;
+        Ulti1ButtonRpc();
+        StartCoroutine(Ulti1C(ultiValue));
+    }
+
+    [Rpc(SendTo.Owner)]
+    public void Ulti1ButtonRpc()
+    {
+        _ultimateAttack.interactable = false;
+        SetUltiValue(0);
+    }
+
+    private IEnumerator Ulti1C(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Ulti1BRpc();
+    }
+    [Rpc(SendTo.Server)]
+    private void Ulti1BRpc()
+    {
+        inmune.Value = false;
+        anim.EndUltiRpc();
     }
 
     public void EndGame()

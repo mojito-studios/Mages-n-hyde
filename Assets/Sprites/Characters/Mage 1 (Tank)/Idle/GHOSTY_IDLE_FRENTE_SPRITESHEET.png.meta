@@ -1,0 +1,589 @@
+fileFormatVersion: 2
+guid: 12c23f8512d21ec49bf1c03ed7d623e5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 600
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 8508
+        width: 1954
+        height: 1244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9727649af8e4e2e409bec2c71d95058c
+      internalID: -268825893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_1
+      rect:
+        serializedVersion: 2
+        x: 2113
+        y: 8508
+        width: 1939
+        height: 1249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7a642adbba3d924998893624506e3f1
+      internalID: 1907881278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_2
+      rect:
+        serializedVersion: 2
+        x: 4175
+        y: 8513
+        width: 1902
+        height: 1249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0909107b1edcbac4688b406def0a8ef1
+      internalID: -774927935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_3
+      rect:
+        serializedVersion: 2
+        x: 6253
+        y: 8508
+        width: 1839
+        height: 1264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 955d550fa424dde40ba293cecacff536
+      internalID: 1352572091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_4
+      rect:
+        serializedVersion: 2
+        x: 8335
+        y: 8508
+        width: 1757
+        height: 1279
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad6885dbe7296fc409272b1a47d4732e
+      internalID: 1628936584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_5
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 6463
+        width: 1654
+        height: 1294
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc1d3a342846934488a835484fb9f9bc
+      internalID: -845083879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_6
+      rect:
+        serializedVersion: 2
+        x: 2288
+        y: 6463
+        width: 1539
+        height: 1309
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab065810aed52014fbad34e8453fcec8
+      internalID: 1775895439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_7
+      rect:
+        serializedVersion: 2
+        x: 4383
+        y: 6463
+        width: 1434
+        height: 1324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c012707689d229547aea3f429452b30f
+      internalID: -473068354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_8
+      rect:
+        serializedVersion: 2
+        x: 6473
+        y: 6463
+        width: 1339
+        height: 1329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 656973c704dae0545a85395ff54e245c
+      internalID: -1244355048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_9
+      rect:
+        serializedVersion: 2
+        x: 8553
+        y: 6463
+        width: 1269
+        height: 1334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a7513637a9b7f41a9396b9ce0d9e71
+      internalID: 228913615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_10
+      rect:
+        serializedVersion: 2
+        x: 373
+        y: 4413
+        width: 1244
+        height: 1339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75e2d8fce6ef16a4c86bd7f34b62ce94
+      internalID: -1972877987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_11
+      rect:
+        serializedVersion: 2
+        x: 2408
+        y: 4413
+        width: 1269
+        height: 1339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6fdd23a993e7d94eb8f0754e9a784f1
+      internalID: 1708001672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_12
+      rect:
+        serializedVersion: 2
+        x: 4428
+        y: 4413
+        width: 1334
+        height: 1334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f633728604e1df4fa00cd0ca7f2b905
+      internalID: 1256441259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_13
+      rect:
+        serializedVersion: 2
+        x: 6433
+        y: 4413
+        width: 1433
+        height: 1324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4a89f513fbe9134f962ccdc5b0962f4
+      internalID: 2038177730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_14
+      rect:
+        serializedVersion: 2
+        x: 8433
+        y: 4413
+        width: 1539
+        height: 1314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f95bdb2ae7875dc4c829e9478ad497e6
+      internalID: 382982761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_15
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 2368
+        width: 1654
+        height: 1289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 611cee746ba3a09468923b8dfee39a48
+      internalID: 47177561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_16
+      rect:
+        serializedVersion: 2
+        x: 2193
+        y: 2368
+        width: 1754
+        height: 1274
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bedab3c4f86422e4eab8c06dd446584e
+      internalID: -901169093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_17
+      rect:
+        serializedVersion: 2
+        x: 4203
+        y: 2368
+        width: 1839
+        height: 1264
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88b726c854db7164a8373b4667007832
+      internalID: 862170385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_18
+      rect:
+        serializedVersion: 2
+        x: 6223
+        y: 2368
+        width: 1904
+        height: 1249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5019099138531b94380cdc98534571ff
+      internalID: 826434480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_19
+      rect:
+        serializedVersion: 2
+        x: 8253
+        y: 2368
+        width: 1944
+        height: 1244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38a9f2f66259b424bbba3fba0e4af081
+      internalID: -597128866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GHOSTY_IDLE_FRENTE_SPRITESHEET_20
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 318
+        width: 1954
+        height: 1239
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3f8cb0e0bbb2534fb6764b04fe5ef7e
+      internalID: 135811033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_0: -268825893
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_1: 1907881278
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_10: -1972877987
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_11: 1708001672
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_12: 1256441259
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_13: 2038177730
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_14: 382982761
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_15: 47177561
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_16: -901169093
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_17: 862170385
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_18: 826434480
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_19: -597128866
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_2: -774927935
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_20: 135811033
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_3: 1352572091
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_4: 1628936584
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_5: -845083879
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_6: 1775895439
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_7: -473068354
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_8: -1244355048
+      GHOSTY_IDLE_FRENTE_SPRITESHEET_9: 228913615
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

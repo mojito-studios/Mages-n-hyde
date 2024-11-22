@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 
-public class AnimationController : MonoBehaviour
+public class AnimationController : NetworkBehaviour
 {
-    private Animator playerAnim;
-    public bool canFlip;
-    bool facingRight = true;
-    SpriteRenderer sp;
+    [SerializeField] private Animator playerAnim;
+    [SerializeField] public bool canFlip;
+    [SerializeField] bool facingRight = true;
+    [SerializeField]SpriteRenderer sp;
     void Start()
     {
         playerAnim = GetComponent<Animator>();
@@ -17,7 +20,7 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        sp.transform.rotation = Quaternion.identity;
     }
 
    public void ProcessInputs(Vector3 input)
@@ -25,26 +28,46 @@ public class AnimationController : MonoBehaviour
 
     }
 
-    public void AnimateMovement(Vector3 input)
+    [Rpc(SendTo.Server)]
+    public void AnimateMovementRpc(Vector3 input)
     {
-        input.Normalize(); //No va bien del todo pero es lo mejor que pude hacer a a las 5 am
-        playerAnim.SetFloat("MoveX", input.x);
-        playerAnim.SetFloat("MoveY", input.y);
-        playerAnim.SetFloat("MoveMagnitude", input.magnitude);
-
-
+        AnimateMovement2Rpc();
     }
 
-    public void AnimateAttack()
+    [Rpc(SendTo.Everyone)]
+    public void AnimateMovement2Rpc()
     {
-        //anim.SetAttack a verdadero cuando pulse el botón de ataque. Mirar si afecta de la misma manera que cuando está hacindo cualquier acción y ataca
-
+        Vector3 direction = GetComponentInParent<Player>().gameObject.GetComponent<Transform>().up; //No va bien del todo pero es lo mejor que pude hacer a a las 5 am
+        direction.Normalize();
+        playerAnim.SetFloat("MoveX", direction.x);
+        playerAnim.SetFloat("MoveY", direction.y);
+        if (canFlip) CheckFlip(direction);
     }
 
-    public void AnimateUlti()
+    [Rpc(SendTo.Everyone)]
+    public void AnimateAttackRpc()
     {
-        //anim.SetUlti a verdadero cuando pulse el botón de Ulti.
+        playerAnim.SetBool("isAttacking", true);
     }
+
+    [Rpc(SendTo.Everyone)]
+    public void AnimateUltiRpc()
+    {
+        playerAnim.SetBool("isUlti", true);
+    }
+
+    [Rpc(SendTo.Everyone)]
+    public void EndUltiRpc()
+    {
+        playerAnim.SetBool("isUlti", false);
+    }
+
+    [Rpc(SendTo.Everyone)]
+    public void isWalkingRpc(bool walk)
+    {
+        playerAnim.SetBool("isWalking", walk);
+    }
+
     public void Flip()
     {
         sp.GetComponent<SpriteRenderer>(); 
@@ -53,9 +76,9 @@ public class AnimationController : MonoBehaviour
         facingRight = !facingRight;
     }
 
-    public void CheckFlip(float x)
+    public void CheckFlip(Vector3 direction)
     {
-        if(x < 0 && facingRight|| x> 0 && !facingRight )
+        if((direction.x < 0.0000 && facingRight)|| (direction.x > 0.0000 && !facingRight))
             Flip();
     }
 }

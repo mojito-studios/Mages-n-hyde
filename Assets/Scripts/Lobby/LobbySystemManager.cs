@@ -32,7 +32,7 @@ public class LobbySystemManager : MonoBehaviour
         spriteToShow = playerPrefab.GetComponent<SpriteRenderer>();
         prefabIndex = 0;
         // spriteToShow.sprite = charactersPrefabs[0].GetComponent<SpriteRenderer>().sprite;
-         spriteToShow.color = charactersPrefabs[0].GetComponent<SpriteRenderer>().color; //Como de momento solo cambia el color lo dejo así
+         spriteToShow.color = charactersPrefabs[0].GetComponentInChildren<SpriteRenderer>().color; //Como de momento solo cambia el color lo dejo así
       
 
     }
@@ -57,8 +57,8 @@ public class LobbySystemManager : MonoBehaviour
         {
             prefabIndex = 0;
         }
-        spriteToShow.sprite = charactersPrefabs[prefabIndex].GetComponent<SpriteRenderer>().sprite;
-        spriteToShow.color = charactersPrefabs[prefabIndex].GetComponent<SpriteRenderer>().color;
+        spriteToShow.sprite = charactersPrefabs[prefabIndex].GetComponentInChildren<SpriteRenderer>().sprite;
+        spriteToShow.color = charactersPrefabs[prefabIndex].GetComponentInChildren<SpriteRenderer>().color;
         OptionsChosen.Instance.ChangePlayerPrefab(prefabIndex);
     }
 
