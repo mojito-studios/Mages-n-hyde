@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
@@ -17,13 +18,14 @@ using TouchPhase = UnityEngine.TouchPhase;
 public class Player : NetworkBehaviour
 {
     //player
+    private const int MAX_ULTI_VALUE = 15;
     private Camera _camera;
     public int teamAssign;
     public Tower teamTower;
     private const float maxLife = 100;
     public float attack = 1;
     public float range = 1;
-    public float ultiValue;
+    public float ultiTime;
     public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float>(maxLife);
     public NetworkVariable<int> killCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<int> deathCount { get; private set; } = new NetworkVariable<int>(0);
@@ -55,8 +57,7 @@ public class Player : NetworkBehaviour
     [HideInInspector] NetworkVariable<ulong> _pBehaviour = new NetworkVariable<ulong>();
 
     //attack
-    private Button _spell;
-    private Button _ultimateAttack;
+    [SerializeField] private Button _ultimateAttack;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     private Vector3 _spawnPosition;
     // private int _respawnTime = 5;
@@ -73,12 +74,6 @@ public class Player : NetworkBehaviour
         if (!IsOwner) return;
 
         _camera = GetComponentInChildren<Camera>();
-        Button[] buttonList = GetComponentsInChildren<Button>();
-        foreach (var button in buttonList)
-        {
-            if (button.CompareTag("AttackButton")) { _spell = button; }
-            else if (button.CompareTag("UltiButton")) { _ultimateAttack = button; }
-        }
         _ultimateAttack.interactable = false;
         anim = GetComponentInChildren<AnimationController>();
 
@@ -306,6 +301,7 @@ public class Player : NetworkBehaviour
         if (newValue)
         {
             GetComponentInChildren<Animator>().enabled = false;
+            healthBar.gameObject.SetActive(false);
             PropsBehaviour pBehaviourHide = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].GetComponent<PropsBehaviour>();
             Sprite spriteToChange = GameManager.Instance.props[pBehaviourHide.spriteNumber].GetComponent<SpriteRenderer>().sprite;
             GetComponentInChildren<SpriteRenderer>().sprite = spriteToChange;
@@ -317,6 +313,7 @@ public class Player : NetworkBehaviour
         else
         {
             GetComponentInChildren<Animator>().enabled = true;
+            healthBar.gameObject.SetActive(true);
             Sprite oldSprite = GameManager.Instance.prefabs[spriteIndex.Value].GetComponentInChildren<SpriteRenderer>().sprite;
             GetComponentInChildren<SpriteRenderer>().sprite = oldSprite;
             var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[_pBehaviour.Value].gameObject;
@@ -363,35 +360,37 @@ public class Player : NetworkBehaviour
 
     public void SetUltiValue(int value)
     {
-        SetUltiValueRpc(value);
+        SetUltiValueRpc(value, MAX_ULTI_VALUE);
     }
 
     [Rpc(SendTo.Server)]
 
-    private void SetUltiValueRpc(int value)
+    private void SetUltiValueRpc(int value, int maxValue)
     {
         if (value == 0)
             ultiAttack.Value = value;
-        else if (ultiAttack.Value == 15) ultiAttack.Value = 15; //Cambiar luego 15 por maxValue 
+        else if (ultiAttack.Value == maxValue) ultiAttack.Value = maxValue; //Cambiar luego 15 por maxValue 
         else ultiAttack.Value += value;
     }
 
     private void interactableButton(int oldValue, int newValue)
     {
         if (newValue == 0) _ultimateAttack.interactable = false;
-        if (newValue == 15) _ultimateAttack.interactable = true;
+        if (newValue == MAX_ULTI_VALUE) _ultimateAttack.interactable = true;
     }
     public void OnClickButtonTest()
     {
         SetUltiValue(0);
     }
 
+    //ULTI 1 ¿MOVER A OTRO SCRIPT?
+
     [Rpc(SendTo.Server)]
     public void Ulti1ARpc()
     {
         inmune.Value = true;
         Ulti1ButtonRpc();
-        StartCoroutine(Ulti1C(ultiValue));
+        StartCoroutine(Ulti1C(ultiTime));
     }
 
     [Rpc(SendTo.Owner)]
@@ -412,6 +411,33 @@ public class Player : NetworkBehaviour
         inmune.Value = false;
         anim.EndUltiRpc();
     }
+
+    //ULTI 2 ¿MOVER A OTRO SCRIPT?
+
+ 
+
+    private IEnumerator Ulti2C(float time)
+    {
+        Player[] enemyPlayers = GameObject.FindObjectsByType<Player>(FindObjectsSortMode.None).Where(obj => obj.teamAssign != this.teamAssign).ToArray();
+        Debug.Log("array de enemigos " + enemyPlayers.Length);
+        foreach (Player player in enemyPlayers)
+        {
+            Debug.Log("dISTANCIA: " + Vector3.Distance(transform.position, player.transform.position));
+            if (Vector3.Distance(transform.position, player.transform.position) < 100) //Por ponerle un valor al área
+                player.getHit(attack);
+        }
+        yield return new WaitForSeconds(time);
+        anim.EndUltiRpc();
+
+    }
+    public void Ulti2ButtonRpc()
+    {
+        SetUltiValue(0);
+        anim.AnimateUltiRpc();
+        StartCoroutine(Ulti2C(ultiTime));
+
+    }
+
 
     public void EndGame()
     {

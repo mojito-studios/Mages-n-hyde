@@ -744,6 +744,8 @@ MonoBehaviour:
   teamTower: {fileID: 0}
   attack: 1
   range: 1
+  ultiTime: 10
+  anim: {fileID: 0}
   winningTeam:
     m_InternalValue:
       utf8LengthInBytes: 0
@@ -888,6 +890,7 @@ MonoBehaviour:
   _towerHealth: {fileID: 6841846807200159076}
   GameOver: {fileID: 481322043450314595}
   button: 0
+  _ultimateAttack: {fileID: 3197686590662413594}
   spellPrefab: {fileID: 439431567459547477, guid: 41708d2002e157a479908df29fd0be0d, type: 3}
   spellTransform: {fileID: 5250368242998643869}
 --- !u!61 &892682667512931341
@@ -933,7 +936,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.8, y: 3.1}
   m_EdgeRadius: 0
 --- !u!50 &7914663211622302659
 Rigidbody2D:
@@ -1170,6 +1173,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1887791214765873626}
+        m_TargetAssemblyTypeName: AnimationController, Assembly-CSharp
+        m_MethodName: AnimateAttackRpc
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 8794270255101273973}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: OnAttack
@@ -3483,7 +3498,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8794270255101273973}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnClickButtonTest
+        m_MethodName: Ulti2ButtonRpc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

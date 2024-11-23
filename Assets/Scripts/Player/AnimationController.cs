@@ -53,6 +53,7 @@ public class AnimationController : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void AnimateUltiRpc()
     {
+        
         playerAnim.SetBool("isUlti", true);
     }
 
