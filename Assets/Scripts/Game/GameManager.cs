@@ -38,7 +38,7 @@ public class GameManager : NetworkBehaviour
         {
             InstantiatePlayers();
             SpawnPUStart();
-            ActiveObjects();
+            //ActiveObjects();
         }
     }
     public override void OnNetworkSpawn()

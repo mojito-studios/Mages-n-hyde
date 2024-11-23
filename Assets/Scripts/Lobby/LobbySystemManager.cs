@@ -10,7 +10,7 @@ public class LobbySystemManager : MonoBehaviour
     public static LobbySystemManager Instance { get; private set; }
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject characterStats;
-    [SerializeField] private List<GameObject> charactersPrefabs;
+    [SerializeField] private List<Sprite> charactersPrefabs;
     [SerializeField] Button t1;
     [SerializeField] Button t2;
     [SerializeField] Button ready;
@@ -25,14 +25,15 @@ public class LobbySystemManager : MonoBehaviour
     {
         provisionalTeam = -1;
         Instance = this;
+      
+
     }
     void Start()
     {
-        
-        spriteToShow = playerPrefab.GetComponent<SpriteRenderer>();
-        prefabIndex = 0;
-        // spriteToShow.sprite = charactersPrefabs[0].GetComponent<SpriteRenderer>().sprite;
-         spriteToShow.color = charactersPrefabs[0].GetComponentInChildren<SpriteRenderer>().color; //Como de momento solo cambia el color lo dejo así
+         spriteToShow = playerPrefab.GetComponent<SpriteRenderer>();
+         prefabIndex = 0;
+         spriteToShow.sprite = charactersPrefabs[0];
+         //spriteToShow.color = charactersPrefabs[0].GetComponentInChildren<SpriteRenderer>().color; //Como de momento solo cambia el color lo dejo así
       
 
     }
@@ -43,13 +44,6 @@ public class LobbySystemManager : MonoBehaviour
         
     }
 
-  public  void EnableButtons()
-    {
-        t1.interactable = true;
-        t2.interactable = true;
-        ready.interactable = true;  
-        next.interactable = true;
-    }
     void ChangeSprite()
     {
         prefabIndex++;
@@ -57,8 +51,7 @@ public class LobbySystemManager : MonoBehaviour
         {
             prefabIndex = 0;
         }
-        spriteToShow.sprite = charactersPrefabs[prefabIndex].GetComponentInChildren<SpriteRenderer>().sprite;
-        spriteToShow.color = charactersPrefabs[prefabIndex].GetComponentInChildren<SpriteRenderer>().color;
+        spriteToShow.sprite = charactersPrefabs[prefabIndex];
         OptionsChosen.Instance.ChangePlayerPrefab(prefabIndex);
     }
 
