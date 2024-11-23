@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 366167333765797102, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9f14dfe06646ae34f8ed65800e7ea78f, type: 2}
+    - target: {fileID: 1061426121526676598, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 89326623, guid: c95337e20ec647e41984074cc91bc765, type: 3}
     - target: {fileID: 4996983701120882635, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -66,15 +74,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6650334172831516519, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
       propertyPath: m_Name
-      value: Player3 Variant
+      value: Player4
       objectReference: {fileID: 0}
     - target: {fileID: 6677839284125850360, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
       propertyPath: GlobalObjectIdHash
-      value: 3422149997
+      value: 3308237588
       objectReference: {fileID: 0}
     - target: {fileID: 6677839284125850360, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 250459173
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454893131193709020, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: canFlip
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8454893131193709020, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: canFlipInv
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

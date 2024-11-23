@@ -9,6 +9,7 @@ public class AnimationController : NetworkBehaviour
 {
     [SerializeField] private Animator playerAnim;
     [SerializeField] public bool canFlip;
+    [SerializeField] public bool canFlipInv;
     [SerializeField] bool facingRight = true;
     [SerializeField]SpriteRenderer sp;
     void Start()
@@ -78,7 +79,14 @@ public class AnimationController : NetworkBehaviour
 
     public void CheckFlip(Vector3 direction)
     {
-        if((direction.x < 0.0000 && facingRight)|| (direction.x > 0.0000 && !facingRight))
-            Flip();
+        if (canFlipInv == false)
+        {
+            if ((direction.x < 0.0000 && facingRight) || (direction.x > 0.0000 && !facingRight)) Flip();
+        }
+        else
+        {
+            if ((direction.x > 0.0000 && facingRight) || (direction.x < 0.0000 && !facingRight)) Flip();
+        }
+        
     }
 }
