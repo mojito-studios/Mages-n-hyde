@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 378296243560842626, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: m_Value
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 378296243560842626, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: m_MaxValue
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 892682667512931341, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
       propertyPath: m_Size.x
       value: 1.235791
@@ -129,13 +137,37 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1274003716, guid: f26187f9727f7f04abefaa2c776e61e0, type: 3}
     - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
-      propertyPath: ultiTime
+      propertyPath: range
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: speed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: attack
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: maxLife
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: ultiTime
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
       propertyPath: character
       value: KittyKat
       objectReference: {fileID: 0}
+    - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: ultidamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: spellPrefab
+      value: 
+      objectReference: {fileID: 7856089565756093602, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
     - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
       propertyPath: _ultimateAttack
       value: 

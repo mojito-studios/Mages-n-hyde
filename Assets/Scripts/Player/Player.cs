@@ -24,12 +24,12 @@ public class Player : NetworkBehaviour
     private Camera _camera;
     public int teamAssign;
     public Tower teamTower;
-    private const float maxLife = 100;
+    public float maxLife = 100;
     public float attack = 1;
     public float range = 1;
     public float ultiTime;
    [SerializeField] private float ultidamage = 3;
-    public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float>(maxLife);
+    public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float>();
     public NetworkVariable<int> killCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<int> deathCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<int> assistCount { get; private set; } = new NetworkVariable<int>(0);
@@ -121,7 +121,7 @@ public class Player : NetworkBehaviour
         base.OnNetworkSpawn();
         if (IsServer)
         {
-            //health.Value = maxLife;
+            health.Value = maxLife;
             _hiding.Value = false;
             spriteIndex.Value = GameManager.Instance.GetPrefabIndex(_sprite);
 

@@ -380,7 +380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -527, y: 535}
+  m_AnchoredPosition: {x: -527, y: 503}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2854770322581068489
@@ -842,7 +842,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2b6a7d5f0e15888439c628926e734138, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef48716abdc0443459b1fb6cba8d1009, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -930,10 +930,11 @@ MonoBehaviour:
   character: Pupetty
   teamAssign: 0
   teamTower: {fileID: 0}
-  attack: 1
-  range: 1
-  ultiTime: 5
-  ultidamage: 3
+  maxLife: 450
+  attack: 2
+  range: 2
+  ultiTime: 7
+  ultidamage: 0
   anim: {fileID: 0}
   winningTeam:
     m_InternalValue:
@@ -1079,11 +1080,13 @@ MonoBehaviour:
   towerShield: {fileID: 7748927942821480177}
   _towerHealth: {fileID: 6841846807200159076}
   GameOver: {fileID: 6022674024017076327}
-  speed: 4
+  speed: 2
   button: 0
   _ultimateAttack: {fileID: 3197686590662413594}
-  spellPrefab: {fileID: 439431567459547477, guid: 41708d2002e157a479908df29fd0be0d, type: 3}
+  spellPrefab: {fileID: 8263670061358615391, guid: 660fa32fbad610b459ebdde3678f3a52, type: 3}
+  ultiPrefab: {fileID: 0}
   spellTransform: {fileID: 5250368242998643869}
+  ultiTransforms: []
 --- !u!61 &892682667512931341
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2703,7 +2706,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -532.00006, y: 155.00003, z: 100.00019}
-  m_LocalScale: {x: 120, y: 120, z: 1}
+  m_LocalScale: {x: 100, y: 100, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2326428867953634934}
@@ -2856,9 +2859,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 707906211102801687}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 450
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 450
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

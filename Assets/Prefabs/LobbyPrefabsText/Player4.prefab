@@ -154,8 +154,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 89326623, guid: c95337e20ec647e41984074cc91bc765, type: 3}
     - target: {fileID: 4557936933678437783, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: range
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557936933678437783, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: speed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557936933678437783, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: attack
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557936933678437783, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: maxLife
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557936933678437783, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
       propertyPath: ultiTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4557936933678437783, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
       propertyPath: character
@@ -165,6 +181,14 @@ PrefabInstance:
       propertyPath: ultiPrefab
       value: 
       objectReference: {fileID: 1484912940514744791, guid: 6f6c6ed6692884c4da2f8c083ce45732, type: 3}
+    - target: {fileID: 4557936933678437783, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: ultidamage
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4557936933678437783, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: spellPrefab
+      value: 
+      objectReference: {fileID: 8557838884211612448, guid: bd349fc2d4641094eaf66b28d0bb2e6f, type: 3}
     - target: {fileID: 4557936933678437783, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
       propertyPath: ultiTransforms.Array.size
       value: 4
@@ -185,6 +209,14 @@ PrefabInstance:
       propertyPath: ultiTransforms.Array.data[3]
       value: 
       objectReference: {fileID: 5057763754506013872}
+    - target: {fileID: 4644749570425632608, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: m_Value
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 4644749570425632608, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
+      propertyPath: m_MaxValue
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 4996983701120882635, guid: 40971f8c6d340df47831e4238f396bb0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
