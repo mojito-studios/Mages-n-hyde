@@ -18,6 +18,7 @@ using TouchPhase = UnityEngine.TouchPhase;
 public class Player : NetworkBehaviour
 {
     //player
+    [SerializeField] public string character { get; private set; } = "Player";
     private const int MAX_ULTI_VALUE = 15;
     private Camera _camera;
     public int teamAssign;
@@ -41,6 +42,7 @@ public class Player : NetworkBehaviour
     //UI
     [SerializeField] private Slider healthBar;
     [SerializeField] private Slider towerHealth;
+    [SerializeField] private Slider towerShield;
     [SerializeField] private TextMeshProUGUI _towerHealth;
     [SerializeField] private Canvas GameOver;
 
@@ -60,7 +62,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private Button _ultimateAttack;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     private Vector3 _spawnPosition;
-    // private int _respawnTime = 5;
+    private int _respawnTime = 5;
     [SerializeField] private GameObject spellPrefab;
     [SerializeField] private Transform spellTransform;
 
@@ -76,8 +78,38 @@ public class Player : NetworkBehaviour
         _camera = GetComponentInChildren<Camera>();
         _ultimateAttack.interactable = false;
         anim = GetComponentInChildren<AnimationController>();
+        teamTower._isDefending.OnValueChanged += SetShieldRpc;
+        teamAssignRpc();
+        if (teamAssign == 1)
+        {
+            topRight(towerHealth.gameObject);
+            topRight(_towerHealth.gameObject);
+            topRight(towerShield.gameObject);
+            towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-36, -36f, 0f);
+            _towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-531, -43f, 0f);
+            towerShield.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-36, -68f, 0f);
+        }
+    }
 
+    [Rpc(SendTo.Server)]
+    private void teamAssignRpc()
+    {
+        teamAssign2Rpc(teamAssign);
+    }
 
+    [Rpc(SendTo.Owner)]
+    private void teamAssign2Rpc(int team)
+    {
+        teamAssign = team;
+    }
+
+    void topRight(GameObject uiObject)
+    {
+        RectTransform uitransform = uiObject.GetComponent<RectTransform>();
+
+        uitransform.anchorMin = new Vector2(1, 1);
+        uitransform.anchorMax = new Vector2(1, 1);
+        uitransform.pivot = new Vector2(1, 1);
     }
 
     public override void OnNetworkSpawn()
@@ -96,8 +128,6 @@ public class Player : NetworkBehaviour
         _hiding.OnValueChanged += ChangeSprite;
 
     }
-
-
 
     public void SetPBehaviour(ulong pBehaviourID)
     {
@@ -124,20 +154,14 @@ public class Player : NetworkBehaviour
                     targetPosition.z = transform.position.z;
                     _moving = true;
                     anim.isWalkingRpc(_moving);
-                    //anim.AnimateMovementRpc(targetPosition);
                 }
             }
         }
         if (_moving)
             MovePlayer();
-        //anim.AnimateMovementRpc(targetPosition);
         updateHealthRpc();
     }
 
-    private void FixedUpdate()
-    {
-        //if (_moving) anim.AnimateMovementRpc(targetPosition);
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         SetMovingRpc(false);
@@ -175,15 +199,22 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void updateHealthRpc()
     {
-        updateHealthBarsRpc(teamTower.currentLife.Value);
+        updateHealthBarsRpc(teamTower.currentLife.Value, teamTower.shield.Value);
     }
 
     [Rpc(SendTo.Everyone)]
-    private void updateHealthBarsRpc(float tower)
+    private void updateHealthBarsRpc(float towerLife, float shield)
     {
         healthBar.value = health.Value;
-        _towerHealth.text = "TowerHealth: " + tower;
-        towerHealth.value = tower;
+        _towerHealth.text = "TowerHealth: " + towerLife;
+        towerHealth.value = towerLife;
+        towerShield.value = shield;
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void SetShieldRpc(bool oldValue, bool newValue)
+    {
+        if (newValue) towerShield.gameObject.SetActive(true); else towerShield.gameObject.SetActive(false);
     }
 
     [Rpc(SendTo.Server)]
@@ -276,7 +307,6 @@ public class Player : NetworkBehaviour
         targetPosition.z = transform.position.z;
         _moving = true;
         anim.isWalkingRpc(_moving);
-        //anim.AnimateMovementRpc(targetPosition);
     }
 
 

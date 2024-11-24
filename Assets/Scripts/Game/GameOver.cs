@@ -8,8 +8,10 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI winners;
+    [SerializeField] private Image result;
+    [SerializeField] private Sprite winning;
     [SerializeField] private TextMeshProUGUI stats;
+    [SerializeField] private TextMeshProUGUI mvpName;
     [SerializeField] private TextMeshProUGUI mvpStats;
     [SerializeField] private SpriteRenderer mvpSprite;
     public bool win;
@@ -25,9 +27,6 @@ public class GameOver : MonoBehaviour
         Destroy(NetworkManager.Singleton.gameObject);
         NetworkManager.Singleton.Shutdown();
         SceneManager.LoadScene(0);
-        
-        
-
     }
     private void OnEnable()
     {
@@ -47,13 +46,13 @@ public class GameOver : MonoBehaviour
             }
         }
 
-        if (win) { winners.text = "You win"; }
-        else { winners.text = "You lose"; }
+        if (win) { result.sprite = winning; }
 
-        stats.text = "You got " + player.killCount.Value + " kills, " + player.assistCount.Value + " assists and died " + player.deathCount.Value + " times";
+        stats.text = player.killCount.Value + " kills, " + player.assistCount.Value + " assists\n" + player.deathCount.Value;
 
+        mvpName.text = mvp.GetComponent<Player>().character;
         mvpSprite.sprite = mvp.GetComponentInChildren<SpriteRenderer>().sprite;
         mvpSprite.color = mvp.GetComponentInChildren<SpriteRenderer>().color;
-        mvpStats.text = mvp.GetComponent<Player>().killCount.Value + " kills, " + mvp.GetComponent<Player>().assistCount.Value + " assists and " + mvp.GetComponent<Player>().deathCount.Value + " deaths";
+        mvpStats.text = mvp.GetComponent<Player>().killCount.Value + " kills, " + mvp.GetComponent<Player>().assistCount.Value + " assists\n" + mvp.GetComponent<Player>().deathCount.Value + " deaths";
     }
 }

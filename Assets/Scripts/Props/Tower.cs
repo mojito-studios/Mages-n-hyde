@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -13,9 +14,10 @@ public class Tower : NetworkBehaviour
     private const float minionsDamage = 0.5f;
     private const float minionsTime = 1.5f;
     [SerializeField] private Slider healthBar;
+    [SerializeField] private Slider shieldBar;
     public NetworkVariable<float> currentLife = new NetworkVariable<float>();
     public NetworkVariable<float> shield = new NetworkVariable<float>(); //PowerUp de escudo
-    private NetworkVariable<bool> _isDefending = new NetworkVariable<bool>(false);
+    public NetworkVariable<bool> _isDefending { get; private set; } = new NetworkVariable<bool>(false);
     [SerializeField] private GameObject minions;
     [SerializeField] private GameObject arrows;
     public Player caster;
@@ -46,6 +48,10 @@ public class Tower : NetworkBehaviour
     private void updateStatsRpc()
     {
         healthBar.value = currentLife.Value;
+        if (shieldBar != null)
+        {
+            shieldBar.value = shield.Value;
+        }
         //Aqu� se le a�aden las actualizaciones del resto de cosas de la ui so tiene para el escudo etc si no pues no
     }
 
@@ -67,12 +73,6 @@ public class Tower : NetworkBehaviour
         currentLife.Value -= damage*5;
         if (currentLife.Value <= 0)
         {
-            /*GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-            foreach (GameObject player in players)
-            {
-                player.GetComponent<Player>().winningTeam.Value = gameObject.tag;
-                player.GetComponent<Player>().gameover.Value = true;
-            }*/
             GameManager.Instance.EndGameRpc(this.tag);
         }
     }
@@ -90,7 +90,7 @@ public class Tower : NetworkBehaviour
         shield.Value -= damage;
         if (shield.Value <= 0)
         {
-            _isDefending.Value = false;
+            SetDefending(false);
             shield.Value = maxShield;
         }
     }
@@ -121,7 +121,13 @@ public class Tower : NetworkBehaviour
     private void SetDefendingRpc(bool defending)
     {
         _isDefending.Value = defending;
+        SetShieldRpc(defending);
+    }
 
+    [Rpc(SendTo.Everyone)]
+    private void SetShieldRpc(bool defending)
+    {
+        if (defending) shieldBar.gameObject.SetActive(true); else shieldBar.gameObject.SetActive(false);
     }
 
     public void ArrowRain()
@@ -129,10 +135,8 @@ public class Tower : NetworkBehaviour
         Debug.Log("Activando flechas");
         int arrowNumber = Random.Range(4, 6);
         ArrowRainRpc(arrowNumber, shootingTime);
-
     }
     [Rpc(SendTo.Server)]
-
     private void ArrowRainRpc(int number, int puta)
     {
         StartCoroutine(FallingObjects(number,  shootingTime));
