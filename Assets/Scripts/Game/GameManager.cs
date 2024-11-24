@@ -38,7 +38,7 @@ public class GameManager : NetworkBehaviour
         {
             InstantiatePlayers();
             SpawnPUStart();
-            //ActiveObjects();
+            ActiveObjects();
         }
     }
     public override void OnNetworkSpawn()
@@ -48,7 +48,6 @@ public class GameManager : NetworkBehaviour
     }
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -123,7 +122,7 @@ public class GameManager : NetworkBehaviour
 
     private Vector3 GetRandomPosition()
     {
-        return new Vector3(Random.Range(-2, 2), Random.Range(-2, 2), 0); //Ajustarlo luego bien al mapa esto es solo como prueba
+        return new Vector3(Random.Range(-5, 10), Random.Range(-5, 5), 0); //Ajustarlo luego bien al mapa esto es solo como prueba
     }
 
     private IEnumerator SpawnOverTime()

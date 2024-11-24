@@ -7,6 +7,13 @@ using UnityEngine;
 public class CameraController : NetworkBehaviour
 {
     public GameObject cameraHolder;
+    public GameObject mapCollider;
+
+    private void Start()
+    {
+     
+
+    }
     public override void OnNetworkSpawn()
     {
         cameraHolder.SetActive(IsOwner);
@@ -14,6 +21,8 @@ public class CameraController : NetworkBehaviour
 
     private void Update()
     {
+
         transform.rotation = Quaternion.Euler(Vector3.zero);
     }
+
 }
