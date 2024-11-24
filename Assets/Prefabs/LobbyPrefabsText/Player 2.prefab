@@ -941,6 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7214c049264430c4daf86c605987b0a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: Grimm
   teamAssign: 0
   teamTower: {fileID: 0}
   attack: 1
@@ -1092,6 +1093,7 @@ MonoBehaviour:
   towerShield: {fileID: 5299117600000756069}
   _towerHealth: {fileID: 6841846807200159076}
   GameOver: {fileID: 481322043450314595}
+  speed: 4
   button: 0
   _ultimateAttack: {fileID: 3197686590662413594}
   spellPrefab: {fileID: 439431567459547477, guid: 41708d2002e157a479908df29fd0be0d, type: 3}

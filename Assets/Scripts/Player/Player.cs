@@ -19,7 +19,7 @@ using TouchPhase = UnityEngine.TouchPhase;
 public class Player : NetworkBehaviour
 {
     //player
-    [SerializeField] public string character { get; private set; } = "Player";
+    [SerializeField] public string character = "Player";
     private const int MAX_ULTI_VALUE = 15;
     private Camera _camera;
     public int teamAssign;
@@ -49,7 +49,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private Canvas GameOver;
 
     //move
-    private float speed = 4f;
+    [SerializeField] private float speed = 4f;
     private bool _moving = false;
     public bool button = false;
     private Vector3 targetPosition = Vector3.zero;
@@ -66,7 +66,9 @@ public class Player : NetworkBehaviour
     private Vector3 _spawnPosition;
     private int _respawnTime = 5;
     [SerializeField] private GameObject spellPrefab;
+    [SerializeField] private GameObject ultiPrefab;
     [SerializeField] private Transform spellTransform;
+    [SerializeField] private Transform[] ultiTransforms;
 
     private void Awake()
     {
@@ -521,6 +523,33 @@ public class Player : NetworkBehaviour
     void ChangePositionRpc(Vector3 position)
     {
         transform.position = position;
+    }
+
+    //ULTI 4
+
+    private IEnumerator Ulti4C(float time)
+    {
+        Spells4Rpc(ultidamage);
+        yield return new WaitForSeconds(time);
+        anim.EndUltiRpc();
+        yield return new WaitForSeconds(range);
+    }
+
+    [Rpc(SendTo.Server)]
+    private void Spells4Rpc(float damage)
+    {
+        foreach (Transform transform in ultiTransforms) {
+            GameObject spell = Instantiate(ultiPrefab, transform.position, transform.rotation);
+            spell.GetComponent<MoveUlti>().caster = this;
+            spell.GetComponent<MoveUlti>().damage = damage;
+            spell.GetComponent<NetworkObject>().Spawn();
+        }
+    }
+    public void Ulti4Button()
+    {
+        SetUltiValue(0);
+        anim.AnimateUltiRpc();
+        StartCoroutine(Ulti4C(ultiTime));
     }
 
     #endregion
