@@ -741,7 +741,6 @@ MonoBehaviour:
   puPrefab: {fileID: 2408843640190948030, guid: 3cecaa2bdb3134441808e702e468f747, type: 3}
   puInScene: 0
   _ObjectPool: {fileID: 1022513682}
-  map: {fileID: 7589726207947328051, guid: 79499682b7a235544a08ec6033d59b05, type: 3}
   startPos1: {fileID: 1449252550}
   startPos2: {fileID: 131146157}
   prefabs:
@@ -753,6 +752,7 @@ MonoBehaviour:
   - {fileID: 4602198569922084102, guid: 6624aed0114b2bc49be5dd7731af8501, type: 3}
   - {fileID: 3158896586971688001, guid: ab125734300be124c916fe4ea0d50b11, type: 3}
   - {fileID: 805614504747796577, guid: b6e94f6e251a27b40b947ca548432bdf, type: 3}
+  currentClip: {fileID: 8300000, guid: 3bb082e5aeaa0e745a5e60e29e24394f, type: 3}
 --- !u!1 &583256929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2782,7 +2782,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.054, y: 2.3160858}
+    oldSize: {x: 0.87833333, y: 1.9300715}
     newSize: {x: 1.054, y: 2.3160858}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2936,7 +2936,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.054, y: 2.3160858}
+    oldSize: {x: 0.87833333, y: 1.9300715}
     newSize: {x: 1.054, y: 2.3160858}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

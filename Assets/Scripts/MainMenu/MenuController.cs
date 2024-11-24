@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuControlller : MonoBehaviour
 {
+    [SerializeField] private AudioClip currentClip;
     private enum States
     {
         MainMenu,
@@ -19,6 +20,7 @@ public class MenuControlller : MonoBehaviour
     void Start()
     {
         actualText = 0;
+        BackgroundMusicController.instance.SetCurrentClip(currentClip);
     }
 
     // Update is called once per frame

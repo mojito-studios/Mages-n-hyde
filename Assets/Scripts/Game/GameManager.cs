@@ -23,13 +23,14 @@ public class GameManager : NetworkBehaviour
      public List<GameObject> prefabs = new List<GameObject>();
     public List<GameObject> props = new List<GameObject>();
 
+    [SerializeField] private AudioClip currentClip;
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
-     
     }
 
     private void HandleSceneLoadComplete(string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
@@ -48,6 +49,7 @@ public class GameManager : NetworkBehaviour
     }
     void Start()
     {
+        BackgroundMusicController.instance.SetCurrentClip(currentClip);
     }
 
     // Update is called once per frame
