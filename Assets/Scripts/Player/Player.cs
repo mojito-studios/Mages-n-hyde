@@ -20,7 +20,7 @@ public class Player : NetworkBehaviour
 {
     //player
     [SerializeField] public string character = "Player";
-    private const int MAX_ULTI_VALUE = 15;
+    private const int MAX_ULTI_VALUE = 60;
     private Camera _camera;
     public int teamAssign;
     public Tower teamTower;
