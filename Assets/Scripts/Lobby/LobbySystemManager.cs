@@ -17,7 +17,7 @@ public class LobbySystemManager : MonoBehaviour
     [SerializeField] Button t2;
     [SerializeField] Button ready;
     [SerializeField] Button next;
-    private SpriteRenderer spriteToShow;
+    private Image spriteToShow;
     private TMP_Text[] texts;
     private Slider[] stats;
     private int prefabIndex;
@@ -37,9 +37,10 @@ public class LobbySystemManager : MonoBehaviour
          texts = textContainer.GetComponentsInChildren<TMP_Text>();
             Debug.Log(texts.Length);
          stats = characterStats.GetComponentsInChildren<Slider>();
-         spriteToShow = playerPrefab.GetComponent<SpriteRenderer>();
+         spriteToShow = playerPrefab.GetComponent<Image>();
          prefabIndex = 0;
-         Initiate();
+        OptionsChosen.Instance.ChangePlayerPrefab(prefabIndex);
+        Initiate();
          
       
 

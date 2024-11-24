@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Tower : NetworkBehaviour
 {
     private const float maxShield = 5; //Escudo total
-    private const float maxLife = 100; //Vida total 
+    private const float maxLife = 800; //Vida total 
     private const int shootingTime = 2;
     private const float minionsDamage = 0.5f;
     private const float minionsTime = 1.5f;
@@ -20,6 +20,7 @@ public class Tower : NetworkBehaviour
     public NetworkVariable<bool> _isDefending { get; private set; } = new NetworkVariable<bool>(false);
     [SerializeField] private GameObject minions;
     [SerializeField] private GameObject arrows;
+    Animator minionsAnim;
     public Player caster;
     private Vector3 minionsOgPos;
 
@@ -27,6 +28,7 @@ public class Tower : NetworkBehaviour
     void Start()
     {
         minionsOgPos = minions.transform.position;
+        minionsAnim = minions.GetComponent<Animator>();
         
     }
 
@@ -147,7 +149,7 @@ public class Tower : NetworkBehaviour
     {
         for(int i = 0; i < number; i++)
         {
-            GameObject arrow = Instantiate(arrows, new Vector3(0,0), new Quaternion(0,0,180, 0));
+            GameObject arrow = Instantiate(arrows, new Vector3(0,0), new Quaternion(0,180,0, 0));
             arrow.GetComponent<NetworkObject>().Spawn();
             arrow.GetComponent<Arrow>().casterTower = this;
             arrow.GetComponent<Arrow>().caster = caster;
@@ -183,18 +185,22 @@ public class Tower : NetworkBehaviour
     }
     private IEnumerator MinionsAct(Vector3 enemyTower, Vector3 originalPosition, ulong t)
     {
+        WalkingMinionsRpc(true);
         while(Vector3.Distance(minions.transform.position, enemyTower) > 1f)
         {
             minions.transform.position = Vector3.MoveTowards(minions.transform.position, enemyTower, Time.deltaTime);
             yield return null;
         }
+        WalkingMinionsRpc(false);
+        AttackingMinionsRpc(true);
+        StartCoroutine(AttackingMinions(t, originalPosition));
 
-       StartCoroutine(AttackingMinions(t, originalPosition));
 
     }
 
     private IEnumerator AttackingMinions(ulong t, Vector3 originalPosition)
     {
+        
         var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[t].GetComponent<Tower>();
 
         var i = 0;
@@ -207,10 +213,23 @@ public class Tower : NetworkBehaviour
             yield return new WaitForSeconds(1f);
 
         }
-
-
+        AttackingMinionsRpc(false);
         minions.transform.position = originalPosition;
+
     }
 
+    [Rpc(SendTo.Everyone)]
+    void WalkingMinionsRpc(bool walk)
+    {
+        minionsAnim.SetBool("IsWalking", walk);
+    }
+
+    [Rpc(SendTo.Everyone)]
+    void AttackingMinionsRpc(bool attack)
+    {
+        minionsAnim.SetBool("IsAttacking", attack);
+    }
+
+   
 
 }
