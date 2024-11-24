@@ -5,6 +5,7 @@ using System.Linq;
 using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -27,6 +28,7 @@ public class Player : NetworkBehaviour
     public float attack = 1;
     public float range = 1;
     public float ultiTime;
+   [SerializeField] private float ultidamage = 3;
     public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float>(maxLife);
     public NetworkVariable<int> killCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<int> deathCount { get; private set; } = new NetworkVariable<int>(0);
@@ -90,6 +92,7 @@ public class Player : NetworkBehaviour
             towerShield.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-36, -68f, 0f);
         }
     }
+        Debug.Log(_spawnPosition);
 
     [Rpc(SendTo.Server)]
     private void teamAssignRpc()
@@ -229,6 +232,14 @@ public class Player : NetworkBehaviour
         _spawnPosition = position;
         Invoke("SpawnObject", 5);
     }
+    private void SpawnObject()
+    {
+        _moving = false;
+        anim.isWalkingRpc(_moving);
+        transform.position = _spawnPosition;
+        SetActiveStateRpc(true);
+
+    }
 
     public void kill()
     {
@@ -256,20 +267,25 @@ public class Player : NetworkBehaviour
         }
     }
 
-    private void SpawnObject()
-    {
-        _moving = false;
-        anim.isWalkingRpc(_moving);
-        transform.position = _spawnPosition;
-        SetActiveStateRpc(true);
-
-    }
-
+   
     [Rpc(SendTo.Everyone)]
     private void SetActiveStateRpc(bool isActive)
     {
         gameObject.SetActive(isActive);
     }
+
+    public void SetSpawnPositionValue(Vector3 position)
+    {
+        SetSpawnPositionValueRpc(position);
+    }
+
+    [Rpc(SendTo.Server)]
+
+    private void SetSpawnPositionValueRpc(Vector3 position)
+    {
+        _spawnPosition = position;
+    }
+
 
     [Rpc(SendTo.Server)]
     private void SetMovingRpc(bool isMoving)
@@ -376,18 +392,10 @@ public class Player : NetworkBehaviour
         return teamTower.GetComponent<NetworkObject>().NetworkObjectId;
     }
 
-    public void SetSpawnPositionValue(Vector3 position)
-    {
-        SetSpawnPositionValueRpc(position);
-    }
 
-    [Rpc(SendTo.Server)]
 
-    private void SetSpawnPositionValueRpc(Vector3 position)
-    {
-        _spawnPosition = position;
-    }
 
+    #region ULTI
     public void SetUltiValue(int value)
     {
         SetUltiValueRpc(value, MAX_ULTI_VALUE);
@@ -408,12 +416,6 @@ public class Player : NetworkBehaviour
         if (newValue == 0) _ultimateAttack.interactable = false;
         if (newValue == MAX_ULTI_VALUE) _ultimateAttack.interactable = true;
     }
-    public void OnClickButtonTest()
-    {
-        SetUltiValue(0);
-    }
-
-    //ULTI 1 ¿MOVER A OTRO SCRIPT?
 
     [Rpc(SendTo.Server)]
     public void Ulti1ARpc()
@@ -442,23 +444,30 @@ public class Player : NetworkBehaviour
         anim.EndUltiRpc();
     }
 
-    //ULTI 2 ¿MOVER A OTRO SCRIPT?
 
- 
-
+    //ULTI 2
     private IEnumerator Ulti2C(float time)
     {
-        Player[] enemyPlayers = GameObject.FindObjectsByType<Player>(FindObjectsSortMode.None).Where(obj => obj.teamAssign != this.teamAssign).ToArray();
-        Debug.Log("array de enemigos " + enemyPlayers.Length);
-        foreach (Player player in enemyPlayers)
-        {
-            Debug.Log("dISTANCIA: " + Vector3.Distance(transform.position, player.transform.position));
-            if (Vector3.Distance(transform.position, player.transform.position) < 100) //Por ponerle un valor al área
-                player.getHit(attack);
-        }
+        SearchPlayersU2Rpc(ultidamage);
         yield return new WaitForSeconds(time);
         anim.EndUltiRpc();
 
+    }
+
+    [Rpc(SendTo.Server)]
+    private void SearchPlayersU2Rpc(float damage)
+    {
+        Player[] enemyPlayers = GameObject.FindObjectsByType<Player>(FindObjectsSortMode.None).Where(obj => obj.teamAssign != this.teamAssign).ToArray();
+        Debug.Log(enemyPlayers.Length);
+        foreach (Player player in enemyPlayers)
+        {
+            if (Vector3.Distance(transform.position, player.transform.position) < 100)
+            {
+                if (!(player.health.Value - damage * 10 > 0)) { this.kill(); player.die(this); }
+                player.getHit(damage);
+            }
+                
+        }
     }
     public void Ulti2ButtonRpc()
     {
@@ -468,7 +477,56 @@ public class Player : NetworkBehaviour
 
     }
 
+    //ULTI 3
 
+    public void Ulti3Button()
+    {
+        SetUltiValue(0);
+        anim.AnimateUltiRpc();
+        StartCoroutine(Ulti3A());
+
+    }
+
+    private IEnumerator Ulti3C(float time, float  originalSpeed)
+    {
+        speed += speed * 0.5f;
+        yield return new WaitForSeconds(time);
+        speed = originalSpeed;
+        
+    }
+    public IEnumerator Ulti3A()
+    {
+        SearchPlayersU3Rpc(ultidamage);
+        yield return new WaitForSeconds(ultiTime);
+        anim.EndUltiRpc();
+        StartCoroutine(Ulti3C(ultiTime, speed));
+    }
+
+    [Rpc(SendTo.Server)]
+    private void SearchPlayersU3Rpc(float damage)
+    {
+
+        Player[] enemyPlayers = GameObject.FindObjectsByType<Player>(FindObjectsSortMode.None).Where(obj => obj.teamAssign != this.teamAssign).ToArray();
+        Debug.Log(enemyPlayers.Length);
+        Player closestPlayer = null;
+        foreach (Player player in enemyPlayers)
+        {
+            if (closestPlayer == null || Vector3.Distance(transform.position, player.transform.position) < Vector3.Distance(transform.position, closestPlayer.transform.position)) closestPlayer = player;
+            else if (Vector3.Distance(transform.position, closestPlayer.transform.position) > Vector3.Distance(transform.position, player.transform.position)) closestPlayer = player;
+        }
+        Debug.Log(closestPlayer);
+        ChangePositionRpc(closestPlayer.transform.position);
+        if (!(closestPlayer.health.Value - damage* 10 > 0)) { this.kill(); closestPlayer.die(this); }
+
+        closestPlayer.getHit(damage);
+    }
+    [Rpc(SendTo.Everyone)]
+    void ChangePositionRpc(Vector3 position)
+    {
+        transform.position = position;
+    }
+
+    #endregion
     public void EndGame()
     {
         bool win = teamTower.tag == winningTeam.Value.ToString();

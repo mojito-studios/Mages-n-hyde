@@ -36,6 +36,22 @@ PrefabInstance:
       propertyPath: InScenePlacedSourceGlobalObjectIdHash
       value: 18630542
       objectReference: {fileID: 0}
+    - target: {fileID: 3197686590662413594, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3197686590662413594, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4557936933678437783}
+    - target: {fileID: 3197686590662413594, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Ulti3Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 3197686590662413594, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Player, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3490347298848031094, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
       propertyPath: m_Color.b
       value: 0.9607843
@@ -93,6 +109,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2065352890, guid: 110c35f5380002e478dbc9ce0284f3fc, type: 3}
     - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+      propertyPath: ultiTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
       propertyPath: _ultimateAttack
       value: 
       objectReference: {fileID: 7578144539910062072}
@@ -101,6 +121,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+--- !u!114 &4557936933678437783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8794270255101273973, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
+  m_PrefabInstance: {fileID: 4992958502882325218}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7214c049264430c4daf86c605987b0a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7578144539910062072 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3197686590662413594, guid: dc05fb8865b246b4c9e7570ce0146816, type: 3}
