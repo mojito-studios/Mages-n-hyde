@@ -92,7 +92,6 @@ public class Player : NetworkBehaviour
             towerShield.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-36, -68f, 0f);
         }
     }
-        Debug.Log(_spawnPosition);
 
     [Rpc(SendTo.Server)]
     private void teamAssignRpc()
@@ -393,8 +392,6 @@ public class Player : NetworkBehaviour
     }
 
 
-
-
     #region ULTI
     public void SetUltiValue(int value)
     {
@@ -436,12 +433,12 @@ public class Player : NetworkBehaviour
     {
         yield return new WaitForSeconds(time);
         Ulti1BRpc();
+        anim.EndUltiRpc();
     }
     [Rpc(SendTo.Server)]
     private void Ulti1BRpc()
     {
         inmune.Value = false;
-        anim.EndUltiRpc();
     }
 
 
