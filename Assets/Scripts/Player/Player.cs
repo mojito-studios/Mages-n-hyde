@@ -64,7 +64,6 @@ public class Player : NetworkBehaviour
     [SerializeField] private Button _ultimateAttack;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     private Vector3 _spawnPosition;
-    private int _respawnTime = 5;
     [SerializeField] private GameObject spellPrefab;
     [SerializeField] private GameObject ultiPrefab;
     [SerializeField] private Transform spellTransform;
@@ -221,7 +220,7 @@ public class Player : NetworkBehaviour
         if (newValue) towerShield.gameObject.SetActive(true); else towerShield.gameObject.SetActive(false);
     }
 
-    [Rpc(SendTo.Server)]
+    [Rpc(SendTo.Everyone)]
     private void RespawnPlayerRpc(Vector3 position)
     {
         RespawnPlayer(position);
@@ -239,7 +238,6 @@ public class Player : NetworkBehaviour
         anim.isWalkingRpc(_moving);
         transform.position = _spawnPosition;
         SetActiveStateRpc(true);
-
     }
 
     public void kill()

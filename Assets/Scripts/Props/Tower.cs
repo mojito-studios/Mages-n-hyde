@@ -44,6 +44,10 @@ public class Tower : NetworkBehaviour
     void Update()
     {
         updateStatsRpc();
+        if (currentLife.Value <= 0)
+        {
+            GameManager.Instance.EndGameRpc(this.tag);
+        }
     }
 
     [Rpc(SendTo.Everyone)]
@@ -73,10 +77,6 @@ public class Tower : NetworkBehaviour
     private void DamageTowerRpc(float damage)
     {
         currentLife.Value -= damage*5;
-        if (currentLife.Value <= 0)
-        {
-            GameManager.Instance.EndGameRpc(this.tag);
-        }
     }
     public void DamageShields()
     {
