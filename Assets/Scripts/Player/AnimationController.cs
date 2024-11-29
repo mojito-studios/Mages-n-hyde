@@ -38,7 +38,7 @@ public class AnimationController : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void AnimateMovement2Rpc()
     {
-        Vector3 direction = GetComponentInParent<Player>().gameObject.GetComponent<Transform>().up; //No va bien del todo pero es lo mejor que pude hacer a a las 5 am
+        Vector3 direction = GetComponentInParent<Player>().gameObject.GetComponent<Transform>().up;
         direction.Normalize();
         playerAnim.SetFloat("MoveX", direction.x);
         playerAnim.SetFloat("MoveY", direction.y);

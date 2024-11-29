@@ -149,7 +149,7 @@ public class Tower : NetworkBehaviour
     {
         for(int i = 0; i < number; i++)
         {
-            GameObject arrow = Instantiate(arrows, new Vector3(0,0), new Quaternion(0,180,0, 0));
+            GameObject arrow = Instantiate(arrows, new Vector3(0,0), new Quaternion(0,0,90, 0));
             arrow.GetComponent<NetworkObject>().Spawn();
             arrow.GetComponent<Arrow>().casterTower = this;
             arrow.GetComponent<Arrow>().caster = caster;
