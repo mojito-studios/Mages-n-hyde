@@ -21,7 +21,7 @@ public class CameraController : NetworkBehaviour
 
     private void Update()
     {
-
+        transform.position = GetComponentInParent<Transform>().position;
         transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,6 +48,7 @@ public class Player : NetworkBehaviour
     [SerializeField] private Slider towerShield;
     [SerializeField] private TextMeshProUGUI _towerHealth;
     [SerializeField] private Canvas GameOver;
+    [SerializeField]private CinemachineConfiner2D camerabounds;
 
     //move
     [SerializeField] private float speed = 4f;
@@ -129,7 +131,7 @@ public class Player : NetworkBehaviour
         SetPlayer();
         ultiAttack.OnValueChanged += interactableButton;
         _hiding.OnValueChanged += ChangeSprite;
-
+        camerabounds.m_BoundingShape2D = GameObject.FindWithTag("CameraBounds").GetComponent<Collider2D>();
     }
 
     public void SetPBehaviour(ulong pBehaviourID)

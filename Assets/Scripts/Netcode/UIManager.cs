@@ -20,7 +20,7 @@ namespace UIManagerSpace
         private int maxConnections = 4;
         [SerializeField] UnityEngine.UI.Button hostButton;
         [SerializeField] UnityEngine.UI.Button clientButton;
-        [SerializeField] TMP_InputField joinCodeText;
+        [SerializeField] InputField joinCodeText;
         [SerializeField] GameObject lobbyManager;
         [SerializeField] GameObject lobbySystemManager;
 
