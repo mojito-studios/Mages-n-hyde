@@ -7,6 +7,7 @@ using TMPro;
 using Unity.Collections;
 using Unity.Netcode;
 using Unity.Services.Lobbies.Models;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -63,6 +64,9 @@ public class Player : NetworkBehaviour
     [HideInInspector] NetworkVariable<ulong> _pBehaviour = new NetworkVariable<ulong>();
 
     //attack
+    public int maxSpells = 10;
+    [SerializeField] private Button spellButton;
+    public NetworkVariable<int> spellCount { get; private set; } = new NetworkVariable<int>();
     [SerializeField] private Button _ultimateAttack;
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     private Vector3 _spawnPosition;
@@ -123,6 +127,7 @@ public class Player : NetworkBehaviour
         if (IsServer)
         {
             health.Value = maxLife;
+            spellCount.Value = maxSpells;
             _hiding.Value = false;
             spriteIndex.Value = GameManager.Instance.GetPrefabIndex(_sprite);
 
@@ -378,17 +383,36 @@ public class Player : NetworkBehaviour
     {
         if (!IsOwner) return;
         spellServerRpc();
+        if (spellCount.Value <= 0)
+        {
+            spellButton.interactable = false;
+            StartCoroutine(spellCooldown());
+        }
     }
 
-    [ServerRpc(RequireOwnership = false)]
+    [Rpc(SendTo.Server)]
     private void spellServerRpc()
     {
         GameObject spell = Instantiate(spellPrefab, spellTransform.position, spellTransform.rotation);
         spell.GetComponent<MoveSpell>().caster = this;
         spell.GetComponent<NetworkObject>().Spawn();
+        spellCount.Value--;
     }
 
-    public ulong GetTeamTower()
+    private IEnumerator spellCooldown()
+    {
+        yield return new WaitForSeconds(10);
+        spellLoadRpc();
+        spellButton.interactable = true;
+    }
+    [Rpc(SendTo.Server)]
+    private void spellLoadRpc()
+    {
+        spellCount.Value = maxSpells;
+    }
+
+
+        public ulong GetTeamTower()
     {
         return teamTower.GetComponent<NetworkObject>().NetworkObjectId;
     }
