@@ -1,0 +1,919 @@
+fileFormatVersion: 2
+guid: 616db6a4bcfd633498778ece2f45a03c
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 615
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9af84961a091a7646aa450a124da1ac3
+      internalID: -1419003917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_1
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 615
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a90379c0825a6fe4798455a956f40164
+      internalID: -1516407804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_2
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 615
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7694b9fcab374714ab3d578788526bc4
+      internalID: 1059462595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_3
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 615
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42a1dd8743a47ec479522cd7120d88ce
+      internalID: -502109654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_4
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 615
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd5d904a8ceb894ebc4cca5fc2e6cf9
+      internalID: -1782180267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_5
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 615
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db0159c473df5774a9b7cd8e39e24eab
+      internalID: -1785385265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 493
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a6ec13f3faf2347993a1bb9abb4d2d
+      internalID: 492726344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_7
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 493
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e511edcd6cfda6140b9aa42315f3062f
+      internalID: -104961119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_8
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 493
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e571a799a887084f8a84af9f45dbeea
+      internalID: 1730251944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_9
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 493
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03ffd5af21f3dde4683712ce3daaa3a7
+      internalID: -536366945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_10
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 493
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d58e5c55bcdc8746ba0655727a75d74
+      internalID: 1151215170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_11
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 493
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 532057eb35b238a4ca02aa3891d6c581
+      internalID: -2092596665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_12
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 371
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c090388652f974c42a19944ef8273e7c
+      internalID: 738392980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_13
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 371
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 310d13c993b6f4446bb06656bba84359
+      internalID: -601323781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_14
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 371
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f168e87cdc8e944eb7f3ed308eaa36e
+      internalID: 883342388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_15
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 371
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68866928ecd63f4409e5f96b6aced8f2
+      internalID: 972732406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_16
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 371
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 032ca0e6e14838f40b11fc1e369db926
+      internalID: 654901389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_17
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 371
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bdde62d73eada1438680ca577aad679
+      internalID: 1546604623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_18
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 249
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4fb29eb6782d5a40b76b439f7ac5fbf
+      internalID: -1771255374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_19
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 249
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9b57a9c080211d4f9f035faa5bc04c8
+      internalID: -877901946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_20
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 249
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274efd07b9360d645a02510c7dc90d1b
+      internalID: -1121463793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_21
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 249
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9ca826796991a34f8276d8a6480def9
+      internalID: 512934331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_22
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 249
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7db7c39c4703ad7459b07350e3222251
+      internalID: -519030544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_23
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 249
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4d3837684805474bb239d87b267262f
+      internalID: -1960141899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_24
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 127
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39f7218cdb8630d4b8b4e4b7a20b96bd
+      internalID: 279156767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_25
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 127
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcd45c9bc75f2aa45a87e39a01a8686d
+      internalID: -1863495884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_26
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 127
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b24eaac37db0b4184c4550e51f26ee
+      internalID: 1184505071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_27
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 127
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8324a6acb695c6d43b0835cf1b5a39dc
+      internalID: -681067419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_28
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 127
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ec8a65d44ea79d40b10ee8550997231
+      internalID: 310069433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_29
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 127
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76750ef0d21df9540a1c3a9c3bb7a24f
+      internalID: -1394731627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_30
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 5
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520ff659616d089469d357fc5b272086
+      internalID: 179861580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_31
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 5
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057ec01c75a701f49bd5564852d5ef16
+      internalID: -477683681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_32
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 5
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a6a89a1c384ed84f8a04e93de587270
+      internalID: 1069459980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_33
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 5
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3632d3a00b88d441b0e87d888f5ce71
+      internalID: -1262576165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_34
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 5
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c151f69f24950b342be4b75837ebec27
+      internalID: -1597509145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arena bosque_Sprite (1)_35
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 5
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29b53855655a6c64bbf3aab89ae94d6f
+      internalID: 1954860898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Arena bosque_Sprite (1)_0: -1419003917
+      Arena bosque_Sprite (1)_1: -1516407804
+      Arena bosque_Sprite (1)_10: 1151215170
+      Arena bosque_Sprite (1)_11: -2092596665
+      Arena bosque_Sprite (1)_12: 738392980
+      Arena bosque_Sprite (1)_13: -601323781
+      Arena bosque_Sprite (1)_14: 883342388
+      Arena bosque_Sprite (1)_15: 972732406
+      Arena bosque_Sprite (1)_16: 654901389
+      Arena bosque_Sprite (1)_17: 1546604623
+      Arena bosque_Sprite (1)_18: -1771255374
+      Arena bosque_Sprite (1)_19: -877901946
+      Arena bosque_Sprite (1)_2: 1059462595
+      Arena bosque_Sprite (1)_20: -1121463793
+      Arena bosque_Sprite (1)_21: 512934331
+      Arena bosque_Sprite (1)_22: -519030544
+      Arena bosque_Sprite (1)_23: -1960141899
+      Arena bosque_Sprite (1)_24: 279156767
+      Arena bosque_Sprite (1)_25: -1863495884
+      Arena bosque_Sprite (1)_26: 1184505071
+      Arena bosque_Sprite (1)_27: -681067419
+      Arena bosque_Sprite (1)_28: 310069433
+      Arena bosque_Sprite (1)_29: -1394731627
+      Arena bosque_Sprite (1)_3: -502109654
+      Arena bosque_Sprite (1)_30: 179861580
+      Arena bosque_Sprite (1)_31: -477683681
+      Arena bosque_Sprite (1)_32: 1069459980
+      Arena bosque_Sprite (1)_33: -1262576165
+      Arena bosque_Sprite (1)_34: -1597509145
+      Arena bosque_Sprite (1)_35: 1954860898
+      Arena bosque_Sprite (1)_4: -1782180267
+      Arena bosque_Sprite (1)_5: -1785385265
+      Arena bosque_Sprite (1)_6: 492726344
+      Arena bosque_Sprite (1)_7: -104961119
+      Arena bosque_Sprite (1)_8: 1730251944
+      Arena bosque_Sprite (1)_9: -536366945
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
