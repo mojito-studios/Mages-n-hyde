@@ -35,17 +35,19 @@ public class LobbySystemManager : MonoBehaviour
     void Start()
     {
          texts = textContainer.GetComponentsInChildren<TMP_Text>();
-            Debug.Log(texts.Length);
          stats = characterStats.GetComponentsInChildren<Slider>();
          spriteToShow = playerPrefab.GetComponent<Image>();
          prefabIndex = 0;
-        OptionsChosen.Instance.ChangePlayerPrefab(prefabIndex);
-        Initiate();
+         OptionsChosen.Instance.ChangePlayerPrefab(prefabIndex);
+         OptionsChosen.Instance.OnReadyDisable += DeactivateReady;
+         Initiate();
+        
          
       
 
     }
 
+   
     // Update is called once per frame
     void Update()
     {
@@ -62,7 +64,20 @@ public class LobbySystemManager : MonoBehaviour
         stats[1].value = characters[0].characterAttack;
         stats[2].value = characters[0].characterSpeed;
         stats[3].value = characters[0].characterRange;
+
+     
+
+
     }
+
+    public void EnableButtons()
+    {
+        t1.interactable = true;
+        t2.interactable = true;
+        ready.interactable = true;
+        next.interactable = true;
+    }
+
    public void ChangeSprite()
     {
         prefabIndex++;
@@ -79,6 +94,19 @@ public class LobbySystemManager : MonoBehaviour
         texts[0].text = characters[prefabIndex].characterName;
         texts[1].text = characters[prefabIndex].ultiName;
         texts[2].text = characters[prefabIndex].ultiDescription;
+
+    }
+
+    void DeactivateReady()
+    {
+        Debug.Log("YEAREADY");
+        ready.interactable = false;
+
+    }
+
+    private void OnDestroy()
+    {
+        OptionsChosen.Instance.OnReadyDisable -= DeactivateReady;
 
     }
 
@@ -101,6 +129,7 @@ public class LobbySystemManager : MonoBehaviour
                 OptionsChosen.Instance.AddDelete(provisionalTeam, false);
             }
             OptionsChosen.Instance.AddDelete(team, true);
+            OptionsChosen.Instance.ChangePlayerTeam(team);
             provisionalTeam = 0;
         }
         if (team == 1 && OptionsChosen.Instance.actualPlayersT2.Value < MAX_PLAYERS_TEAM)
@@ -113,9 +142,10 @@ public class LobbySystemManager : MonoBehaviour
 
             }
             OptionsChosen.Instance.AddDelete(team, true);
+            OptionsChosen.Instance.ChangePlayerTeam(team);
+
             provisionalTeam = 1;
         }
-        OptionsChosen.Instance.ChangePlayerTeam(team);
     }
    
 

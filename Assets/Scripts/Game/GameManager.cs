@@ -79,7 +79,9 @@ public class GameManager : NetworkBehaviour
         int j = 0;
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
+            Debug.Log("CLIENT ID " + clientId);
             PlayerData playerData = OptionsChosen.Instance.GetPlayerDataFromClientId(clientId);
+            Debug.Log("CLIENT ID PLAYER DATA " + playerData.ClientId + " TEAM " + playerData.team + " PREFAB " + playerData.prefabId);
             Vector3 positionSpawn;
             Quaternion orientationSpawn;
 
@@ -92,7 +94,7 @@ public class GameManager : NetworkBehaviour
             else
             {
                 positionSpawn = startPos2.GetChild(j).position;
-                orientationSpawn = startPos1.GetChild(i).rotation;
+                orientationSpawn = startPos2.GetChild(j).rotation;
                 j++;
 
             }
