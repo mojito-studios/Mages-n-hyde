@@ -13,6 +13,7 @@ public class OptionsChosen : NetworkBehaviour
     private Dictionary<ulong, bool> playerReadyDictionary;
     public NetworkVariable<int> actualPlayersT1 = new NetworkVariable<int>();
     public NetworkVariable<int> actualPlayersT2 = new NetworkVariable<int>();
+    public event Action OnReadyDisable; //Me da pereza meter un observer
 
 
 
@@ -39,7 +40,7 @@ public class OptionsChosen : NetworkBehaviour
             team = -1
         });
         playerReadyDictionary[clientId] = false;
-       
+        
        
     }
    
@@ -76,11 +77,15 @@ public class OptionsChosen : NetworkBehaviour
     private void SetPlayerReadyServerRpc(RpcParams RpcParams = default)
     {
         PlayerData playerData = OptionsChosen.Instance.GetPlayerDataFromClientId(RpcParams.Receive.SenderClientId);
+
         if (playerData.team == -1) return;
         playerReadyDictionary[RpcParams.Receive.SenderClientId] = true;
         bool allClientsReady = true;
+        Debug.Log(playerData.ClientId);
+        OnReadyDisabeRpc(RpcParams.Receive.SenderClientId);
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
+            Debug.Log(playerData);
             if (!playerReadyDictionary[clientId] == true)
             {
                 //algun jugador no está listo aún
@@ -95,6 +100,16 @@ public class OptionsChosen : NetworkBehaviour
         }
     }
 
+    [Rpc(SendTo.Everyone)]
+    void OnReadyDisabeRpc(ulong clientId)
+    {
+        if(NetworkManager.Singleton.LocalClientId == clientId)
+        {
+            OnReadyDisable?.Invoke();
+
+        }
+
+    }
     public PlayerData GetPlayerDataFromClientId(ulong clientId)
     {
         foreach (PlayerData playerData in playerDataList)

@@ -38,7 +38,7 @@ namespace UIManagerSpace
                 () => print($"New player {AuthenticationService.Instance.PlayerId} connected");
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
-           
+            NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
             
             
             
@@ -189,6 +189,16 @@ namespace UIManagerSpace
                 print(e);
                 lobbyManager.SetActive(true);
             }
+        }
+
+        private void ShowLobby(ulong clientId)
+        {
+            if(clientId == NetworkManager.Singleton.LocalClientId)
+        {
+                lobbySystemManager.GetComponent<LobbySystemManager>().EnableButtons();
+            }
+            NetworkManager.Singleton.OnClientConnectedCallback -= ShowLobby;
+
         }
     }
 }

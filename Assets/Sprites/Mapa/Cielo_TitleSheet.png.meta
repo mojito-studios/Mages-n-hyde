@@ -1,0 +1,655 @@
+fileFormatVersion: 2
+guid: 3d3ba28802eb84344b6a95dd467e9f8b
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 123
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 369.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd51ac5c4fef88448b32ecf7d423f5ae
+      internalID: -1119848947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_1
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 369.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1c72586f7dd5d64b8fdb11f4376d467
+      internalID: 1465542975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_2
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 369.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae7c0572e2d96f242a66ac0f558c3af4
+      internalID: 899824563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_3
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 369.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa5bc8ec863fab4f811682bb5f637f2
+      internalID: -968782437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_4
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 369.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf29bb1584704a4bab872755170c6ea
+      internalID: 1838739589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_5
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 369.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 866d2e0d8f8ccdf42a8b3387a7cfcc69
+      internalID: 455080528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 246.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79b5d458949d3b145900d20b18be5993
+      internalID: -1684353886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_7
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 246.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64098ed1fd36e764486c782b57c8103d
+      internalID: 1013008560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_8
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 246.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c46f8b3c9f4444d419c5417b32fd03d4
+      internalID: 1528967955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_9
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 246.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37666a04b2bc67b42bd4013b1bd491bc
+      internalID: -489812393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_10
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 246.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a62ca683729be47af1dae88026f951
+      internalID: 144366317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_11
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 246.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97c820fcb4573a3428296f96a4e4dc2b
+      internalID: -1647967026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 123.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b46c71550c3add44c92876c2a116fd35
+      internalID: 1048582729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_13
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 123.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd0a74fe41a1f049af2b15f68716654
+      internalID: 897585664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_14
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 123.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 115a8fd0f740a52459edd2b075625f2e
+      internalID: -1003107404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_15
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 123.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7f7ec7cfbd8d864d8deb2d1f7dad897
+      internalID: 594788280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_16
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 123.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04fa6daf527b4764f98e627ccd8d942a
+      internalID: 2109703674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_17
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 123.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53325f4fc040bbc468a6677bd669bad0
+      internalID: -1047404674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_18
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be81e4272375c6943989e5d0d0866de0
+      internalID: -926870865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_19
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 0.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c17cc3c46ef10a74a9c72bf5697b5d61
+      internalID: 1882313006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_20
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 0.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5213fff65787952489c8cce2b3369688
+      internalID: 2016695767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_21
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 0.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8eb22fc6971ddf4fbd29a5f74aada44
+      internalID: -841195308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_22
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 0.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb58222764062c4c8a9474aba31a8aa
+      internalID: -477902900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cielo_TitleSheet_23
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 0.75
+        width: 123.5
+        height: 123.25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0af61b913926da4590bc2b5c1d38b0f
+      internalID: 1168119658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Cielo_TitleSheet_0: -1119848947
+      Cielo_TitleSheet_1: 1465542975
+      Cielo_TitleSheet_10: 144366317
+      Cielo_TitleSheet_11: -1647967026
+      Cielo_TitleSheet_12: 1048582729
+      Cielo_TitleSheet_13: 897585664
+      Cielo_TitleSheet_14: -1003107404
+      Cielo_TitleSheet_15: 594788280
+      Cielo_TitleSheet_16: 2109703674
+      Cielo_TitleSheet_17: -1047404674
+      Cielo_TitleSheet_18: -926870865
+      Cielo_TitleSheet_19: 1882313006
+      Cielo_TitleSheet_2: 899824563
+      Cielo_TitleSheet_20: 2016695767
+      Cielo_TitleSheet_21: -841195308
+      Cielo_TitleSheet_22: -477902900
+      Cielo_TitleSheet_23: 1168119658
+      Cielo_TitleSheet_3: -968782437
+      Cielo_TitleSheet_4: 1838739589
+      Cielo_TitleSheet_5: 455080528
+      Cielo_TitleSheet_6: -1684353886
+      Cielo_TitleSheet_7: 1013008560
+      Cielo_TitleSheet_8: 1528967955
+      Cielo_TitleSheet_9: -489812393
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
