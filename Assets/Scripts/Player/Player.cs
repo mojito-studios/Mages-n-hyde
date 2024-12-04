@@ -244,7 +244,9 @@ public class Player : NetworkBehaviour
         _moving = false;
         anim.isWalkingRpc(_moving);
         transform.position = _spawnPosition;
+        ReloadRpc();
         SetActiveStateRpc(true);
+
     }
 
     public void kill()
@@ -417,6 +419,22 @@ public class Player : NetworkBehaviour
         return teamTower.GetComponent<NetworkObject>().NetworkObjectId;
     }
 
+    [Rpc(SendTo.Server)]
+    private void ReloadRpc()
+    {
+        health.Value = maxLife;
+        if (spellCount.Value <= 0) StopCoroutine(spellCooldown());
+        spellLoadRpc();
+        spellButton.interactable = true;
+        _pBehaviour.Value = 0;
+        if (_hiding.Value)
+        {
+            //(StopCoroutine(HideCoroutine())
+            _hiding.Value = false;
+        }
+        SetUltiValue(0);
+
+    }
 
     #region ULTI
     public void SetUltiValue(int value)
