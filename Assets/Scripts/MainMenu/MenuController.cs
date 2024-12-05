@@ -31,18 +31,14 @@ public class MenuControlller : MonoBehaviour
       
             case States.MainMenu:
                 MainMenuState();
-                Debug.Log("MainMenu");
                 break;
             case States.HostClient:
                 HostClientState();
-                Debug.Log("HostClient");
                 break;
             case States.CreditsMenu:
                 CreditsState();
-                Debug.Log("Credits");
                 break;
             case States.Tutorial:
-                Debug.Log("Tutorial");
                 Tutorial();
                 break;
         }

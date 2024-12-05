@@ -228,9 +228,7 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Server)]
     public void EndGameRpc(string tag) //Cambiar a victoria o a derrota
     {
-        Debug.Log("TorreEliminada: " + tag);
         GameObject[] players= GameObject.FindGameObjectsWithTag("Player");
-        Debug.Log(players);
         foreach (GameObject player in players)
         {
             player.GetComponent<Player>().winningTeam.Value = tag;

@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameOver : MonoBehaviour
+public class GameOver : NetworkBehaviour
 {
     [SerializeField] private Image result;
     [SerializeField] private Sprite winning;
@@ -23,6 +23,7 @@ public class GameOver : MonoBehaviour
     }
     public void OnRestart()
     {
+        if (IsServer) { RestartRpc(); }
         Destroy(OptionsChosen.Instance.gameObject);
         Destroy(NetworkManager.Singleton.gameObject);
         NetworkManager.Singleton.Shutdown();
@@ -49,10 +50,18 @@ public class GameOver : MonoBehaviour
         if (win) { result.sprite = winning; }
 
         stats.text = player.killCount.Value + " kills, " + player.assistCount.Value + " assists\n" + player.deathCount.Value;
-
         mvpName.text = mvp.GetComponent<Player>().character;
         mvpSprite.sprite = mvp.GetComponentInChildren<SpriteRenderer>().sprite;
         mvpSprite.color = mvp.GetComponentInChildren<SpriteRenderer>().color;
         mvpStats.text = mvp.GetComponent<Player>().killCount.Value + " kills, " + mvp.GetComponent<Player>().assistCount.Value + " assists\n" + mvp.GetComponent<Player>().deathCount.Value + " deaths";
+    }
+
+    [Rpc(SendTo.NotServer)]
+    private void RestartRpc()
+    {
+        Destroy(OptionsChosen.Instance.gameObject);
+        Destroy(NetworkManager.Singleton.gameObject);
+        NetworkManager.Singleton.Shutdown();
+        SceneManager.LoadScene(0);
     }
 }

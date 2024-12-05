@@ -1013,6 +1013,7 @@ GameObject:
   - component: {fileID: 3034324890455247440}
   - component: {fileID: 2018710607226730317}
   - component: {fileID: 1741063694061661289}
+  - component: {fileID: 8517593361771503643}
   m_Layer: 0
   m_Name: Player 2
   m_TagString: Player
@@ -1362,6 +1363,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ce7a561e0f5d244d8c4a0c1f5aa1433, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8517593361771503643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801500307173324165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bb5fc32a5f85d44abac2cdb23df168, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  result: {fileID: 3848900614630002736}
+  winning: {fileID: 21300000, guid: cff495e01f44eaa48ba36efd12fcbbc1, type: 3}
+  stats: {fileID: 6049285895884578780}
+  mvpName: {fileID: 2458540370987950601}
+  mvpStats: {fileID: 5244559984262991265}
+  mvpSprite: {fileID: 7986590960119115005}
+  win: 0
 --- !u!1 &1902487382903930747
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,7 +2120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5873137277470571992}
+      - m_Target: {fileID: 8517593361771503643}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
         m_MethodName: OnRestart
         m_Mode: 1
@@ -3964,7 +3984,6 @@ GameObject:
   - component: {fileID: 481322043450314595}
   - component: {fileID: 3146330088700562648}
   - component: {fileID: 6495525837713203877}
-  - component: {fileID: 5873137277470571992}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: GameOver
@@ -4062,25 +4081,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &5873137277470571992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8903140469037029041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1bb5fc32a5f85d44abac2cdb23df168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  result: {fileID: 3848900614630002736}
-  winning: {fileID: 21300000, guid: cff495e01f44eaa48ba36efd12fcbbc1, type: 3}
-  stats: {fileID: 6049285895884578780}
-  mvpName: {fileID: 2458540370987950601}
-  mvpStats: {fileID: 5244559984262991265}
-  mvpSprite: {fileID: 7986590960119115005}
-  win: 0
 --- !u!1 &8921521479473516120
 GameObject:
   m_ObjectHideFlags: 0

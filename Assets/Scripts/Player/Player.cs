@@ -94,9 +94,9 @@ public class Player : NetworkBehaviour
             topRight(towerHealth.gameObject);
             topRight(_towerHealth.gameObject);
             topRight(towerShield.gameObject);
-            towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-40, -96f, 0f);
+            towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-45, -96f, 0f);
             _towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-531, -43f, 0f);
-            towerShield.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-25, -212f, 0f);
+            towerShield.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-30, -212f, 0f);
         }
     }
 
@@ -406,17 +406,21 @@ public class Player : NetworkBehaviour
     private IEnumerator spellCooldown()
     {
         yield return new WaitForSeconds(10);
-        spellLoadRpc();
+        spellLoadSRpc();
         spellButton.interactable = true;
     }
     [Rpc(SendTo.Server)]
-    private void spellLoadRpc()
+    private void spellLoadSRpc()
     {
         spellCount.Value = maxSpells;
     }
+    [Rpc(SendTo.Owner)]
+    private void spellLoadCRpc()
+    {
+        spellButton.interactable = true;
+    }
 
-
-        public ulong GetTeamTower()
+    public ulong GetTeamTower()
     {
         return teamTower.GetComponent<NetworkObject>().NetworkObjectId;
     }
@@ -425,13 +429,11 @@ public class Player : NetworkBehaviour
     private void ReloadRpc()
     {
         health.Value = maxLife;
-        if (spellCount.Value <= 0) StopCoroutine(spellCooldown());
-        spellLoadRpc();
-        spellButton.interactable = true;
+        spellLoadSRpc();
+        spellLoadCRpc();
         _pBehaviour.Value = 0;
         if (_hiding.Value)
         {
-            //(StopCoroutine(HideCoroutine())
             _hiding.Value = false;
         }
         SetUltiValue(0);
@@ -600,13 +602,12 @@ public class Player : NetworkBehaviour
     public void EndGame()
     {
         bool win = teamTower.tag == winningTeam.Value.ToString();
-        Debug.Log(teamTower.tag);
         EndGameRpc(win);
     }
     [Rpc(SendTo.Everyone)]
     public void EndGameRpc(bool win)
     {
-            GameOver.GetComponent<GameOver>().win = !win;
+            GetComponent<GameOver>().win = !win;
             GameOver.gameObject.SetActive(true);
     }
 }
