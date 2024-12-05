@@ -94,9 +94,9 @@ public class Player : NetworkBehaviour
             topRight(towerHealth.gameObject);
             topRight(_towerHealth.gameObject);
             topRight(towerShield.gameObject);
-            towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-36, -36f, 0f);
+            towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-40, -96f, 0f);
             _towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-531, -43f, 0f);
-            towerShield.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-36, -68f, 0f);
+            towerShield.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-25, -212f, 0f);
         }
     }
 
