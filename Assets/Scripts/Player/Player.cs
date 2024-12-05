@@ -357,6 +357,7 @@ public class Player : NetworkBehaviour
             GetComponentInChildren<Animator>().enabled = false;
             healthBar.gameObject.SetActive(false);
             PropsBehaviour pBehaviourHide = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].GetComponent<PropsBehaviour>();
+            pBehaviourHide.canDespawn = false;
             Sprite spriteToChange = GameManager.Instance.props[pBehaviourHide.spriteNumber].GetComponent<SpriteRenderer>().sprite;
             GetComponentInChildren<SpriteRenderer>().sprite = spriteToChange;
             var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].gameObject;
@@ -372,6 +373,7 @@ public class Player : NetworkBehaviour
             GetComponentInChildren<SpriteRenderer>().sprite = oldSprite;
             var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[_pBehaviour.Value].gameObject;
             hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
+            hideGO.GetComponent<PropsBehaviour>().canDespawn = true;
             SetPBehaviour(0);
         }
     }

@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class GameManager : NetworkBehaviour 
 {
-   // private int numPlayers = 4;
+    //PowerUps
     [SerializeField] private GameObject puPrefab;
     [HideInInspector] public int puInScene = 0;
-    [SerializeField] private NetworkObjectPool _ObjectPool;
     private const int MaxPU = 5;
+
+    //Props
+    [SerializeField] private NetworkObjectPool _ObjectPool;
+    private List<NetworkObject> activeObjects = new List<NetworkObject>();
     private const int MinObj = 5;
     private const int MaxObj = 15;
-    private const int MaxTimeActive = 20;
+    private const int MaxTimeActive = 5;
+    private Dictionary<Vector3, bool> objectSpawningPoints = new Dictionary<Vector3, bool>();
+
+
     public static GameManager Instance { get; private set; }
-    private List<NetworkObject> activeObjects = new List<NetworkObject>();
     [SerializeField] private Transform startPos1;
     [SerializeField] private Transform startPos2;
      public List<GameObject> prefabs = new List<GameObject>();
@@ -38,7 +45,7 @@ public class GameManager : NetworkBehaviour
         if (NetworkManager.Singleton.IsServer)
         {
             InstantiatePlayers();
-            SpawnPUStart();
+            //SpawnPUStart();
             ActiveObjects();
         }
     }
@@ -50,6 +57,7 @@ public class GameManager : NetworkBehaviour
     void Start()
     {
         BackgroundMusicController.instance.SetCurrentClip(currentClip);
+        
     }
 
     // Update is called once per frame
@@ -72,7 +80,16 @@ public class GameManager : NetworkBehaviour
     }
 
 
-
+    private void FillDictionary()
+    {
+        GameObject spawningPositions = GameObject.Find("SpawningPoints");
+        for(int i = 0; i < spawningPositions.transform.childCount; i++)
+        {
+            objectSpawningPoints.Add(spawningPositions.transform.GetChild(i).position, true); //TRUE = DISPONIBLE
+            
+        }
+        Debug.Log("DICTIONARIO" + objectSpawningPoints.Count);
+    }
     private void InstantiatePlayers()
     {
         int i = 0;
@@ -109,6 +126,7 @@ public class GameManager : NetworkBehaviour
         }
     }
 
+    #region PowerUps
     private void SpawnPUStart()
     {
         StartCoroutine(SpawnOverTime());
@@ -124,11 +142,6 @@ public class GameManager : NetworkBehaviour
         
     }
 
-    private Vector3 GetRandomPosition()
-    {
-        return new Vector3(Random.Range(-5, 10), Random.Range(-5, 5), 0); //Ajustarlo luego bien al mapa esto es solo como prueba
-    }
-
     private IEnumerator SpawnOverTime()
     {
         while (NetworkManager.Singleton.ConnectedClients.Count > 0) //Aparecen antes de que se conecten los clientes como tal pero da igual pq eso se arregla cuando aparezcan desde el lobby
@@ -139,16 +152,27 @@ public class GameManager : NetworkBehaviour
         }
     }
 
+   
+
     private IEnumerator DespawnPU(NetworkObject objectDesp)
     {
         yield return new WaitForSeconds(7f); //Ajustar tiempos si se quiere que haya más de un powerup en escena
         objectDesp.Despawn();
         puInScene--;
     }
+    #endregion
+    private Vector3 GetRandomPosition()
+    {
+        var aviablePoints = objectSpawningPoints.Where(kvp => kvp.Value != false).ToArray();
+        Debug.Log(aviablePoints.Length);    
+        return aviablePoints[Random.Range(0, aviablePoints.Length)].Key;
+    }
 
-    
+    #region Props
+
     private void ActiveObjects()
     {
+        FillDictionary();
         StartCoroutine(ObjectManager());
     }
 
@@ -158,22 +182,34 @@ public class GameManager : NetworkBehaviour
         {
             if (activeObjects.Count > 0)
             {
-                foreach (var networkObj in activeObjects)
+                Debug.Log("objetos activos " + activeObjects.Count);
+                for (int i = activeObjects.Count - 1; i >= 0; i--) //Al revés para que no me dé problemas al eliminar de la lista
                 {
-                    var prefab = networkObj.GetComponent<PropsBehaviour>().propSO.prefab;
-                    _ObjectPool.ReturnNetworkObject(networkObj,prefab);
+                    var networkObj = activeObjects[i];
+                    var propsBehaviour = networkObj.GetComponent<PropsBehaviour>();
+                    if (!propsBehaviour.canDespawn) continue;
+                    var prefab = propsBehaviour.propSO.prefab;
+                    _ObjectPool.ReturnNetworkObject(networkObj, prefab);
+                    if (objectSpawningPoints.ContainsKey(networkObj.GetComponent<PropsBehaviour>().spawnPosition))
+                    {
+                        objectSpawningPoints[networkObj.GetComponent<PropsBehaviour>().spawnPosition] = true;
+                    }
                     networkObj.Despawn(false);
+                    
 
+                    activeObjects.RemoveAt(i);
                 }
-                activeObjects.Clear();
             }
 
             int numObjectsToActivate = Random.Range(MinObj, MaxObj);
 
             for (int i = 0; i < numObjectsToActivate; i++)
             {
-
-                var networkObj = _ObjectPool.GetRandomNetworkObject(GetRandomPosition(), Quaternion.identity);
+                var position = GetRandomPosition();
+                objectSpawningPoints[position] = false;
+                
+                var networkObj = _ObjectPool.GetRandomNetworkObject(position, Quaternion.identity);
+                networkObj.GetComponent<PropsBehaviour>().spawnPosition = position;
                 if (networkObj != null)
                 {
                     activeObjects.Add(networkObj);
@@ -186,6 +222,8 @@ public class GameManager : NetworkBehaviour
 
         }
     }
+
+    #endregion
 
     [Rpc(SendTo.Server)]
     public void EndGameRpc(string tag) //Cambiar a victoria o a derrota

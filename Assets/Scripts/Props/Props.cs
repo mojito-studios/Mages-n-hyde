@@ -9,6 +9,8 @@ public class PropsBehaviour : NetworkBehaviour
    public PropSO propSO;
    public int spriteNumber;
    public float timeHiding;
+   public bool canDespawn = true;
+    public Vector3 spawnPosition;
    protected void Start()
     {
         spriteNumber = propSO.spriteNumber;
