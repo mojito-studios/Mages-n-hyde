@@ -116,7 +116,6 @@ public class Player : NetworkBehaviour
     void topRight(GameObject uiObject)
     {
         RectTransform uitransform = uiObject.GetComponent<RectTransform>();
-
         uitransform.anchorMin = new Vector2(1, 1);
         uitransform.anchorMax = new Vector2(1, 1);
         uitransform.pivot = new Vector2(1, 1);
@@ -133,7 +132,6 @@ public class Player : NetworkBehaviour
             spriteIndex.Value = GameManager.Instance.GetPrefabIndex(_sprite);
 
         }
-
         SetPlayer();
         ultiAttack.OnValueChanged += interactableButton;
         _hiding.OnValueChanged += ChangeSprite;
