@@ -16,7 +16,6 @@ public class GameManager : NetworkBehaviour
     private const int MaxPU = 5;
     [SerializeField] private BoxCollider2D _powerUpsRange;
     private Bounds bounds;
-    private Vector2 rangeSize;
 
 
     //Props
@@ -43,7 +42,6 @@ public class GameManager : NetworkBehaviour
             Instance = this;
         }
         bounds = _powerUpsRange.bounds;
-        rangeSize = _powerUpsRange.size;
         _powerUpsRange.enabled = false; //Desactivo para que no se interponga
     }
 
@@ -138,7 +136,8 @@ public class GameManager : NetworkBehaviour
 
     private void SpawnPU()
     {
-        GameObject instance = Instantiate(puPrefab, GetPUpPosition(), Quaternion.identity);
+         GameObject instance = Instantiate(puPrefab, GetPUpPosition(), Quaternion.identity);
+       // GameObject instance = Instantiate(puPrefab, Vector3.zero, Quaternion.identity); Para ver bien las animaciones
         NetworkObject instanceNetworkObject = instance.GetComponent<NetworkObject>();
         instanceNetworkObject.Spawn();
         puInScene++;
@@ -149,7 +148,7 @@ public class GameManager : NetworkBehaviour
     {
         while (NetworkManager.Singleton.ConnectedClients.Count > 0) 
         {
-            yield return new WaitForSeconds(50f);
+            yield return new WaitForSeconds(5f);
             if (puInScene < MaxPU) //quitar esto si no se quiere que haya m�s powerups en escena pq no hace falta
                 SpawnPU();
         }

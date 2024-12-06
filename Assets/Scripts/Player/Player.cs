@@ -22,7 +22,7 @@ public class Player : NetworkBehaviour
 {
     //player
     [SerializeField] public string character = "Player";
-    private const int MAX_ULTI_VALUE = 60;
+    private const int MAX_ULTI_VALUE = 45;
     private Camera _camera;
     public int teamAssign;
     public Tower teamTower;
@@ -38,7 +38,7 @@ public class Player : NetworkBehaviour
     public NetworkVariable<bool> inmune { get; private set; } = new NetworkVariable<bool>(false);
     private List<Player> assistant = new List<Player>(0);
     [SerializeField] private AnimationController anim;
-    public int PUValue = 0; //Almacena el powerup del jugador
+    public NetworkVariable<int> PUValue { get; private set; } = new NetworkVariable<int>(0);
 
     //gameover
     public NetworkVariable<FixedString128Bytes> winningTeam = new NetworkVariable<FixedString128Bytes>();
@@ -248,6 +248,16 @@ public class Player : NetworkBehaviour
 
     }
 
+    [Rpc(SendTo.Server)]
+
+    public void SetPlayerPURpc(int value)
+    {
+        foreach(Player player in FindObjectsOfType<Player>())
+        {
+            if(player.teamAssign == this.teamAssign)
+            player.PUValue.Value = value;
+        }
+    }
     public void kill()
     {
         killCount.Value++;

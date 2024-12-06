@@ -8,19 +8,28 @@ public class PowerUpBehaviour : NetworkBehaviour
     private const int MAX_TIME_PLAYER = 5;
     private bool _isTriggered = false;
     private float _currentTime = 0f;
-    private int _ultimateValue = 15; //Luego ajustar
-    //1 Minions 2 Flechas 3 Escudo de torre 4 curar torre
+    private int _ultimateValue = 15; //Luego ajustarde torre 4 curar torre
     private NetworkVariable<int> _puType = new NetworkVariable<int>();
     Player player;
+    private Animator _animator;
+    private SpriteRenderer _sp;
+    public void Start()
+    {
+        _animator = GetComponent<Animator>();
+        _sp = GetComponent<SpriteRenderer>();
+        GetPlayers();
+        AnimateEnterRpc();
 
-   
+
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-      
+        if (collision.CompareTag("Props")) DestroyPU();
         if (!collision.CompareTag("Player")) return; 
         player = collision.GetComponent<Player>();
-        if (player.PUValue != 0) SetTypeRpc(player.PUValue + 1); //Le doy el valor del siguiente powerup 
-        _isTriggered = true;
+        if(_sp.color != Color.gray) _isTriggered = true;
+        else DestroyPU();
       
 
     }
@@ -34,15 +43,79 @@ public class PowerUpBehaviour : NetworkBehaviour
 
     }
 
+    [Rpc(SendTo.Everyone)]
+
+    void AnimateEnterRpc()
+    {
+        
+        switch(_puType.Value)
+        {
+            case 1:
+                _animator.SetBool("isMinionA", true);
+                break;
+            case 2:
+                _animator.SetBool("isArrowsA", true);
+                break;
+            case 3:
+                _animator.SetBool("isShieldA", true);
+                break;
+            case 4:
+                _animator.SetBool("isLifeA", true);
+                break;
+        }
+    }
+
+    [Rpc(SendTo.Everyone)]
+    void AnimateExitRpc()
+    {
+        switch (_puType.Value)
+        {
+            case 1:
+                _animator.SetBool("isMinionA", false);
+                break;
+            case 2:
+                _animator.SetBool("isArrowsA", false);
+                break;
+            case 3:
+                _animator.SetBool("isShieldA", false);
+                break;
+            case 4:
+                _animator.SetBool("isLifeA", false);
+                break;
+        }
+
+
+    }
+
+    private void GetPlayers()
+    {
+        foreach (var player in FindObjectsOfType<Player>())
+        {
+            if (player.PUValue.Value == _puType.Value)
+            {
+                ChangeColorRpc(player.OwnerClientId);
+            }
+        }
+    }
+
+    [Rpc(SendTo.Everyone)]
+
+    private void ChangeColorRpc(ulong clientId)
+    {
+        if (NetworkManager.Singleton.LocalClientId != clientId)
+            return;
+
+        _sp.color = Color.gray;
+    }
 
     public override void OnNetworkSpawn()
     {
         if (IsServer)
         {
           
-            //_puType.Value = Random.Range(1, 5);
+            _puType.Value = Random.Range(1, 5);
             //_puType.Value = 1; //Para probar los minions
-            _puType.Value = 2; //Para probar las flechas
+                           
 
         }
 
@@ -57,11 +130,16 @@ public class PowerUpBehaviour : NetworkBehaviour
     public void PULogic()
     {
         ExecutePowerUp();
+        AnimateExitRpc();
+        DestroyPU();
+     
+        
+    }
+
+    private void DestroyPU()
+    {
         NetworkObject.Despawn();
         GameManager.Instance.puInScene--;
-    }
-    void Start()
-    {
     }
 
     // Update is called once per frame
@@ -91,7 +169,7 @@ public class PowerUpBehaviour : NetworkBehaviour
     public void ExecutePowerUp() //Función que según el powerUp hace una cosa u otra;
     {
         var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
-        player.PUValue = _puType.Value;
+        player.SetPlayerPURpc(_puType.Value);
 
 
         switch (_puType.Value)
@@ -118,5 +196,5 @@ public class PowerUpBehaviour : NetworkBehaviour
 
     }
 
-
+   
 }

@@ -104,7 +104,7 @@ public class Tower : NetworkBehaviour
         Debug.Log("Mi vida es de " + currentLife.Value);
         if(player != null)
         {
-            caster.PUValue = 0;
+            caster.SetPlayerPURpc(0);
             caster = null;
         }
 
@@ -121,10 +121,11 @@ public class Tower : NetworkBehaviour
 
     public void SetDefending(bool defending, Player player)
     {
+        caster = player;
         SetDefendingRpc(defending);
         if (player != null)
         {
-            caster.PUValue = 0;
+            caster.SetPlayerPURpc(0);
             caster = null;
         }
     }
@@ -167,7 +168,7 @@ public class Tower : NetworkBehaviour
         }
         if(caster != null)
         {
-            caster.PUValue = 0;
+            caster.SetPlayerPURpc(0);
             caster = null;
         }
         
@@ -235,7 +236,7 @@ public class Tower : NetworkBehaviour
         minions.transform.position = originalPosition;
         if (caster != null)
         {
-            caster.PUValue = 0;
+            caster.SetPlayerPURpc(0);
             caster = null;
         }
 
