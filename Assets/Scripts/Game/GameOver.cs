@@ -18,9 +18,6 @@ public class GameOver : NetworkBehaviour
     private Player player;
     private GameObject mvp;
 
-    private void Start()
-    {
-    }
     public void OnRestart()
     {
         if (IsServer) { RestartRpc(); }
@@ -29,7 +26,7 @@ public class GameOver : NetworkBehaviour
         NetworkManager.Singleton.Shutdown();
         SceneManager.LoadScene(0);
     }
-    private void OnEnable()
+    public void OnEnd()
     {
         player = this.GetComponentInParent<Player>();
         mvp = player.gameObject;

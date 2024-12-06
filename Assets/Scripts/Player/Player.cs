@@ -608,7 +608,8 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     public void EndGameRpc(bool win)
     {
-            GetComponent<GameOver>().win = !win;
-            GameOver.gameObject.SetActive(true);
+        GetComponent<GameOver>().win = !win;
+        GetComponent<GameOver>().OnEnd();
+        GameOver.gameObject.SetActive(true);
     }
 }
