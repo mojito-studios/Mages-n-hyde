@@ -39,9 +39,7 @@ namespace UIManagerSpace
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
             NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
-            
-            
-            
+            clientButton.interactable = false;
         }
 
         void OnGUI()
@@ -109,6 +107,8 @@ namespace UIManagerSpace
         public void SetJoinCode(string newJoinCode)
         {
             joinCode = newJoinCode;
+            if(joinCode == null || joinCode == "" || joinCode.Contains(" ")) { clientButton.interactable = false; }
+            else { clientButton.interactable = true; }
         }
 
         public void OnStartClientClick()
