@@ -72,6 +72,15 @@ public class MenuControlller : MonoBehaviour
         tutorialTexts[actualText].SetActive(true);
 
     }
+
+    public void PrevText()
+    {
+        tutorialTexts[actualText].SetActive(false);
+        actualText--;
+        if (actualText < 0) actualText = tutorialTexts.Count-1;
+        tutorialTexts[actualText].SetActive(true);
+
+    }
     private void MainMenuState()
     {
         menus[1].SetActive(false);
