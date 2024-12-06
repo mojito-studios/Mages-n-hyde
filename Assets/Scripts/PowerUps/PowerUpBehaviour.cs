@@ -16,8 +16,10 @@ public class PowerUpBehaviour : NetworkBehaviour
    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+      
         if (!collision.CompareTag("Player")) return; 
         player = collision.GetComponent<Player>();
+        if (player.PUValue != 0) SetTypeRpc(player.PUValue + 1); //Le doy el valor del siguiente powerup 
         _isTriggered = true;
       
 
@@ -27,24 +29,31 @@ public class PowerUpBehaviour : NetworkBehaviour
     {
         Debug.Log("DESACTIVADO");
         _isTriggered = false;
+      
+
 
     }
 
- 
+
     public override void OnNetworkSpawn()
     {
         if (IsServer)
         {
           
-            _puType.Value = Random.Range(1, 5);
+            //_puType.Value = Random.Range(1, 5);
             //_puType.Value = 1; //Para probar los minions
-            //_puType.Value = 2; //Para probar las flechas
+            _puType.Value = 2; //Para probar las flechas
 
         }
 
 
     }
 
+    [Rpc(SendTo.Server)]
+    public void SetTypeRpc(int value)
+    {
+        _puType.Value = value;
+    }
     public void PULogic()
     {
         ExecutePowerUp();
@@ -82,32 +91,31 @@ public class PowerUpBehaviour : NetworkBehaviour
     public void ExecutePowerUp() //Función que según el powerUp hace una cosa u otra;
     {
         var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
-        
+        player.PUValue = _puType.Value;
+
 
         switch (_puType.Value)
         {
             default:
                 break;
             case 1:  
-                tower.SpawnMinions();
-                player.SetUltiValue(_ultimateValue);
+                tower.SpawnMinions(player);
                 break;
             case 2:
                 tower.caster = player;
                 tower.ArrowRain();
-                player.SetUltiValue(_ultimateValue);
                 break;
             case 3:
-                Debug.Log("Levantando escudo");
-                tower.SetDefending(true);
-                player.SetUltiValue(_ultimateValue);
+                tower.SetDefending(true, player);
                 break;
             case 4:
-                tower.HealTower();
-                player.SetUltiValue(_ultimateValue);
+                tower.HealTower(player);
                 break;
+        
 
         }
+        player.SetUltiValue(_ultimateValue);
+
     }
 
 

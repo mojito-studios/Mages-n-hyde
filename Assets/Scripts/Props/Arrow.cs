@@ -13,7 +13,7 @@ public class Arrow : NetworkBehaviour
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
-       GetComponent<Rigidbody2D>().velocity = this.transform.up * _arrowForce;
+       GetComponent<Rigidbody2D>().velocity = -this.transform.up * _arrowForce;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -63,7 +63,6 @@ public class Tower : NetworkBehaviour
 
     public void DamageTower(float damageTower)
     {
-        //int damageTower = 1; //da�o que haga la colisi�n, se saca desde fuera
         Debug.Log("HiriendoTorrre");
         DamageTowerRpc(damageTower);
         Debug.Log("Mi vida es de " + currentLife.Value);
@@ -92,16 +91,22 @@ public class Tower : NetworkBehaviour
         shield.Value -= damage;
         if (shield.Value <= 0)
         {
-            SetDefending(false);
+            SetDefending(false, caster);
             shield.Value = maxShield;
         }
     }
     
-    public void HealTower()
+    public void HealTower(Player player)
     {
+        caster = player;
         Debug.Log("Curando Torre");
         HealTowerRpc(maxLife);
         Debug.Log("Mi vida es de " + currentLife.Value);
+        if(player != null)
+        {
+            caster.PUValue = 0;
+            caster = null;
+        }
 
     }
 
@@ -114,9 +119,14 @@ public class Tower : NetworkBehaviour
 
     }
 
-    public void SetDefending(bool defending)
+    public void SetDefending(bool defending, Player player)
     {
         SetDefendingRpc(defending);
+        if (player != null)
+        {
+            caster.PUValue = 0;
+            caster = null;
+        }
     }
 
     [Rpc(SendTo.Server)]
@@ -139,7 +149,7 @@ public class Tower : NetworkBehaviour
         ArrowRainRpc(arrowNumber, shootingTime);
     }
     [Rpc(SendTo.Server)]
-    private void ArrowRainRpc(int number, int puta)
+    private void ArrowRainRpc(int number, int shootingTime)
     {
         StartCoroutine(FallingObjects(number,  shootingTime));
     }
@@ -155,12 +165,19 @@ public class Tower : NetworkBehaviour
             arrow.GetComponent<Arrow>().caster = caster;
             yield return new WaitForSeconds(shootingTime);
         }
+        if(caster != null)
+        {
+            caster.PUValue = 0;
+            caster = null;
+        }
+        
         
 
     }
 
-    public void SpawnMinions()
+    public void SpawnMinions(Player player)
     {
+        caster = player;
         Tower targetTower = FindOtherTower();
         ulong targetId = targetTower.NetworkObjectId;
         SpawnMinionsRpc(targetTower.transform.position, minionsOgPos, targetId);
@@ -194,6 +211,7 @@ public class Tower : NetworkBehaviour
         WalkingMinionsRpc(false);
         AttackingMinionsRpc(true);
         StartCoroutine(AttackingMinions(t, originalPosition));
+        
 
 
     }
@@ -215,6 +233,11 @@ public class Tower : NetworkBehaviour
         }
         AttackingMinionsRpc(false);
         minions.transform.position = originalPosition;
+        if (caster != null)
+        {
+            caster.PUValue = 0;
+            caster = null;
+        }
 
     }
 

@@ -38,6 +38,7 @@ public class Player : NetworkBehaviour
     public NetworkVariable<bool> inmune { get; private set; } = new NetworkVariable<bool>(false);
     private List<Player> assistant = new List<Player>(0);
     [SerializeField] private AnimationController anim;
+    public int PUValue = 0; //Almacena el powerup del jugador
 
     //gameover
     public NetworkVariable<FixedString128Bytes> winningTeam = new NetworkVariable<FixedString128Bytes>();

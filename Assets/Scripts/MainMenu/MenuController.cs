@@ -16,7 +16,8 @@ public class MenuControlller : MonoBehaviour
     private States _states;
    [SerializeField] private List<GameObject> menus = new List<GameObject> ();
    [SerializeField] private List<GameObject> tutorialTexts = new List<GameObject> ();
-    int actualText;
+   int actualText;
+    [SerializeField] GameObject animationImage;
     void Start()
     {
         actualText = 0;
@@ -78,11 +79,14 @@ public class MenuControlller : MonoBehaviour
        if(!menus[0].activeSelf) menus[0].SetActive(true);
     }
 
-    private void HostClientState() //Mi idea esq aqui los jugadores eligieran si son host o clients y luego pasasen directamente a la escena de  lobby de personalización, pero como me da cosa liarla para Pablo cuando haga el lobby mejor que lo mire él
+    private void HostClientState()
     {
-       SceneManager.LoadScene(3); //Carga el juego actual. En principio va bien
+        // menus[0].SetActive(false);
+        //animationImage.SetActive(true);
+        SceneManager.LoadScene(3);
     }
 
+   
     private void CreditsState()
     {
         

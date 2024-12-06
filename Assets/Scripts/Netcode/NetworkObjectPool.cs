@@ -55,7 +55,7 @@ using UnityEngine.Pool;
     {
         var prefabConfig = PooledPrefabsList[UnityEngine.Random.Range(0, PooledPrefabsList.Count)];
 
-        if (m_PooledObjects.TryGetValue(prefabConfig.Prefab, out var objectPool))
+        if (m_PooledObjects.TryGetValue(prefabConfig.Prefab, out var objectPool) && objectPool.CountInactive > 0)
         {
                 var networkObject = objectPool.Get();
                 networkObject.transform.position = position;

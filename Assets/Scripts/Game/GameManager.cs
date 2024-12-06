@@ -14,13 +14,17 @@ public class GameManager : NetworkBehaviour
     [SerializeField] private GameObject puPrefab;
     [HideInInspector] public int puInScene = 0;
     private const int MaxPU = 5;
+    [SerializeField] private BoxCollider2D _powerUpsRange;
+    private Bounds bounds;
+    private Vector2 rangeSize;
+
 
     //Props
     [SerializeField] private NetworkObjectPool _ObjectPool;
     private List<NetworkObject> activeObjects = new List<NetworkObject>();
     private const int MinObj = 5;
     private const int MaxObj = 15;
-    private const int MaxTimeActive = 5;
+    private const int MaxTimeActive = 20;
     private Dictionary<Vector3, bool> objectSpawningPoints = new Dictionary<Vector3, bool>();
 
 
@@ -38,6 +42,9 @@ public class GameManager : NetworkBehaviour
         {
             Instance = this;
         }
+        bounds = _powerUpsRange.bounds;
+        rangeSize = _powerUpsRange.size;
+        _powerUpsRange.enabled = false; //Desactivo para que no se interponga
     }
 
     private void HandleSceneLoadComplete(string sceneName, LoadSceneMode loadSceneMode, List<ulong> clientsCompleted, List<ulong> clientsTimedOut)
@@ -45,7 +52,7 @@ public class GameManager : NetworkBehaviour
         if (NetworkManager.Singleton.IsServer)
         {
             InstantiatePlayers();
-            //SpawnPUStart();
+            SpawnPUStart();
             ActiveObjects();
         }
     }
@@ -83,12 +90,11 @@ public class GameManager : NetworkBehaviour
     private void FillDictionary()
     {
         GameObject spawningPositions = GameObject.Find("SpawningPoints");
-        for(int i = 0; i < spawningPositions.transform.childCount; i++)
+        for(int i = 0; i < spawningPositions.transform.childCount-1; i++)
         {
             objectSpawningPoints.Add(spawningPositions.transform.GetChild(i).position, true); //TRUE = DISPONIBLE
             
         }
-        Debug.Log("DICTIONARIO" + objectSpawningPoints.Count);
     }
     private void InstantiatePlayers()
     {
@@ -96,9 +102,7 @@ public class GameManager : NetworkBehaviour
         int j = 0;
         foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
         {
-            Debug.Log("CLIENT ID " + clientId);
             PlayerData playerData = OptionsChosen.Instance.GetPlayerDataFromClientId(clientId);
-            Debug.Log("CLIENT ID PLAYER DATA " + playerData.ClientId + " TEAM " + playerData.team + " PREFAB " + playerData.prefabId);
             Vector3 positionSpawn;
             Quaternion orientationSpawn;
 
@@ -134,37 +138,42 @@ public class GameManager : NetworkBehaviour
 
     private void SpawnPU()
     {
-        GameObject instance = Instantiate(puPrefab, GetRandomPosition(), Quaternion.identity);
+        GameObject instance = Instantiate(puPrefab, GetPUpPosition(), Quaternion.identity);
         NetworkObject instanceNetworkObject = instance.GetComponent<NetworkObject>();
         instanceNetworkObject.Spawn();
         puInScene++;
-        //if(NetworkManager.Singleton.IsServer)StartCoroutine(DespawnPU(instanceNetworkObject)); //Para que despawnee después de un tiempo. No va bien en el cliente, mirar si hacer un clientrpc
         
     }
 
     private IEnumerator SpawnOverTime()
     {
-        while (NetworkManager.Singleton.ConnectedClients.Count > 0) //Aparecen antes de que se conecten los clientes como tal pero da igual pq eso se arregla cuando aparezcan desde el lobby
+        while (NetworkManager.Singleton.ConnectedClients.Count > 0) 
         {
-            yield return new WaitForSeconds(15f);
-            if (puInScene < MaxPU) //quitar esto si no se quiere que haya más powerups en escena pq no hace falta
+            yield return new WaitForSeconds(50f);
+            if (puInScene < MaxPU) //quitar esto si no se quiere que haya mï¿½s powerups en escena pq no hace falta
                 SpawnPU();
         }
     }
 
    
 
-    private IEnumerator DespawnPU(NetworkObject objectDesp)
+    private Vector3 GetPUpPosition()
     {
-        yield return new WaitForSeconds(7f); //Ajustar tiempos si se quiere que haya más de un powerup en escena
-        objectDesp.Despawn();
-        puInScene--;
+        Vector3 position;
+        
+            position = new Vector3(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y), 0);
+        
+        while (Physics2D.OverlapPoint(position, LayerMask.NameToLayer("Props")) != null)
+        {
+            position = new Vector3(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y), 0);
+        }
+
+        return position;
     }
     #endregion
     private Vector3 GetRandomPosition()
     {
         var aviablePoints = objectSpawningPoints.Where(kvp => kvp.Value != false).ToArray();
-        Debug.Log(aviablePoints.Length);    
         return aviablePoints[Random.Range(0, aviablePoints.Length)].Key;
     }
 
@@ -182,41 +191,52 @@ public class GameManager : NetworkBehaviour
         {
             if (activeObjects.Count > 0)
             {
-                Debug.Log("objetos activos " + activeObjects.Count);
-                for (int i = activeObjects.Count - 1; i >= 0; i--) //Al revés para que no me dé problemas al eliminar de la lista
+                for (int i = activeObjects.Count - 1; i >= 0; i--) //Al revï¿½s para que no me dï¿½ problemas al eliminar de la lista
                 {
                     var networkObj = activeObjects[i];
                     var propsBehaviour = networkObj.GetComponent<PropsBehaviour>();
-                    if (!propsBehaviour.canDespawn) continue;
-                    var prefab = propsBehaviour.propSO.prefab;
-                    _ObjectPool.ReturnNetworkObject(networkObj, prefab);
-                    if (objectSpawningPoints.ContainsKey(networkObj.GetComponent<PropsBehaviour>().spawnPosition))
+                    if (propsBehaviour.canDespawn)
                     {
-                        objectSpawningPoints[networkObj.GetComponent<PropsBehaviour>().spawnPosition] = true;
-                    }
-                    networkObj.Despawn(false);
-                    
+                        var prefab = propsBehaviour.propSO.prefab;
+                        _ObjectPool.ReturnNetworkObject(networkObj, prefab);
+                        if (objectSpawningPoints.ContainsKey(networkObj.GetComponent<PropsBehaviour>().spawnPosition))
+                        {
+                            objectSpawningPoints[networkObj.GetComponent<PropsBehaviour>().spawnPosition] = true;
+                        }
+                        networkObj.Despawn(false);
 
-                    activeObjects.RemoveAt(i);
+
+                        activeObjects.RemoveAt(i);
+                    }
                 }
             }
 
-            int numObjectsToActivate = Random.Range(MinObj, MaxObj);
+         
+                int remainingObjectsToActivate = MaxObj - activeObjects.Count;
+                int numObjectsToActivate;
 
-            for (int i = 0; i < numObjectsToActivate; i++)
-            {
+                if (remainingObjectsToActivate < MinObj) numObjectsToActivate = remainingObjectsToActivate;
+                else numObjectsToActivate = Random.Range(MinObj, remainingObjectsToActivate);
+
+                for (int i = 0; i < numObjectsToActivate; i++)
+                {
+
                 var position = GetRandomPosition();
-                objectSpawningPoints[position] = false;
-                
+
                 var networkObj = _ObjectPool.GetRandomNetworkObject(position, Quaternion.identity);
-                networkObj.GetComponent<PropsBehaviour>().spawnPosition = position;
+
                 if (networkObj != null)
                 {
+                    networkObj.GetComponent<PropsBehaviour>().spawnPosition = position;
+
+                    objectSpawningPoints[position] = false;
                     activeObjects.Add(networkObj);
                     networkObj.Spawn();
 
-                    
+
                 }
+                else continue;
+                
             }
             yield return new WaitForSeconds(MaxTimeActive);
 
