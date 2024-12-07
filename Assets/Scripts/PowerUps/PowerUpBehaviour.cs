@@ -1,73 +1,86 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Netcode;
-using UnityEngine;
+    using System.Collections;
+    using System.Collections.Generic;
+    using Unity.Netcode;
+    using UnityEngine;
 
-public class PowerUpBehaviour : NetworkBehaviour
-{
-    private const int MAX_TIME_PLAYER = 5;
-    private bool _isTriggered = false;
-    private float _currentTime = 0f;
-    private int _ultimateValue = 15; //Luego ajustarde torre 4 curar torre
-    private NetworkVariable<int> _puType = new NetworkVariable<int>();
-    Player player;
-    private Animator _animator;
-    private SpriteRenderer _sp;
-    public void Start()
+    public class PowerUpBehaviour : NetworkBehaviour
     {
-        _animator = GetComponent<Animator>();
-        _sp = GetComponent<SpriteRenderer>();
-        GetPlayers();
-        AnimateEnterRpc();
-
-
-
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Props")) DestroyPU();
-        if (!collision.CompareTag("Player")) return; 
-        player = collision.GetComponent<Player>();
-        if(_sp.color != Color.gray) _isTriggered = true;
-        else DestroyPU();
-      
-
-    }
-
-    private void OnTriggerExit2D(Collider2D collision) //Tanto si se sale como si el jugador se desactiva (por el tema del respawn)
-    {
-        Debug.Log("DESACTIVADO");
-        _isTriggered = false;
-      
-
-
-    }
-
-    [Rpc(SendTo.Everyone)]
-
-    void AnimateEnterRpc()
-    {
-        
-        switch(_puType.Value)
+        private const int MAX_TIME_PLAYER = 5;
+        private bool _isTriggered = false;
+        private float _currentTime = 0f;
+        private int _ultimateValue = 15; //Luego ajustarde torre 4 curar torre
+        private NetworkVariable<int> _puType = new NetworkVariable<int>();
+        Player player;
+        private Animator _animator;
+        private SpriteRenderer _sp;
+        public void Start()
         {
-            case 1:
-                _animator.SetBool("isMinionA", true);
-                break;
-            case 2:
-                _animator.SetBool("isArrowsA", true);
-                break;
-            case 3:
-                _animator.SetBool("isShieldA", true);
-                break;
-            case 4:
-                _animator.SetBool("isLifeA", true);
-                break;
+            _animator = GetComponent<Animator>();
+            _sp = GetComponent<SpriteRenderer>();
+            GetPlayers();
+            AnimateEnterRpc();
+
+
+
         }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("Props")) DestroyPU();
+            if (!collision.CompareTag("Player")) return;
+            player = collision.GetComponent<Player>();
+            if (_sp.color != Color.gray) _isTriggered = true;
+            else DestroyPU();
+
+
+        }
+
+        private void OnTriggerExit2D(Collider2D collision) //Tanto si se sale como si el jugador se desactiva (por el tema del respawn)
+        {
+            _isTriggered = false;
+
+        }
+
+    public override void OnNetworkSpawn()
+    {
+        if (IsServer)
+        {
+
+            _puType.Value = Random.Range(1, 5);
+           // _puType.Value = 2; //Para probar los minions
+
+
+        }
+
+
     }
 
     [Rpc(SendTo.Everyone)]
-    void AnimateExitRpc()
-    {
+
+        void AnimateEnterRpc()
+        {
+
+            switch (_puType.Value)
+            {
+                case 1:
+                    _animator.SetBool("isMinionA", true);
+                   
+                    break;
+                case 2:
+                    _animator.SetBool("isArrowsA", true);
+                    break;
+                case 3:
+                    _animator.SetBool("isShieldA", true);
+                    break;
+                case 4:
+                    _animator.SetBool("isLifeA", true);
+                    break;
+            }
+        }
+
+        [Rpc(SendTo.Everyone)]
+        void AnimateExitRpc()
+        {
+        // Cambiar el estado de la animación según el tipo de power-up
         switch (_puType.Value)
         {
             case 1:
@@ -87,114 +100,127 @@ public class PowerUpBehaviour : NetworkBehaviour
 
     }
 
-    private void GetPlayers()
+
+    private IEnumerator WaitToDestroy()
     {
-        foreach (var player in FindObjectsOfType<Player>())
-        {
-            if (player.PUValue.Value == _puType.Value)
+        
+
+            AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
+
+            while (stateInfo.normalizedTime > 0f)
             {
-                ChangeColorRpc(player.OwnerClientId);
+                yield return null; 
+                stateInfo = _animator.GetCurrentAnimatorStateInfo(0);  
+            }
+
+        DestroyPU();
+
+        }
+
+
+
+    private void GetPlayers()
+        {
+            foreach (var player in FindObjectsOfType<Player>())
+            {
+                if (player.PUValue.Value == _puType.Value)
+                {
+                    ChangeColorRpc(player.OwnerClientId);
+                }
             }
         }
-    }
 
-    [Rpc(SendTo.Everyone)]
+        [Rpc(SendTo.Everyone)]
 
-    private void ChangeColorRpc(ulong clientId)
-    {
-        if (NetworkManager.Singleton.LocalClientId != clientId)
-            return;
-
-        _sp.color = Color.gray;
-    }
-
-    public override void OnNetworkSpawn()
-    {
-        if (IsServer)
+        private void ChangeColorRpc(ulong clientId)
         {
-          
-            _puType.Value = Random.Range(1, 5);
-            //_puType.Value = 1; //Para probar los minions
-                           
+            if (NetworkManager.Singleton.LocalClientId != clientId)
+                return;
 
+            _sp.color = Color.gray;
         }
 
-
-    }
-
-    [Rpc(SendTo.Server)]
-    public void SetTypeRpc(int value)
-    {
-        _puType.Value = value;
-    }
-    public void PULogic()
-    {
-        ExecutePowerUp();
-        AnimateExitRpc();
-        DestroyPU();
      
-        
+
+        [Rpc(SendTo.Server)]
+        public void SetTypeRpc(int value)
+        {
+            _puType.Value = value;
+        }
+        public void PULogic()
+        {
+            ExecutePowerUp();
+            AnimateExitRpc();
+        //StartCoroutine(WaitToDestroy());
+        DestroyPU();
+
+
+
     }
 
     private void DestroyPU()
-    {
-        NetworkObject.Despawn();
-        GameManager.Instance.puInScene--;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-     void FixedUpdate()
-    {
-        if (_isTriggered)
         {
-            _currentTime += Time.fixedDeltaTime; 
+            NetworkObject.Despawn();
+            GameManager.Instance.puInScene--;
+        }
 
-            if (_currentTime >= MAX_TIME_PLAYER)
+        // Update is called once per frame
+        void Update()
+        {
+    
+        }
+
+        void FixedUpdate()
+        {
+            if (_isTriggered)
             {
+                _currentTime += Time.fixedDeltaTime;
+
+                if (_currentTime >= MAX_TIME_PLAYER)
+                {
                 PULogic();
-                _currentTime = 0f; 
+                    _currentTime = 0f;
+                }
+            }
+            else
+            {
+                _currentTime = 0f;
             }
         }
-        else
-        {
-            _currentTime = 0f; 
-        }
-    }
 
-    public void ExecutePowerUp() //Función que según el powerUp hace una cosa u otra;
-    {
-        var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
-        player.SetPlayerPURpc(_puType.Value);
+     
+
+    
+            public void ExecutePowerUp() //Función que según el powerUp hace una cosa u otra;
+            {
+
+            var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
+            player.SetPlayerPURpc(_puType.Value);
 
 
-        switch (_puType.Value)
-        {
-            default:
-                break;
-            case 1:  
-                tower.SpawnMinions(player);
-                break;
-            case 2:
-                tower.caster = player;
-                tower.ArrowRain();
-                break;
-            case 3:
-                tower.SetDefending(true, player);
-                break;
-            case 4:
-                tower.HealTower(player);
-                break;
+            switch (_puType.Value)
+            {
+                default:
+                    break;
+                case 1:  
+                    tower.SpawnMinions(player);
+                    break;
+                case 2:
+                    tower.caster = player;
+                    tower.ArrowRain();
+                    break;
+                case 3:
+                    tower.SetDefending(true, player);
+                    break;
+                case 4:
+                    tower.HealTower(player);
+                    break;
         
 
-        }
-        player.SetUltiValue(_ultimateValue);
+            }
+            player.SetUltiValue(_ultimateValue);
 
-    }
+        }
 
    
-}
+    }

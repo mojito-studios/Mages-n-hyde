@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.Services.Lobbies.Models;
+using UnityEngine.Tilemaps;
 
 public class Arrow : NetworkBehaviour
 {
-    [SerializeField]private int _damage = 1;
-    private int _arrowForce = 2;
+    [SerializeField]private int _damage = 5;
+    private int _arrowForce = 7;
     public Tower casterTower;
     public Player caster;
+    public float bounds;
+ 
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -30,6 +33,7 @@ public class Arrow : NetworkBehaviour
                     if (!(hitPlayer.health.Value - _damage * 10 > 0)) { caster.kill(); hitPlayer.die(caster); }
                     else { hitPlayer.assistantAssign(caster); }
                     collision.gameObject.GetComponent<Player>().getHit(_damage);
+                    NetworkObject.Despawn();
                 }
             }
            
@@ -42,20 +46,22 @@ public class Arrow : NetworkBehaviour
             Tower colisionTower = collision.gameObject.GetComponent<Tower>();
             if (casterTower.tag != colisionTower.tag)
             {
-                if (colisionTower.GetIsDefending()) colisionTower.DamageShields();
+                if (colisionTower.GetIsDefending()) colisionTower.DamageShields(_damage);
                 else colisionTower.DamageTower(_damage);
+                NetworkObject.Despawn();
             }
             
 
         }
-        DestroyServerRpc();
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    private void DestroyServerRpc()
+    private void Update()
     {
-        Destroy(gameObject);
+        if (transform.position.y < bounds) NetworkObject.Despawn();
     }
+
+   
+   
 }
 
 

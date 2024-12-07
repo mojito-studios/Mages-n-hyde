@@ -76,6 +76,7 @@ public class OptionsChosen : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void SetPlayerReadyServerRpc(RpcParams RpcParams = default)
     {
+        //if (NetworkManager.Singleton.ConnectedClientsIds.Count < 2) { return; }
         PlayerData playerData = OptionsChosen.Instance.GetPlayerDataFromClientId(RpcParams.Receive.SenderClientId);
 
         if (playerData.team == -1) return;

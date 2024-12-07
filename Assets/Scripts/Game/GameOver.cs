@@ -14,6 +14,7 @@ public class GameOver : NetworkBehaviour
     [SerializeField] private TextMeshProUGUI mvpName;
     [SerializeField] private TextMeshProUGUI mvpStats;
     [SerializeField] private SpriteRenderer mvpSprite;
+    [SerializeField] public Canvas canvas;
     public bool win;
     private Player player;
     private GameObject mvp;
@@ -48,7 +49,7 @@ public class GameOver : NetworkBehaviour
 
         stats.text = player.killCount.Value + " kills, " + player.assistCount.Value + " assists\n" + player.deathCount.Value;
         mvpName.text = mvp.GetComponent<Player>().character;
-        mvpSprite.sprite = mvp.GetComponentInChildren<SpriteRenderer>().sprite;
+        mvpSprite.sprite = mvp.GetComponent<GameOver>().canvas.GetComponent<Image>().sprite;
         mvpSprite.color = mvp.GetComponentInChildren<SpriteRenderer>().color;
         mvpStats.text = mvp.GetComponent<Player>().killCount.Value + " kills, " + mvp.GetComponent<Player>().assistCount.Value + " assists\n" + mvp.GetComponent<Player>().deathCount.Value + " deaths";
     }

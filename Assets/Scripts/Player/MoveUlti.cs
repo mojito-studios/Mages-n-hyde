@@ -33,7 +33,7 @@ public class MoveUlti : NetworkBehaviour
         //if(collision.gameObject.tag == "Team2Tower" || collision.gameObject.tag == "Team1Tower")
         {
             Tower torre = collision.gameObject.GetComponent<Tower>();
-            if(torre.GetIsDefending()) torre.DamageShields();
+            if(torre.GetIsDefending()) torre.DamageShields(damage*10);
             else torre.DamageTower(damage);
         }
         DestroyServerRpc();

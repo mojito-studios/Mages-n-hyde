@@ -4,17 +4,19 @@ using Unity.Collections.LowLevel.Unsafe;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Tower : NetworkBehaviour
 {
-    private const float maxShield = 5; //Escudo total
+    private const float maxShield = 50; //Escudo total
     private const float maxLife = 800; //Vida total 
     private const int shootingTime = 2;
     private const float minionsDamage = 0.5f;
     private const float minionsTime = 1.5f;
-    [SerializeField] private Slider healthBar;
-    [SerializeField] private Slider shieldBar;
+    [SerializeField] private UnityEngine.UI.Slider healthBar;
+    [SerializeField] private UnityEngine.UI.Slider shieldBar;
     public NetworkVariable<float> currentLife = new NetworkVariable<float>();
     public NetworkVariable<float> shield = new NetworkVariable<float>(); //PowerUp de escudo
     public NetworkVariable<bool> _isDefending { get; private set; } = new NetworkVariable<bool>(false);
@@ -23,12 +25,17 @@ public class Tower : NetworkBehaviour
     Animator minionsAnim;
     public Player caster;
     private Vector3 minionsOgPos;
+    private Tilemap tilemap;
+    private Bounds bounds;
 
-    
+
+
     void Start()
     {
         minionsOgPos = minions.transform.position;
         minionsAnim = minions.GetComponent<Animator>();
+        tilemap = GameObject.Find("Suelo").GetComponent<Tilemap>();
+        bounds = tilemap.localBounds;
         
     }
 
@@ -77,10 +84,10 @@ public class Tower : NetworkBehaviour
     {
         currentLife.Value -= damage*5;
     }
-    public void DamageShields()
+    public void DamageShields(float damage)
     {
         Debug.Log("HiriendoEscudo");
-        float damage = 0.5f; // Da�o que haga la colisi�n, se le pasa desde fuera
+        ; // Da�o que haga la colisi�n, se le pasa desde fuera
         DamageShieldRpc(damage, maxShield);
         
     }
@@ -88,7 +95,7 @@ public class Tower : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void DamageShieldRpc(float damage, float maxShield)
     {
-        shield.Value -= damage;
+        shield.Value -= damage*5;
         if (shield.Value <= 0)
         {
             SetDefending(false, caster);
@@ -146,7 +153,7 @@ public class Tower : NetworkBehaviour
     public void ArrowRain()
     {
         Debug.Log("Activando flechas");
-        int arrowNumber = Random.Range(4, 6);
+        int arrowNumber = Random.Range(8, 11);
         ArrowRainRpc(arrowNumber, shootingTime);
     }
     [Rpc(SendTo.Server)]
@@ -160,8 +167,10 @@ public class Tower : NetworkBehaviour
     {
         for(int i = 0; i < number; i++)
         {
-            GameObject arrow = Instantiate(arrows, new Vector3(0,0), arrows.transform.rotation);
+            Debug.Log(bounds.min.y);
+            GameObject arrow = Instantiate(arrows, new Vector3(Random.Range(bounds.min.x, bounds.max.x), bounds.max.y, 0), arrows.transform.rotation);
             arrow.GetComponent<NetworkObject>().Spawn();
+            arrow.GetComponent<Arrow>().bounds = bounds.min.y;
             arrow.GetComponent<Arrow>().casterTower = this;
             arrow.GetComponent<Arrow>().caster = caster;
             yield return new WaitForSeconds(shootingTime);
@@ -204,9 +213,9 @@ public class Tower : NetworkBehaviour
     private IEnumerator MinionsAct(Vector3 enemyTower, Vector3 originalPosition, ulong t)
     {
         WalkingMinionsRpc(true);
-        while(Vector3.Distance(minions.transform.position, enemyTower) > 1f)
+        while(Vector3.Distance(minions.transform.position, enemyTower) > 2f)
         {
-            minions.transform.position = Vector3.MoveTowards(minions.transform.position, enemyTower, Time.deltaTime);
+            minions.transform.position = Vector3.MoveTowards(minions.transform.position, enemyTower, Time.deltaTime*3);            
             yield return null;
         }
         WalkingMinionsRpc(false);
@@ -226,8 +235,8 @@ public class Tower : NetworkBehaviour
         while (i < minionsTime)
         {
             Debug.Log("ATACO");
-            if (tower._isDefending.Value) tower.DamageShields();
-            else tower.DamageTower(minionsDamage);
+            if (tower._isDefending.Value) tower.DamageShields(minionsDamage*10);
+            else tower.DamageTower(minionsDamage*10);
             i++;
             yield return new WaitForSeconds(1f);
 
@@ -245,7 +254,7 @@ public class Tower : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     void WalkingMinionsRpc(bool walk)
     {
-        minionsAnim.SetBool("IsWalking", walk);
+        minionsAnim.SetBool("isActive", walk);
     }
 
     [Rpc(SendTo.Everyone)]
