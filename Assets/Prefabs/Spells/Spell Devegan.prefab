@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3286935948
       objectReference: {fileID: 0}
+    - target: {fileID: 4870232915052128052, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1049302921, guid: bae4f492f7eb68344ace86cf549ee79c, type: 3}
     - target: {fileID: 5427883525127834895, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -52,6 +56,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6171579929615727583, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 76a994aaea2689c4b80bf498a4a60047, type: 2}
+    - target: {fileID: 7739852006154181884, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 76a994aaea2689c4b80bf498a4a60047, type: 2}
     - target: {fileID: 7856089565756093602, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
       propertyPath: m_Name
       value: Spell Devegan
@@ -61,12 +73,20 @@ PrefabInstance:
       value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8274073203230092047, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
-      propertyPath: m_Color.b
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1049302921, guid: bae4f492f7eb68344ace86cf549ee79c, type: 3}
+    - target: {fileID: 8274073203230092047, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8274073203230092047, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274073203230092047, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
       propertyPath: m_Color.g
-      value: 0.29803923
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8274073203230092047, guid: dd6552ae5fedc514cbbaeb7d3553d951, type: 3}
       propertyPath: m_Color.r

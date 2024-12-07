@@ -57,6 +57,8 @@ public class Player : NetworkBehaviour
     private bool _moving = false;
     public bool button = false;
     private Vector3 targetPosition = Vector3.zero;
+    private float stepTime = 0.3f;
+    private float stepLeft = 0.3f;
 
     //hide
     private NetworkVariable<bool> _hiding = new NetworkVariable<bool>();
@@ -72,6 +74,8 @@ public class Player : NetworkBehaviour
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     private Vector3 _spawnPosition;
     [SerializeField] private GameObject spellPrefab;
+    [SerializeField] private GameObject dustPrefab;
+    [SerializeField] private GameObject smokePrefab;
     [SerializeField] private GameObject ultiPrefab;
     [SerializeField] private Transform spellTransform;
     [SerializeField] private Transform[] ultiTransforms;
@@ -168,6 +172,7 @@ public class Player : NetworkBehaviour
         }
         if (_moving)
             MovePlayer();
+        stepLeft += Time.deltaTime;
         updateHealthRpc();
     }
 
@@ -313,6 +318,7 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void OnHideRpc(bool hide)
     {
+        GameObject smoke = Instantiate(smokePrefab, transform.position, Quaternion.identity);
         _hiding.Value = hide;
     }
     void MovePlayer()
@@ -323,6 +329,11 @@ public class Player : NetworkBehaviour
             transform.up = targetDirection;
             anim.AnimateMovementRpc(targetPosition);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
+            if (stepLeft >= stepTime)
+            {
+                dustServerRpc();
+                stepLeft = 0;
+            }
         }
 
         if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
@@ -410,6 +421,12 @@ public class Player : NetworkBehaviour
         spell.GetComponent<MoveSpell>().caster = this;
         spell.GetComponent<NetworkObject>().Spawn();
         spellCount.Value--;
+    }
+
+    [Rpc(SendTo.Server)]
+    private void dustServerRpc()
+    {
+        GameObject spell = Instantiate(dustPrefab, transform.position, spellTransform.rotation);
     }
 
     private IEnumerator spellCooldown()
