@@ -88,29 +88,25 @@ public class Player : NetworkBehaviour
         _camera = GetComponentInChildren<Camera>();
         _ultimateAttack.interactable = false;
         anim = GetComponentInChildren<AnimationController>();
-        teamTower._isDefending.OnValueChanged += SetShieldRpc;
         teamAssignRpc();
-        if (teamAssign == 1)
-        {
-            topRight(towerHealth.gameObject);
-            topRight(_towerHealth.gameObject);
-            topRight(towerShield.gameObject);
-            towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-45, -96f, 0f);
-            _towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-531, -43f, 0f);
-            towerShield.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-30, -212f, 0f);
-        }
     }
 
     [Rpc(SendTo.Server)]
     private void teamAssignRpc()
     {
-        teamAssign2Rpc(teamAssign);
+        if (teamTower.tag == "Team2Tower") teamAssign2Rpc();
+        teamTower._isDefending.OnValueChanged += SetShieldRpc;
     }
 
     [Rpc(SendTo.Owner)]
-    private void teamAssign2Rpc(int team)
+    private void teamAssign2Rpc()
     {
-        teamAssign = team;
+        topRight(towerHealth.gameObject);
+        topRight(_towerHealth.gameObject);
+        topRight(towerShield.gameObject);
+        towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-60, -116f, 0f);
+        _towerHealth.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-531, -43f, 0f);
+        towerShield.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector3(-40, -247f, 0f);
     }
 
     void topRight(GameObject uiObject)

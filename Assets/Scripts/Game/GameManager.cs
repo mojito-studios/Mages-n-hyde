@@ -124,7 +124,6 @@ public class GameManager : NetworkBehaviour
             string tag = playerData.team == 0 ? "Team1Tower" : "Team2Tower";
             player.GetComponent<Player>().teamTower = GameObject.FindGameObjectWithTag(tag).GetComponent<Tower>() ;
 
-
         }
     }
 
