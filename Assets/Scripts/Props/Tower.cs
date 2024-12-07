@@ -5,6 +5,7 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Tower : NetworkBehaviour
 {
@@ -13,8 +14,8 @@ public class Tower : NetworkBehaviour
     private const int shootingTime = 2;
     private const float minionsDamage = 0.5f;
     private const float minionsTime = 1.5f;
-    [SerializeField] private Slider healthBar;
-    [SerializeField] private Slider shieldBar;
+    [SerializeField] private UnityEngine.UI.Slider healthBar;
+    [SerializeField] private UnityEngine.UI.Slider shieldBar;
     public NetworkVariable<float> currentLife = new NetworkVariable<float>();
     public NetworkVariable<float> shield = new NetworkVariable<float>(); //PowerUp de escudo
     public NetworkVariable<bool> _isDefending { get; private set; } = new NetworkVariable<bool>(false);
@@ -204,9 +205,9 @@ public class Tower : NetworkBehaviour
     private IEnumerator MinionsAct(Vector3 enemyTower, Vector3 originalPosition, ulong t)
     {
         WalkingMinionsRpc(true);
-        while(Vector3.Distance(minions.transform.position, enemyTower) > 1f)
+        while(Vector3.Distance(minions.transform.position, enemyTower) > 2f)
         {
-            minions.transform.position = Vector3.MoveTowards(minions.transform.position, enemyTower, Time.deltaTime);
+            minions.transform.position = Vector3.MoveTowards(minions.transform.position, enemyTower, Time.deltaTime*3);            
             yield return null;
         }
         WalkingMinionsRpc(false);
