@@ -36,10 +36,7 @@
 
         private void OnTriggerExit2D(Collider2D collision) //Tanto si se sale como si el jugador se desactiva (por el tema del respawn)
         {
-            Debug.Log("DESACTIVADO");
             _isTriggered = false;
-
-
 
         }
 
@@ -49,7 +46,7 @@
         {
 
             _puType.Value = Random.Range(1, 5);
-            //_puType.Value = 1; //Para probar los minions
+           // _puType.Value = 2; //Para probar los minions
 
 
         }

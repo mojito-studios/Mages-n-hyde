@@ -32,7 +32,7 @@ public class MoveSpell : NetworkBehaviour
         //if(collision.gameObject.tag == "Team2Tower" || collision.gameObject.tag == "Team1Tower")
         {
             Tower torre = collision.gameObject.GetComponent<Tower>();
-            if(torre.GetIsDefending()) torre.DamageShields();
+            if(torre.GetIsDefending()) torre.DamageShields(caster.attack*10);
             else torre.DamageTower(caster.attack);
         }
         DestroyServerRpc();
