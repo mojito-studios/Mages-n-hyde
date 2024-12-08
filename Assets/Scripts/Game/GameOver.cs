@@ -27,8 +27,11 @@ public class GameOver : NetworkBehaviour
         NetworkManager.Singleton.Shutdown();
         SceneManager.LoadScene(0);
     }
+
+
     public void OnEnd()
     {
+        //GetComponent<Animator>().SetBool("isFirst", false);
         player = this.GetComponentInParent<Player>();
         mvp = player.gameObject;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");

@@ -15,13 +15,23 @@ public class UltiGrimm : NetworkBehaviour
             {
                 Player player = collision.GetComponent<Player>();
                 collision.GetComponent<Player>().canMove = false;
-                HitPlayer(player);
+                StartCoroutine(HitPlayer(player));
             }
         }
 
 
     }
 
+    private void Start()
+    {
+        StartCoroutine(DestroyObject());
+    }
+
+    private IEnumerator DestroyObject()
+    {
+        yield return new WaitForSeconds(caster.ultiTime);
+        NetworkObject.Despawn();
+    }
     private IEnumerator HitPlayer(Player player)
     {
         float time = 0;
@@ -30,10 +40,10 @@ public class UltiGrimm : NetworkBehaviour
             if (!(player.health.Value - caster.ultidamage * 10 > 0)) { caster.kill(); player.die(caster); }
             else { player.assistantAssign(caster); }
             player.GetComponent<Player>().getHit(caster.ultidamage);
-            time += Time.deltaTime;
+            time += 1;
         }
-        yield return new WaitForSeconds(0.5f);
-
+        yield return new WaitForSeconds(1f);
+        player.canMove = true;
         NetworkObject.Despawn();
     }
 }

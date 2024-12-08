@@ -38,7 +38,7 @@ namespace UIManagerSpace
                 () => print($"New player {AuthenticationService.Instance.PlayerId} connected");
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            //NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
+           //NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
             clientButton.interactable = false;
         }
 
@@ -196,7 +196,11 @@ namespace UIManagerSpace
             if(clientId == NetworkManager.Singleton.LocalClientId)
         {
                 lobbySystemManager.GetComponent<LobbySystemManager>().EnableButtons();
+                Debug.Log("Cliente local identificado. Intentando habilitar botones...");
+
             }
+            else Debug.LogWarning("El clientId no coincide con el LocalClientId.");
+
             NetworkManager.Singleton.OnClientConnectedCallback -= ShowLobby;
 
         }

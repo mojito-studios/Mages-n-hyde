@@ -328,8 +328,15 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void OnHideRpc(bool hide)
     {
-        GameObject smoke = Instantiate(smokePrefab, transform.position, Quaternion.identity);
+        EffectHidingRpc();
         _hiding.Value = hide;
+    }
+
+    [Rpc(SendTo.Owner)]
+    private void EffectHidingRpc()
+    {
+        Instantiate(smokePrefab, transform.position, Quaternion.identity);
+
     }
     void MovePlayer()
     {
@@ -433,7 +440,7 @@ public class Player : NetworkBehaviour
         spellCount.Value--;
     }
 
-    [Rpc(SendTo.Server)]
+    [Rpc(SendTo.Owner)]
     private void dustServerRpc()
     {
         GameObject spell = Instantiate(dustPrefab, transform.position, spellTransform.rotation);
@@ -540,7 +547,7 @@ public class Player : NetworkBehaviour
     {
         foreach (Transform transform in ultiTransforms)
         {
-            GameObject spell = Instantiate(ultiPrefab, transform.position, transform.rotation);
+            GameObject spell = Instantiate(ultiPrefab, transform.position, Quaternion.identity);
             spell.GetComponent<UltiGrimm>().caster = this;
             spell.GetComponent<NetworkObject>().Spawn();
         }
@@ -641,5 +648,6 @@ public class Player : NetworkBehaviour
         GetComponent<GameOver>().win = !win;
         GetComponent<GameOver>().OnEnd();
         GameOver.gameObject.SetActive(true);
+        
     }
 }

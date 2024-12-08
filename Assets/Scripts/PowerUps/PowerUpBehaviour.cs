@@ -9,6 +9,7 @@
         private bool _isTriggered = false;
         private float _currentTime = 0f;
         private int _ultimateValue = 15; //Luego ajustarde torre 4 curar torre
+        [SerializeField] private GameObject _puEffectPrefab;
         private NetworkVariable<int> _puType = new NetworkVariable<int>();
         Player player;
         private Animator _animator;
@@ -45,8 +46,8 @@
         if (IsServer)
         {
 
-             //_puType.Value = Random.Range(1, 5);
-            _puType.Value = 2; //Para probar los minions
+             _puType.Value = Random.Range(1, 5);
+            //_puType.Value = 2; //Para probar los minions
 
 
         }
@@ -162,12 +163,22 @@
             ExecutePowerUp();
             AnimateExitRpc();
         //StartCoroutine(WaitToDestroy());
+        EffectRpc(player.NetworkObjectId);
         DestroyPU();
 
 
 
     }
 
+
+    [Rpc(SendTo.Server)]
+    private void EffectRpc(ulong clientid)
+    {
+        var obj = NetworkManager.Singleton.SpawnManager.SpawnedObjects[clientid].transform;
+
+        var eff = Instantiate(_puEffectPrefab, obj.position, Quaternion.identity);
+        eff.GetComponent<NetworkObject>().Spawn();
+    }
     private void DestroyPU()
         {
             NetworkObject.Despawn();
@@ -188,7 +199,7 @@
 
                 if (_currentTime >= MAX_TIME_PLAYER)
                 {
-                PULogic();
+                    PULogic();
                     _currentTime = 0f;
                 }
             }
