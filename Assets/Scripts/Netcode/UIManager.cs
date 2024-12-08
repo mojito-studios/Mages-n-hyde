@@ -38,7 +38,7 @@ namespace UIManagerSpace
                 () => print($"New player {AuthenticationService.Instance.PlayerId} connected");
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
+            //NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
             clientButton.interactable = false;
         }
 
@@ -87,7 +87,7 @@ namespace UIManagerSpace
                             NetworkManager.Singleton.NetworkConfig.NetworkTransport.GetType().Name);
             GUILayout.Label("Mode: " + mode);
 
-            GUILayout.Label("Room: " + joinCode);
+            GUILayout.Label("Room: " + joinCode.ToUpper());
         }
 
         public void OnStartHostClick()

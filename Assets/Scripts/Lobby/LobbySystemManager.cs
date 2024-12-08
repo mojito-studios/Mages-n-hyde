@@ -99,7 +99,6 @@ public class LobbySystemManager : MonoBehaviour
 
     void DeactivateReady()
     {
-        Debug.Log("YEAREADY");
         ready.interactable = false;
 
     }

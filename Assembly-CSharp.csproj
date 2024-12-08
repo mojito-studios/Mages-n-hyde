@@ -71,12 +71,14 @@
     <Compile Include="Assets\Scripts\Player\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\AnimationController.cs" />
     <Compile Include="Assets\Scripts\Lobby\PlayerData.cs" />
+    <Compile Include="Assets\Scripts\Props\SmokeEffect.cs" />
     <Compile Include="Assets\Scripts\Game\GameManager.cs" />
     <Compile Include="Assets\Scripts\Lobby\LobbySystemManager.cs" />
     <Compile Include="Assets\Scripts\Player\MoveSpell.cs" />
     <Compile Include="Assets\Scripts\Props\Tower.cs" />
     <Compile Include="Assets\Scripts\Netcode\UIManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu\MenuController.cs" />
+    <Compile Include="Assets\Scripts\Props\DustEffect.cs" />
     <Compile Include="Assets\Scripts\Player\Buttons.cs" />
     <Compile Include="Assets\Scripts\Game\GameOver.cs" />
     <Compile Include="Assets\Scripts\Lobby\OptionsChosen.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Assets\Scripts\Props\Arrow.cs" />
     <Compile Include="Assets\Scripts\Netcode\RelayManager.cs" />
     <Compile Include="Assets\Scripts\MainMenu\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Player\UltiGrimm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

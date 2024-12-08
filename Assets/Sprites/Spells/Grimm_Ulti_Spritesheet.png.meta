@@ -1,0 +1,985 @@
+fileFormatVersion: 2
+guid: 45bccc7eacb62f44d8aab2eeee85fe49
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6000
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07730801da0b62e40834f482e7549afb
+      internalID: -1401510949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 6000
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf8c436efca02d4ea867a020d079be5
+      internalID: -1992184117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 6000
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae258bd9f7314e74393446a46e0e0b06
+      internalID: -264801532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 6000
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3be0d437cfc5cd4f953413a06c0c860
+      internalID: -1327396438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 6000
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1de22fcf493a954b94e7096a514913e
+      internalID: 1376157077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 6000
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe5f4153fbddd01448aba6586b6da1a9
+      internalID: -1145732994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 11520
+        y: 6000
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 609e49681d9bbe64bbec15a1848b5fa3
+      internalID: 1676282176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4800
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d9c99f32328d2647929f9afc60a1785
+      internalID: -1269529201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 4800
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6204cdb8e75e224f8aa6395f7998d4f
+      internalID: 1947919679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 4800
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac2d39600eb32fb468c24c2ff0208a5c
+      internalID: -1269762941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 4800
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8f6f64c7f5f4540b35b79e5aaf9a17
+      internalID: -363364589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 4800
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdf637c181be038499300321c0ca3e00
+      internalID: 2117214034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 4800
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe5cc7c8d29b4142be1e649e2a4a19d
+      internalID: -1391059198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 11520
+        y: 4800
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d1163b2d265cee488743bab27177dbc
+      internalID: -74952570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3600
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 650e3ac32dae968488973540fc4e1335
+      internalID: -1066376629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 3600
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9476148c1fb7c745ab411189bea894f
+      internalID: -990392664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 3600
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24a0fbf86200d574282faa6fb1b52940
+      internalID: 659106413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 3600
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ef667ae3cbc064e9cdd12f10487f1b
+      internalID: 1348960979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 3600
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37e2762198ea14e429e705456a7ed4c3
+      internalID: 1794590562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 3600
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f7819560458ad94dbc3d5f20e14a398
+      internalID: -950039863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 11520
+        y: 3600
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91b7b7dd519e2ae428a441d3cbb3c989
+      internalID: 45327446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2400
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e3fb7ed664300f42a80801b08f2af7b
+      internalID: 1977302146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 2400
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96795e34c866a714f9caf4845cc0e71d
+      internalID: -1855425769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 2400
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e4bd8f7777c7dc4f8d87f3708f375bf
+      internalID: 1217301076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 2400
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9cc46f4d2180b1469b972067e7fb59c
+      internalID: 1338269515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 2400
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 325513a1863b0a042b92990db029f9a1
+      internalID: -474223466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 2400
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 756e5e4cfc8525c4794d85d69179a8ba
+      internalID: 1144894974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 11520
+        y: 2400
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2640a871a1a31fc4e8a078eda39033b6
+      internalID: 1489981996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1200
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2806e4589eddab94fbc6a5825b380139
+      internalID: -270230915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1200
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d93bc9922431c459825111401698cf
+      internalID: 417605177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 1200
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5366690c31f30a041a2c6447704261d1
+      internalID: -1858326824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 1200
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3b800877b420964dacab9677d9722cd
+      internalID: -1022300952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 7680
+        y: 1200
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e13f0cc2bbc8d504e9e7ea1baa6213f0
+      internalID: 1739289969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 1200
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b42e98533b332084e93db952aac0575a
+      internalID: 1576105856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 11520
+        y: 1200
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c700ad44c7dbfd40b55666e5c961e42
+      internalID: -1873417148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24af5aae5bb7ad54394326e1e63d6919
+      internalID: 1765269534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af5d26fe374c1014e8fd6a166d36d8bb
+      internalID: 845504945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba34f66c2d6a43d468a0307f11082ae3
+      internalID: 725865922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grimm_Ulti_Spritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 5760
+        y: 0
+        width: 1920
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690fcc9e80056f14f82f9ee7dd46dd8b
+      internalID: -1804636032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Grimm_Ulti_Spritesheet_0: -1401510949
+      Grimm_Ulti_Spritesheet_1: -1992184117
+      Grimm_Ulti_Spritesheet_10: -363364589
+      Grimm_Ulti_Spritesheet_11: 2117214034
+      Grimm_Ulti_Spritesheet_12: -1391059198
+      Grimm_Ulti_Spritesheet_13: -74952570
+      Grimm_Ulti_Spritesheet_14: -1066376629
+      Grimm_Ulti_Spritesheet_15: -990392664
+      Grimm_Ulti_Spritesheet_16: 659106413
+      Grimm_Ulti_Spritesheet_17: 1348960979
+      Grimm_Ulti_Spritesheet_18: 1794590562
+      Grimm_Ulti_Spritesheet_19: -950039863
+      Grimm_Ulti_Spritesheet_2: -264801532
+      Grimm_Ulti_Spritesheet_20: 45327446
+      Grimm_Ulti_Spritesheet_21: 1977302146
+      Grimm_Ulti_Spritesheet_22: -1855425769
+      Grimm_Ulti_Spritesheet_23: 1217301076
+      Grimm_Ulti_Spritesheet_24: 1338269515
+      Grimm_Ulti_Spritesheet_25: -474223466
+      Grimm_Ulti_Spritesheet_26: 1144894974
+      Grimm_Ulti_Spritesheet_27: 1489981996
+      Grimm_Ulti_Spritesheet_28: -270230915
+      Grimm_Ulti_Spritesheet_29: 417605177
+      Grimm_Ulti_Spritesheet_3: -1327396438
+      Grimm_Ulti_Spritesheet_30: -1858326824
+      Grimm_Ulti_Spritesheet_31: -1022300952
+      Grimm_Ulti_Spritesheet_32: 1739289969
+      Grimm_Ulti_Spritesheet_33: 1576105856
+      Grimm_Ulti_Spritesheet_34: -1873417148
+      Grimm_Ulti_Spritesheet_35: 1765269534
+      Grimm_Ulti_Spritesheet_36: 845504945
+      Grimm_Ulti_Spritesheet_37: 725865922
+      Grimm_Ulti_Spritesheet_38: -1804636032
+      Grimm_Ulti_Spritesheet_4: 1376157077
+      Grimm_Ulti_Spritesheet_5: -1145732994
+      Grimm_Ulti_Spritesheet_6: 1676282176
+      Grimm_Ulti_Spritesheet_7: -1269529201
+      Grimm_Ulti_Spritesheet_8: 1947919679
+      Grimm_Ulti_Spritesheet_9: -1269762941
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

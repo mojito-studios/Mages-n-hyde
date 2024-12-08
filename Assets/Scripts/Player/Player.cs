@@ -30,7 +30,7 @@ public class Player : NetworkBehaviour
     public float attack = 1;
     public float range = 1;
     public float ultiTime;
-   [SerializeField] private float ultidamage = 3;
+   public float ultidamage = 3;
     public NetworkVariable<float> health { get; private set; } = new NetworkVariable<float>();
     public NetworkVariable<int> killCount { get; private set; } = new NetworkVariable<int>(0);
     public NetworkVariable<int> deathCount { get; private set; } = new NetworkVariable<int>(0);
@@ -55,6 +55,7 @@ public class Player : NetworkBehaviour
     //move
     [SerializeField] private float speed = 4f;
     private bool _moving = false;
+    public bool canMove = true;
     public bool button = false;
     private Vector3 targetPosition = Vector3.zero;
     private float stepTime = 0.3f;
@@ -135,6 +136,7 @@ public class Player : NetworkBehaviour
         SetPlayer();
         ultiAttack.OnValueChanged += interactableButton;
         _hiding.OnValueChanged += ChangeSprite;
+        PUValue.OnValueChanged += NotifyPowerUps;
         camerabounds.m_BoundingShape2D = GameObject.FindWithTag("CameraBounds").GetComponent<Collider2D>();
     }
 
@@ -166,6 +168,7 @@ public class Player : NetworkBehaviour
                 }
             }
         }
+        
         if (_moving)
             MovePlayer();
         stepLeft += Time.deltaTime;
@@ -190,6 +193,17 @@ public class Player : NetworkBehaviour
         playerInput.actionEvents[1].AddListener(this.OnHide);
     }
 
+    void NotifyPowerUps(int oldValue, int newValue)
+    {
+        var powerUPS = GameObject.FindObjectsByType<PowerUpBehaviour>(FindObjectsSortMode.None);
+        foreach(PowerUpBehaviour powerup in powerUPS)
+        {
+            if(powerup != null)
+            powerup.ChangeColorUpdate(newValue, this.OwnerClientId);
+        }
+
+
+    }
     public void getHit(float damage)
     {
         getHitRpc(damage);
@@ -341,7 +355,7 @@ public class Player : NetworkBehaviour
 
     public void OnMovement(InputAction.CallbackContext context)
     {
-        if (!IsOwner) return;
+        if (!IsOwner || !canMove) return;
         Vector3 position = Mouse.current.position.ReadValue();
         targetPosition = _camera.ScreenToWorldPoint(position);
         targetPosition.z = transform.position.z;
@@ -515,25 +529,20 @@ public class Player : NetworkBehaviour
     //ULTI 2
     private IEnumerator Ulti2C(float time)
     {
-        SearchPlayersU2Rpc(ultidamage);
+        Spells2Rpc(ultidamage);
         yield return new WaitForSeconds(time);
         anim.EndUltiRpc();
 
     }
 
     [Rpc(SendTo.Server)]
-    private void SearchPlayersU2Rpc(float damage)
+    private void Spells2Rpc(float damage)
     {
-        Player[] enemyPlayers = GameObject.FindObjectsByType<Player>(FindObjectsSortMode.None).Where(obj => obj.teamAssign != this.teamAssign).ToArray();
-        Debug.Log(enemyPlayers.Length);
-        foreach (Player player in enemyPlayers)
+        foreach (Transform transform in ultiTransforms)
         {
-            if (Vector3.Distance(transform.position, player.transform.position) < 100)
-            {
-                if (!(player.health.Value - damage * 10 > 0)) { this.kill(); player.die(this); }
-                player.getHit(damage);
-            }
-                
+            GameObject spell = Instantiate(ultiPrefab, transform.position, transform.rotation);
+            spell.GetComponent<UltiGrimm>().caster = this;
+            spell.GetComponent<NetworkObject>().Spawn();
         }
     }
     public void Ulti2ButtonRpc()

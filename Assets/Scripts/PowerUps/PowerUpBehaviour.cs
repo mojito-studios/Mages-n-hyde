@@ -28,7 +28,7 @@
             if (collision.CompareTag("Props")) DestroyPU();
             if (!collision.CompareTag("Player")) return;
             player = collision.GetComponent<Player>();
-            if (_sp.color != Color.gray) _isTriggered = true;
+            if (player.PUValue.Value != _puType.Value) _isTriggered = true;
             else DestroyPU();
 
 
@@ -45,8 +45,8 @@
         if (IsServer)
         {
 
-            _puType.Value = Random.Range(1, 5);
-           // _puType.Value = 2; //Para probar los minions
+             //_puType.Value = Random.Range(1, 5);
+            _puType.Value = 2; //Para probar los minions
 
 
         }
@@ -125,19 +125,29 @@
             {
                 if (player.PUValue.Value == _puType.Value)
                 {
-                    ChangeColorRpc(player.OwnerClientId);
+                    ChangeColorRpc(player.OwnerClientId, true);
                 }
             }
         }
 
+    public void ChangeColorUpdate(int newValue, ulong player)
+    {
+        if(newValue == this._puType.Value)
+        {
+            ChangeColorRpc(player, true);
+        } else ChangeColorRpc(player, false);
+        
+
+    }
         [Rpc(SendTo.Everyone)]
 
-        private void ChangeColorRpc(ulong clientId)
+        private void ChangeColorRpc(ulong clientId, bool gray)
         {
             if (NetworkManager.Singleton.LocalClientId != clientId)
                 return;
 
-            _sp.color = Color.gray;
+           if(gray) _sp.color = Color.gray;
+           else _sp.color = Color.white;
         }
 
      
