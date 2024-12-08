@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using Unity.Netcode;
 using Unity.Netcode.Transports.UTP;
@@ -23,11 +24,13 @@ namespace UIManagerSpace
         [SerializeField] InputField joinCodeText;
         [SerializeField] GameObject lobbyManager;
         [SerializeField] GameObject lobbySystemManager;
+        [SerializeField] GameObject animationScreen;
+        [SerializeField] GameObject animationScreen2;
 
-         void Awake()
+        void Awake()
         {
-            lobbySystemManager.SetActive(false);
-            lobbyManager.SetActive(true);
+            StartCoroutine(AnimateTransition());
+            
         }
         async void Start()
         {
@@ -60,6 +63,28 @@ namespace UIManagerSpace
 
             GUILayout.EndArea();
         }
+
+        private IEnumerator AnimateTransition()
+        {
+       
+            animationScreen.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            animationScreen.SetActive(false);
+            lobbySystemManager.SetActive(false);
+            lobbyManager.SetActive(true);
+
+        }
+
+        private IEnumerator AnimateTransitionReverse()
+        {
+
+            animationScreen2.SetActive(true);
+            yield return new WaitForSeconds(1f);
+            animationScreen2.SetActive(false);
+           
+
+        }
+
 
         void StartButtons()
         {
@@ -136,7 +161,11 @@ namespace UIManagerSpace
                 joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
                 NetworkManager.Singleton.StartHost();
+                StartCoroutine(AnimateTransitionReverse());
+               
                 lobbySystemManager.SetActive(true);
+               // StartCoroutine(ShowLobbyC());
+
                 // NetworkManager.Singleton.SceneManager.LoadScene("GameScene",LoadSceneMode.Single);
             }
             catch (RelayServiceException e)
@@ -182,7 +211,10 @@ namespace UIManagerSpace
                 NetworkManager.Singleton.GetComponent<UnityTransport>()
                     .SetRelayServerData(new RelayServerData(joinAllocation, "wss"));
                 NetworkManager.Singleton.StartClient();
+                StartCoroutine(AnimateTransitionReverse());
                 lobbySystemManager.SetActive(true);
+               // StartCoroutine(ShowLobbyC());
+
             }
             catch (RelayServiceException e)
             {
@@ -204,5 +236,15 @@ namespace UIManagerSpace
             NetworkManager.Singleton.OnClientConnectedCallback -= ShowLobby;
 
         }
+
+        private IEnumerator ShowLobbyC()
+        {
+            yield return new WaitForSeconds(10f);
+            lobbySystemManager.GetComponent<LobbySystemManager>().EnableButtons();
+
+
+        }
     }
+
+   
 }

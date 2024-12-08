@@ -34,7 +34,7 @@ public class MenuControlller : MonoBehaviour
                 MainMenuState();
                 break;
             case States.HostClient:
-                HostClientState();
+                StartCoroutine(HostClientState());
                 break;
             case States.CreditsMenu:
                 CreditsState();
@@ -88,10 +88,12 @@ public class MenuControlller : MonoBehaviour
        if(!menus[0].activeSelf) menus[0].SetActive(true);
     }
 
-    private void HostClientState()
+
+    private IEnumerator HostClientState()
     {
         // menus[0].SetActive(false);
-        //animationImage.SetActive(true);
+        animationImage.SetActive(true);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(3);
     }
 

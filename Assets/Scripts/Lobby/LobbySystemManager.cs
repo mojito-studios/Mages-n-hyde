@@ -13,10 +13,12 @@ public class LobbySystemManager : MonoBehaviour
     [SerializeField] List<CharactersSO> characters;
     [SerializeField] GameObject characterStats;
     [SerializeField] GameObject textContainer;
+    [SerializeField] GameObject transition;
     [SerializeField] Button t1;
     [SerializeField] Button t2;
     [SerializeField] Button ready;
     [SerializeField] Button next;
+
     private Image spriteToShow;
     private TMP_Text[] texts;
     private Slider[] stats;
@@ -34,6 +36,7 @@ public class LobbySystemManager : MonoBehaviour
     }
     void Start()
     {
+      
          texts = textContainer.GetComponentsInChildren<TMP_Text>();
          stats = characterStats.GetComponentsInChildren<Slider>();
          spriteToShow = playerPrefab.GetComponent<Image>();
@@ -46,6 +49,8 @@ public class LobbySystemManager : MonoBehaviour
       
 
     }
+
+   
 
    
     // Update is called once per frame

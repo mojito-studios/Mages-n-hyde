@@ -9,6 +9,8 @@ public class UltiGrimm : NetworkBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject == caster) return;
+
         if (collision.gameObject.tag == "Player" && caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign) //&& caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign
         {
             if (!collision.gameObject.GetComponent<Player>().inmune.Value)
@@ -19,6 +21,11 @@ public class UltiGrimm : NetworkBehaviour
             }
         }
 
+        if ((collision.gameObject.tag == "Team2Tower" && caster.teamTower.tag == "Team1Tower") | (collision.gameObject.tag == "Team1Tower" && caster.teamTower.tag == "Team2Tower"))
+        {
+            Tower tower = collision.gameObject.GetComponent<Tower>();
+            StartCoroutine(HitTower(tower));
+        }
 
     }
 
@@ -44,6 +51,19 @@ public class UltiGrimm : NetworkBehaviour
         }
         yield return new WaitForSeconds(1f);
         player.canMove = true;
+        NetworkObject.Despawn();
+    }
+
+    private IEnumerator HitTower(Tower t)
+    {
+        float time = 0;
+        while (time < caster.ultiTime)
+        {
+            if (t.GetIsDefending()) t.DamageShields(caster.ultidamage * 10);
+            else t.DamageTower(caster.ultidamage);
+            time += 1;
+        }
+        yield return new WaitForSeconds(1f);
         NetworkObject.Despawn();
     }
 }
