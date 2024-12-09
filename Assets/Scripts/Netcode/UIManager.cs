@@ -21,7 +21,7 @@ namespace UIManagerSpace
         private int maxConnections = 4;
         [SerializeField] UnityEngine.UI.Button hostButton;
         [SerializeField] UnityEngine.UI.Button clientButton;
-        [SerializeField] InputField joinCodeText;
+        [SerializeField] TMP_InputField joinCodeText;
         [SerializeField] GameObject lobbyManager;
         [SerializeField] GameObject lobbySystemManager;
         [SerializeField] GameObject animationScreen;
@@ -30,7 +30,7 @@ namespace UIManagerSpace
         void Awake()
         {
             StartCoroutine(AnimateTransition());
-            
+            NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
         }
         async void Start()
         {
@@ -161,7 +161,7 @@ namespace UIManagerSpace
                 joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
                 NetworkManager.Singleton.StartHost();
-                StartCoroutine(AnimateTransitionReverse());
+                //StartCoroutine(AnimateTransitionReverse());
                
                 lobbySystemManager.SetActive(true);
                // StartCoroutine(ShowLobbyC());
@@ -211,7 +211,7 @@ namespace UIManagerSpace
                 NetworkManager.Singleton.GetComponent<UnityTransport>()
                     .SetRelayServerData(new RelayServerData(joinAllocation, "wss"));
                 NetworkManager.Singleton.StartClient();
-                StartCoroutine(AnimateTransitionReverse());
+                //StartCoroutine(AnimateTransitionReverse());
                 lobbySystemManager.SetActive(true);
                // StartCoroutine(ShowLobbyC());
 
@@ -228,11 +228,7 @@ namespace UIManagerSpace
             if(clientId == NetworkManager.Singleton.LocalClientId)
         {
                 lobbySystemManager.GetComponent<LobbySystemManager>().EnableButtons();
-                Debug.Log("Cliente local identificado. Intentando habilitar botones...");
-
             }
-            else Debug.LogWarning("El clientId no coincide con el LocalClientId.");
-
             NetworkManager.Singleton.OnClientConnectedCallback -= ShowLobby;
 
         }
