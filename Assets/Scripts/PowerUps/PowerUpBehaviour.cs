@@ -81,7 +81,7 @@
         [Rpc(SendTo.Everyone)]
         void AnimateExitRpc()
         {
-        // Cambiar el estado de la animación según el tipo de power-up
+        // Cambiar el estado de la animaciï¿½n segï¿½n el tipo de power-up
         switch (_puType.Value)
         {
             case 1:
@@ -212,11 +212,11 @@
      
 
     
-            public void ExecutePowerUp() //Función que según el powerUp hace una cosa u otra;
+            public void ExecutePowerUp() //Funciï¿½n que segï¿½n el powerUp hace una cosa u otra;
             {
 
             var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
-            player.SetPlayerPURpc(_puType.Value);
+           
 
 
             switch (_puType.Value)
@@ -225,16 +225,18 @@
                     break;
                 case 1:  
                     tower.SpawnMinions(player);
-                    break;
+                    player.SetPlayerPURpc(_puType.Value);
+                break;
                 case 2:
                     tower.caster = player;
                     tower.ArrowRain();
-                    break;
+                    player.SetPlayerPURpc(_puType.Value);
+                break;
                 case 3:
-                    tower.SetDefending(true, player);
+                    tower.SetDefending(true);
                     break;
                 case 4:
-                    tower.HealTower(player);
+                    tower.HealTower();
                     break;
         
 

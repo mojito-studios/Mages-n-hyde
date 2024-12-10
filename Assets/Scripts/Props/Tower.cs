@@ -60,6 +60,7 @@ public class Tower : NetworkBehaviour
             shield.Value = maxShield;
         }
     }
+
     void Update()
     {
         updateStatsRpc();
@@ -110,23 +111,18 @@ public class Tower : NetworkBehaviour
         shield.Value -= damage*5;
         if (shield.Value <= 0)
         {
-            SetDefending(false, caster);
+            SetDefending(false);
             shield.Value = maxShield;
         }
     }
     
-    public void HealTower(Player player)
+    public void HealTower()
     {
-        caster = player;
         HealEffectRpc();
         Debug.Log("Curando Torre");
         HealTowerRpc(maxLife);
         Debug.Log("Mi vida es de " + currentLife.Value);
-        if(player != null)
-        {
-            caster.SetPlayerPURpc(0);
-            caster = null;
-        }
+       
 
     }
 
@@ -146,15 +142,10 @@ public class Tower : NetworkBehaviour
         healthAnimator.enabled = true;
     }
 
-    public void SetDefending(bool defending, Player player)
+    public void SetDefending(bool defending)
     {
-        caster = player;
         SetDefendingRpc(defending);
-        if (player != null)
-        {
-            caster.SetPlayerPURpc(0);
-            caster = null;
-        }
+        
     }
 
     [Rpc(SendTo.Server)]

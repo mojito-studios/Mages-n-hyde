@@ -41,7 +41,6 @@ namespace UIManagerSpace
                 () => print($"New player {AuthenticationService.Instance.PlayerId} connected");
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
-           //NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
             clientButton.interactable = false;
         }
 
@@ -233,13 +232,7 @@ namespace UIManagerSpace
 
         }
 
-        private IEnumerator ShowLobbyC()
-        {
-            yield return new WaitForSeconds(10f);
-            lobbySystemManager.GetComponent<LobbySystemManager>().EnableButtons();
-
-
-        }
+       
     }
 
    
