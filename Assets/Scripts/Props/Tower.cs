@@ -17,6 +17,12 @@ public class Tower : NetworkBehaviour
     private const float minionsTime = 1.5f;
     [SerializeField] private UnityEngine.UI.Slider healthBar;
     [SerializeField] private UnityEngine.UI.Slider shieldBar;
+    [SerializeField] private GameObject healthEffect;
+    [SerializeField] private GameObject shieldEffect;
+
+    private Animator healthAnimator;
+    private Animator shieldAnimator;
+
     public NetworkVariable<float> currentLife = new NetworkVariable<float>();
     public NetworkVariable<float> shield = new NetworkVariable<float>(); //PowerUp de escudo
     public NetworkVariable<bool> _isDefending { get; private set; } = new NetworkVariable<bool>(false);
@@ -36,9 +42,15 @@ public class Tower : NetworkBehaviour
         minionsAnim = minions.GetComponent<Animator>();
         tilemap = GameObject.Find("Suelo").GetComponent<Tilemap>();
         bounds = tilemap.localBounds;
-        
     }
+    
+    private void Awake()
+    {
+        healthAnimator = healthEffect.GetComponent<Animator>();
+        shieldAnimator = shieldEffect.GetComponent<Animator>();
 
+    }
+    
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -55,6 +67,7 @@ public class Tower : NetworkBehaviour
         {
             GameManager.Instance.EndGameRpc(this.tag);
         }
+        
     }
 
     [Rpc(SendTo.Everyone)]
@@ -65,7 +78,6 @@ public class Tower : NetworkBehaviour
         {
             shieldBar.value = shield.Value;
         }
-        //Aqu� se le a�aden las actualizaciones del resto de cosas de la ui so tiene para el escudo etc si no pues no
     }
 
     public void DamageTower(float damageTower)
@@ -106,6 +118,7 @@ public class Tower : NetworkBehaviour
     public void HealTower(Player player)
     {
         caster = player;
+        HealEffectRpc();
         Debug.Log("Curando Torre");
         HealTowerRpc(maxLife);
         Debug.Log("Mi vida es de " + currentLife.Value);
@@ -124,6 +137,13 @@ public class Tower : NetworkBehaviour
         currentLife.Value += Random.Range(2, 6); //Se le suma un n�mero random entre 2 y 5
         if (currentLife.Value > maxLife) currentLife.Value = maxLife; //Si se pasa de la vida m�xima queda con la vida m�xima
 
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void HealEffectRpc()
+    {
+        healthEffect.gameObject.SetActive(true);
+        healthAnimator.enabled = true;
     }
 
     public void SetDefending(bool defending, Player player)
@@ -147,7 +167,15 @@ public class Tower : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     private void SetShieldRpc(bool defending)
     {
-        if (defending) shieldBar.gameObject.SetActive(true); else shieldBar.gameObject.SetActive(false);
+        if (defending) 
+        {
+            shieldBar.gameObject.SetActive(true);
+            shieldEffect.gameObject.SetActive(true);
+            shieldAnimator.enabled = true;
+        }
+        else{
+            shieldBar.gameObject.SetActive(false);
+        }
     }
 
     public void ArrowRain()

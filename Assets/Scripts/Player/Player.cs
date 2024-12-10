@@ -52,6 +52,12 @@ public class Player : NetworkBehaviour
     [SerializeField] private Canvas GameOver;
     [SerializeField]private CinemachineConfiner2D camerabounds;
 
+    [SerializeField] private GameObject healthEffect;
+    [SerializeField] private GameObject shieldEffect;
+
+    private Animator healthAnimator;
+    private Animator shieldAnimator;
+
     //move
     [SerializeField] private float speed = 4f;
     private bool _moving = false;
@@ -84,7 +90,8 @@ public class Player : NetworkBehaviour
     private void Awake()
     {
         _sprite = GetComponentInChildren<SpriteRenderer>().sprite;
-
+        healthAnimator = healthEffect.GetComponent<Animator>();
+        shieldAnimator = shieldEffect.GetComponent<Animator>();
     }
     void Start()
     {
@@ -231,14 +238,32 @@ public class Player : NetworkBehaviour
     {
         healthBar.value = health.Value;
         _towerHealth.text = "TowerHealth: " + towerLife;
+        float prev_towerHealth = towerHealth.value;
         towerHealth.value = towerLife;
         towerShield.value = shield;
+        if (prev_towerHealth < towerLife)
+        {
+            HealEffectRpc();
+        }
+    }
+
+    [Rpc(SendTo.Everyone)]
+    private void HealEffectRpc()
+    {
+        healthEffect.gameObject.SetActive(true);
+        healthAnimator.enabled = true;
     }
 
     [Rpc(SendTo.Everyone)]
     private void SetShieldRpc(bool oldValue, bool newValue)
     {
-        if (newValue) towerShield.gameObject.SetActive(true); else towerShield.gameObject.SetActive(false);
+        if (newValue)
+        {
+            towerShield.gameObject.SetActive(true);
+            shieldEffect.gameObject.SetActive(true);
+            shieldAnimator.enabled = true;
+        }
+        else towerShield.gameObject.SetActive(false);
     }
 
     [Rpc(SendTo.Everyone)]
