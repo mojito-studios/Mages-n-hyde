@@ -39,7 +39,10 @@ namespace UIManagerSpace
             AuthenticationService.Instance.SignedIn +=
                 () => print($"New player {AuthenticationService.Instance.PlayerId} connected");
 
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
+            if (!AuthenticationService.Instance.IsSignedIn)
+                {
+                    await AuthenticationService.Instance.SignInAnonymouslyAsync();
+                }
             clientButton.interactable = false;
             NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
         }
