@@ -11,12 +11,12 @@ public class UltiGrimm : NetworkBehaviour
     {
         if (collision.gameObject == caster) return;
 
-        if (collision.gameObject.tag == "Player" && caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign) //&& caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign
+        if (collision.gameObject.tag == "Player" && caster.teamAssign != collision.gameObject.GetComponentInParent<Player>().teamAssign) //&& caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign
         {
-            if (!collision.gameObject.GetComponent<Player>().inmune.Value)
+            if (!collision.gameObject.GetComponentInParent<Player>().inmune.Value)
             {
-                Player player = collision.GetComponent<Player>();
-                collision.GetComponent<Player>().canMove = false;
+                Player player = collision.GetComponentInParent<Player>();
+                collision.GetComponentInParent<Player>().canMove = false;
                 StartCoroutine(HitPlayer(player));
             }
         }
@@ -46,12 +46,12 @@ public class UltiGrimm : NetworkBehaviour
         {
             if (!(player.health.Value - caster.ultidamage * 10 > 0)) { caster.kill(); player.die(caster); }
             else { player.assistantAssign(caster); }
-            player.GetComponent<Player>().getHit(caster.ultidamage);
+            player.GetComponentInParent<Player>().getHit(caster.ultidamage);
+            yield return new WaitForSeconds(1f);
             time += 1;
         }
         yield return new WaitForSeconds(1f);
         player.canMove = true;
-        NetworkObject.Despawn();
     }
 
     private IEnumerator HitTower(Tower t)
@@ -61,9 +61,9 @@ public class UltiGrimm : NetworkBehaviour
         {
             if (t.GetIsDefending()) t.DamageShields(caster.ultidamage * 10);
             else t.DamageTower(caster.ultidamage);
+            yield return new WaitForSeconds(1f);
             time += 1;
         }
         yield return new WaitForSeconds(1f);
-        NetworkObject.Despawn();
     }
 }

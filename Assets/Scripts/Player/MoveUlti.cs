@@ -21,9 +21,9 @@ public class MoveUlti : NetworkBehaviour
         if (collision.gameObject == caster) return;
         if (collision.gameObject.tag == "Player" && caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign) //&& caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign
         {
-            if (!collision.gameObject.GetComponent<Player>().inmune.Value)
+            if (!collision.gameObject.GetComponentInParent<Player>().inmune.Value)
             {
-                Player player = collision.gameObject.GetComponent<Player>();
+                Player player = collision.gameObject.GetComponentInParent<Player>();
                 if (!(player.health.Value - damage * 10 > 0)) { caster.kill(); player.die(caster); }
                 else { player.assistantAssign(caster); }
                 player.getHit(damage);

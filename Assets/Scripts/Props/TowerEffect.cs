@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class TowerEffect : NetworkBehaviour
+public class TowerEffect : MonoBehaviour
 {
     private float timeAnim = 5;
     private float timeOn = 0;

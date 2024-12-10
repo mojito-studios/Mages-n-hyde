@@ -55,8 +55,6 @@ public class Player : NetworkBehaviour
     [SerializeField] private GameObject healthEffect;
     [SerializeField] private GameObject shieldEffect;
 
-    private Animator healthAnimator;
-    private Animator shieldAnimator;
 
     //move
     [SerializeField] private float speed = 4f;
@@ -72,6 +70,7 @@ public class Player : NetworkBehaviour
     Sprite _sprite;
     private NetworkVariable<int> spriteIndex = new NetworkVariable<int>();
     [HideInInspector] NetworkVariable<ulong> _pBehaviour = new NetworkVariable<ulong>();
+    private Collider2D ogCollider;
 
     //attack
     public int maxSpells = 10;
@@ -90,8 +89,7 @@ public class Player : NetworkBehaviour
     private void Awake()
     {
         _sprite = GetComponentInChildren<SpriteRenderer>().sprite;
-        healthAnimator = healthEffect.GetComponent<Animator>();
-        shieldAnimator = shieldEffect.GetComponent<Animator>();
+      
     }
     void Start()
     {
@@ -100,6 +98,8 @@ public class Player : NetworkBehaviour
         _camera = GetComponentInChildren<Camera>();
         _ultimateAttack.interactable = false;
         anim = GetComponentInChildren<AnimationController>();
+        ogCollider = GetComponentInChildren<Collider2D>();
+
         teamAssignRpc();
     }
 
@@ -219,7 +219,7 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     private void getHitRpc(float damage)
     {
-        health.Value -= damage * 10;
+        health.Value -= damage * 5;
         if (health.Value <= 0)
         {
             health.Value = maxLife;
@@ -251,7 +251,7 @@ public class Player : NetworkBehaviour
     private void HealEffectRpc()
     {
         healthEffect.gameObject.SetActive(true);
-        healthAnimator.enabled = true;
+        healthEffect.GetComponent<Animator>().enabled = true;
     }
 
     [Rpc(SendTo.Everyone)]
@@ -261,9 +261,15 @@ public class Player : NetworkBehaviour
         {
             towerShield.gameObject.SetActive(true);
             shieldEffect.gameObject.SetActive(true);
-            shieldAnimator.enabled = true;
+            shieldEffect.GetComponent<Animator>().enabled = true;
         }
-        else towerShield.gameObject.SetActive(false);
+        else
+        {
+            shieldEffect.GetComponent<Animator>().enabled = false;
+            shieldEffect.gameObject.SetActive(true);
+            towerShield.gameObject.SetActive(false);
+
+        }
     }
 
     [Rpc(SendTo.Everyone)]
@@ -422,6 +428,8 @@ public class Player : NetworkBehaviour
             pBehaviourHide.canDespawn = false;
             Sprite spriteToChange = GameManager.Instance.props[pBehaviourHide.spriteNumber].GetComponent<SpriteRenderer>().sprite;
             GetComponentInChildren<SpriteRenderer>().sprite = spriteToChange;
+            transform.rotation = Quaternion.identity;
+            ChangeCollider(pBehaviourHide.propCollider, true);
             var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].gameObject;
             hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
             StartCoroutine(HideCoroutine(pBehaviourHide.timeHiding));
@@ -433,12 +441,50 @@ public class Player : NetworkBehaviour
             healthBar.gameObject.SetActive(true);
             Sprite oldSprite = GameManager.Instance.prefabs[spriteIndex.Value].GetComponentInChildren<SpriteRenderer>().sprite;
             GetComponentInChildren<SpriteRenderer>().sprite = oldSprite;
+            transform.rotation = Quaternion.identity;
+            ChangeCollider(ogCollider, false);
+            Debug.Log("Mi collider es" + ogCollider);
             var hideGO = NetworkManager.Singleton.SpawnManager.SpawnedObjects[_pBehaviour.Value].gameObject;
             hideGO.gameObject.SetActive(!hideGO.gameObject.activeSelf);
             hideGO.GetComponent<PropsBehaviour>().canDespawn = true;
             SetPBehaviour(0);
         }
     }
+
+    private void ChangeCollider(Collider2D newCollider, bool change)
+    {
+
+        if (change)
+        {
+            Transform childTransform = transform.Find("SpriteRenderer");
+
+            Collider2D currentCollider = GetComponentInChildren<Collider2D>();
+            currentCollider.enabled = false;
+
+            BoxCollider2D newc = childTransform.gameObject.AddComponent<BoxCollider2D>();
+            newc.size = ((BoxCollider2D)newCollider).size;
+            newc.offset = ((BoxCollider2D)newCollider).offset;
+        }
+
+        else
+        {
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+
+            foreach (Collider2D col in colliders)
+            {
+                if (col.enabled)
+                {
+                    Destroy(col);
+                    break;
+                }
+            }
+
+            Collider2D playerCollider = GetComponentInChildren<Collider2D>();
+            playerCollider.enabled = true;
+        }
+    }
+
+
     private IEnumerator HideCoroutine(float time)
     {
         yield return new WaitForSeconds(time);

@@ -10,18 +10,15 @@ using UnityEngine.UIElements;
 
 public class Tower : NetworkBehaviour
 {
-    private const float maxShield = 50; //Escudo total
+    private const float maxShield = 100; //Escudo total
     private const float maxLife = 800; //Vida total 
     private const int shootingTime = 2;
-    private const float minionsDamage = 0.5f;
+    private const float minionsDamage = 50f;
     private const float minionsTime = 1.5f;
     [SerializeField] private UnityEngine.UI.Slider healthBar;
     [SerializeField] private UnityEngine.UI.Slider shieldBar;
     [SerializeField] private GameObject healthEffect;
     [SerializeField] private GameObject shieldEffect;
-
-    private Animator healthAnimator;
-    private Animator shieldAnimator;
 
     public NetworkVariable<float> currentLife = new NetworkVariable<float>();
     public NetworkVariable<float> shield = new NetworkVariable<float>(); //PowerUp de escudo
@@ -46,8 +43,6 @@ public class Tower : NetworkBehaviour
     
     private void Awake()
     {
-        healthAnimator = healthEffect.GetComponent<Animator>();
-        shieldAnimator = shieldEffect.GetComponent<Animator>();
 
     }
     
@@ -95,7 +90,7 @@ public class Tower : NetworkBehaviour
     [Rpc(SendTo.Everyone)]
     private void DamageTowerRpc(float damage)
     {
-        currentLife.Value -= damage*5;
+        currentLife.Value -= damage*2;
     }
     public void DamageShields(float damage)
     {
@@ -139,7 +134,7 @@ public class Tower : NetworkBehaviour
     private void HealEffectRpc()
     {
         healthEffect.gameObject.SetActive(true);
-        healthAnimator.enabled = true;
+        healthEffect.GetComponent<Animator>().enabled = true;
     }
 
     public void SetDefending(bool defending)
@@ -162,17 +157,20 @@ public class Tower : NetworkBehaviour
         {
             shieldBar.gameObject.SetActive(true);
             shieldEffect.gameObject.SetActive(true);
-            shieldAnimator.enabled = true;
+            shieldEffect.GetComponent<Animator>().enabled = true;
         }
-        else{
+        else
+        {
             shieldBar.gameObject.SetActive(false);
+            shieldEffect.GetComponent<Animator>().enabled = true;
+            shieldEffect.gameObject.SetActive(false);
         }
     }
 
     public void ArrowRain()
     {
         Debug.Log("Activando flechas");
-        int arrowNumber = Random.Range(8, 11);
+        int arrowNumber = Random.Range(15, 20);
         ArrowRainRpc(arrowNumber, shootingTime);
     }
     [Rpc(SendTo.Server)]
