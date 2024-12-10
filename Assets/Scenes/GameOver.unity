@@ -1362,8 +1362,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1bb5fc32a5f85d44abac2cdb23df168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winners: {fileID: 1141726542}
-  judge: {fileID: 0}
+  result: {fileID: 0}
+  winning: {fileID: 0}
+  stats: {fileID: 0}
+  mvpName: {fileID: 0}
+  mvpStats: {fileID: 0}
+  mvpSprite: {fileID: 0}
+  canvas: {fileID: 0}
+  win: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
