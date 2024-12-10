@@ -417,7 +417,7 @@ public class Player : NetworkBehaviour
         if (newValue)
         {
             GetComponentInChildren<Animator>().enabled = false;
-            healthBar.gameObject.SetActive(false);
+            healthBar.gameObject.SetActive(IsOwner);
             PropsBehaviour pBehaviourHide = NetworkManager.Singleton.SpawnManager.SpawnedObjects[this._pBehaviour.Value].GetComponent<PropsBehaviour>();
             pBehaviourHide.canDespawn = false;
             Sprite spriteToChange = GameManager.Instance.props[pBehaviourHide.spriteNumber].GetComponent<SpriteRenderer>().sprite;
