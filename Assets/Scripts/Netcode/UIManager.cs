@@ -30,7 +30,6 @@ namespace UIManagerSpace
         void Awake()
         {
             StartCoroutine(AnimateTransition());
-            NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
         }
         async void Start()
         {
@@ -42,6 +41,7 @@ namespace UIManagerSpace
 
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
             clientButton.interactable = false;
+            NetworkManager.Singleton.OnClientConnectedCallback += ShowLobby;
         }
 
         void OnGUI()
