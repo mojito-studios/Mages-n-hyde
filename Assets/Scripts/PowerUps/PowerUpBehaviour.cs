@@ -28,7 +28,7 @@
         {
             if (collision.CompareTag("Props")) DestroyPU();
             if (!collision.CompareTag("Player")) return;
-            player = collision.GetComponent<Player>();
+            player = collision.GetComponentInParent<Player>();
             if (player.PUValue.Value != _puType.Value) _isTriggered = true;
             else DestroyPU();
 
@@ -47,7 +47,7 @@
         {
 
              _puType.Value = Random.Range(1, 5);
-            //_puType.Value = 2; //Para probar los minions
+            //_puType.Value = 4; //Para probar los minions
 
 
         }

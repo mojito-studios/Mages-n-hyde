@@ -10,11 +10,13 @@ public class PropsBehaviour : NetworkBehaviour
    public int spriteNumber;
    public float timeHiding;
    public bool canDespawn = true;
-    public Vector3 spawnPosition;
+   public Vector3 spawnPosition;
+    public Collider2D propCollider;
    protected void Start()
     {
         spriteNumber = propSO.spriteNumber;
         timeHiding = propSO.timeHiding;
+        propCollider = this.GetComponent<Collider2D>();
         
     }
 

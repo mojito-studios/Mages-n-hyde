@@ -13,7 +13,7 @@ public class GameManager : NetworkBehaviour
     //PowerUps
     [SerializeField] private GameObject puPrefab;
     [HideInInspector] public int puInScene = 0;
-    private const int MaxPU = 5;
+    private const int MaxPU = 10;
     [SerializeField] private BoxCollider2D _powerUpsRange;
     private Bounds bounds;
 
@@ -147,7 +147,7 @@ public class GameManager : NetworkBehaviour
     {
         while (NetworkManager.Singleton.ConnectedClients.Count > 0) 
         {
-            yield return new WaitForSeconds(50f);
+            yield return new WaitForSeconds(25f);
             if (puInScene < MaxPU) //quitar esto si no se quiere que haya m�s powerups en escena pq no hace falta
                 SpawnPU();
         }
@@ -246,7 +246,7 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Server)]
     public void EndGameRpc(string tag) //Cambiar a victoria o a derrota
     {
-        GameObject[] players= GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] players= GameObject.FindGameObjectsWithTag("PlayerParent");
         foreach (GameObject player in players)
         {
             player.GetComponent<Player>().winningTeam.Value = tag;

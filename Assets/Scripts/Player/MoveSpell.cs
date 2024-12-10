@@ -18,11 +18,11 @@ public class MoveSpell : NetworkBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == caster) return;
-        if (collision.gameObject.tag == "Player" && caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign) //&& caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign
+        if (collision.gameObject.tag == "Player" && caster.teamAssign != collision.gameObject.GetComponentInParent<Player>().teamAssign) //&& caster.teamAssign != collision.gameObject.GetComponent<Player>().teamAssign
         {
-            if (!collision.gameObject.GetComponent<Player>().inmune.Value)
+            if (!collision.gameObject.GetComponentInParent<Player>().inmune.Value)
             {
-                Player player = collision.gameObject.GetComponent<Player>();
+                Player player = collision.gameObject.GetComponentInParent<Player>();
                 if (!(player.health.Value - caster.attack * 10 > 0)) { caster.kill(); player.die(caster); }
                 else { player.assistantAssign(caster); }
                 player.getHit(caster.attack);

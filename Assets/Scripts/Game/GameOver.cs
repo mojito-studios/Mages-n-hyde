@@ -32,9 +32,9 @@ public class GameOver : NetworkBehaviour
     public void OnEnd()
     {
         //GetComponent<Animator>().SetBool("isFirst", false);
-        player = this.GetComponentInParent<Player>();
+        player = this.GetComponent<Player>();
         mvp = player.gameObject;
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] players = GameObject.FindGameObjectsWithTag("PlayerParent");
         foreach (GameObject p in players)
         {
             if (p.GetComponent<Player>().killCount.Value > mvp.GetComponent<Player>().killCount.Value) mvp = p;
