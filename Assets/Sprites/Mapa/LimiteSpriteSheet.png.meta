@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 123
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -69,7 +69,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -108,7 +108,763 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 618
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b597fc61ed0dd4d488e1ca351d67cef8
+      internalID: -1979169200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 618
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2017dde8f7f284949a9eb1170e7c5079
+      internalID: -445272696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 618
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 188cd5d3d898b2442bbb122a9e6861d2
+      internalID: 2022267747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 618
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 053cd13651410104ea70a4b7584ffa1c
+      internalID: 319736230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 618
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6be87bca164a8b043be4aceb8a01db08
+      internalID: -1021488952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 618
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a31a057c321c2488b25636ad7198b9
+      internalID: -1040307880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 495
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0327e1a385493fd44aea2c9564b91517
+      internalID: -631225862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 495
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9d16868ba3ae834ebb5f8973631110a
+      internalID: -459570046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 495
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1be6a5c4bd30d10409b76861e2ae0745
+      internalID: -725536056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 495
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80ca307c3f795d447a4fc308fa433b47
+      internalID: 1024622391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 495
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03074e0e7ba5baa4ab96fb7884e1f1f5
+      internalID: 7197285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 495
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736bc77cc45495e42b49d0efd3baa9c8
+      internalID: 252528104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 372
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c56b20cff3d3340867600208b8623a
+      internalID: 1456805770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 372
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c5e167de2530454ab3a94a80cf1c488
+      internalID: -956024251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 372
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50384338652cbb8408dd77d084757878
+      internalID: -1311056025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 372
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 339bc767c76ae714a84bb9356cbacb10
+      internalID: -1233571737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 372
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e1b53f1bd8f500468151833ca8862e8
+      internalID: -1592807588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 372
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdc1cb62f957df6429fbdb38ec193094
+      internalID: -1649009864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 249
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f8e71c90c439ce42b158608ff73811c
+      internalID: -346115270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 249
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1814406b694623949bddbcc56ace9441
+      internalID: -636684280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 249
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef2f18b37cc447428279c255f792f05
+      internalID: -830719106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 249
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fa17aff089bee64c83190cf32d61032
+      internalID: 1773946177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 249
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a673d8b234dfde4449724e5b089aa7d8
+      internalID: -1029916315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 249
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52f56759511ce48468a9f7af3b24e4fc
+      internalID: 1043998537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 126
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e54aa660888ddce4895f5dd4ab825800
+      internalID: 197006892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 126
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f061d0001a9dcd2468680cd69348719e
+      internalID: -1979762955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 126
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8969d74c47e7e83489a73c9e3c1bcd17
+      internalID: 1915648311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 126
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e98cf093a96991745ac8c945ec037ce1
+      internalID: 951926267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 126
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9232962c8c9ad494a94f21a19b59ac41
+      internalID: -1600535938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 126
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44bc7fdaa5f8a5b489abff2eb26d451b
+      internalID: 1019482461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 3
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e76f293fad51ec64fa897509b5790cf4
+      internalID: 683228700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 3
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1c4007cba265e148bfff57e1bad5967
+      internalID: -455498868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 3
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ce4667e2833e7141b8adcc9cbcd598f
+      internalID: 15569388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 3
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0888ec7b8d75b394d96efe3316f5033f
+      internalID: 1124920640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 3
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f121de7cd7b5914ba82da2276d6da0b
+      internalID: 1586375325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LimiteSpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 3
+        width: 123
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7e51d7812f46543893ed02cb85956c
+      internalID: -1129452071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +875,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      LimiteSpriteSheet_0: -1979169200
+      LimiteSpriteSheet_1: -445272696
+      LimiteSpriteSheet_10: 7197285
+      LimiteSpriteSheet_11: 252528104
+      LimiteSpriteSheet_12: 1456805770
+      LimiteSpriteSheet_13: -956024251
+      LimiteSpriteSheet_14: -1311056025
+      LimiteSpriteSheet_15: -1233571737
+      LimiteSpriteSheet_16: -1592807588
+      LimiteSpriteSheet_17: -1649009864
+      LimiteSpriteSheet_18: -346115270
+      LimiteSpriteSheet_19: -636684280
+      LimiteSpriteSheet_2: 2022267747
+      LimiteSpriteSheet_20: -830719106
+      LimiteSpriteSheet_21: 1773946177
+      LimiteSpriteSheet_22: -1029916315
+      LimiteSpriteSheet_23: 1043998537
+      LimiteSpriteSheet_24: 197006892
+      LimiteSpriteSheet_25: -1979762955
+      LimiteSpriteSheet_26: 1915648311
+      LimiteSpriteSheet_27: 951926267
+      LimiteSpriteSheet_28: -1600535938
+      LimiteSpriteSheet_29: 1019482461
+      LimiteSpriteSheet_3: 319736230
+      LimiteSpriteSheet_30: 683228700
+      LimiteSpriteSheet_31: -455498868
+      LimiteSpriteSheet_32: 15569388
+      LimiteSpriteSheet_33: 1124920640
+      LimiteSpriteSheet_34: 1586375325
+      LimiteSpriteSheet_35: -1129452071
+      LimiteSpriteSheet_4: -1021488952
+      LimiteSpriteSheet_5: -1040307880
+      LimiteSpriteSheet_6: -631225862
+      LimiteSpriteSheet_7: -459570046
+      LimiteSpriteSheet_8: -725536056
+      LimiteSpriteSheet_9: 1024622391
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

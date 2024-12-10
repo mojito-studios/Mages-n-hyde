@@ -49,17 +49,8 @@ namespace UIManagerSpace
             GUILayout.BeginArea(new Rect(20, 20, Screen.width-20, Screen.height-20));
             GUI.skin.button.fontSize = 120;
             GUI.skin.textField.fontSize = 120;
-            /*if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
-            {
-                StartButtons();
-            }
-            else
-            {*/
             if(NetworkManager.Singleton.IsClient || NetworkManager.Singleton.IsServer) //Para que se muestre en el cliente tmb el código
                 StatusLabels();
-            //}
-            
-
             GUILayout.EndArea();
         }
 
@@ -80,10 +71,7 @@ namespace UIManagerSpace
             animationScreen2.SetActive(true);
             yield return new WaitForSeconds(1f);
             animationScreen2.SetActive(false);
-           
-
         }
-
 
         void StartButtons()
         {
@@ -91,16 +79,6 @@ namespace UIManagerSpace
             if (clientButton) StartClient(joinCode);
             joinCode = joinCodeText.text;
         }
-
-       /* void StartButtons()
-        {
-            if (GUILayout.Button("Host", GUILayout.Width(Screen.width-50), GUILayout.Height(150))) StartHost();
-            GUILayout.Space(50);
-          
-            if (GUILayout.Button("Client", GUILayout.Width(Screen.width - 50), GUILayout.Height(150))) StartClient(joinCode);
-            GUILayout.Space(50);
-            joinCode = GUILayout.TextField(joinCode, GUILayout.Width(Screen.width - 50), GUILayout.Height(150));
-        }*/
 
         void StatusLabels()
         {
@@ -120,12 +98,8 @@ namespace UIManagerSpace
             {
                 OptionsChosen.Instance.KeepTrack();
                 lobbyManager.SetActive(false);
-                StartHost();
-                
-            }
-           
-           
-            
+                StartHost();              
+            }            
         }
 
         public void SetJoinCode(string newJoinCode)
@@ -212,8 +186,6 @@ namespace UIManagerSpace
                 NetworkManager.Singleton.StartClient();
                 //StartCoroutine(AnimateTransitionReverse());
                 lobbySystemManager.SetActive(true);
-               // StartCoroutine(ShowLobbyC());
-
             }
             catch (RelayServiceException e)
             {
@@ -229,11 +201,8 @@ namespace UIManagerSpace
                 lobbySystemManager.GetComponent<LobbySystemManager>().EnableButtons();
             }
             NetworkManager.Singleton.OnClientConnectedCallback -= ShowLobby;
-
         }
 
-       
     }
 
-   
 }
