@@ -27,13 +27,15 @@ public class MoveUlti : NetworkBehaviour
                 if (!(player.health.Value - damage * 5 > 0)) { caster.kill(); player.die(caster); }
                 else { player.assistantAssign(caster); }
                 player.getHit(damage);
+                player.SoundOwnerRpc("hit");
+
             }
         }
         if((collision.gameObject.tag == "Team2Tower" & caster.teamTower.tag == "Team1Tower") | (collision.gameObject.tag == "Team1Tower" & caster.teamTower.tag == "Team2Tower"))
         //if(collision.gameObject.tag == "Team2Tower" || collision.gameObject.tag == "Team1Tower")
         {
             Tower torre = collision.gameObject.GetComponent<Tower>();
-            if(torre.GetIsDefending()) torre.DamageShields(damage*10);
+            if(torre.GetIsDefending()) torre.DamageShields(damage);
             else torre.DamageTower(damage);
         }
         DestroyServerRpc();

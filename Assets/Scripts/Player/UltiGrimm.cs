@@ -44,9 +44,10 @@ public class UltiGrimm : NetworkBehaviour
         float time = 0;
         while (time < caster.ultiTime)
         {
-            if (!(player.health.Value - caster.ultidamage * 10 > 0)) { caster.kill(); player.die(caster); }
+            if (!(player.health.Value - caster.ultidamage * 5 > 0)) { caster.kill(); player.die(caster); }
             else { player.assistantAssign(caster); }
             player.GetComponentInParent<Player>().getHit(caster.ultidamage);
+            player.SoundOwnerRpc("hit");
             yield return new WaitForSeconds(1f);
             time += 1;
         }
@@ -59,7 +60,7 @@ public class UltiGrimm : NetworkBehaviour
         float time = 0;
         while (time < caster.ultiTime)
         {
-            if (t.GetIsDefending()) t.DamageShields(caster.ultidamage * 10);
+            if (t.GetIsDefending()) t.DamageShields(caster.ultidamage);
             else t.DamageTower(caster.ultidamage);
             yield return new WaitForSeconds(1f);
             time += 1;
