@@ -23,9 +23,11 @@ public class MoveSpell : NetworkBehaviour
             if (!collision.gameObject.GetComponentInParent<Player>().inmune.Value)
             {
                 Player player = collision.gameObject.GetComponentInParent<Player>();
-                if (!(player.health.Value - caster.attack * 10 > 0)) { caster.kill(); player.die(caster); }
+                if (!(player.health.Value - caster.attack * 5 > 0)) { caster.kill(); player.die(caster); }
                 else { player.assistantAssign(caster); }
                 player.getHit(caster.attack);
+                player.SoundOwnerRpc("hit");
+
             }
         }
         if((collision.gameObject.tag == "Team2Tower" & caster.teamTower.tag == "Team1Tower") | (collision.gameObject.tag == "Team1Tower" & caster.teamTower.tag == "Team2Tower"))

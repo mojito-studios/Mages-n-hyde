@@ -147,7 +147,7 @@ public class GameManager : NetworkBehaviour
     {
         while (NetworkManager.Singleton.ConnectedClients.Count > 0) 
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(25f);
             if (puInScene < MaxPU) //quitar esto si no se quiere que haya m�s powerups en escena pq no hace falta
                 SpawnPU();
         }

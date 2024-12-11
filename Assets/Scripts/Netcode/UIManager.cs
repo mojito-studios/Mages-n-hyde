@@ -97,7 +97,9 @@ namespace UIManagerSpace
 
         public void OnStartHostClick()
         {
-            if(!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
+            SoundManager.Instance.PlaySound("click");
+            SoundManager.Instance.PlaySound("button");
+            if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
             {
                 OptionsChosen.Instance.KeepTrack();
                 lobbyManager.SetActive(false);
@@ -114,6 +116,9 @@ namespace UIManagerSpace
 
         public void OnStartClientClick()
         {
+            SoundManager.Instance.PlaySound("click");
+            SoundManager.Instance.PlaySound("button");
+
             if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
             {
                 lobbyManager.SetActive(false);

@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 
 public class Arrow : NetworkBehaviour
 {
-    [SerializeField]private int _damage = 5;
+    [SerializeField]private int _damage = 15;
     private int _arrowForce = 7;
     public Tower casterTower;
     public Player caster;

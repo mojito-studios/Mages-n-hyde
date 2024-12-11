@@ -13,8 +13,8 @@ public class Tower : NetworkBehaviour
     private const float maxShield = 100; //Escudo total
     private const float maxLife = 800; //Vida total 
     private const int shootingTime = 2;
-    private const float minionsDamage = 50f;
-    private const float minionsTime = 1.5f;
+    private const float minionsDamage = 20f;
+    private const float minionsTime = 2f;
     [SerializeField] private UnityEngine.UI.Slider healthBar;
     [SerializeField] private UnityEngine.UI.Slider shieldBar;
     [SerializeField] private GameObject healthEffect;
@@ -125,7 +125,7 @@ public class Tower : NetworkBehaviour
     private void HealTowerRpc(float maxLife)
     {
         if (currentLife.Value == maxLife) return; //Si est� curada no hace nada
-        currentLife.Value += Random.Range(2, 6); //Se le suma un n�mero random entre 2 y 5
+        currentLife.Value += Random.Range(150, 201); //Se le suma un n�mero random entre 150 y 201
         if (currentLife.Value > maxLife) currentLife.Value = maxLife; //Si se pasa de la vida m�xima queda con la vida m�xima
 
     }
@@ -170,7 +170,7 @@ public class Tower : NetworkBehaviour
     public void ArrowRain()
     {
         Debug.Log("Activando flechas");
-        int arrowNumber = Random.Range(15, 20);
+        int arrowNumber = Random.Range(40, 50);
         ArrowRainRpc(arrowNumber, shootingTime);
     }
     [Rpc(SendTo.Server)]

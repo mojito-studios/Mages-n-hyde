@@ -1086,6 +1086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: Pupetty
+  cameraPosition: {x: 0, y: 0, z: 0}
   teamAssign: 0
   teamTower: {fileID: 0}
   maxLife: 450
@@ -1248,6 +1249,8 @@ MonoBehaviour:
   spellButton: {fileID: 7436450386194898114}
   _ultimateAttack: {fileID: 3197686590662413594}
   spellPrefab: {fileID: 8263670061358615391, guid: 660fa32fbad610b459ebdde3678f3a52, type: 3}
+  spellName: spell_pupetty
+  ultiName: ulti_pupetty
   dustPrefab: {fileID: 8572932423568886943, guid: ce0dd6888d131b84688a92600b18d345, type: 3}
   smokePrefab: {fileID: 2617657301957669411, guid: c61c630e471c7ab49bb555ecb283a124, type: 3}
   ultiPrefab: {fileID: 1484912940514744791, guid: 718b8d0038936ef4883f2c11bdbcdc90, type: 3}
@@ -3137,8 +3140,8 @@ Transform:
   m_GameObject: {fileID: 6565446400140249916}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -929.00006, y: 474.00003, z: 100.00019}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalPosition: {x: -1155, y: 373, z: 100.00019}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8549164342745087673}
@@ -4694,7 +4697,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 8794270255101273973}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: Ulti1ARpc
+        m_MethodName: Ulti1A
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

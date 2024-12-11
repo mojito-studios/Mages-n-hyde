@@ -220,8 +220,8 @@ Transform:
   m_GameObject: {fileID: 651344134911800739}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -531.00006, y: 149, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 0}
+  m_LocalPosition: {x: -260, y: 44, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3451239632590794689}
@@ -939,6 +939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: Grimm
+  cameraPosition: {x: 0, y: 0, z: 0}
   teamAssign: 0
   teamTower: {fileID: 0}
   maxLife: 200
@@ -1101,6 +1102,8 @@ MonoBehaviour:
   spellButton: {fileID: 7436450386194898114}
   _ultimateAttack: {fileID: 3197686590662413594}
   spellPrefab: {fileID: 8512313027854626852, guid: 6f9a472e167fd424d9c711b239004768, type: 3}
+  spellName: spell_grimm
+  ultiName: ulti_grimm
   dustPrefab: {fileID: 8572932423568886943, guid: ce0dd6888d131b84688a92600b18d345, type: 3}
   smokePrefab: {fileID: 2617657301957669411, guid: c61c630e471c7ab49bb555ecb283a124, type: 3}
   ultiPrefab: {fileID: 1484912940514744791, guid: a904c62aa4ed9dd41bf610ae93b3be82, type: 3}

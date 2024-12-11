@@ -24,6 +24,7 @@ public class Player : NetworkBehaviour
     [SerializeField] public string character = "Player";
     private const int MAX_ULTI_VALUE = 45;
     private Camera _camera;
+    public Vector3 cameraPosition;
     public int teamAssign;
     public Tower teamTower;
     public float maxLife = 100;
@@ -39,6 +40,7 @@ public class Player : NetworkBehaviour
     private List<Player> assistant = new List<Player>(0);
     [SerializeField] private AnimationController anim;
     public NetworkVariable<int> PUValue { get; private set; } = new NetworkVariable<int>(0);
+
 
     //gameover
     public NetworkVariable<FixedString128Bytes> winningTeam = new NetworkVariable<FixedString128Bytes>();
@@ -80,6 +82,8 @@ public class Player : NetworkBehaviour
     private NetworkVariable<int> ultiAttack = new NetworkVariable<int>();
     private Vector3 _spawnPosition;
     [SerializeField] private GameObject spellPrefab;
+    [SerializeField] private string spellName;
+    [SerializeField] private string ultiName;
     [SerializeField] private GameObject dustPrefab;
     [SerializeField] private GameObject smokePrefab;
     [SerializeField] private GameObject ultiPrefab;
@@ -101,6 +105,8 @@ public class Player : NetworkBehaviour
         ogCollider = GetComponentInChildren<Collider2D>();
 
         teamAssignRpc();
+        SoundManager.Instance.SetPlayer(this);
+
     }
 
     [Rpc(SendTo.Server)]
@@ -136,6 +142,7 @@ public class Player : NetworkBehaviour
         {
             health.Value = maxLife;
             spellCount.Value = maxSpells;
+            ultiAttack.Value = 0;
             _hiding.Value = false;
             spriteIndex.Value = GameManager.Instance.GetPrefabIndex(_sprite);
 
@@ -176,7 +183,7 @@ public class Player : NetworkBehaviour
                 }
             }
         }
-        
+        cameraPosition = _camera.transform.position;
         if (_moving)
             MovePlayer();
         stepLeft += Time.deltaTime;
@@ -320,6 +327,7 @@ public class Player : NetworkBehaviour
 
     public void die(Player caster)
     {
+        SoundPosEveryoneRpc("kill");
         deathCount.Value++;
         if (assistant.Count > 1)
         {
@@ -329,7 +337,29 @@ public class Player : NetworkBehaviour
         }
     }
 
-   
+    #region sound
+    public void SoundEveryoneRpc(string soundName)
+    {
+        SoundManager.Instance.PlaySound(soundName);
+    }
+
+    [Rpc(SendTo.Everyone)]
+    public void SoundPosEveryoneRpc(string soundName)
+    {
+        SoundManager.Instance.PlaySound(soundName, transform.position);
+    }
+    [Rpc(SendTo.Owner)]
+    public void SoundOwnerRpc(string soundName)
+    {
+        SoundManager.Instance.PlaySound(soundName);
+    }
+    [Rpc(SendTo.Owner)]
+    public void SoundPosOwnerRpc(string soundName)
+    {
+        SoundManager.Instance.PlaySound(soundName, transform.position);
+    }
+
+    #endregion
     [Rpc(SendTo.Everyone)]
     private void SetActiveStateRpc(bool isActive)
     {
@@ -365,6 +395,7 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Owner)]
     private void EffectHidingRpc()
     {
+        SoundOwnerRpc("smoke");
         Instantiate(smokePrefab, transform.position, Quaternion.identity);
 
     }
@@ -379,6 +410,7 @@ public class Player : NetworkBehaviour
             if (stepLeft >= stepTime)
             {
                 dustServerRpc();
+                SoundOwnerRpc("step");
                 stepLeft = 0;
             }
         }
@@ -504,6 +536,7 @@ public class Player : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void spellServerRpc()
     {
+        SoundPosEveryoneRpc(spellName);
         GameObject spell = Instantiate(spellPrefab, spellTransform.position, spellTransform.rotation);
         spell.GetComponent<MoveSpell>().caster = this;
         spell.GetComponent<NetworkObject>().Spawn();
@@ -565,7 +598,7 @@ public class Player : NetworkBehaviour
     {
         if (value == 0)
             ultiAttack.Value = value;
-        else if (ultiAttack.Value == maxValue) ultiAttack.Value = maxValue; //Cambiar luego 15 por maxValue 
+        else if (ultiAttack.Value == maxValue) ultiAttack.Value = maxValue; 
         else ultiAttack.Value += value;
     }
 
@@ -575,26 +608,19 @@ public class Player : NetworkBehaviour
         if (newValue == MAX_ULTI_VALUE) _ultimateAttack.interactable = true;
     }
 
-    [Rpc(SendTo.Server)]
-    public void Ulti1ARpc()
+    public void Ulti1A()
     {
-        inmune.Value = true;
-        Ulti1ButtonRpc();
-        StartCoroutine(Ulti1C(ultiTime));
-    }
-
-    [Rpc(SendTo.Owner)]
-    public void Ulti1ButtonRpc()
-    {
-        _ultimateAttack.interactable = false;
+        SoundPosEveryoneRpc(ultiName);
         SetUltiValue(0);
+        Ulti1BRpc(true);
+        StartCoroutine(Ulti1C(ultiTime));
     }
 
     private IEnumerator Ulti1C(float time)
     {
-       // spells1rpc(time); Ver mañana cuál es el problema
+        spells1rpc(time);
         yield return new WaitForSeconds(time);
-        Ulti1BRpc();
+        Ulti1BRpc(false);
         anim.EndUltiRpc();
     }
 
@@ -609,9 +635,9 @@ public class Player : NetworkBehaviour
 
     }
     [Rpc(SendTo.Server)]
-    private void Ulti1BRpc()
+    private void Ulti1BRpc(bool value)
     {
-        inmune.Value = false;
+        inmune.Value = value;
     }
 
 
@@ -636,6 +662,7 @@ public class Player : NetworkBehaviour
     }
     public void Ulti2ButtonRpc()
     {
+        SoundPosEveryoneRpc(ultiName);
         SetUltiValue(0);
         anim.AnimateUltiRpc();
         StartCoroutine(Ulti2C(ultiTime));
@@ -646,9 +673,19 @@ public class Player : NetworkBehaviour
 
     public void Ulti3Button()
     {
+        SoundPosEveryoneRpc(ultiName);
         SetUltiValue(0);
         anim.AnimateUltiRpc();
         StartCoroutine(Ulti3A());
+
+    }
+
+    private void spells3rpc()
+    {
+        GameObject spell = Instantiate(ultiPrefab, ultiTransforms[0].position, Quaternion.identity);
+        spell.GetComponent<UltiKittykat>().caster = this;
+        spell.GetComponent<NetworkObject>().Spawn();
+
 
     }
 
@@ -680,10 +717,11 @@ public class Player : NetworkBehaviour
             else if (Vector3.Distance(transform.position, closestPlayer.transform.position) > Vector3.Distance(transform.position, player.transform.position)) closestPlayer = player;
         }
         Debug.Log(closestPlayer);
-        ChangePositionRpc(closestPlayer.transform.position);
-        if (!(closestPlayer.health.Value - damage* 10 > 0)) { this.kill(); closestPlayer.die(this); }
+        ChangePositionRpc(closestPlayer.transform.position - new Vector3(0.50f, 0.50f, 0));
+        if (!(closestPlayer.health.Value - damage* 5 > 0)) { this.kill(); closestPlayer.die(this); }
 
         closestPlayer.getHit(damage);
+        spells3rpc();
     }
     [Rpc(SendTo.Everyone)]
     void ChangePositionRpc(Vector3 position)
@@ -713,6 +751,7 @@ public class Player : NetworkBehaviour
     }
     public void Ulti4Button()
     {
+        SoundPosEveryoneRpc(ultiName);
         SetUltiValue(0);
         anim.AnimateUltiRpc();
         StartCoroutine(Ulti4C(ultiTime));

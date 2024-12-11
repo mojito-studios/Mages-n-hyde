@@ -24,7 +24,7 @@ public class MoveUlti : NetworkBehaviour
             if (!collision.gameObject.GetComponentInParent<Player>().inmune.Value)
             {
                 Player player = collision.gameObject.GetComponentInParent<Player>();
-                if (!(player.health.Value - damage * 10 > 0)) { caster.kill(); player.die(caster); }
+                if (!(player.health.Value - damage * 5 > 0)) { caster.kill(); player.die(caster); }
                 else { player.assistantAssign(caster); }
                 player.getHit(damage);
             }

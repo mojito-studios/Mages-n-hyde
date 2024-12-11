@@ -21,6 +21,7 @@ public class GameOver : NetworkBehaviour
 
     public void OnRestart()
     {
+        SoundManager.Instance.PlaySound("button");
         if (IsServer) { RestartRpc(); }
         Destroy(OptionsChosen.Instance.gameObject);
         Destroy(NetworkManager.Singleton.gameObject);

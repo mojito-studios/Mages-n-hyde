@@ -85,6 +85,7 @@ public class OptionsChosen : NetworkBehaviour
 
     public void SetPlayerReady()
     {
+        SoundManager.Instance.PlaySound("button");
         SetPlayerReadyServerRpc();
     }
 

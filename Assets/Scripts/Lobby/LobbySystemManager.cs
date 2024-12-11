@@ -116,6 +116,7 @@ public class LobbySystemManager : MonoBehaviour
 
     public void ChangeStats()
     {
+        SoundManager.Instance.PlaySound("click");
         stats[0].value = characters[prefabIndex].characterHealth;
         stats[1].value = characters[prefabIndex].characterAttack;
         stats[2].value = characters[prefabIndex].characterSpeed;
@@ -124,6 +125,7 @@ public class LobbySystemManager : MonoBehaviour
     }
    public void ChangeTeam(int team)
     {
+        SoundManager.Instance.PlaySound("click");
         if (team == 0 && OptionsChosen.Instance.actualPlayersT1.Value < MAX_PLAYERS_TEAM)
         {
             t1.interactable = false;

@@ -21,25 +21,25 @@
             GetPlayers();
             AnimateEnterRpc();
 
-
-
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            
             if (collision.CompareTag("Props")) DestroyPU();
             if (!collision.CompareTag("Player")) return;
             player = collision.GetComponentInParent<Player>();
             if (player.PUValue.Value != _puType.Value) _isTriggered = true;
-            else DestroyPU();
+            else { DestroyPU(); }
 
 
         }
+       
 
-        private void OnTriggerExit2D(Collider2D collision) //Tanto si se sale como si el jugador se desactiva (por el tema del respawn)
-        {
+    private void OnTriggerExit2D(Collider2D collision) //Tanto si se sale como si el jugador se desactiva (por el tema del respawn)
+    { 
+        if(collision.CompareTag("Player") && collision.GetComponentInParent<Player>() == player)
             _isTriggered = false;
-
-        }
+    }
 
     public override void OnNetworkSpawn()
     {
@@ -51,10 +51,11 @@
 
 
         }
-
+        SoundPosEveryoneRpc("appears");
 
     }
 
+   
     [Rpc(SendTo.Everyone)]
 
         void AnimateEnterRpc()
@@ -102,23 +103,7 @@
     }
 
 
-    private IEnumerator WaitToDestroy()
-    {
-        
-
-            AnimatorStateInfo stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-
-            while (stateInfo.normalizedTime > 0f)
-            {
-                yield return null; 
-                stateInfo = _animator.GetCurrentAnimatorStateInfo(0);  
-            }
-
-        DestroyPU();
-
-        }
-
-
+    
 
     private void GetPlayers()
         {
@@ -209,17 +194,23 @@
             }
         }
 
-     
 
-    
-            public void ExecutePowerUp() //Funci�n que seg�n el powerUp hace una cosa u otra;
-            {
+    [Rpc(SendTo.Everyone)]
+    public void SoundPosEveryoneRpc(string soundName)
+    {
+        SoundManager.Instance.PlaySound(soundName);
+    }
+
+    public void ExecutePowerUp() //Funci�n que seg�n el powerUp hace una cosa u otra;
+    {
 
             var tower = NetworkManager.Singleton.SpawnManager.SpawnedObjects[player.GetTeamTower()].GetComponent<Tower>();
-           
+             player.SoundPosEveryoneRpc("power_up");
 
 
-            switch (_puType.Value)
+
+
+        switch (_puType.Value)
             {
                 default:
                     break;

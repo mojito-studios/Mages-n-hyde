@@ -47,6 +47,7 @@ public class MenuControlller : MonoBehaviour
 
     public void ChangeState(int number)
     {
+        SoundManager.Instance.PlaySound("button");
         switch (number)
         {
             case 0:
@@ -66,6 +67,7 @@ public class MenuControlller : MonoBehaviour
 
     public void ChangeText()
     {
+        SoundManager.Instance.PlaySound("click");
         tutorialTexts[actualText].SetActive(false);
         actualText++;
         if(actualText >= tutorialTexts.Count) actualText = 0;
@@ -75,6 +77,7 @@ public class MenuControlller : MonoBehaviour
 
     public void PrevText()
     {
+        SoundManager.Instance.PlaySound("click");
         tutorialTexts[actualText].SetActive(false);
         actualText--;
         if (actualText < 0) actualText = tutorialTexts.Count-1;
