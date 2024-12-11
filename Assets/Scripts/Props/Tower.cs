@@ -230,6 +230,7 @@ public class Tower : NetworkBehaviour
     private IEnumerator MinionsAct(Vector3 enemyTower, Vector3 originalPosition, ulong t)
     {
         WalkingMinionsRpc(true);
+        yield return new WaitForSeconds(1f);
         while(Vector3.Distance(minions.transform.position, enemyTower) > 2f)
         {
             minions.transform.position = Vector3.MoveTowards(minions.transform.position, enemyTower, Time.deltaTime*3);            
@@ -251,9 +252,8 @@ public class Tower : NetworkBehaviour
         var i = 0;
         while (i < minionsTime)
         {
-            Debug.Log("ATACO");
-            if (tower._isDefending.Value) tower.DamageShields(minionsDamage*10);
-            else tower.DamageTower(minionsDamage*10);
+            if (tower._isDefending.Value) tower.DamageShields(minionsDamage);
+            else tower.DamageTower(minionsDamage);
             i++;
             yield return new WaitForSeconds(1f);
 

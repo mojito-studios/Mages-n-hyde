@@ -139,6 +139,7 @@ public class Player : NetworkBehaviour
             _hiding.Value = false;
             spriteIndex.Value = GameManager.Instance.GetPrefabIndex(_sprite);
 
+
         }
         SetPlayer();
         ultiAttack.OnValueChanged += interactableButton;
@@ -182,14 +183,12 @@ public class Player : NetworkBehaviour
         updateHealthRpc();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        SetMovingRpc(false);
-    }
+ 
 
     private void OnCollisionStay2D(Collision2D collision)
     {
         SetMovingRpc(false);
+        anim.isWalkingRpc(_moving);
     }
 
     void SetPlayer()
@@ -593,9 +592,21 @@ public class Player : NetworkBehaviour
 
     private IEnumerator Ulti1C(float time)
     {
+       // spells1rpc(time); Ver mañana cuál es el problema
         yield return new WaitForSeconds(time);
         Ulti1BRpc();
         anim.EndUltiRpc();
+    }
+
+    [Rpc(SendTo.Server)]
+    private void spells1rpc(float time)
+    {
+        GameObject spell = Instantiate(ultiPrefab, ultiTransforms[0].position, Quaternion.identity);
+        spell.GetComponent<UltiPupetty>().target = this.transform;
+        spell.GetComponent<UltiPupetty>().caster = this;
+        spell.GetComponent<NetworkObject>().Spawn();
+
+
     }
     [Rpc(SendTo.Server)]
     private void Ulti1BRpc()

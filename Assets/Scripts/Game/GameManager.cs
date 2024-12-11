@@ -21,9 +21,9 @@ public class GameManager : NetworkBehaviour
     //Props
     [SerializeField] private NetworkObjectPool _ObjectPool;
     private List<NetworkObject> activeObjects = new List<NetworkObject>();
-    private const int MinObj = 5;
-    private const int MaxObj = 15;
-    private const int MaxTimeActive = 20;
+    private const int MinObj = 8;
+    private const int MaxObj = 20;
+    private const int MaxTimeActive = 40;
     private Dictionary<Vector3, bool> objectSpawningPoints = new Dictionary<Vector3, bool>();
 
 
@@ -147,7 +147,7 @@ public class GameManager : NetworkBehaviour
     {
         while (NetworkManager.Singleton.ConnectedClients.Count > 0) 
         {
-            yield return new WaitForSeconds(25f);
+            yield return new WaitForSeconds(5f);
             if (puInScene < MaxPU) //quitar esto si no se quiere que haya m�s powerups en escena pq no hace falta
                 SpawnPU();
         }
@@ -169,13 +169,15 @@ public class GameManager : NetworkBehaviour
         return position;
     }
     #endregion
+
+    #region Props
+
     private Vector3 GetRandomPosition()
     {
         var aviablePoints = objectSpawningPoints.Where(kvp => kvp.Value != false).ToArray();
         return aviablePoints[Random.Range(0, aviablePoints.Length)].Key;
     }
 
-    #region Props
 
     private void ActiveObjects()
     {

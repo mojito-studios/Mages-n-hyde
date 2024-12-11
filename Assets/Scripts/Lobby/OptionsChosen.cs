@@ -52,14 +52,15 @@ public class OptionsChosen : NetworkBehaviour
             prefabId = 0,
             team = -1
         });
-        playerReadyDictionary[clientId] = false;  
+        playerReadyDictionary[clientId] = false;
+
+
     }
-    private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
+
+ private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
     {
         playerReadyDictionary.Remove(clientId);
     }
-
-
     public override void OnNetworkSpawn()
     {
         base.OnNetworkDespawn();
