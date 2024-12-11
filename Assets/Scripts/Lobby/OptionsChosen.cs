@@ -19,8 +19,15 @@ public class OptionsChosen : NetworkBehaviour
 
     private void Awake()
     {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
+        if (Instance != null && Instance != this)
+        { 
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
         playerDataList = new NetworkList<PlayerData>();
         playerReadyDictionary = new Dictionary<ulong, bool>();//diccionario que almacena cliente y ready(true) o no (false)
     }
@@ -28,6 +35,12 @@ public class OptionsChosen : NetworkBehaviour
     public void KeepTrack()
     {
         NetworkManager.Singleton.OnClientConnectedCallback += NetworkManager_OnClientConnectedCallback;
+        NetworkManager.Singleton.OnClientDisconnectCallback += NetworkManager_OnClientDisconnectCallback;
+    }
+
+    public void UnkeepTrack()
+    {
+        NetworkManager.Singleton.OnClientConnectedCallback -= NetworkManager_OnClientConnectedCallback;
     }
 
     private void NetworkManager_OnClientConnectedCallback(ulong clientId)
@@ -39,11 +52,14 @@ public class OptionsChosen : NetworkBehaviour
             prefabId = 0,
             team = -1
         });
-        playerReadyDictionary[clientId] = false;
-        
-       
+        playerReadyDictionary[clientId] = false;  
     }
-   
+    private void NetworkManager_OnClientDisconnectCallback(ulong clientId)
+    {
+        playerReadyDictionary.Remove(clientId);
+    }
+
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkDespawn();
@@ -76,7 +92,7 @@ public class OptionsChosen : NetworkBehaviour
     [Rpc(SendTo.Server)]
     private void SetPlayerReadyServerRpc(RpcParams RpcParams = default)
     {
-        //if (NetworkManager.Singleton.ConnectedClientsIds.Count < 2) { return; }
+        if (NetworkManager.Singleton.ConnectedClientsIds.Count < 2) { return; }
         PlayerData playerData = OptionsChosen.Instance.GetPlayerDataFromClientId(RpcParams.Receive.SenderClientId);
 
         if (playerData.team == -1) return;
@@ -84,12 +100,11 @@ public class OptionsChosen : NetworkBehaviour
         bool allClientsReady = true;
         Debug.Log(playerData.ClientId);
         OnReadyDisabeRpc(RpcParams.Receive.SenderClientId);
-        foreach (ulong clientId in NetworkManager.Singleton.ConnectedClientsIds)
+        foreach (System.Collections.Generic.KeyValuePair <ulong, bool> client in playerReadyDictionary)
         {
-            Debug.Log(playerData);
-            if (!playerReadyDictionary[clientId] == true)
+            if (!client.Value == true)
             {
-                //algun jugador no está listo aún
+                //algun jugador no estï¿½ listo aï¿½n
                 allClientsReady = false;
                 break;
             }
@@ -97,6 +112,7 @@ public class OptionsChosen : NetworkBehaviour
         if (allClientsReady)
         {
             Debug.Log("ready");
+            OptionsChosen.Instance.UnkeepTrack();
             NetworkManager.SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
         }
     }
@@ -123,7 +139,7 @@ public class OptionsChosen : NetworkBehaviour
         return default;
     }
 
-    public int GetPlayerDataIndexFromClientId(ulong clientId) //Devuelve la posición en la lista del jugador correspondiente al id
+    public int GetPlayerDataIndexFromClientId(ulong clientId) //Devuelve la posiciï¿½n en la lista del jugador correspondiente al id
     {
         for (int i = 0; i < playerDataList.Count; i++)
         {
