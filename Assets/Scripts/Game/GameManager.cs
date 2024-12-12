@@ -248,6 +248,7 @@ public class GameManager : NetworkBehaviour
     [Rpc(SendTo.Server)]
     public void EndGameRpc(string tag) //Cambiar a victoria o a derrota
     {
+        StopAllCoroutines();
         GameObject[] players= GameObject.FindGameObjectsWithTag("PlayerParent");
         foreach (GameObject player in players)
         {
