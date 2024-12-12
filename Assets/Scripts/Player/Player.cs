@@ -600,14 +600,21 @@ public class Player : NetworkBehaviour
             ultiAttack.Value = value;
         else if (ultiAttack.Value == maxValue) ultiAttack.Value = maxValue; 
         else ultiAttack.Value += value;
+        Debug.Log("valor ulti " + ultiAttack.Value);
     }
 
     private void interactableButton(int oldValue, int newValue)
     {
-        if (newValue == 0) _ultimateAttack.interactable = false;
-        if (newValue == MAX_ULTI_VALUE) _ultimateAttack.interactable = true;
+        if (ultiAttack.Value == 0) ChangeInteractableRpc(false);
+        if (ultiAttack.Value >= 45) ChangeInteractableRpc(true);
     }
 
+    [Rpc(SendTo.Owner)]
+    private void ChangeInteractableRpc(bool interact)
+    {
+        _ultimateAttack.interactable = interact;
+        Debug.Log("botón ulti " + _ultimateAttack.interactable);
+    }
     public void Ulti1A()
     {
         SoundPosEveryoneRpc(ultiName);
